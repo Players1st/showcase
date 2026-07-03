@@ -918,10 +918,10 @@
         診察内容をメモして、家族につなぐ。<br>
         <strong>通院・服薬・健康記録を、摩擦ゼロでひとつに。</strong>
       </p>
-      <div class="hero-form" id="register">
-        <input type="email" class="hero-input" placeholder="メールアドレスを入力" />
-        <button class="hero-btn">無料で事前登録</button>
-      </div>
+      <form class="hero-form" id="register" onsubmit="submitEmailForm(event, this)">
+        <input type="email" name="email" class="hero-input" placeholder="メールアドレスを入力" required />
+        <button class="hero-btn" type="submit">無料で事前登録</button>
+      </form>
       <p class="hero-note">クレジットカード不要・リリース時に優先通知でお知らせします</p>
     </div>
 
@@ -1152,10 +1152,10 @@
     <div class="cta-badge">β版 先行登録受付中</div>
     <h2>あなたと家族の健康管理を、<br>もっとシンプルに。</h2>
     <p>Ukarteは現在β版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。</p>
-    <div class="cta-form">
-      <input type="email" class="cta-input" placeholder="メールアドレスを入力してください" />
-      <button class="cta-btn">無料で事前登録する →</button>
-    </div>
+    <form class="cta-form" onsubmit="submitEmailForm(event, this)">
+      <input type="email" name="email" class="cta-input" placeholder="メールアドレスを入力してください" required />
+      <button class="cta-btn" type="submit">無料で事前登録する →</button>
+    </form>
     <p class="cta-note">登録は1分で完了・料金は一切かかりません</p>
   </div>
 </section>
@@ -1168,5 +1168,30 @@
   <div class="footer-tagline">© 2026 Players1st Inc. All rights reserved.</div>
 </footer>
 
+<script>
+function submitEmailForm(event, form) {
+  event.preventDefault();
+
+  var btn = form.querySelector('button');
+  var originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+
+  fetch('https://formspree.io/f/meebpvzb', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('submit failed');
+      form.innerHTML = '<p style="font-weight:700;">🎉 登録ありがとうございます！リリース時に優先でお知らせします。</p>';
+    })
+    .catch(function() {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+}
+</script>
 </body>
 </html>
