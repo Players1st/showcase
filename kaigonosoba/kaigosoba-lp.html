@@ -316,16 +316,6 @@
     z-index: 1;
   }
 
-  /* Arrow connectors between steps */
-  .cycle-steps::after {
-    content: '';
-    position: absolute;
-    top: 32px; left: 6%;
-    width: 88%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(107,158,138,0.4), transparent);
-    pointer-events: none;
-  }
-
   .cycle-step {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -622,7 +612,6 @@
   @media (max-width: 768px) {
     .voices { grid-template-columns: 1fr; }
     .cycle-steps { grid-template-columns: repeat(4, 1fr); row-gap: 16px; }
-    .cycle-steps::after { display: none; }
     .how-grid, .how-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 36px; }
     .why-grid { grid-template-columns: 1fr; }
   }
