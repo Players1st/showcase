@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P1st Startup Showcase</title>
+  <style>
+    :root {
+      --bg: #F7F8FC;
+      --card: #FFFFFF;
+      --text: #111827;
+      --muted: #667085;
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --accent: #14B8A6;
+      --border: #E5E7EB;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      padding: 28px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    .brand span { color: var(--accent); }
+    .topbar p {
+      max-width: 620px;
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    .hero {
+      padding: 48px 24px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-copy {
+      max-width: 620px;
+    }
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      margin: 0 0 18px;
+      line-height: 1.05;
+    }
+    .hero-copy p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: .01em;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+      cursor: pointer;
+    }
+    .button.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .button.primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .button.outline {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 360px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 100%);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      overflow: hidden;
+    }
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, .18), transparent 36%);
+      pointer-events: none;
+    }
+    .hero-panel h2 {
+      font-size: 1.5rem;
+      margin: 0 0 14px;
+    }
+    .hero-panel p {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+    .hero-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .hero-panel li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .hero-panel li::before {
+      content: '•';
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .services {
+      padding: 28px 24px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin: 0;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, .2);
+    }
+    .service-card a {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 28px;
+    }
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .service-title {
+      font-size: 1.5rem;
+      margin: 0 0 14px;
+      line-height: 1.2;
+    }
+    .service-desc {
+      flex: 1;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .service-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .service-meta span {
+      background: #F8FAFC;
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="https://company.p1st.app/images/logos/p1st_logo_v2_320x320.png" alt="P1st ロゴ">
+        P1st <span>Startup</span> Showcase
+      </div>
+      <p>株式会社プレイヤーズファーストが、AIを活用して展開するマルチスタートアップの取り組みをまとめたサイトです。各サービスのLPをひとつのトップページで紹介します。下のカードから各サービスLPへ移動できます。</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>サービスアイデアを一覧で確認し、<br>そのままLPに飛べるサイト。</h1>
+        <p>各サービスの特徴をトップページでまとめて紹介。アイデアを素早く比較して、目的に合うLPにアクセスできます。</p>
+        <div class="hero-cta">
+          <a class="button primary" href="#services">サービスを見る</a>
+          <a class="button outline" href="oikatsu/oikatsu_lp.html">老い活 LPへ</a>
+          <a class="button outline" href="ukarte/ukarte-lp.html">Ukarte LPへ</a>
+          <a class="button outline" href="kaigonosoba/kaigosoba-lp.html">かいごのそば LPへ</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <h2>このサイトの目的</h2>
+        <p>スタートアップのサービスLPをひとつにまとめ、訪問者が各アイデアを素早く理解できるように設計しました。トップページから下層LPへ直接遷移できます。</p>
+        <ul>
+          <li>サービス案を一覧化して比較しやすくする</li>
+          <li>各LPへスムーズにアクセスできる導線を用意</li>
+          <li>ビジュアルと説明で企画の違いを伝える</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="section-head">
+      <h2>掲載中のサービス</h2>
+      <p>現在、下記の3つのサービスLPを紹介しています。各カードから詳細ページへ直接アクセスできます。</p>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-card">
+        <a href="oikatsu/oikatsu_lp.html">
+          <div class="service-badge">サービス 01</div>
+          <h3 class="service-title">老い活 — 毎日をポチって、元気を積み上げよう</h3>
+          <p class="service-desc">シニアの日々の習慣を「スコア化」して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。</p>
+          <div class="service-meta">
+            <span>シニア向け習慣化</span>
+            <span>ゲーム感覚</span>
+            <span>家族の安心</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="service-card">
+        <a href="ukarte/ukarte-lp.html">
+          <div class="service-badge">サービス 02</div>
+          <h3 class="service-title">Ukarte — あなたのカルテ、あなたが持つ。</h3>
+          <p class="service-desc">薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。</p>
+          <div class="service-meta">
+            <span>服薬管理</span>
+            <span>診察メモ</span>
+            <span>家族共有</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="service-card">
+        <a href="kaigonosoba/kaigosoba-lp.html">
+          <div class="service-badge">サービス 03</div>
+          <h3 class="service-title">かいごのそば — 介護は、ひとりでやらなくていい。</h3>
+          <p class="service-desc">LINEで相談するだけで、今日やることを教えてくれる介護サポートアプリ。困りごとをそのままの言葉で話しかければ、状況に合わせたやるべきことを提案し、翌日には自分から声をかけてくれます。</p>
+          <div class="service-meta">
+            <span>介護相談</span>
+            <span>LINE連携</span>
+            <span>伴走サポート</span>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    運営会社 <a href="https://company.p1st.app/" target="_blank" rel="noopener" style="text-decoration: underline;">株式会社プレイヤーズファースト</a><br>
+    © 2026 Players1st Inc. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ukarte（ユーカルテ）- あなたのカルテ、あなたが持つ。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #F4F7FC;
+    --white:    #FFFFFF;
+    --blue:     #2D5BE3;
+    --blue-lt:  #EEF2FD;
+    --blue-dk:  #1A3A9A;
+    --mint:     #00C896;
+    --mint-lt:  #E6FAF5;
+    --coral:    #FF6B4A;
+    --dark:     #111827;
+    --mid:      #4B5563;
+    --muted:    #9CA3AF;
+    --border:   #E5E9F2;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(244,247,252,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--mint); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .nav-cta:hover { background: var(--blue-dk); transform: translateY(-1px); }
+
+  /* ── HERO ────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(45,91,227,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,150,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1080px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mint);
+    background: var(--mint-lt);
+    border: 1px solid rgba(0,200,150,0.25);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--mint);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--blue);
+    position: relative;
+  }
+
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--mint));
+    border-radius: 2px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-sub strong { color: var(--dark); font-weight: 500; }
+
+  .hero-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-input {
+    flex: 1;
+    min-width: 200px;
+    height: 52px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 0 18px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .hero-input:focus { border-color: var(--blue); }
+  .hero-input::placeholder { color: var(--muted); }
+
+  .hero-btn {
+    height: 52px;
+    background: var(--coral);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 16px rgba(255,107,74,0.3);
+  }
+
+  .hero-btn:hover {
+    background: #e85a38;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,107,74,0.35);
+  }
+
+  .hero-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Phone mockup */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .phone {
+    width: 260px;
+    background: var(--dark);
+    border-radius: 40px;
+    padding: 14px;
+    box-shadow:
+      0 40px 80px rgba(17,24,39,0.25),
+      0 0 0 1px rgba(255,255,255,0.08) inset;
+    position: relative;
+    z-index: 2;
+  }
+
+  .phone-screen {
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 9/19;
+    position: relative;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 10px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 6px;
+    background: var(--dark);
+    border-radius: 3px;
+    z-index: 10;
+  }
+
+  .screen-content {
+    padding: 40px 16px 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .screen-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  .screen-header span {
+    color: var(--blue);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Camera scan UI */
+  .scan-box {
+    background: #f8f9fc;
+    border-radius: 14px;
+    border: 1.5px dashed var(--blue);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-corners::before,
+  .scan-corners::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    border-color: var(--blue);
+    border-style: solid;
+  }
+  .scan-corners::before { top: 6px; left: 6px; border-width: 2px 0 0 2px; border-radius: 2px 0 0 0; }
+  .scan-corners::after { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; border-radius: 0 0 2px 0; }
+
+  .scan-line {
+    position: absolute;
+    left: 8px; right: 8px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--mint), transparent);
+    animation: scanline 2s ease-in-out infinite;
+    top: 20px;
+  }
+
+  @keyframes scanline {
+    0% { top: 20%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 80%; opacity: 0; }
+  }
+
+  .scan-icon { font-size: 28px; }
+  .scan-label { font-size: 10px; color: var(--blue); font-weight: 600; letter-spacing: 0.05em; }
+
+  /* Med pill */
+  .med-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fc;
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+
+  .med-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .med-icon.blue { background: var(--blue-lt); }
+  .med-icon.mint { background: var(--mint-lt); }
+
+  .med-info { flex: 1; }
+  .med-name { font-size: 10px; font-weight: 600; color: var(--dark); }
+  .med-time { font-size: 9px; color: var(--muted); }
+
+  .med-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+  }
+  .med-badge.on { background: var(--mint-lt); color: var(--mint); }
+  .med-badge.off { background: #FEF3C7; color: #D97706; }
+
+  /* Notification */
+  .notif {
+    background: var(--dark);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .notif-icon { font-size: 18px; }
+
+  .notif-text { flex: 1; }
+  .notif-title { font-size: 9px; font-weight: 700; color: #fff; }
+  .notif-body { font-size: 8px; color: rgba(255,255,255,0.6); }
+
+  /* Floating badges */
+  .badge-float {
+    position: absolute;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+    z-index: 3;
+    white-space: nowrap;
+    border: 1px solid var(--border);
+  }
+
+  .badge-float.left {
+    left: -48px; top: 28%;
+    animation: floatL 3s ease-in-out infinite;
+  }
+
+  .badge-float.right {
+    right: -48px; bottom: 28%;
+    animation: floatR 3s ease-in-out infinite 1s;
+  }
+
+  @keyframes floatL {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes floatR {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ── PAIN ────────────────────────── */
+  .pain {
+    padding: 80px 24px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    margin-bottom: 48px;
+    color: var(--dark);
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pain-card {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--mint));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .pain-card:hover::before { opacity: 1; }
+
+  .pain-emoji {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .pain-quote {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .pain-quote::before { content: '「'; color: var(--blue); }
+  .pain-quote::after  { content: '」'; color: var(--blue); }
+
+  .pain-desc {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── SOLUTION ────────────────────── */
+  .solution {
+    padding: 80px 24px;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+  }
+
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature:last-child { border-bottom: none; }
+
+  .feature.reverse { direction: rtl; }
+  .feature.reverse > * { direction: ltr; }
+
+  .feature-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .feature-title {
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+
+  .feature-title strong { color: var(--blue); }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .feature-desc strong { color: var(--dark); font-weight: 500; }
+
+  .feature-visual {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  /* Scan visual */
+  .scan-visual {
+    background: linear-gradient(135deg, var(--blue-lt), var(--mint-lt));
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-visual-line {
+    position: absolute;
+    left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--mint), transparent);
+    animation: scanline2 2.5s ease-in-out infinite;
+    top: 30%;
+  }
+
+  @keyframes scanline2 {
+    0% { top: 10%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 90%; opacity: 0; }
+  }
+
+  .scan-visual-icon { font-size: 40px; }
+  .scan-visual-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .scan-result {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .scan-result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  .scan-result-label { color: var(--muted); font-weight: 400; }
+  .scan-result-val { color: var(--dark); font-weight: 600; }
+  .scan-result-val.blue { color: var(--blue); }
+  .scan-result-val.mint { color: var(--mint); }
+
+  /* Memo visual */
+  .memo-bubble {
+    background: var(--blue-lt);
+    border-radius: 16px 16px 16px 4px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--blue-dk);
+    line-height: 1.6;
+    position: relative;
+    font-weight: 400;
+  }
+
+  .memo-bubble.right {
+    background: var(--mint-lt);
+    border-radius: 16px 16px 4px 16px;
+    color: #065f46;
+    text-align: right;
+  }
+
+  .memo-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .memo-label.blue { color: var(--blue); }
+  .memo-label.mint { color: var(--mint); }
+
+  /* Share visual */
+  .share-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .share-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+
+  .share-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .share-avatar.blue { background: var(--blue-lt); }
+  .share-avatar.mint { background: var(--mint-lt); }
+  .share-avatar.coral { background: #FEE9E4; }
+
+  .share-info { flex: 1; }
+  .share-name { font-size: 11px; font-weight: 700; color: var(--dark); }
+  .share-status { font-size: 10px; color: var(--muted); }
+
+  .share-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .share-dot.on { background: var(--mint); box-shadow: 0 0 0 3px rgba(0,200,150,0.2); }
+  .share-dot.off { background: var(--border); }
+
+  .share-notif-box {
+    background: var(--dark);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .share-notif-icon { font-size: 20px; flex-shrink: 0; }
+  .share-notif-title { font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .share-notif-body { font-size: 10px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  /* ── HOW ─────────────────────────── */
+  .how {
+    padding: 80px 24px;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(45,91,227,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .how .section-label { color: var(--mint); }
+  .how .section-title { color: #fff; }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .how-step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px 22px;
+    transition: background 0.2s;
+  }
+
+  .how-step:hover { background: rgba(255,255,255,0.07); }
+
+  .how-step-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.04em;
+  }
+
+  .how-step-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .how-step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .how-step-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── CTA ─────────────────────────── */
+  .cta {
+    padding: 100px 24px;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .cta h2 {
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+
+  .cta p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .cta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .cta-input {
+    height: 56px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 0 20px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .cta-input:focus { border-color: var(--blue); }
+  .cta-input::placeholder { color: var(--muted); }
+
+  .cta-btn {
+    height: 56px;
+    background: linear-gradient(135deg, var(--coral), #ff4d6d);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 32px rgba(255,107,74,0.3);
+  }
+
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  .cta-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ──────────────────────── */
+  footer {
+    background: var(--dark);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo span { color: var(--mint); }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── RESPONSIVE ──────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { order: -1; }
+    .badge-float.left { left: -16px; }
+    .badge-float.right { right: -16px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .feature { grid-template-columns: 1fr; gap: 28px; }
+    .feature.reverse { direction: ltr; }
+    .how-steps { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+
+  @media (max-width: 480px) {
+    .how-steps { grid-template-columns: 1fr; }
+    .phone { width: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">U<span>karte</span></div>
+  <a href="#register" class="nav-cta">事前登録する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">β版 事前登録受付中</div>
+      <h1>あなたのカルテ、<br><em>あなたが持つ</em>。</h1>
+      <p class="hero-sub">
+        薬袋を撮るだけで服薬管理。<br>
+        診察内容をメモして、家族につなぐ。<br>
+        <strong>通院・服薬・健康記録を、摩擦ゼロでひとつに。</strong>
+      </p>
+      <div class="hero-form" id="register">
+        <input type="email" class="hero-input" placeholder="メールアドレスを入力" />
+        <button class="hero-btn">無料で事前登録</button>
+      </div>
+      <p class="hero-note">クレジットカード不要・リリース時に優先通知でお知らせします</p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="badge-float left">💊 服薬リマインダー設定済み</div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="screen-content">
+            <div class="screen-header"><span>Ukarte</span> ユーカルテ</div>
+
+            <div class="scan-box">
+              <div class="scan-corners"></div>
+              <div class="scan-line"></div>
+              <span class="scan-icon">💊</span>
+              <span class="scan-label">薬袋をスキャン中...</span>
+            </div>
+
+            <div class="med-item">
+              <div class="med-icon blue">💊</div>
+              <div class="med-info">
+                <div class="med-name">アムロジピン 5mg</div>
+                <div class="med-time">毎朝食後・30日分</div>
+              </div>
+              <span class="med-badge on">設定済</span>
+            </div>
+
+            <div class="med-item">
+              <div class="med-icon mint">🌿</div>
+              <div class="med-info">
+                <div class="med-name">メトホルミン 250mg</div>
+                <div class="med-time">毎夕食後・30日分</div>
+              </div>
+              <span class="med-badge off">未設定</span>
+            </div>
+
+            <div class="notif">
+              <span class="notif-icon">🔔</span>
+              <div class="notif-text">
+                <div class="notif-title">夕食後のお薬の時間です</div>
+                <div class="notif-body">メトホルミン 250mg を忘れずに</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="badge-float right">👨‍👩‍👧 家族3人で共有中</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="section-inner">
+    <div class="section-label">こんな経験、ありませんか</div>
+    <h2 class="section-title">診察室を出た瞬間、<br>半分忘れている。</h2>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="pain-emoji">🏥</span>
+        <p class="pain-quote">先生に説明されたけど、家に帰ったら何だったか思い出せない</p>
+        <p class="pain-desc">医師の説明は専門用語が多く、不安な状態では記憶に残りにくい。メモしようとしても追いつかない。</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-emoji">💊</span>
+        <p class="pain-quote">薬が3種類あって、どれをいつ飲めばいいのか混乱してきた</p>
+        <p class="pain-desc">複数科にかかると薬が重なる。飲み忘れ・飲み間違いが増えるが、管理する仕組みがない。</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-emoji">👨‍👩‍👧</span>
+        <p class="pain-quote">離れて暮らす親が何の薬を飲んでいるか、聞いてもよく分からない</p>
+        <p class="pain-desc">電話で聞いても情報が不正確。緊急時に医師へ正確な情報を伝えられるか不安が続く。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="section-inner">
+    <div class="section-label">Ukarteでできること</div>
+    <h2 class="section-title">3つの摩擦を、<br>まとめてゼロにする。</h2>
+
+    <div class="feature-list">
+
+      <!-- Feature 1 -->
+      <div class="feature">
+        <div class="feature-text">
+          <div class="feature-num">機能 01</div>
+          <h3 class="feature-title"><strong>薬袋を撮るだけ</strong>で<br>服薬リマインダー完成</h3>
+          <p class="feature-desc">
+            薬袋をカメラで撮影するだけで、薬名・服用タイミングを自動で読み取ります。あとはプッシュ通知の時間を確認するだけ。<strong>「いつ何を飲むか」の管理を、摩擦ゼロで。</strong>
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div class="scan-visual">
+            <div class="scan-visual-line"></div>
+            <span class="scan-visual-icon">📷</span>
+            <div class="scan-visual-label">薬袋を自動認識中</div>
+          </div>
+          <div class="scan-result">
+            <div class="scan-result-row">
+              <span class="scan-result-label">薬名</span>
+              <span class="scan-result-val">アムロジピン 5mg</span>
+            </div>
+            <div class="scan-result-row">
+              <span class="scan-result-label">服用タイミング</span>
+              <span class="scan-result-val blue">毎朝食後</span>
+            </div>
+            <div class="scan-result-row">
+              <span class="scan-result-label">通知</span>
+              <span class="scan-result-val mint">設定完了 ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature reverse">
+        <div class="feature-text">
+          <div class="feature-num">機能 02</div>
+          <h3 class="feature-title">診察後すぐ<strong>音声メモ</strong>で<br>忘れない記録</h3>
+          <p class="feature-desc">
+            診察室を出たらすぐ、医師に言われたことを音声で吹き込むだけ。AIが自動で「病名・処方変更・次回受診日」に整理します。<strong>帰り道で忘れてしまう前に、構造化して残す。</strong>
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div>
+            <div class="memo-label blue">医師からのメモ（音声入力）</div>
+            <div class="memo-bubble">血圧が少し高めなので、アムロジピンを増量します。塩分を控えて、2週間後にまた来てください。</div>
+          </div>
+          <div>
+            <div class="memo-label mint">AI整形後</div>
+            <div class="memo-bubble right">📋 処方変更：アムロジピン増量<br>🥗 生活指導：塩分制限<br>📅 次回受診：2週間後</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature">
+        <div class="feature-text">
+          <div class="feature-num">機能 03</div>
+          <h3 class="feature-title">記録が<strong>家族に届く</strong><br>緊急時もワンタップ</h3>
+          <p class="feature-desc">
+            診察内容・服薬リスト・体調変化が家族のスマホへ自動共有。<strong>緊急入院時は「医療サマリー」をワンタップで表示</strong>して、医師にそのまま見せられます。離れていても、つながっている安心感を。
+          </p>
+        </div>
+        <div class="feature-visual">
+          <div class="share-visual">
+            <div class="share-row">
+              <div class="share-avatar blue">👴</div>
+              <div class="share-info">
+                <div class="share-name">お父さん（本人）</div>
+                <div class="share-status">今日の記録を追加しました</div>
+              </div>
+              <div class="share-dot on"></div>
+            </div>
+            <div class="share-row">
+              <div class="share-avatar mint">👩</div>
+              <div class="share-info">
+                <div class="share-name">長女（東京）</div>
+                <div class="share-status">閲覧済み・2分前</div>
+              </div>
+              <div class="share-dot on"></div>
+            </div>
+            <div class="share-row">
+              <div class="share-avatar coral">👦</div>
+              <div class="share-info">
+                <div class="share-name">長男（大阪）</div>
+                <div class="share-status">未読</div>
+              </div>
+              <div class="share-dot off"></div>
+            </div>
+            <div class="share-notif-box">
+              <span class="share-notif-icon">🚨</span>
+              <div>
+                <div class="share-notif-title">緊急時サマリー</div>
+                <div class="share-notif-body">処方薬3件・通院記録12件・アレルギーなし<br>→ 医師にこの画面を見せてください</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-label">使い方</div>
+    <h2 class="section-title" style="color:#fff;">4ステップで、<br>今日から始められる。</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div class="how-step-icon">📲</div>
+        <div class="how-step-title">アプリをダウンロード</div>
+        <p class="how-step-desc">家族の分もまとめてセットアップできます。高齢の親には子世代が設定するだけでOK。</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div class="how-step-icon">📷</div>
+        <div class="how-step-title">薬袋を撮影する</div>
+        <p class="how-step-desc">薬袋をカメラで撮るだけ。薬名・タイミングを自動で読み取り、リマインダーを設定します。</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div class="how-step-icon">🎙️</div>
+        <div class="how-step-title">診察後に音声メモ</div>
+        <p class="how-step-desc">診察室を出たらすぐ録音。AIが自動で整理して記録します。タイプする必要はありません。</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">04</div>
+        <div class="how-step-icon">👨‍👩‍👧</div>
+        <div class="how-step-title">家族と共有</div>
+        <p class="how-step-desc">記録は自動で家族に届きます。離れていても、親の健康状態をリアルタイムで把握できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="cta-badge">β版 先行登録受付中</div>
+    <h2>あなたと家族の健康管理を、<br>もっとシンプルに。</h2>
+    <p>Ukarteは現在β版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。</p>
+    <div class="cta-form">
+      <input type="email" class="cta-input" placeholder="メールアドレスを入力してください" />
+      <button class="cta-btn">無料で事前登録する →</button>
+    </div>
+    <p class="cta-note">登録は1分で完了・料金は一切かかりません</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">U<span>karte</span></div>
+  <div class="footer-tagline">あなたのカルテ、あなたが持つ。</div>
+  <div class="footer-tagline">運営会社 <a href="https://company.p1st.app/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">株式会社プレイヤーズファースト</a></div>
+  <div class="footer-tagline">© 2026 Players1st Inc. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
