@@ -644,14 +644,14 @@
     <h2 class="section-title">リリースを<br>一番に受け取る</h2>
     <p>老い活はただいま開発中です。<br>事前登録いただいた方に、リリース日に真っ先にお知らせします。</p>
 
-    <div class="reg-form" id="reg-form">
+    <form class="reg-form" id="reg-form" onsubmit="submitForm(event)">
 
       <!-- メールアドレス -->
       <div class="form-group">
         <label class="form-label" for="email">
           メールアドレス<span class="req">必須</span>
         </label>
-        <input class="form-input" type="email" id="email" placeholder="example@gmail.com" autocomplete="email">
+        <input class="form-input" type="email" id="email" name="email" placeholder="example@gmail.com" autocomplete="email">
         <div class="form-error" id="email-error">正しいメールアドレスを入力してください</div>
       </div>
 
@@ -700,11 +700,11 @@
         <div class="form-error" id="device-error">選択してください</div>
       </div>
 
-      <button class="form-submit" id="submit-btn" onclick="submitForm()">
+      <button class="form-submit" id="submit-btn" type="submit">
         事前登録する（無料）
       </button>
       <p class="form-note">個人情報はリリースのご連絡にのみ使用します</p>
-    </div>
+    </form>
 
     <!-- サンクス画面 -->
     <div class="thanks" id="thanks">
@@ -729,7 +729,8 @@ function selectRadio(el, name) {
   document.getElementById(name+'-error').style.display = 'none';
 }
 
-function submitForm() {
+function submitForm(event) {
+  event.preventDefault();
   var ok = true;
 
   var email = document.getElementById('email').value.trim();
@@ -757,14 +758,26 @@ function submitForm() {
 
   if (!ok) return;
 
+  var form = document.getElementById('reg-form');
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = '登録中...';
 
-  setTimeout(function() {
-    document.getElementById('reg-form').style.display = 'none';
-    document.getElementById('thanks').style.display = 'block';
-  }, 600);
+  fetch('https://formspree.io/f/mgojprlw', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('submit failed');
+      form.style.display = 'none';
+      document.getElementById('thanks').style.display = 'block';
+    })
+    .catch(function() {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.disabled = false;
+      btn.textContent = '事前登録する（無料）';
+    });
 }
 </script>
 

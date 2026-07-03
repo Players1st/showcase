@@ -915,15 +915,15 @@
     <h2 class="cta-h">今日から、介護の相棒を<br>持ってみませんか。</h2>
     <p class="cta-p">かいごのそばはβ版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。</p>
 
-    <div class="reg-form" id="reg-form">
+    <form class="reg-form" id="reg-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
-        <input type="text" class="form-input" id="f-name" placeholder="お名前" autocomplete="name" />
+        <input type="text" class="form-input" id="f-name" name="name" placeholder="お名前" autocomplete="name" />
       </div>
       <div class="form-row">
-        <input type="email" class="form-input" id="f-email" placeholder="メールアドレス" autocomplete="email" />
+        <input type="email" class="form-input" id="f-email" name="email" placeholder="メールアドレス" autocomplete="email" />
       </div>
       <div class="form-row">
-        <select class="form-input" id="f-type">
+        <select class="form-input" id="f-type" name="立場">
           <option value="" disabled selected>あなたの立場を教えてください</option>
           <option value="family">介護をしている家族</option>
           <option value="pre">これから介護が始まりそう</option>
@@ -932,9 +932,9 @@
           <option value="other">その他・興味がある</option>
         </select>
       </div>
-      <button class="form-btn" id="f-btn" onclick="handleSubmit()">事前登録する（無料）</button>
+      <button class="form-btn" id="f-btn" type="submit">事前登録する（無料）</button>
       <p class="cta-note">クレジットカード不要 · いつでも解除できます</p>
-    </div>
+    </form>
 
     <div class="reg-thanks" id="reg-thanks" style="display:none;">
       <div class="thanks-icon">🌿</div>
@@ -953,7 +953,9 @@
 </footer>
 
 <script>
-function handleSubmit() {
+function handleSubmit(event) {
+  event.preventDefault();
+
   const name  = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const type  = document.getElementById('f-type').value;
@@ -966,13 +968,23 @@ function handleSubmit() {
   btn.disabled = true;
   btn.textContent = '登録中...';
 
-  // 登録完了演出（実際の送信先はGoogle Forms等に差し替え）
-  setTimeout(() => {
-    document.getElementById('reg-form').style.display = 'none';
-    const thanks = document.getElementById('reg-thanks');
-    thanks.style.display = 'block';
-    thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 800);
+  fetch('https://formspree.io/f/mpqgokjz', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(document.getElementById('reg-form'))
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('submit failed');
+      document.getElementById('reg-form').style.display = 'none';
+      const thanks = document.getElementById('reg-thanks');
+      thanks.style.display = 'block';
+      thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(() => {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.disabled = false;
+      btn.textContent = '事前登録する（無料）';
+    });
 }
 </script>
 </body>
