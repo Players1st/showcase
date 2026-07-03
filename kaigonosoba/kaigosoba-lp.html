@@ -621,8 +621,8 @@
   /* ── RESPONSIVE ──────────────────── */
   @media (max-width: 768px) {
     .voices { grid-template-columns: 1fr; }
-    .cycle-steps { grid-template-columns: repeat(4, 1fr); }
-    .cycle-step:nth-child(n+5) { display: none; }
+    .cycle-steps { grid-template-columns: repeat(4, 1fr); row-gap: 16px; }
+    .cycle-steps::after { display: none; }
     .how-grid, .how-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 36px; }
     .why-grid { grid-template-columns: 1fr; }
   }
@@ -630,7 +630,6 @@
   @media (max-width: 480px) {
     .breath { width: 320px; height: 320px; }
     .cycle-steps { grid-template-columns: repeat(2, 1fr); }
-    .cycle-step:nth-child(n+3) { display: none; }
   }
 
   /* ── FORM ────────────────────────── */
