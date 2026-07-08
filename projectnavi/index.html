@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。</title>
+<meta name="description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/projectnavi/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。">
+<meta property="og:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta property="og:image" content="https://showcase.p1st.app/og/projectnavi.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。">
+<meta name="twitter:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/projectnavi.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0e2028;
+    --panel:#153039;
+    --panel-line:rgba(255,255,255,0.09);
+    --paper:#f4f6f5;
+    --paper-panel:#ffffff;
+    --paper-line:#e2e6e3;
+    --ink-light:#eef4f3;
+    --sub-light:#9db2b3;
+    --ink-dark:#12181a;
+    --sub-dark:#5b6866;
+    --ok:#2fae72;
+    --ok-bg:rgba(47,174,114,0.14);
+    --warn:#e0a63d;
+    --warn-bg:rgba(224,166,61,0.16);
+    --danger:#d9544a;
+    --danger-bg:rgba(217,84,74,0.14);
+    --cyan:#3fc4b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--paper);
+    color:var(--ink-dark);
+    line-height:1.75;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3{font-family:'Noto Sans JP',sans-serif;font-weight:900;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+    letter-spacing:0.03em;color:var(--cyan);
+    background:rgba(63,196,184,0.12);
+    padding:6px 13px;border-radius:4px;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"●";font-size:8px;color:var(--ok);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,32,40,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:#fff;}
+  .logo .icon{
+    width:26px;height:26px;border-radius:6px;
+    background:var(--panel);border:1.5px solid var(--cyan);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .logo .icon::after{
+    content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);
+    box-shadow:0 0 6px var(--cyan);
+  }
+  .nav-cta{
+    background:var(--cyan);color:#0b2027;font-weight:700;font-size:14px;
+    padding:10px 20px;border-radius:7px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{background:#54d4c8;transform:translateY(-1px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(1100px 560px at 85% -15%, #1b3d47 0%, var(--deep) 55%);
+    color:var(--ink-light);
+    padding:78px 0 100px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .hero h1{font-size:42px;line-height:1.42;margin-bottom:22px;color:#fff;}
+  .hero h1 .cyan{color:var(--cyan);}
+  .hero p.sub{color:var(--sub-light);font-size:16px;max-width:460px;margin-bottom:34px;}
+  .cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;justify-content:center;
+    background:var(--cyan);color:#0b2027;font-weight:700;font-size:15.5px;
+    padding:15px 28px;border-radius:8px;
+    box-shadow:0 10px 24px rgba(63,196,184,0.28);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:#54d4c8;}
+  .cta-note{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--sub-light);}
+
+  /* dashboard mock: route rail */
+  .dash{
+    background:var(--panel);border:1px solid var(--panel-line);border-radius:14px;
+    padding:24px 22px 26px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+  .dash-head{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:20px;
+  }
+  .dash-head .name{font-size:13px;font-weight:700;color:#fff;}
+  .dash-head .badge{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+    padding:4px 10px;border-radius:999px;background:var(--ok-bg);color:var(--ok);
+  }
+  .rail{position:relative;padding:6px 4px 0;}
+  .rail-track{
+    position:relative;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;
+    margin:20px 6px 0;
+  }
+  .rail-fill{
+    position:absolute;top:0;left:0;height:100%;width:58%;
+    background:linear-gradient(90deg, var(--ok), var(--cyan));
+    border-radius:2px;
+  }
+  .rail-pin{
+    position:absolute;top:-7px;left:58%;transform:translateX(-50%);
+    width:18px;height:18px;border-radius:50%;
+    background:var(--cyan);border:3px solid var(--deep);
+    box-shadow:0 0 0 3px rgba(63,196,184,0.35);
+    animation:pinPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pinPulse{0%,100%{box-shadow:0 0 0 3px rgba(63,196,184,0.35);}50%{box-shadow:0 0 0 7px rgba(63,196,184,0.12);}}
+  .rail-labels{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:10px;
+  }
+  .rail-labels span{
+    font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--sub-light);
+    text-align:center;
+  }
+  .rail-labels span.now{color:var(--cyan);font-weight:600;}
+
+  .status-list{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
+  .status-row{
+    display:flex;align-items:center;gap:10px;
+    font-size:12.5px;color:var(--ink-light);
+    background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 12px;
+  }
+  .status-row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .status-row .dot.ok{background:var(--ok);}
+  .status-row .dot.warn{background:var(--warn);}
+  .status-row .msg{flex:1;}
+  .status-row .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:2px 8px;border-radius:999px;
+  }
+  .status-row.ok .tag{background:var(--ok-bg);color:var(--ok);}
+  .status-row.warn .tag{background:var(--warn-bg);color:var(--warn);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:92px 0;}
+  .section-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .section-head .eyebrow{margin-left:auto;margin-right:auto;background:rgba(63,196,184,0.1);}
+  .section-head h2{font-size:30px;line-height:1.5;color:var(--ink-dark);}
+  .section-head p{color:var(--sub-dark);font-size:15px;margin-top:14px;}
+
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .pain-card{
+    background:var(--paper-panel);border:1px solid var(--paper-line);border-radius:12px;
+    padding:28px 24px;
+  }
+  .pain-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--danger);
+    background:var(--danger-bg);display:inline-block;padding:4px 11px;border-radius:999px;
+    margin-bottom:16px;
+  }
+  .pain-card h3{font-size:16.5px;margin-bottom:10px;line-height:1.5;font-weight:700;}
+  .pain-card p{font-size:13.8px;color:var(--sub-dark);}
+
+  /* ---------- STEPS (dark) ---------- */
+  .steps-section{background:var(--deep);color:var(--ink-light);}
+  .steps-section .section-head h2{color:#fff;}
+  .steps-section .section-head p{color:var(--sub-light);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;}
+  .steps::before{
+    content:"";position:absolute;top:33px;left:15%;right:15%;height:2px;
+    background:repeating-linear-gradient(90deg, rgba(63,196,184,0.5) 0 8px, transparent 8px 16px);
+  }
+  .step{position:relative;text-align:center;padding:0 6px;}
+  .step .num{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 20px;
+    background:var(--panel);border:2px solid var(--cyan);
+    color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;
+    display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  }
+  .step h3{font-size:16px;margin-bottom:9px;}
+  .step p{font-size:13.3px;color:var(--sub-light);}
+
+  /* ---------- DECISION MAKER SECTION ---------- */
+  .exec{background:var(--paper);}
+  .exec-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;
+    background:var(--paper-panel);border:1px solid var(--paper-line);border-radius:18px;
+    padding:44px 40px;
+  }
+  .exec h3{font-size:21px;margin-bottom:16px;line-height:1.5;}
+  .exec p{font-size:14.3px;color:var(--sub-dark);margin-bottom:10px;}
+  .exec .badge-note{
+    display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ok);
+    background:var(--ok-bg);padding:7px 12px;border-radius:7px;
+  }
+  .exec-panel{
+    background:var(--deep);border-radius:12px;padding:20px;
+  }
+  .exec-panel .row{
+    display:flex;align-items:center;gap:10px;
+    font-size:12.5px;color:var(--ink-light);padding:9px 0;
+    border-bottom:1px solid var(--panel-line);
+  }
+  .exec-panel .row:last-child{border-bottom:none;}
+  .exec-panel .row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .exec-panel .row .dot.ok{background:var(--ok);}
+  .exec-panel .row .dot.warn{background:var(--warn);}
+  .exec-panel .row .dot.danger{background:var(--danger);}
+  .exec-panel .row .proj{flex:1;font-weight:500;}
+  .exec-panel .row .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sub-light);}
+
+  /* ---------- FORM CTA ---------- */
+  .final-cta{
+    background:var(--deep);color:var(--ink-light);
+    border-radius:20px;padding:60px 40px;margin:0 24px;
+    text-align:center;
+  }
+  .final-cta h2{font-size:28px;margin-bottom:14px;color:#fff;}
+  .final-cta p{color:var(--sub-light);margin-bottom:32px;font-size:15px;}
+
+  .signup-form{
+    display:flex;flex-direction:column;gap:12px;
+    max-width:440px;margin:0 auto;text-align:left;
+  }
+  .signup-form label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub-light);
+    margin-bottom:-4px;
+  }
+  .signup-form label .opt{color:#6c8285;margin-left:4px;}
+  .signup-form input[type=email],
+  .signup-form input[type=text],
+  .signup-form textarea{
+    width:100%;
+    font-family:'Noto Sans JP',sans-serif;font-size:14.5px;
+    padding:13px 15px;border:1px solid var(--panel-line);border-radius:8px;
+    background:var(--panel);color:var(--ink-light);
+    outline:none;transition:border-color .15s ease;resize:vertical;
+  }
+  .signup-form textarea{min-height:64px;line-height:1.6;}
+  .signup-form input:focus,
+  .signup-form textarea:focus{border-color:var(--cyan);}
+  .signup-form input::placeholder,
+  .signup-form textarea::placeholder{color:#5c7275;}
+  .signup-form button{margin-top:6px;width:100%;}
+  .signup-form .form-note{
+    margin-top:2px;text-align:center;font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;color:var(--sub-light);
+  }
+  .signup-success{
+    display:none;align-items:center;gap:10px;justify-content:center;
+    font-size:15px;font-weight:700;color:var(--ok);
+    background:var(--ok-bg);border-radius:9px;padding:16px 20px;
+    max-width:440px;margin:0 auto;
+  }
+  .signup-success.show{display:flex;}
+  .signup-form.hide{display:none;}
+
+  footer{padding:34px 0 26px;text-align:center;color:var(--sub-dark);font-size:12px;background:var(--paper);}
+  footer .fnote{margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:46px;}
+    .hero h1{font-size:31px;}
+    .pain-grid,.steps{grid-template-columns:1fr;}
+    .steps::before{display:none;}
+    .exec-grid{grid-template-columns:1fr;}
+    .rail-labels{font-size:8.5px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo"><span class="icon"></span>プロジェクトナビ</div>
+    <a href="#cta" class="nav-cta">無料相談</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">非エンジニアPM＋発注企業のための伴走ツール</span>
+      <h1>非エンジニアでも、<br><span class="cyan">燃えない</span>プロジェクトへ。</h1>
+      <p class="sub">要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで。次にすべきことを、そのまま使える形でお渡しします。</p>
+      <div class="cta-row">
+        <a href="#cta" class="btn-primary">無料で相談する →</a>
+        <span class="cta-note">// 導入企業様向け・個別ヒアリングから</span>
+      </div>
+    </div>
+    <div class="dash">
+      <div class="dash-head">
+        <span class="name mono">案件：基幹システム刷新PJ</span>
+        <span class="badge">順調</span>
+      </div>
+      <div class="rail">
+        <div class="rail-track">
+          <div class="rail-fill"></div>
+          <div class="rail-pin"></div>
+        </div>
+        <div class="rail-labels">
+          <span>要求整理</span>
+          <span class="now">提案確認</span>
+          <span>開発中</span>
+          <span>検収</span>
+          <span>運用</span>
+        </div>
+      </div>
+      <div class="status-list">
+        <div class="status-row ok">
+          <span class="dot ok"></span>
+          <span class="msg">要件定義たたき台、ベンダー確認済み</span>
+          <span class="tag">DONE</span>
+        </div>
+        <div class="status-row warn">
+          <span class="dot warn"></span>
+          <span class="msg">見積もりの工数配分に偏りを検知</span>
+          <span class="tag">要確認</span>
+        </div>
+        <div class="status-row ok">
+          <span class="dot ok"></span>
+          <span class="msg">次のアクション：ベンダーへ確認質問を送付</span>
+          <span class="tag">NEXT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pain">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">こんな状況、心当たりありませんか</span>
+      <h2>気づけば、<br>ベンダー任せになっている。</h2>
+      <p>開発経験がないまま担当者になった時に、よく起きること。</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="tag">要件が膨らむ</span>
+        <h3>「やりたいこと」が、うまく伝わらない</h3>
+        <p>頭の中にはイメージがあるのに、ベンダーに伝わる形の要件定義にできず、認識がずれたまま話が進んでしまう。</p>
+      </div>
+      <div class="pain-card">
+        <span class="tag">妥当性が分からない</span>
+        <h3>提案書の金額や工数、判断できない</h3>
+        <p>専門知識がないため、提示された見積もりが高いのか適正なのか分からず、言われるままに進めてしまう。</p>
+      </div>
+      <div class="pain-card">
+        <span class="tag">検収で見落とす</span>
+        <h3>何を確認すればいいか分からない</h3>
+        <p>納品されたものをどう検収すればいいか基準が分からず、後になって問題が発覚することへの不安が拭えない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">つかいかた</span>
+      <h2>教えるのは、次の一手だけ。</h2>
+      <p>学ぶことを目指しません。プロジェクトが無事に着地することだけを目指します。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num mono">01</div>
+        <h3>やりたいことを話すだけ</h3>
+        <p>実現したいことを会話形式で伝えるだけで、AIが要件定義のたたき台に構造化します。</p>
+      </div>
+      <div class="step">
+        <div class="num mono">02</div>
+        <h3>提案の危険信号を通知</h3>
+        <p>ベンダーからの提案書・見積書をたたき台と照らし合わせ、偏りや過不足だけを絞り込んで知らせます。</p>
+      </div>
+      <div class="step">
+        <div class="num mono">03</div>
+        <h3>検収の要点だけ提示</h3>
+        <p>案件の内容に応じて、検収時に確認すべき最重要ポイントだけを抽出して提示します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exec">
+  <div class="container">
+    <div class="exec-grid">
+      <div>
+        <h3>これは、現場PMの評価ツールではありません。</h3>
+        <p>プロジェクトナビが会社側にお見せするのは、個人のスコアではなく<b>案件単位の炎上リスク</b>です。</p>
+        <p>現場のPMにとっては「監視されている」ではなく「味方が横についている」という体験を大切にしています。安心して使えることが、結果的にプロジェクトの成功率を上げます。</p>
+        <span class="badge-note">✓ 個人評価データへの連携は行いません</span>
+      </div>
+      <div class="exec-panel">
+        <div class="row"><span class="dot ok"></span><span class="proj">基幹システム刷新PJ</span><span class="tag mono">順調</span></div>
+        <div class="row"><span class="dot warn"></span><span class="proj">営業支援ツール導入PJ</span><span class="tag mono">要確認</span></div>
+        <div class="row"><span class="dot ok"></span><span class="proj">社内ポータル改修PJ</span><span class="tag mono">順調</span></div>
+        <div class="row"><span class="dot danger"></span><span class="proj">在庫管理システムPJ</span><span class="tag mono">要対応</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <div class="final-cta">
+      <h2>まずは、現状をお聞かせください。</h2>
+      <p>案件の状況をお伺いした上で、導入のご相談に対応します。</p>
+      <form class="signup-form" id="signupForm">
+        <div>
+          <label for="signupEmail">メールアドレス</label>
+          <input type="email" id="signupEmail" name="email" placeholder="you@company.co.jp" required>
+        </div>
+        <div>
+          <label for="signupCompany">会社名・部署<span class="opt">任意</span></label>
+          <input type="text" id="signupCompany" name="company" placeholder="例：株式会社〇〇 DX推進部">
+        </div>
+        <div>
+          <label for="signupExpectation">現在の案件状況・期待していること<span class="opt">任意</span></label>
+          <textarea id="signupExpectation" name="expectation" placeholder="例：システム刷新を検討中だが要件定義の進め方に不安がある　など"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">無料で相談する →</button>
+        <span class="form-note">// 個別ヒアリングの上でご案内します</span>
+      </form>
+      <div class="signup-success" id="signupSuccess">
+        ✓ ありがとうございます。担当より折り返しご連絡します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="fnote">// プロジェクトナビは意思決定の伴走支援ツールです。開発・検収の法的な保証を行うものではありません。</p>
+    <p style="margin-bottom:6px;">運営会社　<a href="https://company.p1st.app/" style="text-decoration:underline;" target="_blank" rel="noopener">株式会社プレイヤーズファースト</a></p>
+    <p>© 2026 Players1st Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = document.getElementById('signupForm');
+    const success = document.getElementById('signupSuccess');
+    const btn = form.querySelector('button');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xykqadpl', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.classList.add('hide');
+        success.classList.add('show');
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+</body>
+</html>
