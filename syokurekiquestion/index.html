@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>職歴クエスチョン | 経歴書の「余白」を、数秒で埋める</title>
+<meta name="description" content="職務経歴書の「参画」「貢献」といったあいまいな記述から、面談で確認すべき質問リストを数秒で生成。フリーランスエンジニア採用のミスマッチを契約前になくします。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/syokurekiquestion/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="職歴クエスチョン | 経歴書の「余白」を、数秒で埋める">
+<meta property="og:description" content="職務経歴書の「参画」「貢献」といったあいまいな記述から、面談で確認すべき質問リストを数秒で生成。フリーランスエンジニア採用のミスマッチを契約前になくします。">
+<meta property="og:image" content="https://showcase.p1st.app/og/syokurekiquestion.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="職歴クエスチョン | 経歴書の「余白」を、数秒で埋める">
+<meta name="twitter:description" content="職務経歴書の「参画」「貢献」といったあいまいな記述から、面談で確認すべき質問リストを数秒で生成。フリーランスエンジニア採用のミスマッチを契約前になくします。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/syokurekiquestion.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFBFC;
+    --paper-card:#FFFFFF;
+    --ink:#1C1C1E;
+    --ink-soft:#6E6E73;
+    --ink-faint:#9C9C9F;
+    --accent:#1F3A5C;
+    --accent-dark:#13273D;
+    --accent-soft:#DCE6EF;
+    --accent-soft-2:#EFF3F7;
+    --line:#E3E3E0;
+    --radius:14px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Zen Kaku Gothic New", -apple-system, "Hiragino Sans", sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{
+    font-family:"Courier Prime", "Courier New", monospace;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(250,251,252,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:0.01em;
+  }
+  .logo svg{flex-shrink:0;}
+  .header-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--ink);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:100px;
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+    transition:transform .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .header-cta:hover{background:var(--accent-dark); transform:translateY(-1px);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:72px 0 64px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-soft-2);
+    border:1px solid var(--accent-soft);
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(30px, 5vw, 48px);
+    font-weight:900;
+    line-height:1.35;
+    letter-spacing:-0.01em;
+    margin:0 0 20px;
+    max-width:16ch;
+  }
+  h1 .accent{
+    position:relative;
+    white-space:nowrap;
+  }
+  h1 .accent::after{
+    content:"";
+    position:absolute;
+    left:-2%;
+    right:-2%;
+    bottom:2px;
+    height:0.42em;
+    background:var(--accent-soft);
+    z-index:-1;
+    border-radius:2px;
+  }
+  .hero-sub{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin:0 0 32px;
+  }
+  .hero-ctas{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:700;
+    font-size:16px;
+    padding:15px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    box-shadow:0 4px 0 var(--accent-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-primary:hover{transform:translateY(2px); box-shadow:0 2px 0 var(--accent-dark);}
+  .hero-note{
+    font-size:13px;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- Demo (signature element) ---------- */
+  .demo{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:20px;
+    align-items:stretch;
+  }
+  @media (max-width:820px){
+    .demo{grid-template-columns:1fr; gap:14px;}
+    .demo-arrow{transform:rotate(90deg); margin:0 auto;}
+  }
+  .demo-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.02), 0 12px 24px -18px rgba(0,0,0,0.18);
+  }
+  .demo-label{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:14px;
+    display:block;
+  }
+  .demo-doc{
+    font-size:14.5px;
+    line-height:2.1;
+    color:var(--ink);
+  }
+  .doc-mark{
+    position:relative;
+    cursor:pointer;
+    padding:0 2px;
+    border-bottom:2.5px solid var(--accent);
+    background:transparent;
+    transition:background .15s ease;
+  }
+  .doc-mark.active{background:var(--accent-soft);}
+  .doc-mark sup{
+    color:var(--accent);
+    font-weight:700;
+    font-family:"Zen Kaku Gothic New", sans-serif;
+    margin-left:1px;
+  }
+  .demo-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ink-faint);
+  }
+  .q-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .q-item{
+    display:flex;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    font-size:14.5px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .q-item.active{border-color:var(--accent); background:var(--accent-soft-2);}
+  .q-num{
+    flex-shrink:0;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--ink);
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .q-item.active .q-num{background:var(--accent);}
+  .demo-hint{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    margin-top:14px;
+    text-align:center;
+  }
+  @media (max-width:820px){ .demo-hint{ margin-top:6px; } }
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  section.tight{padding:64px 0;}
+  .section-head{
+    max-width:56ch;
+    margin:0 0 44px;
+  }
+  .kicker{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:0.04em;
+    margin-bottom:10px;
+    display:block;
+  }
+  h2{
+    font-size:clamp(24px, 3.4vw, 32px);
+    font-weight:900;
+    line-height:1.4;
+    margin:0 0 12px;
+  }
+  .section-desc{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    margin:0;
+  }
+  hr.divider{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:0;
+  }
+
+  /* ---------- Problem cards ---------- */
+  .problems{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  @media (max-width:860px){ .problems{grid-template-columns:1fr;} }
+  .problem-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 24px;
+  }
+  .problem-quote{
+    font-size:13.5px;
+    color:var(--ink-faint);
+    padding:9px 12px;
+    background:var(--paper);
+    border-left:3px solid var(--accent-soft);
+    border-radius:4px;
+    margin-bottom:16px;
+  }
+  .problem-quote span{font-family:"Courier Prime", monospace;}
+  .problem-title{
+    font-weight:700;
+    font-size:16.5px;
+    margin:0 0 8px;
+  }
+  .problem-body{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- Steps ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--paper-card);
+  }
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr;}
+    .step + .step{border-top:1px solid var(--line);}
+  }
+  .step{
+    padding:32px 28px;
+    position:relative;
+  }
+  .step + .step{border-left:1px solid var(--line);}
+  .step-icon{
+    width:38px; height:38px;
+    border-radius:10px;
+    background:var(--accent-soft-2);
+    color:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .step-eyebrow{
+    font-size:12px;
+    font-weight:700;
+    color:var(--ink-faint);
+    letter-spacing:0.05em;
+    margin-bottom:6px;
+  }
+  .step-title{
+    font-weight:700;
+    font-size:16.5px;
+    margin:0 0 10px;
+  }
+  .step-body{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- Sample output ---------- */
+  .sample{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  @media (max-width:860px){ .sample{grid-template-columns:1fr;} }
+  .sample-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+  .sample-tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-soft-2);
+    border:1px solid var(--accent-soft);
+    padding:4px 11px;
+    border-radius:100px;
+    margin-bottom:16px;
+  }
+  .sample-q{
+    font-size:14.5px;
+    padding:12px 0;
+  }
+  .sample-q + .sample-q{border-top:1px solid var(--line);}
+
+  /* ---------- Pricing ---------- */
+  .pricing{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:720px){ .pricing{grid-template-columns:1fr;} }
+  .price-card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 28px;
+  }
+  .price-card.featured{
+    border:2px solid var(--accent);
+    position:relative;
+  }
+  .price-badge{
+    position:absolute;
+    top:-12px; left:24px;
+    background:var(--accent);
+    color:#fff;
+    font-size:11.5px;
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:100px;
+  }
+  .price-name{font-size:14px; font-weight:700; color:var(--ink-soft); margin-bottom:10px;}
+  .price-value{font-size:34px; font-weight:900; margin-bottom:4px;}
+  .price-value small{font-size:14px; font-weight:500; color:var(--ink-soft);}
+  .price-unit{font-size:13px; color:var(--ink-faint); margin-bottom:20px;}
+  .price-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .price-list li{
+    font-size:14px;
+    color:var(--ink-soft);
+    padding-left:20px;
+    position:relative;
+  }
+  .price-list li::before{
+    content:"";
+    position:absolute;
+    left:0; top:7px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* ---------- CTA / Form ---------- */
+  .cta-section{
+    background:var(--ink);
+    color:#fff;
+    border-radius:20px;
+    padding:56px 40px;
+    text-align:center;
+  }
+  .cta-section h2{color:#fff;}
+  .cta-section .section-desc{color:#B9B9BC;}
+  .cta-form{
+    max-width:420px;
+    margin:32px auto 0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    text-align:left;
+  }
+  .form-row label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .badge-req{
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--accent);
+    padding:2px 8px;
+    border-radius:100px;
+  }
+  .form-row input{
+    width:100%;
+    padding:14px 16px;
+    border-radius:10px;
+    border:1px solid #3A3A3D;
+    background:#252527;
+    color:#fff;
+    font-size:15px;
+    font-family:inherit;
+  }
+  .form-row input::placeholder{color:#77777A;}
+  .form-row input:focus{outline:2px solid var(--accent); outline-offset:2px;}
+  .cta-submit{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:15px 20px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:700;
+    font-family:inherit;
+    cursor:pointer;
+    box-shadow:0 4px 0 var(--accent-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cta-submit:hover{transform:translateY(2px); box-shadow:0 2px 0 var(--accent-dark);}
+  .cta-note{font-size:12.5px; color:#8C8C8F; text-align:center; margin-top:2px;}
+  .form-success{
+    display:none;
+    background:#22321F;
+    border:1px solid #3E5B38;
+    color:#CDE8C6;
+    padding:14px 16px;
+    border-radius:10px;
+    font-size:14px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0 32px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .footer-links a{text-decoration:none;}
+  .footer-links a:hover{color:var(--accent);}
+  .footer-copy{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    width:100%;
+    margin-top:8px;
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6H8Z"/><path d="M14 3v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+      職歴クエスチョン
+    </div>
+    <a href="#trial" class="header-cta">無料で試す</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero" style="padding-bottom:0;">
+      <span class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        職務経歴書だけでは、わからない。
+      </span>
+      <h1>経歴の<span class="accent">「余白」</span>を、<br>面談前に赤ペンで洗い出す。</h1>
+      <p class="hero-sub">案件種別に合わせた質問リストが、経歴書の「参画」「貢献」の奥にある担当範囲を数秒で可視化します。</p>
+      <div class="hero-ctas">
+        <a href="#trial" class="btn-primary">
+          無料で試す（1名分）
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <span class="hero-note">クレジットカード登録不要</span>
+      </div>
+
+      <div class="demo reveal">
+        <div class="demo-card">
+          <span class="demo-label mono">生の職務経歴書</span>
+          <div class="demo-doc mono">
+            大手ECサイトの<span class="doc-mark" data-q="1">リニューアルプロジェクトに参画<sup>①</sup></span>。<br>
+            結果として<span class="doc-mark" data-q="2">売上150%成長に貢献<sup>②</sup></span>。<br>
+            <span class="doc-mark" data-q="3">要件定義から携わる<sup>③</sup></span>。テスト工程まで担当。
+          </div>
+        </div>
+        <div class="demo-arrow">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <div class="demo-card">
+          <span class="demo-label">面談で聞くべき質問</span>
+          <ul class="q-list">
+            <li class="q-item" data-q="1"><span class="q-num">①</span><span>「リニューアル」のうち、ご自身が直接設計・実装した機能はどこですか？</span></li>
+            <li class="q-item" data-q="2"><span class="q-num">②</span><span>売上150%成長のうち、あなたの担当範囲に起因する部分はどこですか？</span></li>
+            <li class="q-item" data-q="3"><span class="q-num">③</span><span>要件定義のどの工程まで、意思決定に関わりましたか？</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="demo-hint">下線部をタップすると、対応する質問がハイライトされます</p>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <hr class="divider" style="margin:64px 0;">
+  </div>
+
+  <div class="wrap">
+    <section class="tight reveal">
+      <div class="section-head">
+        <span class="kicker">課題</span>
+        <h2>「なんとなく良さそう」で、<br>採用を決めていませんか。</h2>
+        <p class="section-desc">直接ソーシングでフリーランスエンジニアを採用する現場で、繰り返し起きている3つの読み取り不能。</p>
+      </div>
+      <div class="problems">
+        <div class="problem-card">
+          <div class="problem-quote"><span>「〇〇プロジェクトに参画」</span></div>
+          <p class="problem-title">「担当範囲」が読み取れない</p>
+          <p class="problem-body">「参画」「携わる」という言葉だけでは、実際に何を任せられる人なのか判断できません。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-quote"><span>「売上150%成長に貢献」</span></div>
+          <p class="problem-title">「成果」の主語があいまい</p>
+          <p class="problem-body">チームの実績なのか、個人の実力なのか。数字だけでは区別がつきません。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-quote"><span>面談時間 45分／候補者3名</span></div>
+          <p class="problem-title">面談時間では埋めきれない</p>
+          <p class="problem-body">限られた時間の中で、経歴書の空白を一つずつ確認するのは現実的ではありません。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <hr class="divider">
+  </div>
+
+  <div class="wrap">
+    <section class="reveal">
+      <div class="section-head">
+        <span class="kicker">使い方</span>
+        <h2>やることは、3つだけ。</h2>
+        <p class="section-desc">経歴書をそのまま読み込むので、コピー&ペーストによる表崩れを気にする必要はありません。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+          </div>
+          <div class="step-eyebrow">STEP 1</div>
+          <p class="step-title">アップロード</p>
+          <p class="step-body">職務経歴書・スキルシートをPDFまたは画像で。表組みのまま読み取ります。</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="step-eyebrow">STEP 2</div>
+          <p class="step-title">案件種別を選択</p>
+          <p class="step-body">準委任／請負、職種を選ぶだけ。契約形態に合わせた質問設計に切り替わります。</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6H8Z"/><path d="M14 3v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+          </div>
+          <div class="step-eyebrow">STEP 3</div>
+          <p class="step-title">質問リストが完成</p>
+          <p class="step-body">担当範囲・貢献・学習内容の3観点で、面談にそのまま使える質問が並びます。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <hr class="divider">
+  </div>
+
+  <div class="wrap">
+    <section class="reveal">
+      <div class="section-head">
+        <span class="kicker">出力サンプル</span>
+        <h2>3つの観点で、洗い出す。</h2>
+        <p class="section-desc">経歴書の記述をもとに、面談で確認すべき問いを構造化して提示します。</p>
+      </div>
+      <div class="sample">
+        <div class="sample-card">
+          <span class="sample-tag">担当範囲</span>
+          <div class="sample-q">設計・実装・テストのうち、ご自身が主担当だった工程はどこですか？</div>
+          <div class="sample-q">チームの人数と、あなたの役割（実装者／リーダー等）を教えてください。</div>
+        </div>
+        <div class="sample-card">
+          <span class="sample-tag">貢献</span>
+          <div class="sample-q">記載されている成果指標のうち、あなたの作業が直接寄与した部分はどこですか？</div>
+          <div class="sample-q">その成果を出す上で、最も難しかった技術的判断は何でしたか？</div>
+        </div>
+        <div class="sample-card">
+          <span class="sample-tag">学習内容</span>
+          <div class="sample-q">このプロジェクトを通じて、新しく身につけた技術やスキルは何ですか？</div>
+          <div class="sample-q">もう一度同じ案件を担当するなら、どこを変えますか？</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <hr class="divider">
+  </div>
+
+  <div class="wrap">
+    <section class="reveal">
+      <div class="section-head">
+        <span class="kicker">料金</span>
+        <h2>まずは1名分、無料で。</h2>
+        <p class="section-desc">継続的な採用活動に合わせて、都度課金でご利用いただけます。</p>
+      </div>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price-name">お試し</div>
+          <div class="price-value">¥0</div>
+          <div class="price-unit">1名分・登録のみ</div>
+          <ul class="price-list">
+            <li>質問リストをフル出力</li>
+            <li>PDFダウンロード対応</li>
+            <li>クレジットカード登録不要</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <span class="price-badge">2人目以降</span>
+          <div class="price-name">都度プラン</div>
+          <div class="price-value">¥3,980<small> / 名</small></div>
+          <div class="price-unit">候補者ごとの都度課金</div>
+          <ul class="price-list">
+            <li>すべての案件種別・職種に対応</li>
+            <li>質問リストをフル出力</li>
+            <li>PDFダウンロード対応</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap" id="trial">
+    <section>
+      <div class="cta-section reveal">
+        <h2>次の面談から、使えます。</h2>
+        <p class="section-desc">メールアドレスを登録すると、無料お試し用のリンクをお送りします。</p>
+        <form class="cta-form" id="trialForm">
+          <div class="form-row">
+            <label for="email">メールアドレス <span class="badge-req">必須</span></label>
+            <input type="email" id="email" name="email" placeholder="you@company.co.jp" required>
+          </div>
+          <button type="submit" class="cta-submit">無料でお試しリンクを受け取る</button>
+          <div class="form-success" id="formSuccess">登録ありがとうございます。お試し用のリンクをお送りします。</div>
+        </form>
+        <p class="cta-note">送信いただいたメールアドレスは、お試しリンクの送付以外には使用しません。</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="logo" style="font-size:14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6H8Z"/><path d="M14 3v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+      職歴クエスチョン
+    </div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+    <div class="footer-copy">© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Hero demo: tap/click a marked phrase to highlight its matching question
+  document.querySelectorAll('.doc-mark').forEach(function(mark){
+    mark.addEventListener('click', function(){
+      var q = mark.getAttribute('data-q');
+      document.querySelectorAll('.doc-mark').forEach(function(m){ m.classList.remove('active'); });
+      document.querySelectorAll('.q-item').forEach(function(item){ item.classList.remove('active'); });
+      mark.classList.add('active');
+      var target = document.querySelector('.q-item[data-q="' + q + '"]');
+      if(target){ target.classList.add('active'); }
+    });
+  });
+  document.querySelectorAll('.q-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var q = item.getAttribute('data-q');
+      document.querySelectorAll('.doc-mark').forEach(function(m){ m.classList.remove('active'); });
+      document.querySelectorAll('.q-item').forEach(function(i){ i.classList.remove('active'); });
+      item.classList.add('active');
+      var target = document.querySelector('.doc-mark[data-q="' + q + '"]');
+      if(target){ target.classList.add('active'); }
+    });
+  });
+
+  document.getElementById('trialForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.cta-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mgogevzb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.querySelectorAll('.form-row').forEach(el => el.style.display = 'none');
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
