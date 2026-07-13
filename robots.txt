@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://showcase.p1st.app/sitemap.xml
