@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ボイポケ | その不満、Googleレビューに書かれる前に。</title>
+<meta name="description" content="お客様が来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける非公開フィードバックツール。QRコードを置くだけで、悪評が公開される前に店内で気づいて対応できます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/voipoke/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ボイポケ | その不満、Googleレビューに書かれる前に。">
+<meta property="og:description" content="お客様が来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける非公開フィードバックツール。QRコードを置くだけで、悪評が公開される前に店内で気づいて対応できます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/voipoke.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ボイポケ | その不満、Googleレビューに書かれる前に。">
+<meta name="twitter:description" content="お客様が来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける非公開フィードバックツール。QRコードを置くだけで、悪評が公開される前に店内で気づいて対応できます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/voipoke.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0B1526;
+    --navy-800:#14213D;
+    --navy-700:#1E3157;
+    --navy-500:#3A527E;
+    --navy-100:#E7EBF3;
+    --navy-050:#F4F6FA;
+    --gold:#C9A227;
+    --gold-soft:#F4E9C8;
+    --teal:#2F7D74;
+    --teal-soft:#DCEEEC;
+    --coral:#D2695A;
+    --coral-soft:#F7E4E0;
+    --ink:#1B2029;
+    --ink-soft:#5B6272;
+    --white:#FFFFFF;
+    --line:#DDE2EC;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:.14em;font-weight:700;
+    color:var(--navy-700);text-transform:uppercase;
+  }
+  .eyebrow::before{content:"";width:18px;height:2px;background:var(--gold);display:inline-block;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--navy-800);}
+  .logo-mark{
+    width:32px;height:32px;border-radius:9px;background:var(--navy-800);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .logo-mark svg{width:18px;height:18px;}
+  .nav-links{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--navy-800);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 26px;border-radius:999px;font-weight:700;font-size:15px;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    font-family:inherit;
+  }
+  .btn-primary{background:var(--navy-800);color:#fff;box-shadow:0 8px 20px -8px rgba(20,33,61,.55);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 24px -8px rgba(20,33,61,.6);}
+  .btn-ghost{background:transparent;color:var(--navy-800);border-color:var(--navy-800);}
+  .btn-sm{padding:10px 18px;font-size:13.5px;}
+
+  /* Hero */
+  .hero{
+    padding:76px 0 64px;
+    background:linear-gradient(180deg, var(--navy-050) 0%, #fff 78%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  h1.headline{
+    font-size:44px;font-weight:900;line-height:1.4;letter-spacing:-.01em;
+    color:var(--navy-900);margin:18px 0 20px;
+  }
+  h1.headline .accent{color:var(--gold);}
+  .sub{font-size:16.5px;color:var(--ink-soft);margin:0 0 30px;max-width:480px;}
+  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+  .hero-note{margin-top:14px;font-size:12.5px;color:var(--ink-soft);}
+
+  /* Signature diagram: the fork */
+  .fork-card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:28px 26px 24px;box-shadow:0 24px 48px -28px rgba(20,33,61,.35);
+  }
+  .fork-title{font-size:12.5px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:18px;}
+  .fork-svg{width:100%;height:auto;}
+
+  /* Section shell */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin:0 0 46px;}
+  .section-head h2{font-size:30px;font-weight:900;color:var(--navy-900);margin:14px 0 12px;letter-spacing:-.005em;}
+  .section-head p{color:var(--ink-soft);font-size:15.5px;margin:0;}
+
+  /* Problem timeline */
+  .timeline{position:relative;padding:26px 0 6px;}
+  .timeline-line{position:absolute;top:57px;left:26px;right:26px;height:2px;background:var(--line);}
+  .timeline-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;}
+  .t-step{text-align:center;}
+  .t-dot{
+    width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--navy-100);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:2;
+    font-weight:700;color:var(--navy-700);font-size:20px;
+  }
+  .t-step.is-bad .t-dot{border-color:#e2b3ad;background:#fff;color:#b3453a;}
+  .t-step.is-customer .t-dot{border-color:var(--navy-500);background:var(--navy-050);color:var(--navy-700);}
+  .t-step.is-store .t-dot{border-color:var(--gold);background:var(--gold-soft);color:#8A6D14;}
+  .actor-tag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.03em;
+    padding:2px 9px;border-radius:999px;margin-bottom:8px;
+  }
+  .actor-tag.customer{background:var(--navy-100);color:var(--navy-700);}
+  .actor-tag.store{background:var(--gold-soft);color:#8A6D14;}
+  .t-step p.t-label{font-weight:700;font-size:14.5px;margin:0 0 4px;color:var(--navy-900);}
+  .t-step p.t-desc{font-size:13px;color:var(--ink-soft);margin:0;}
+
+  /* Solution steps */
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .step-card{
+    background:var(--navy-050);border-radius:var(--radius);padding:30px 26px;
+    border:1px solid var(--line);position:relative;
+  }
+  .step-num{
+    position:absolute;top:24px;right:24px;font-size:13px;font-weight:900;color:var(--navy-500);
+    opacity:.5;letter-spacing:.05em;
+  }
+  .step-icon{
+    width:46px;height:46px;border-radius:12px;background:var(--navy-800);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .step-icon.c-navy{background:var(--navy-800);}
+  .step-icon.c-teal{background:var(--teal);}
+  .step-icon.c-coral{background:var(--coral);}
+  .step-card.c-navy{background:var(--navy-050);}
+  .step-card.c-teal{background:var(--teal-soft);}
+  .step-card.c-coral{background:var(--coral-soft);}
+  .step-icon svg{width:22px;height:22px;stroke:#fff;}
+  .step-card h3{font-size:17px;font-weight:700;color:var(--navy-900);margin:0 0 8px;}
+  .step-card p{font-size:14px;color:var(--ink-soft);margin:0;}
+
+  /* Value cards */
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .value-card{padding:28px 24px;border:1px solid var(--line);border-radius:var(--radius);}
+  .value-card.c-navy{background:var(--navy-050);border-color:transparent;}
+  .value-card.c-teal{background:var(--teal-soft);border-color:transparent;}
+  .value-card.c-coral{background:var(--coral-soft);border-color:transparent;}
+  .value-card .tag.c-navy{background:var(--navy-100);color:var(--navy-700);}
+  .value-card .tag.c-teal{background:#BFE0DC;color:#1F544E;}
+  .value-card .tag.c-coral{background:#EFC3BB;color:#8C3B2F;}
+  .value-card .tag{
+    display:inline-block;font-size:11.5px;font-weight:700;color:var(--navy-700);
+    background:var(--navy-100);padding:4px 10px;border-radius:999px;margin-bottom:16px;
+  }
+  .value-card h3{font-size:16.5px;font-weight:700;color:var(--navy-900);margin:0 0 8px;}
+  .value-card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
+
+  /* Pricing */
+  .pricing-band{background:var(--navy-900);color:#fff;}
+  .pricing-band .section-head h2{color:#fff;}
+  .pricing-band .section-head p{color:#B9C2D6;}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .price-card{
+    background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);
+    padding:28px 24px;
+  }
+  .price-card.is-featured{background:#fff;color:var(--ink);border-color:transparent;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.5);}
+  .price-card.is-featured h3, .price-card.is-featured .price{color:var(--navy-900);}
+  .price-card .badge-free{
+    display:inline-block;font-size:11px;font-weight:700;background:var(--gold);color:var(--navy-900);
+    padding:3px 10px;border-radius:999px;margin-bottom:14px;
+  }
+  .price-card h3{font-size:15px;font-weight:700;margin:0 0 6px;color:#fff;}
+  .price-card .price{font-size:28px;font-weight:900;margin:0 0 14px;color:#fff;}
+  .price-card .price span{font-size:13px;font-weight:500;opacity:.7;}
+  .price-card ul{list-style:none;margin:0;padding:0;font-size:13.5px;}
+  .price-card ul li{padding:6px 0;opacity:.85;border-top:1px solid rgba(255,255,255,.12);}
+  .price-card.is-featured ul li{border-top:1px solid var(--line);opacity:1;color:var(--ink-soft);}
+
+  /* CTA / Form */
+  .cta-section{background:var(--navy-050);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .cta-copy h2{font-size:28px;font-weight:900;color:var(--navy-900);margin:14px 0 14px;}
+  .cta-copy p{color:var(--ink-soft);font-size:15px;}
+  .cta-list{margin:22px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink);}
+  .cta-list li{display:flex;gap:10px;padding:7px 0;align-items:flex-start;}
+  .cta-list svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--navy-700);}
+
+  form.signup{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;
+    box-shadow:0 30px 60px -34px rgba(20,33,61,.4);
+  }
+  .field{margin-bottom:18px;}
+  .field-label{
+    display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;
+    color:var(--navy-900);margin-bottom:8px;
+  }
+  .badge{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;}
+  .badge.required{background:#FBEAE8;color:#B3453A;}
+  .badge.optional{background:var(--navy-100);color:var(--navy-700);}
+  input, select{
+    width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--line);
+    font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;
+  }
+  input:focus, select:focus{outline:2px solid var(--navy-700);outline-offset:1px;}
+  .submit-btn{width:100%;margin-top:6px;padding:15px;font-size:15.5px;}
+  .form-foot{font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .success-msg{
+    display:none;text-align:center;padding:30px 10px;
+  }
+  .success-msg.show{display:block;}
+  .success-msg svg{width:44px;height:44px;stroke:var(--navy-700);margin:0 auto 14px;}
+  .success-msg h3{color:var(--navy-900);font-size:17px;margin:0 0 8px;}
+  .success-msg p{color:var(--ink-soft);font-size:13.5px;margin:0;}
+
+  /* Footer */
+  footer{background:var(--navy-900);color:#B9C2D6;padding:48px 0 28px;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .footer-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:900;font-size:17px;margin-bottom:10px;}
+  .footer-desc{font-size:13px;max-width:320px;color:#8C96AC;}
+  .footer-links{display:flex;gap:28px;font-size:13.5px;}
+  .footer-links a{color:#B9C2D6;text-decoration:none;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{
+    margin-top:36px;padding-top:22px;border-top:1px solid var(--navy-700);
+    font-size:12px;color:#7C879E;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  @media(max-width:860px){
+    .hero-grid, .cta-grid{grid-template-columns:1fr;}
+    .hero-grid{gap:40px;}
+    .timeline-steps{grid-template-columns:repeat(2,1fr);row-gap:28px;}
+    .timeline-line{display:none;}
+    .steps3, .value-grid, .price-grid{grid-template-columns:1fr;}
+    h1.headline{font-size:32px;}
+    .nav-links{display:none;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 6.6 3 11c0 2.4 1.2 4.5 3 6-0.15 1.3-0.7 2.4-1.6 3.3 1.7 0 3.3-0.6 4.6-1.6 1 0.3 2 0.5 3 0.5 5 0 9-3.6 9-8S17 3 12 3z" fill="white"/></svg>
+      </span>
+      ボイポケ
+    </div>
+    <nav class="nav-links">
+      <a href="#problem">課題</a>
+      <a href="#solution">仕組み</a>
+      <a href="#pricing">料金</a>
+    </nav>
+    <a href="#signup" class="btn btn-primary btn-sm">無料で試す</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">飲食店・小売店向け 非公開フィードバックツール</span>
+      <h1 class="headline">その不満、<br><span class="accent">Googleレビュー</span>に<br>書かれる前に。</h1>
+      <p class="sub">
+        お客様が来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける仕組み。
+        レビューに公開される前に、店内で気づき、店内で対応できる。
+      </p>
+      <div class="hero-cta">
+        <a href="#signup" class="btn btn-primary">無料プランに登録する</a>
+        <a href="#solution" class="btn btn-ghost">仕組みを見る</a>
+      </div>
+      <p class="hero-note">1店舗・月50件まで無料　/　QRコードを置くだけで導入完了</p>
+    </div>
+
+    <div class="fork-card">
+      <div class="fork-title">来店後、声はどこへ向かうか</div>
+      <svg class="fork-svg" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- customer node -->
+        <circle cx="60" cy="150" r="30" fill="#F4F6FA" stroke="#DDE2EC" stroke-width="2"/>
+        <text x="60" y="155" text-anchor="middle" font-size="22" font-family="Zen Kaku Gothic New">🙂</text>
+        <text x="60" y="200" text-anchor="middle" font-size="12" fill="#5B6272" font-family="Zen Kaku Gothic New" font-weight="700">来店客</text>
+
+        <!-- fork lines -->
+        <path d="M90 150 C 160 150, 160 70, 230 70" stroke="#DDE2EC" stroke-width="2.5" fill="none"/>
+        <path d="M90 150 C 160 150, 160 230, 230 230" stroke="#14213D" stroke-width="2.5" fill="none"/>
+
+        <!-- top path: public review (bad) -->
+        <rect x="230" y="42" width="182" height="56" rx="12" fill="#FBEAE8"/>
+        <text x="250" y="65" font-size="12" fill="#B3453A" font-family="Zen Kaku Gothic New" font-weight="700">帰宅後に投稿</text>
+        <text x="250" y="83" font-size="12" fill="#B3453A" font-family="Zen Kaku Gothic New">★☆☆☆☆ 公開レビュー</text>
+        <text x="405" y="68" font-size="16">⚠</text>
+
+        <!-- bottom path: private capture (good) -->
+        <rect x="230" y="202" width="182" height="56" rx="12" fill="#E7EBF3"/>
+        <text x="250" y="225" font-size="12" fill="#14213D" font-family="Zen Kaku Gothic New" font-weight="700">その場でボイポケへ</text>
+        <text x="250" y="243" font-size="12" fill="#14213D" font-family="Zen Kaku Gothic New">非公開・匿名で店舗に到達</text>
+        <text x="405" y="228" font-size="16">✓</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Problem</span>
+      <h2>お客様の本音とお店の対応が、すれ違ったまま悪評になる</h2>
+      <p>お客様は「言いたいけど言えない」。お店は「知りたいけど知れない」。
+        このすれ違いが埋まらないまま、不満は公開レビューという形で初めてお店に届く。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-steps">
+        <div class="t-step is-customer">
+          <div class="t-dot">1</div>
+          <span class="actor-tag customer">お客様</span>
+          <p class="t-label">その場で我慢</p>
+          <p class="t-desc">気まずくて言えない</p>
+        </div>
+        <div class="t-step is-customer">
+          <div class="t-dot">2</div>
+          <span class="actor-tag customer">お客様</span>
+          <p class="t-label">帰宅</p>
+          <p class="t-desc">不満だけが残る</p>
+        </div>
+        <div class="t-step is-customer">
+          <div class="t-dot">3</div>
+          <span class="actor-tag customer">お客様</span>
+          <p class="t-label">レビュー投稿</p>
+          <p class="t-desc">Googleマップ等に公開</p>
+        </div>
+        <div class="t-step is-store">
+          <div class="t-dot">4</div>
+          <span class="actor-tag store">お店</span>
+          <p class="t-label">事後に気づく</p>
+          <p class="t-desc">対処のしようがない</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solution" style="background:var(--navy-050);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Solution</span>
+      <h2>QRを置くだけで、声が非公開のまま届く</h2>
+      <p>顧客側は読み取って送るだけ。店舗側は専用画面で確認するだけ。導入から検証開始まで、余計な手間はない。</p>
+    </div>
+    <div class="steps3">
+      <div class="step-card c-navy">
+        <span class="step-num">01</span>
+        <div class="step-icon c-navy"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z"/></svg></div>
+        <h3>QRを読む</h3>
+        <p>テーブルやレジ横のQRコードをスマホで読み取るだけ。アプリのインストールは不要。</p>
+      </div>
+      <div class="step-card c-teal">
+        <span class="step-num">02</span>
+        <div class="step-icon c-teal"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>匿名で送信</h3>
+        <p>気づいた点・不満を、名前を明かさず一言だけ送信。カテゴリ選択で内容も整理される。</p>
+      </div>
+      <div class="step-card c-coral">
+        <span class="step-num">03</span>
+        <div class="step-icon c-coral"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>オーナーだけが確認</h3>
+        <p>店舗の管理画面に一覧表示。公開されることなく、店舗内だけで声を受け取れる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why VoiPoke</span>
+      <h2>汎用アンケートとは、そもそもの考え方が違う</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card c-navy">
+        <span class="tag c-navy">非公開設計</span>
+        <h3>レビューサイトを経由しない</h3>
+        <p>集まった声はボイポケの管理画面だけに届く。GoogleレビューやSNSに晒される前に、店舗内で受け止められる。</p>
+      </div>
+      <div class="value-card c-teal">
+        <span class="tag c-teal">QR完結</span>
+        <h3>アプリ不要・会員登録不要</h3>
+        <p>顧客側の負担はスマホでQRを読むだけ。導入も専用QRを発行して設置するだけで完了する。</p>
+      </div>
+      <div class="value-card c-coral">
+        <span class="tag c-coral">匿名性</span>
+        <h3>言いにくさを前提にした設計</h3>
+        <p>対面でのクレームを避ける文化的傾向を踏まえ、匿名を前提に「言いやすさ」だけを追求している。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing-band">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:#B9C2D6;">Pricing</span>
+      <h2>まずは1店舗、無料で。</h2>
+      <p>店舗数が増えたときだけ、料金が発生するシンプルな仕組み。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card is-featured">
+        <span class="badge-free">今すぐ始める</span>
+        <h3>無料プラン</h3>
+        <p class="price">¥0<span> /月</span></p>
+        <ul>
+          <li>1店舗まで</li>
+          <li>月間フィードバック 50件まで</li>
+          <li>QRコード発行 1枚</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>スタンダード</h3>
+        <p class="price">¥5,000<span> /月・1店舗</span></p>
+        <ul>
+          <li>フィードバック件数無制限</li>
+          <li>過去データの閲覧・検索</li>
+          <li>メールサポート</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>マルチストア</h3>
+        <p class="price">¥4,000<span> /月・店舗あたり</span></p>
+        <ul>
+          <li>3店舗以上が対象</li>
+          <li>本部向け一覧管理(順次拡張予定)</li>
+          <li>導入サポート</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="signup">
+  <div class="wrap cta-grid">
+    <div class="cta-copy">
+      <span class="eyebrow">Get Started</span>
+      <h2>無料プランで、まず試してみませんか</h2>
+      <p>1店舗・月50件までは無料。QRコードの発行から利用開始まで、最短当日で完了します。</p>
+      <ul class="cta-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>クレジットカード登録は不要です</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>導入サポートのご案内をメールでお送りします</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>いつでも解約・停止いただけます</li>
+      </ul>
+    </div>
+
+    <form class="signup" id="signupForm">
+      <div id="formFields">
+        <div class="field">
+          <label class="field-label">お名前<span class="badge required">必須</span></label>
+          <input type="text" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="field">
+          <label class="field-label">店舗名<span class="badge required">必須</span></label>
+          <input type="text" name="shop" required placeholder="例）カフェ○○ 渋谷店">
+        </div>
+        <div class="field">
+          <label class="field-label">メールアドレス<span class="badge required">必須</span></label>
+          <input type="email" name="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label class="field-label">業態<span class="badge optional">任意</span></label>
+          <select name="category">
+            <option value="">選択してください</option>
+            <option>飲食店</option>
+            <option>カフェ</option>
+            <option>小売店</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">無料プランに登録する</button>
+        <p class="form-foot">登録後、担当より導入案内のメールをお送りします。</p>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        <h3>登録ありがとうございます</h3>
+        <p>ご登録いただいたメールアドレスに、導入案内をお送りします。</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-logo">ボイポケ</div>
+      <p class="footer-desc">Googleレビューに書かれる前に、店内で声を留める。飲食店・小売店向けの非公開フィードバックツール。</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app/" target="_blank" rel="noopener">運営会社</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Players1st Inc. All rights reserved.</span>
+    <span>ボイポケは株式会社プレイヤーズファーストが提供するサービスです。</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mrenbjpg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        document.getElementById('formFields').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
