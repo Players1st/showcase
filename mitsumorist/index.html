@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ミツモリスト｜その見積もり、相場のどこにいますか？</title>
+<meta name="description" content="見積書をアップロードするだけで、AIが工数・単価・記載漏れを診断。数百万〜数千万円の発注でも、技術的妥当性を確認できないまま承認してしまう課題を解決します。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/mitsumorist/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ミツモリスト｜その見積もり、相場のどこにいますか？">
+<meta property="og:description" content="見積書をアップロードするだけで、AIが工数・単価・記載漏れを診断。数百万〜数千万円の発注でも、技術的妥当性を確認できないまま承認してしまう課題を解決します。">
+<meta property="og:image" content="https://showcase.p1st.app/og/mitsumorist.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ミツモリスト｜その見積もり、相場のどこにいますか？">
+<meta name="twitter:description" content="見積書をアップロードするだけで、AIが工数・単価・記載漏れを診断。数百万〜数千万円の発注でも、技術的妥当性を確認できないまま承認してしまう課題を解決します。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/mitsumorist.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950: #0A1F33;
+    --navy-900: #0F2942;
+    --navy-700: #1B4D72;
+    --navy-500: #2E6B99;
+    --paper: #F6F8FA;
+    --white: #FFFFFF;
+    --line: #DCE3EA;
+    --line-soft: #E8ECF0;
+    --ink: #16232F;
+    --ink-soft: #55636E;
+    --amber: #B5730E;
+    --amber-bg: #FBF1DF;
+    --amber-line: #E9C481;
+    --teal: #1E7A6E;
+    --teal-bg: #E4F2EF;
+    --teal-line: #A9D3CA;
+    --rose: #B14548;
+    --rose-bg: #FBEAEA;
+    --rose-line: #E9B9B9;
+    --radius: 3px;
+    --serif-num: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+  .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  @keyframes rise{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+
+  /* ---------- header ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px;
+    max-width: 1120px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-weight:900; font-size: 18px; letter-spacing: 0.02em;
+    color: var(--navy-900);
+  }
+  .brand .mark{
+    width: 26px; height: 26px; border-radius: 6px;
+    background: var(--navy-900);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand .mark svg{ width:15px; height:15px; }
+  .nav-cta{
+    font-size: 14px; font-weight: 700;
+    background: var(--navy-900); color:#fff;
+    padding: 10px 20px; border-radius: var(--radius);
+    text-decoration:none;
+    transition: background .15s ease;
+  }
+  .nav-cta:hover{ background: var(--navy-700); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 64px 0 88px;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(27,77,114,0.07), transparent 60%),
+      var(--white);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap: 8px;
+    font-size: 12.5px; font-weight:700; letter-spacing:0.08em;
+    color: var(--navy-700);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 6px 12px; border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+
+  h1{
+    font-size: 42px; font-weight: 900; line-height:1.4;
+    letter-spacing: 0.01em;
+    color: var(--navy-950);
+    margin: 0 0 20px;
+  }
+  h1 .accent{ color: var(--navy-700); }
+  .sub{
+    font-size: 16.5px; color: var(--ink-soft);
+    margin: 0 0 32px; max-width: 46ch;
+  }
+  .hero-ctas{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom: 28px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--navy-900); color:#fff;
+    font-weight:700; font-size:15px;
+    padding: 15px 26px; border-radius: var(--radius);
+    text-decoration:none; border:none; cursor:pointer;
+    transition: background .15s ease, transform .1s ease;
+  }
+  .btn-primary:hover{ background: var(--navy-700); }
+  .btn-primary:active{ transform: translateY(1px); }
+  .btn-ghost{
+    font-size: 14px; color: var(--ink-soft); text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-meta{
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:6px; }
+  .hero-meta svg{ width:14px; height:14px; color: var(--navy-700); flex-shrink:0; }
+
+  /* ---------- signature: document scan mock ---------- */
+  .doc-mock{
+    position: relative;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px 26px;
+    box-shadow: 0 24px 60px -20px rgba(15,41,66,0.25);
+  }
+  .doc-mock .doc-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom: 18px; padding-bottom:14px; border-bottom: 1px dashed var(--line);
+  }
+  .doc-mock .doc-head .fname{ font-size:13px; font-weight:700; color: var(--navy-900); display:flex; align-items:center; gap:8px;}
+  .doc-mock .doc-head .fname svg{ width:16px; height:16px; color: var(--ink-soft);}
+  .doc-mock .doc-head .badge{
+    font-family: var(--serif-num); font-size: 11px; font-weight:700;
+    color: var(--navy-700); background:#fff; border:1px solid var(--line);
+    padding: 3px 8px; border-radius: 999px;
+  }
+  .doc-line{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size: 13.5px; padding: 10px 0; border-bottom: 1px solid var(--line-soft);
+    gap: 12px;
+  }
+  .doc-line .label{ color: var(--ink); }
+  .doc-line .val{ font-family: var(--serif-num); color: var(--ink-soft); font-size: 13px; white-space:nowrap;}
+  .doc-line.flag{ background: var(--amber-bg); margin: 0 -12px; padding: 10px 12px; border-radius: 4px; border-bottom-color: transparent;}
+  .doc-line.flag .label{ color: #7A4C09; font-weight: 700; }
+
+  .tag-callout{
+    position: absolute;
+    background: var(--navy-900); color:#fff;
+    font-size: 12px; font-weight:700;
+    padding: 8px 12px; border-radius: 6px;
+    line-height:1.4; max-width: 190px;
+    box-shadow: 0 10px 24px -8px rgba(15,41,66,0.5);
+  }
+  .tag-callout::after{
+    content:''; position:absolute; width:10px; height:10px;
+    background: var(--navy-900); transform: rotate(45deg);
+  }
+  .tag-1{ top: 42%; right: -14%; }
+  .tag-1::after{ left:-4px; top: 14px; }
+  .tag-2{ bottom: 6%; right: -10%; }
+  .tag-2::after{ left:-4px; top: 14px; }
+
+  @media (max-width: 980px){
+    .tag-callout{ position:static; max-width:none; margin-top:10px; }
+    .tag-callout::after{ display:none; }
+  }
+
+  /* ---------- section shared ---------- */
+  section{ padding: 88px 0; }
+  .section-head{ max-width: 640px; margin: 0 0 52px; }
+  .section-head .eyebrow{ margin-bottom: 16px; }
+  h2{
+    font-size: 30px; font-weight: 900; color: var(--navy-950);
+    line-height:1.5; margin: 0 0 14px;
+  }
+  .section-head p{ color: var(--ink-soft); font-size:15.5px; margin:0; }
+
+  /* ---------- problem cards ---------- */
+  .problems{ background: var(--paper); }
+  .prob-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .prob-card{
+    background: #fff; border:1px solid var(--line);
+    border-top: 3px solid var(--line);
+    border-radius: 6px; padding: 28px 24px;
+  }
+  .prob-card.c-rose{ border-top-color: var(--rose); }
+  .prob-card.c-amber{ border-top-color: var(--amber); }
+  .prob-card.c-teal{ border-top-color: var(--teal); }
+  .prob-card .icon{
+    width: 40px; height:40px; border-radius: 8px;
+    background: var(--navy-900); display:flex; align-items:center; justify-content:center;
+    margin-bottom: 18px;
+  }
+  .prob-card.c-rose .icon{ background: var(--rose); }
+  .prob-card.c-amber .icon{ background: var(--amber); }
+  .prob-card.c-teal .icon{ background: var(--teal); }
+  .prob-card .icon svg{ width:20px; height:20px; color:#fff; }
+  .prob-card h3{ font-size: 16.5px; font-weight:700; margin:0 0 10px; color: var(--navy-950); }
+  .prob-card p{ font-size: 14px; color: var(--ink-soft); margin:0; }
+
+  /* ---------- process (numbered - real sequence) ---------- */
+  .process-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:0;
+    border: 1px solid var(--line); border-radius: 8px; overflow:hidden;
+  }
+  .step{
+    padding: 34px 28px; position:relative;
+    border-right: 1px solid var(--line);
+    border-top: 3px solid var(--navy-500);
+    background:#fff;
+  }
+  .step:last-child{ border-right:none; }
+  .step.s2{ border-top-color: var(--amber); }
+  .step.s3{ border-top-color: var(--teal); }
+  .step .num{
+    font-family: var(--serif-num); font-size: 13px; font-weight:700;
+    color: var(--navy-700); letter-spacing:0.05em;
+    display:block; margin-bottom: 16px;
+  }
+  .step.s2 .num{ color: var(--amber); }
+  .step.s3 .num{ color: var(--teal); }
+  .step h3{ font-size:17px; font-weight:700; margin:0 0 10px; color: var(--navy-950); }
+  .step p{ font-size: 13.8px; color: var(--ink-soft); margin:0; }
+  .step-arrow{
+    position:absolute; right:-13px; top:50%; transform:translateY(-50%);
+    width: 26px; height:26px; background:#fff; border:1px solid var(--line);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    z-index:2;
+  }
+  .step-arrow svg{ width:12px; height:12px; color: var(--navy-700);}
+  @media (max-width: 860px){
+    .process-grid{ grid-template-columns: 1fr; }
+    .step{ border-right:none; border-bottom:1px solid var(--line); }
+    .step:last-child{ border-bottom:none; }
+    .step-arrow{ display:none; }
+  }
+
+  /* ---------- demo: sample + registration ---------- */
+  .demo{ background: var(--navy-950); color:#fff; }
+  .demo .section-head p{ color: rgba(255,255,255,0.65); }
+  .demo .section-head h2{ color:#fff; }
+  .demo .eyebrow{ background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color:#CFE0EC; }
+
+  .sample-area{ margin-top: 8px; }
+
+  .result-panel{
+    max-width: 560px;
+    background: #fff; color: var(--ink);
+    border-radius: 8px; padding: 0;
+    overflow:hidden;
+  }
+  .result-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 18px 24px; border-bottom: 1px solid var(--line-soft);
+    background: var(--paper);
+  }
+  .result-head .fname{ font-weight:700; font-size:14px; display:flex; gap:8px; align-items:center;}
+  .result-head .fname svg{ width:16px; height:16px; color: var(--navy-700);}
+  .result-head .score{
+    font-family: var(--serif-num); font-weight:700; font-size:13px;
+    background: var(--amber-bg); color:#7A4C09; padding:4px 10px; border-radius: 999px;
+    border: 1px solid var(--amber-line);
+  }
+  .result-body{ padding: 22px 24px 26px; }
+  .result-item{ display:flex; gap:14px; padding: 14px 0; border-bottom:1px solid var(--line-soft); }
+  .result-item:last-child{ border-bottom:none; }
+  .result-item .ri-icon{ width:26px; height:26px; border-radius:6px; background: var(--amber-bg); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .result-item .ri-icon svg{ width:14px; height:14px; color:#7A4C09; }
+  .result-item .ri-text{ font-size:13.8px; }
+  .result-item .ri-text b{ color: var(--navy-950); }
+  .result-note{ font-size:12.5px; color: var(--ink-soft); padding: 14px 24px; border-top:1px dashed var(--line); background: var(--paper); }
+
+  .reg-block{
+    max-width: 560px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px dashed rgba(255,255,255,0.18);
+  }
+  .reg-block-head{ margin-bottom: 20px; }
+  .reg-block-title{ font-size: 18px; font-weight:900; color:#fff; margin-bottom:8px; }
+  .reg-block-head p{ font-size: 13.8px; color: rgba(255,255,255,0.6); margin:0; }
+
+  .reg-form{
+    max-width: 520px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    padding: 32px;
+  }
+  .reg-form.hide{ display:none; }
+  .form-row{ margin-bottom: 20px; }
+  .form-row label{
+    display:block; font-size: 13.5px; font-weight:700;
+    margin-bottom: 8px; color: rgba(255,255,255,0.9);
+  }
+  .form-row input, .form-row textarea{
+    width:100%; font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 14px; color: var(--ink);
+    padding: 12px 14px; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: #fff; resize: vertical;
+  }
+  .form-row input:focus, .form-row textarea:focus{
+    outline: 2px solid #7FB2D6; outline-offset: 1px;
+  }
+  .reg-form .btn-primary{ margin-top: 4px; }
+  .form-note{
+    font-size:12px; color: rgba(255,255,255,0.5); margin: 14px 0 0;
+  }
+
+  .form-thanks{
+    display:none;
+    max-width: 520px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    padding: 44px 32px;
+    text-align:center;
+  }
+  .form-thanks.show{ display:block; animation: rise .4s ease; }
+  .form-thanks svg{ width:40px; height:40px; margin: 0 auto 16px; }
+  .form-thanks .ft-title{ font-size:17px; font-weight:700; margin-bottom:6px; }
+  .form-thanks .ft-sub{ font-size:13.5px; color: rgba(255,255,255,0.6); }
+
+  /* ---------- pricing ---------- */
+  .price-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .price-card{
+    border: 1px solid var(--line); border-top: 3px solid var(--teal);
+    border-radius: 8px; padding: 32px 28px;
+    background:#fff;
+  }
+  .price-card.featured{
+    border-color: var(--navy-900); border-top: 3px solid var(--amber);
+    box-shadow: 0 20px 44px -24px rgba(15,41,66,0.35);
+    position:relative;
+  }
+  .price-card.featured::before{
+    content: 'よく選ばれています';
+    position:absolute; top:-13px; left:28px;
+    background: var(--navy-900); color:#fff;
+    font-size:11px; font-weight:700; padding:4px 12px; border-radius:999px;
+  }
+  .price-card h3{ font-size:16px; font-weight:700; margin:0 0 6px; color: var(--navy-950);}
+  .price-card .price{
+    font-family: var(--serif-num); font-size: 34px; font-weight:700;
+    color: var(--navy-950); margin: 14px 0 4px;
+  }
+  .price-card .price span{ font-size:14px; color: var(--ink-soft); font-weight:500; font-family:'Zen Kaku Gothic New', sans-serif;}
+  .price-card .desc{ font-size:13.5px; color: var(--ink-soft); margin-bottom:22px; }
+  .price-list{ list-style:none; padding:0; margin:0 0 26px; }
+  .price-list li{
+    font-size: 13.8px; padding: 9px 0; border-bottom:1px solid var(--line-soft);
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .price-list li:last-child{ border-bottom:none; }
+  .price-list li svg{ width:15px; height:15px; color: var(--teal); flex-shrink:0; margin-top:2px;}
+  .price-card.featured .price-list li svg{ color: var(--amber); }
+  .price-card .btn-primary{ width:100%; justify-content:center; }
+  .price-card.plain .btn-primary{ background:#fff; color: var(--navy-900); border:1px solid var(--navy-900);}
+  .price-card.plain .btn-primary:hover{ background: var(--paper); }
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    background: var(--paper);
+    border-top:1px solid var(--line-soft);
+    text-align:center;
+    padding: 96px 0;
+  }
+  .final-cta h2{ font-size:28px; margin-bottom:14px; }
+  .final-cta p{ color: var(--ink-soft); margin-bottom:34px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    background: var(--navy-950); color: rgba(255,255,255,0.7);
+    padding: 48px 0 32px; font-size: 13px;
+  }
+  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom: 30px;}
+  footer .brand{ color:#fff; }
+  footer .brand .mark{ background: rgba(255,255,255,0.12); }
+  footer a{ color: rgba(255,255,255,0.7); text-decoration:none; }
+  footer a:hover{ color:#fff; }
+  .footer-links{ display:flex; gap:22px; flex-wrap:wrap; }
+  .footer-bottom{
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 22px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    color: rgba(255,255,255,0.45); font-size:12px;
+  }
+
+  /* ---------- badges ---------- */
+  .req-badge{
+    font-size: 10.5px; font-weight:700; padding:2px 7px; border-radius:3px;
+    background: #FCE9E9; color:#B03B3B; margin-left:6px; vertical-align: middle;
+  }
+  .opt-badge{
+    font-size: 10.5px; font-weight:700; padding:2px 7px; border-radius:3px;
+    background: var(--line-soft); color: var(--ink-soft); margin-left:6px; vertical-align: middle;
+  }
+
+  @media (max-width: 980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    h1{ font-size: 32px; }
+    .prob-grid{ grid-template-columns:1fr; }
+    .price-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l5 5L20 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      ミツモリスト
+    </div>
+    <a href="#demo" class="nav-cta">サンプルを見る</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>見積もり妥当性AI診断（先行登録受付中）</div>
+      <h1>その見積もり、<br><span class="accent">相場のどこ</span>にいますか？</h1>
+      <p class="sub">PDFをアップロードするだけで、AIが工数・単価・記載漏れを診断するサービスを準備中です。先行登録いただいた方から、正式リリース時に無料診断をご案内します。</p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 18v1a2 2 0 002 2h12a2 2 0 002-2v-1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          診断結果サンプルを見る
+        </a>
+        <a href="#process" class="btn-ghost">仕組みを見る</a>
+      </div>
+      <div class="hero-meta">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z" stroke="currentColor" stroke-width="1.6"/></svg>
+          サンプル閲覧・登録どちらも30秒
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          リリース時に先着でご案内
+        </span>
+      </div>
+    </div>
+
+    <div class="doc-mock">
+      <div class="doc-head">
+        <div class="fname">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.6"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.6"/></svg>
+          御見積書_2026_v3.pdf
+        </div>
+        <div class="badge">解析中…</div>
+      </div>
+      <div class="doc-line"><span class="label">要件定義・設計</span><span class="val">¥2,400,000</span></div>
+      <div class="doc-line flag"><span class="label">開発工数一式</span><span class="val">¥6,800,000</span></div>
+      <div class="doc-line"><span class="label">テスト・QA</span><span class="val">¥1,200,000</span></div>
+      <div class="doc-line flag"><span class="label">保守運用（月額）</span><span class="val">¥350,000</span></div>
+      <div class="doc-line"><span class="label">合計</span><span class="val">¥10,750,000</span></div>
+
+      <div class="tag-callout tag-1">「一式」表記で内訳が不明。工数根拠の開示を要求できます</div>
+      <div class="tag-callout tag-2">類似規模の中央値より約18%高め</div>
+    </div>
+  </div>
+</section>
+
+<section class="problems">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">よくある状況</div>
+      <h2>「高いかもしれないが、確認する手段がない」</h2>
+      <p>数百万〜数千万円の発注でも、技術的妥当性のチェックが属人的な感覚か、ベンダーへの丸投げになっていませんか。</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card c-rose">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 9h.01M15 9h.01M8 15s1.5 2 4 2 4-2 4-2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/></svg>
+        </div>
+        <h3>内訳が読み解けない</h3>
+        <p>「一式」表記や専門用語が並び、何にいくらかかっているのか判断できないまま承認してしまう。</p>
+      </div>
+      <div class="prob-card c-amber">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>相見積もりを取る時間がない</h3>
+        <p>3社以上の比較が推奨されると分かっていても、案件のたびにその時間を確保するのは現実的でない。</p>
+      </div>
+      <div class="prob-card c-teal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8zm6 4a4 4 0 00-4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>社内に頼みにくい</h3>
+        <p>レビューできるエンジニアが社内にいても、忙しい相手に頼むのは気が引けて、そのまま承認へ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">使い方</div>
+      <h2>3ステップで、相場との位置づけが分かる</h2>
+      <p>見積書を用意するだけ。アカウント登録も、ヒアリングも不要です。<br>※現在開発中のサービスです。先行登録いただいた方から順にご案内します。</p>
+    </div>
+    <div class="process-grid">
+      <div class="step s1">
+        <span class="num">01</span>
+        <h3>見積書をアップロード</h3>
+        <p>PDF・Excelの見積書をそのままドラッグ&ドロップ。ページ数や様式は問いません。</p>
+        <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step s2">
+        <span class="num">02</span>
+        <h3>AIが工数・単価・記載を解析</h3>
+        <p>相場との位置づけと、前提条件や根拠の記載漏れといった見積書自体のリスクを検出します。</p>
+        <div class="step-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step s3">
+        <span class="num">03</span>
+        <h3>その場で結果を確認</h3>
+        <p>基本診断はその場で無料表示。詳細な項目別分析や保存は、必要な時だけ追加できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span>サンプルを見る</div>
+      <h2>診断結果のサンプル</h2>
+      <p>AIがどんな指摘をするのか、実際の画面イメージでご確認いただけます。サービスは現在準備中です。</p>
+    </div>
+
+    <div class="sample-area show" id="sampleArea">
+
+      <div class="result-panel">
+        <div class="result-head">
+          <div class="fname">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.6"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.6"/></svg>
+            御見積書_2026_v3.pdf（サンプル）
+          </div>
+          <div class="score">相場比 +18%</div>
+        </div>
+        <div class="result-body">
+          <div class="result-item">
+            <div class="ri-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.3 3.86L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.86a2 2 0 00-3.4 0z" stroke="#7A4C09" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="ri-text"><b>「開発工数一式」の内訳記載なし。</b>根拠（人月・単価）の開示をベンダーに求めることができます。</div>
+          </div>
+          <div class="result-item">
+            <div class="ri-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.3 3.86L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.86a2 2 0 00-3.4 0z" stroke="#7A4C09" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="ri-text"><b>保守運用費の作業範囲が未記載。</b>月額に何が含まれるか（バグ修正・監視・改修の範囲）の確認を推奨します。</div>
+          </div>
+          <div class="result-item">
+            <div class="ri-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.3 3.86L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.86a2 2 0 00-3.4 0z" stroke="#7A4C09" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="ri-text"><b>総額は類似規模案件の中央値より約18%高め。</b>詳細プランでは項目別の乖離幅を確認できます。</div>
+          </div>
+        </div>
+        <div class="result-note">これはサンプル表示です。実際の診断結果は、アップロードいただいた見積書の内容に応じて変わります。</div>
+      </div>
+
+      <div class="reg-block">
+        <div class="reg-block-head">
+          <div class="reg-block-title">この診断、実際に使ってみたいですか？</div>
+          <p>リリース時に真っ先にご案内します。先行登録は30秒で完了します。</p>
+        </div>
+
+        <form class="reg-form" id="regForm">
+          <div class="form-row">
+            <label for="email">メールアドレス<span class="req-badge">必須</span></label>
+            <input type="email" id="email" name="email" placeholder="you@company.co.jp" required>
+          </div>
+          <div class="form-row">
+            <label for="company">会社名<span class="opt-badge">任意</span></label>
+            <input type="text" id="company" name="company" placeholder="株式会社〇〇">
+          </div>
+          <div class="form-row">
+            <label for="pain">今、見積もりで困っていること<span class="opt-badge">任意</span></label>
+            <textarea id="pain" name="pain" rows="3" placeholder="例：一式表記が多く内訳が分からない、相見積もりを取る時間がない　など"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h14m0 0l-6-6m6 6l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            使ってみる（先行登録）
+          </button>
+          <p class="form-note">登録情報はリリースのご案内以外の目的では使用しません。</p>
+        </form>
+
+        <div class="form-thanks" id="formThanks">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#7FB2D6" stroke-width="1.6"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="ft-title">先行登録ありがとうございます</div>
+          <div class="ft-sub">正式リリース時に、真っ先にご案内します。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">料金</div>
+      <h2>まずは無料で。必要な分だけ詳しく。</h2>
+      <p>基本診断はいつでも無料。保存や項目別の詳細分析が必要な時だけ追加してください。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card plain">
+        <h3>無料診断</h3>
+        <div class="price">¥0</div>
+        <div class="desc">リリース後、登録不要でその場で確認できます</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>相場との位置づけ（概要）</li>
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>記載漏れ・説明不足リスクの警告</li>
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>登録不要<span class="opt-badge">任意</span></li>
+        </ul>
+        <a href="#demo" class="btn-primary">サンプルを見る</a>
+      </div>
+      <div class="price-card featured">
+        <h3>詳細プラン</h3>
+        <div class="price">¥3,980<span>/件</span></div>
+        <div class="desc">案件ごとの都度課金。サブスクではありません</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>項目別の詳細な相場比較</li>
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>ベンダーへの確認事項リスト</li>
+          <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>診断結果の保存・共有<span class="req-badge">要登録</span></li>
+        </ul>
+        <a href="#demo" class="btn-primary">サンプルを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>その見積もり、承認する前に。</h2>
+    <p>リリース時に真っ先にご案内します。今のうちに先行登録を。</p>
+    <a href="#demo" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 18v1a2 2 0 002 2h12a2 2 0 002-2v-1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      診断結果サンプルを見る
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l5 5L20 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        ミツモリスト
+      </div>
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>ミツモリストは <a href="https://company.p1st.app" target="_blank" rel="noopener">株式会社プレイヤーズファースト</a> が運営しています</span>
+      <span>© 2026 Players1st Inc. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const regForm = document.getElementById('regForm');
+  const formThanks = document.getElementById('formThanks');
+
+  regForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = regForm.querySelector('.btn-primary');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xqereyqg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(regForm)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        regForm.classList.add('hide');
+        formThanks.classList.add('show');
+        formThanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      });
+  });
+</script>
+
+</body>
+</html>
