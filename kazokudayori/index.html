@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>家族だより | 離れて暮らす親の異変に、LINEの質問で気づく</title>
+<meta name="description" content="「認知症チェック」とは言わず、家族の話題をLINEで届けるだけ。答えの変化から、受診のタイミングが見えてきます。離れて暮らす親を、負担のない見守りで支えます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/kazokudayori/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="家族だより | 離れて暮らす親の異変に、LINEの質問で気づく">
+<meta property="og:description" content="「認知症チェック」とは言わず、家族の話題をLINEで届けるだけ。答えの変化から、受診のタイミングが見えてきます。離れて暮らす親を、負担のない見守りで支えます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/kazokudayori.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="家族だより | 離れて暮らす親の異変に、LINEの質問で気づく">
+<meta name="twitter:description" content="「認知症チェック」とは言わず、家族の話題をLINEで届けるだけ。答えの変化から、受診のタイミングが見えてきます。離れて暮らす親を、負担のない見守りで支えます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/kazokudayori.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#E8763D;
+    --navy-deep:#C85A26;
+    --paper:#FFF8EF;
+    --white:#FFFFFF;
+    --ink:#4A3B2E;
+    --ink-soft:#8A7A68;
+    --ink-faint:#B49E85;
+    --teal:#6E8F52;
+    --teal-soft:#EAF0DE;
+    --coral:#D2603A;
+    --coral-soft:#FDEADA;
+    --amber:#CE9A3E;
+    --amber-soft:#FBF0DA;
+    --line:#F0DFC8;
+    --radius:16px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.75;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,239,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:900;
+    font-size:20px;
+    color:var(--navy);
+    letter-spacing:0.02em;
+  }
+  .logo span{color:var(--coral);}
+  .header-cta{
+    background:var(--navy);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:100px;
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:72px 0 64px;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, var(--coral-soft) 0%, transparent 60%),
+      linear-gradient(180deg, #FFFDF9 0%, var(--paper) 100%);
+    color:var(--ink);
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{
+    max-width:var(--maxw); margin:0 auto; padding:0 24px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:0.08em;
+    color:var(--coral);
+    background:var(--coral-soft);
+    padding:7px 16px; border-radius:100px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; color:var(--coral); font-size:8px;}
+  h1{
+    font-size:38px;
+    line-height:1.5;
+    font-weight:700;
+    margin:0 0 22px;
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+  h1 .accent{color:var(--coral);}
+  .hero-sub{
+    font-size:16px;
+    color:var(--ink-soft);
+    margin:0 0 34px;
+    max-width:480px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#06C755;
+    color:#fff;
+    font-weight:700;
+    font-size:15px;
+    padding:16px 30px;
+    border-radius:100px;
+    text-decoration:none;
+    box-shadow:0 10px 24px -8px rgba(6,199,85,0.35);
+  }
+  .hero-note{font-size:13px; color:var(--ink-faint);}
+
+  /* Hero visual: LINE-style chat mock */
+  .line-mock{
+    background:#FFFFFF;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 24px 48px -20px rgba(200,90,38,0.28);
+    border:1px solid var(--line);
+  }
+  .line-topbar{
+    display:flex; align-items:center; gap:10px;
+    padding:14px 14px;
+    background:#FFFFFF;
+    border-bottom:1px solid #E7E7E7;
+  }
+  .line-back{font-size:20px; color:#8A8A8A; font-weight:700; line-height:1;}
+  .line-avatar{
+    width:32px; height:32px; border-radius:9px;
+    background:#06C755;
+    color:#fff; font-size:14px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .line-title{font-size:15px; font-weight:700; color:#1A1A1A; flex:1;}
+  .line-icons{display:flex; gap:14px; font-size:15px; color:#8A8A8A;}
+  .line-body{
+    background:#E5E5E5;
+    padding:18px 14px 14px;
+  }
+  .line-date-chip{
+    text-align:center;
+    font-size:11px;
+    color:#fff;
+    background:rgba(0,0,0,0.28);
+    display:inline-block;
+    padding:3px 12px;
+    border-radius:8px;
+    margin:0 auto 16px;
+    position:relative; left:50%; transform:translateX(-50%);
+  }
+  .line-row{display:flex; align-items:flex-end; gap:7px; margin-bottom:14px;}
+  .line-row.outgoing{justify-content:flex-end;}
+  .line-avatar-sm{
+    width:28px; height:28px; border-radius:8px;
+    background:#06C755; color:#fff;
+    font-size:11px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .line-bubble-wrap{display:flex; align-items:flex-end; gap:6px; max-width:78%;}
+  .line-row.outgoing .line-bubble-wrap{flex-direction:row-reverse;}
+  .line-bubble{
+    padding:10px 13px;
+    border-radius:14px;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#1A1A1A;
+  }
+  .line-bubble.incoming{
+    background:#FFFFFF;
+    border:1px solid #EAEAEA;
+    border-bottom-left-radius:3px;
+  }
+  .line-bubble.outgoing{
+    background:#9BE86B;
+    border-bottom-right-radius:3px;
+  }
+  .line-time{font-size:10px; color:#8A8A8A; white-space:nowrap; margin-bottom:2px;}
+  .line-inputbar{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 14px;
+    background:#FFFFFF;
+    border-top:1px solid #E7E7E7;
+  }
+  .line-plus{
+    width:26px; height:26px; border-radius:50%;
+    border:1.5px solid #C7C7C7; color:#8A8A8A;
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; flex-shrink:0;
+  }
+  .line-input-placeholder{
+    flex:1;
+    background:#F1F1F1;
+    border-radius:16px;
+    padding:8px 14px;
+    font-size:13px;
+    color:#B0B0B0;
+  }
+
+  /* ===== Section shared ===== */
+  section{padding:76px 0;}
+  .section-head{max-width:640px; margin:0 0 44px;}
+  .section-tag{
+    font-size:13px; font-weight:700; letter-spacing:0.08em;
+    color:var(--teal);
+    display:block; margin-bottom:12px;
+  }
+  h2{
+    font-size:28px;
+    line-height:1.6;
+    font-weight:700;
+    margin:0 0 14px;
+    color:var(--navy);
+  }
+  .section-desc{color:var(--ink-soft); font-size:15px; margin:0;}
+
+  /* ===== Problem ===== */
+  .problem-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  .problem-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 26px;
+  }
+  .problem-card .num{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--coral-soft);
+    color:var(--coral);
+    font-size:15px; font-weight:700;
+    margin-bottom:16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .problem-card h3{font-size:16px; margin:0 0 10px; color:var(--ink);}
+  .problem-card p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  /* ===== Solution steps ===== */
+  .solution{background:var(--coral-soft); color:var(--ink);}
+  .solution .section-tag{color:var(--teal);}
+  .solution h2{color:var(--ink);}
+  .solution .section-desc{color:var(--ink-soft);}
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:12px;
+  }
+  .step{
+    background:var(--white);
+    border:1px solid rgba(0,0,0,0.06);
+    border-radius:var(--radius);
+    padding:34px 26px 30px;
+    position:relative;
+  }
+  .step h3{font-size:17px; margin:0 0 10px; color:var(--ink);}
+  .step p{font-size:14px; color:var(--ink-soft); margin:0;}
+  .steps-wrap{
+    position:relative;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+    padding-top:26px;
+    margin-top:14px;
+  }
+  .steps-wrap::before{
+    content:"";
+    position:absolute;
+    top:0; left:16.667%; right:16.667%;
+    height:2px;
+    background:repeating-linear-gradient(90deg, rgba(200,90,38,0.35) 0 8px, transparent 8px 16px);
+  }
+  .step-marker{
+    position:absolute;
+    top:-14px; left:50%;
+    transform:translateX(-50%);
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:16px;
+    box-shadow:0 0 0 6px var(--coral-soft);
+  }
+
+  /* ===== Two engines ===== */
+  .engines{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .engine-card{
+    border-radius:var(--radius);
+    padding:32px 30px;
+    border:1px solid var(--line);
+  }
+  .engine-card.event{background:var(--coral-soft);}
+  .engine-card.daily{background:var(--amber-soft);}
+  .engine-tag{
+    display:inline-block;
+    font-size:12px; font-weight:700;
+    padding:5px 12px; border-radius:100px;
+    margin-bottom:16px;
+  }
+  .engine-card.event .engine-tag{background:var(--coral); color:#fff;}
+  .engine-card.daily .engine-tag{background:var(--amber); color:#fff;}
+  .engine-card h3{font-size:19px; margin:0 0 12px; color:var(--ink);}
+  .engine-card ul{margin:16px 0 0; padding-left:0; list-style:none;}
+  .engine-card li{
+    font-size:14px; color:var(--ink-soft);
+    padding:10px 0; border-top:1px solid rgba(0,0,0,0.08);
+  }
+  .engine-card li:first-child{border-top:none;}
+  .engine-card li b{color:var(--ink); font-weight:700;}
+
+  /* ===== Why not SNS ===== */
+  .compare{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:8px;
+    overflow:hidden;
+  }
+  .compare-row{
+    display:grid; grid-template-columns:1.2fr 1fr 1fr;
+    align-items:center;
+  }
+  .compare-row.head{
+    background:var(--paper);
+    border-radius:12px;
+  }
+  .compare-row > div{padding:18px 22px; font-size:14px;}
+  .compare-row.head > div{font-weight:700; color:var(--ink-soft); font-size:13px;}
+  .compare-row:not(.head){border-top:1px solid var(--line);}
+  .compare-row .label{color:var(--ink-soft); font-weight:700;}
+  .compare-row .no{color:var(--ink-faint);}
+  .compare-row .yes{color:var(--teal); font-weight:700;}
+
+  /* ===== Pricing ===== */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .price-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 28px;
+    display:flex; flex-direction:column;
+  }
+  .price-card.highlight{
+    border-color:var(--navy);
+    box-shadow:0 20px 40px -20px rgba(15,42,74,0.3);
+    position:relative;
+  }
+  .price-badge{
+    position:absolute; top:-13px; left:28px;
+    background:var(--navy); color:#fff;
+    font-size:12px; font-weight:700;
+    padding:5px 14px; border-radius:100px;
+  }
+  .price-name{font-size:15px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;}
+  .price-amount{font-size:32px; font-weight:700; color:var(--navy); margin-bottom:4px;}
+  .price-amount span{font-size:14px; font-weight:500; color:var(--ink-faint);}
+  .price-sub{font-size:13px; color:var(--ink-faint); margin-bottom:20px;}
+  .price-card ul{list-style:none; padding:0; margin:0 0 24px; flex:1;}
+  .price-card li{
+    font-size:14px; color:var(--ink-soft);
+    padding:9px 0 9px 24px; position:relative;
+  }
+  .price-card li::before{
+    content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;
+  }
+
+  /* ===== Form ===== */
+  .form-section{background:var(--white);}
+  .form-card{
+    max-width:560px; margin:0 auto;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:40px;
+  }
+  .form-card h2{text-align:center; font-size:24px;}
+  .form-card .section-desc{text-align:center; margin:0 auto 30px; max-width:420px;}
+  .field{margin-bottom:20px;}
+  .field label{
+    display:flex; align-items:center; gap:8px;
+    font-size:14px; font-weight:700; color:var(--ink); margin-bottom:8px;
+  }
+  .badge{
+    font-size:11px; font-weight:700; padding:3px 9px; border-radius:5px;
+  }
+  .badge.required{background:var(--coral-soft); color:var(--coral);}
+  .badge.optional{background:var(--teal-soft); color:var(--teal);}
+  .field input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-family:inherit; font-size:15px;
+    background:#fff;
+  }
+  .field input:focus{outline:2px solid var(--navy); outline-offset:1px;}
+  .form-submit{
+    width:100%;
+    background:#06C755;
+    color:#fff;
+    font-weight:700; font-size:16px;
+    padding:16px; border:none; border-radius:100px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .form-note{font-size:12px; color:var(--ink-faint); text-align:center; margin-top:14px;}
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--navy-deep);
+    color:#F6DEC8;
+    padding:44px 0 30px;
+    font-size:13px;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-logo{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:16px; font-weight:900; color:#fff;
+  }
+  footer a{text-decoration:none; color:#F6DEC8;}
+  footer a:hover{color:#fff;}
+  .footer-links{display:flex; gap:24px;}
+  .copyright{
+    margin-top:24px; padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:12px; color:#EFC9A8;
+  }
+
+  @media (max-width: 860px){
+    .hero-inner{grid-template-columns:1fr; gap:40px;}
+    h1{font-size:29px;}
+    .problem-grid, .engines, .pricing-grid{grid-template-columns:1fr;}
+    .steps-wrap{grid-template-columns:1fr; gap:34px;}
+    .steps-wrap::before{display:none;}
+    .compare-row{grid-template-columns:1fr; text-align:left;}
+    .compare-row > div{padding:10px 18px;}
+    .compare-row.head > div:not(:first-child){display:none;}
+    .footer-inner{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">家族<span>だより</span></div>
+    <a href="#register" class="header-cta">無料で始める</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">新しい見守りのかたち</div>
+      <h1>離れて暮らす親の<span class="accent">異変</span>に、<br>LINEの質問で気づく。</h1>
+      <p class="hero-sub">
+        「認知症チェック」とは言わず、家族の話題をLINEで届けるだけ。<br>
+        答えの変化から、受診のタイミングが見えてきます。
+      </p>
+      <div class="hero-ctas">
+        <a href="#register" class="btn-primary">▶ LINEで無料お試しを始める</a>
+      </div>
+      <p class="hero-note" style="margin-top:14px;">初回1ヶ月無料。友だち追加してすぐに始められます。</p>
+    </div>
+    <div class="line-mock">
+      <div class="line-topbar">
+        <span class="line-back">‹</span>
+        <span class="line-avatar">家</span>
+        <span class="line-title">お父さん</span>
+        <span class="line-icons">📞 ≡</span>
+      </div>
+      <div class="line-body">
+        <div class="line-date-chip">今日</div>
+        <div class="line-row incoming">
+          <span class="line-avatar-sm">家</span>
+          <div class="line-bubble-wrap">
+            <div class="line-bubble incoming">今年のお盆のお墓参り、いつ頃行こうか考えてる？</div>
+            <span class="line-time">10:03</span>
+          </div>
+        </div>
+        <div class="line-row outgoing">
+          <div class="line-bubble-wrap">
+            <span class="line-time">既読<br>10:47</span>
+            <div class="line-bubble outgoing">ああ、そうだなあ。お盆休みの頭あたりかな。去年と同じくらいで</div>
+          </div>
+        </div>
+        <div class="line-row incoming">
+          <span class="line-avatar-sm">家</span>
+          <div class="line-bubble-wrap">
+            <div class="line-bubble incoming">今週、なにか嬉しかったことはあった？</div>
+            <span class="line-time">昨日 9:58</span>
+          </div>
+        </div>
+      </div>
+      <div class="line-inputbar">
+        <span class="line-plus">＋</span>
+        <span class="line-input-placeholder">メッセージを入力</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">CHALLENGE</span>
+      <h2>「まだ大丈夫」と言われて、様子を見るしかない。</h2>
+      <p class="section-desc">認知機能の変化に、家族はなかなか気づけません。</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="num">1</span>
+        <h3>本人が受診を拒否する</h3>
+        <p>物忘れや変化を指摘しても「まだ大丈夫」と本人が受診を嫌がり、家族はそれ以上踏み込めません。</p>
+      </div>
+      <div class="problem-card">
+        <span class="num">2</span>
+        <h3>離れているから気づけない</h3>
+        <p>電話やたまの帰省では、変化があったのか気のせいなのか、判断する材料がありません。</p>
+      </div>
+      <div class="problem-card">
+        <span class="num">3</span>
+        <h3>「検査」だと使わせられない</h3>
+        <p>認知症チェックだとわかるアプリは、本人の抵抗感が強く、使い続けてもらえません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solution">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">HOW IT WORKS</span>
+      <h2>LINEでの何気ないやり取りが、見守りになる。</h2>
+      <p class="section-desc">親には「質問に答えるだけ」。裏側で、変化に気づく仕組みが動いています。</p>
+    </div>
+    <div class="steps-wrap">
+      <div class="step">
+        <div class="step-marker">1</div>
+        <h3>家族の話題を届ける</h3>
+        <p>お墓参り、お歳暮、お孫さんのこと。毎年ある家族の話題を、LINEでさりげなく質問します。</p>
+      </div>
+      <div class="step">
+        <div class="step-marker">2</div>
+        <h3>親は答えるだけ</h3>
+        <p>アプリを意識することなく、いつものLINEで答えるだけ。負担のかかる操作は一切ありません。</p>
+      </div>
+      <div class="step">
+        <div class="step-marker">3</div>
+        <h3>変化を月次でお届け</h3>
+        <p>答え方の変化をAIが分析し、「様子見でよい」「一度かかりつけ医に相談」を月次でお伝えします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="engines">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">QUESTIONS</span>
+      <h2>2種類の質問を、組み合わせて届けます。</h2>
+      <p class="section-desc">大切な話題と、何気ない話題。両方があるから、自然に続けられます。</p>
+    </div>
+    <div class="engines">
+      <div class="engine-card event">
+        <span class="engine-tag">メイン｜家族の行事</span>
+        <h3>毎年繰り返す、家族の意思決定</h3>
+        <ul>
+          <li><b>「今年のお墓参り、どうする？」</b>季節の行事について、親に相談する形で聞きます</li>
+          <li><b>「お歳暮、今年もあの店にする？」</b>毎年の慣習を、話題のきっかけにします</li>
+          <li><b>「お孫さんの誕生日、何か考えてる？」</b>家族の予定を、親から聞き出します</li>
+        </ul>
+      </div>
+      <div class="engine-card daily">
+        <span class="engine-tag">サブ｜日々の近況</span>
+        <h3>負担のない、ふだんの一言</h3>
+        <ul>
+          <li><b>「最近連絡取っていないようなので、近況報告してみませんか？」</b></li>
+          <li><b>「暑い日が続いていますが、どんなふうに過ごしていますか？」</b></li>
+          <li><b>「今週、嬉しかったことを教えてください」</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">なぜLINEのやり取りと違うのか</span>
+      <h2>「頼られて答える」から、続けられる。</h2>
+      <p class="section-desc">ただの近況確認やSNSと違い、答える理由がはっきりしています。</p>
+    </div>
+    <div class="compare">
+      <div class="compare-row head">
+        <div>&nbsp;</div>
+        <div>ふつうのLINE・SNS</div>
+        <div>家族だより</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">答える理由</div>
+        <div class="no">なんとなく／義務感</div>
+        <div class="yes">家族の予定を決めるため</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">話題を探す人</div>
+        <div class="no">自分で考える必要がある</div>
+        <div class="yes">毎年自動で届く</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">子世代が見るもの</div>
+        <div class="no">元気かどうかの安否</div>
+        <div class="yes">答え方の変化＋家族の予定</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">PRICING</span>
+      <h2>まずは1ヶ月、無料でお試しください。</h2>
+      <p class="section-desc">お試し後は、見守る対象の人数に応じたプランに移行します。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">お試し</div>
+        <div class="price-amount">¥0<span> / 1ヶ月</span></div>
+        <div class="price-sub">登録後すぐに開始</div>
+        <ul>
+          <li>親お一人分のLINEトーク</li>
+          <li>家族行事＋日常質問の配信</li>
+          <li>月次レポート1回</li>
+        </ul>
+      </div>
+      <div class="price-card highlight">
+        <div class="price-badge">お試し後・標準</div>
+        <div class="price-name">個人プラン</div>
+        <div class="price-amount">¥980<span> / 月</span></div>
+        <div class="price-sub">親お一人を見守る場合</div>
+        <ul>
+          <li>親お一人分のLINEトーク</li>
+          <li>月次の変化レポート</li>
+          <li>受診相談タイミングの通知</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">家族プラン</div>
+        <div class="price-amount">¥1,480<span> / 月</span></div>
+        <div class="price-sub">父・母おふたりを見守る場合</div>
+        <ul>
+          <li>父・母それぞれのLINEトーク</li>
+          <li>お二人分の月次レポート</li>
+          <li>受診相談タイミングの通知</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="register">
+  <div class="wrap">
+    <div class="form-card">
+      <h2>無料お試しを始める</h2>
+      <p class="section-desc">登録後、LINE友だち追加の案内をお送りします。</p>
+      <form id="registerForm">
+        <div class="field">
+          <label>お名前（ご登録者様） <span class="badge required">必須</span></label>
+          <input type="text" name="name" placeholder="山田 花子" required>
+        </div>
+        <div class="field">
+          <label>メールアドレス <span class="badge required">必須</span></label>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label>見守りたいご家族の人数 <span class="badge optional">任意</span></label>
+          <input type="text" name="family_count" placeholder="例：父のみ／父母ふたり">
+        </div>
+        <button type="submit" class="form-submit">無料お試しに登録する ▶</button>
+        <p class="form-note">登録後、LINE公式アカウントの友だち追加案内をメールでお送りします。</p>
+      </form>
+      <div id="form-success" style="display:none; text-align:center; padding:20px 0 0;">
+        <p style="font-weight:700; color:var(--teal); font-size:16px;">ご登録ありがとうございます。</p>
+        <p style="color:var(--ink-soft); font-size:14px;">まもなくLINE登録のご案内をメールでお送りします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">家族だより</div>
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービス</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xojgedjk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        document.getElementById('form-success').style.display = 'block';
+        form.style.display = 'none';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
