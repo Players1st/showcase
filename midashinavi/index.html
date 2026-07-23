@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>身だしナビ | お客様に会う前、身だしなみの準備はできていますか？</title>
+<meta name="description" content="汗、匂い、テカリ、髪型。毎朝LINEに届く「今日のリスク」で、気づかなかった一手間に気づけます。営業も、接客も、人と会うすべての仕事に。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/midashinavi/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="身だしナビ | お客様に会う前、身だしなみの準備はできていますか？">
+<meta property="og:description" content="汗、匂い、テカリ、髪型。毎朝LINEに届く「今日のリスク」で、気づかなかった一手間に気づけます。営業も、接客も、人と会うすべての仕事に。">
+<meta property="og:image" content="https://showcase.p1st.app/og/midashinavi.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="身だしナビ | お客様に会う前、身だしなみの準備はできていますか？">
+<meta name="twitter:description" content="汗、匂い、テカリ、髪型。毎朝LINEに届く「今日のリスク」で、気づかなかった一手間に気づけます。営業も、接客も、人と会うすべての仕事に。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/midashinavi.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16233A;
+    --navy-deep:#0D1626;
+    --cream:#FBF8F4;
+    --paper:#F4EFE6;
+    --brass:#B08D57;
+    --brass-light:#D4B483;
+    --alert:#C6553B;
+    --ink:#22262E;
+    --ink-soft:#5B6270;
+    --line-green:#06C755;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Zen Kaku Gothic New",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--navy);
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    color:var(--brass);
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--brass);
+    display:inline-block;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,248,244,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(22,35,58,0.08);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:"Zen Kaku Gothic New";
+    font-weight:900;font-size:19px;color:var(--navy);
+  }
+  .logo-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:conic-gradient(from 220deg, var(--brass), var(--brass-light), var(--navy) 78%, var(--brass));
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .logo-mark::after{
+    content:"";
+    width:16px;height:16px;border-radius:50%;
+    background:var(--cream);
+  }
+  .btn-line{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);
+    color:#fff;font-weight:700;font-size:14.5px;
+    padding:11px 22px;border-radius:999px;
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(22,35,58,0.28);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn-line:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(22,35,58,0.35);background:var(--navy-deep);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:72px 0 64px;
+    background:
+      radial-gradient(1100px 460px at 82% -10%, rgba(176,141,87,0.16), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:40px;
+    line-height:1.42;
+    margin-bottom:22px;
+  }
+  .hero h1 .hi{color:var(--brass);}
+  .hero p.sub{
+    font-size:16.5px;
+    line-height:1.9;
+    color:var(--ink-soft);
+    margin-bottom:34px;
+    max-width:480px;
+  }
+  .hero-ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .hero-note{font-size:12.5px;color:var(--ink-soft);}
+  .hero-note strong{color:var(--navy);}
+
+  /* Risk summary card — signature element */
+  .mirror-stage{
+    display:flex;justify-content:center;align-items:center;
+  }
+  .risk-card{
+    width:100%;
+    max-width:380px;
+    background:var(--navy);
+    border-radius:var(--radius-lg);
+    padding:32px 32px 28px;
+    box-shadow:0 30px 60px -20px rgba(13,22,38,0.45);
+    position:relative;
+  }
+  .risk-card::before{
+    content:"本日のリスク診断";
+    position:absolute;top:-13px;left:32px;
+    background:var(--brass);
+    color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;
+    padding:5px 14px;border-radius:999px;
+  }
+  .risk-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding-bottom:22px;margin-bottom:20px;
+    border-bottom:1px solid rgba(251,248,244,0.14);
+  }
+  .risk-head .score-wrap{
+    display:flex;align-items:baseline;gap:4px;
+  }
+  .risk-head .score-label{
+    font-size:13px;color:rgba(251,248,244,0.6);
+  }
+  .risk-head .score{
+    font-family:"Zen Kaku Gothic New";font-weight:900;
+    font-size:44px;color:#fff;line-height:1;
+  }
+  .risk-head .score-of{font-size:16px;color:var(--brass-light);font-weight:700;}
+  .risk-head .time-note{
+    font-size:12.5px;color:rgba(251,248,244,0.6);text-align:right;line-height:1.6;
+  }
+  .risk-head .time-note strong{color:#fff;display:block;font-size:13.5px;}
+  .risk-rows{display:flex;flex-direction:column;gap:14px;}
+  .risk-row{
+    display:flex;align-items:center;gap:12px;
+  }
+  .risk-row .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .risk-row.high .dot{background:var(--alert);}
+  .risk-row.mid .dot{background:var(--brass-light);}
+  .risk-row.low .dot{background:rgba(251,248,244,0.3);}
+  .risk-row .name{
+    font-size:14.5px;color:#fff;font-weight:500;flex:1;
+  }
+  .risk-row .status{
+    font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;
+  }
+  .risk-row.high .status{background:rgba(198,85,59,0.18);color:#E8917E;}
+  .risk-row.mid .status{background:rgba(212,180,131,0.16);color:var(--brass-light);}
+  .risk-row.low .status{background:rgba(251,248,244,0.08);color:rgba(251,248,244,0.5);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:620px;
+    margin:0 0 52px;
+  }
+  .section-head h2{
+    font-size:30px;line-height:1.5;margin-top:14px;
+  }
+  .section-head p{
+    color:var(--ink-soft);font-size:15.5px;line-height:1.9;margin-top:16px;
+  }
+
+  /* ---------- Empathy / Problem ---------- */
+  .problem{background:var(--navy);color:var(--cream);}
+  .problem .eyebrow{color:var(--brass-light);}
+  .problem .eyebrow::before{background:var(--brass-light);}
+  .problem .section-head h2{color:#fff;}
+  .problem .section-head p{color:rgba(251,248,244,0.72);}
+  .empathy-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .empathy-card{
+    background:rgba(251,248,244,0.05);
+    border:1px solid rgba(251,248,244,0.14);
+    border-radius:var(--radius-md);
+    padding:32px 26px;
+  }
+  .empathy-card .mark{
+    font-family:"Zen Kaku Gothic New";
+    font-weight:900;font-size:13px;
+    color:var(--navy);
+    background:var(--brass-light);
+    display:inline-block;
+    padding:4px 10px;border-radius:6px;
+    margin-bottom:20px;
+  }
+  .empathy-card h3{color:#fff;font-size:18px;line-height:1.6;margin-bottom:12px;}
+  .empathy-card p{color:rgba(251,248,244,0.68);font-size:14.5px;line-height:1.85;}
+
+  /* ---------- How it works ---------- */
+  .flow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    counter-reset:step;
+    position:relative;
+  }
+  .flow::before{
+    content:"";
+    position:absolute;top:34px;left:60px;right:60px;height:1px;
+    background:repeating-linear-gradient(90deg, rgba(176,141,87,0.5) 0 10px, transparent 10px 18px);
+    z-index:0;
+  }
+  .step{position:relative;z-index:1;padding:0 22px;}
+  .step-num{
+    width:68px;height:68px;border-radius:50%;
+    background:var(--cream);
+    border:1.5px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Zen Kaku Gothic New";font-weight:900;font-size:24px;color:var(--brass);
+    margin-bottom:24px;
+  }
+  .step h3{font-size:18px;margin-bottom:10px;line-height:1.6;}
+  .step p{font-size:14.5px;color:var(--ink-soft);line-height:1.85;}
+
+  /* ---------- Sample notification ---------- */
+  .sample{
+    background:var(--paper);
+  }
+  .sample-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:56px;
+    align-items:center;
+  }
+  .phone{
+    background:var(--navy-deep);
+    border-radius:34px;
+    padding:14px;
+    max-width:340px;
+    margin:0 auto;
+    box-shadow:0 40px 70px -30px rgba(13,22,38,0.5);
+  }
+  .phone-screen{
+    background:#EDEDED;
+    border-radius:22px;
+    overflow:hidden;
+  }
+  .line-bar{
+    background:var(--line-green);
+    color:#fff;font-weight:700;font-size:14px;
+    padding:14px 16px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .line-bar .dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:.85;}
+  .chat{padding:18px 14px;display:flex;flex-direction:column;gap:10px;min-height:380px;}
+  .bubble{
+    background:#fff;
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:13.5px;
+    line-height:1.75;
+    color:var(--ink);
+    max-width:88%;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .bubble .b-title{
+    display:flex;align-items:center;gap:6px;
+    font-weight:700;color:var(--alert);
+    margin-bottom:6px;font-size:12.5px;
+  }
+  .bubble .b-title i{width:6px;height:6px;border-radius:50%;background:var(--alert);}
+  .bubble.brass .b-title{color:var(--brass);}
+  .bubble.brass .b-title i{background:var(--brass);}
+  .bubble time{
+    display:block;font-size:11px;color:#9aa0a8;margin-top:8px;
+  }
+
+  .sample-copy .check-list{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:16px;}
+  .sample-copy .check-list li{
+    display:flex;gap:12px;font-size:15px;color:var(--ink);line-height:1.7;
+  }
+  .sample-copy .check-list li .ico{
+    flex:none;width:24px;height:24px;border-radius:50%;
+    background:var(--navy);color:var(--brass-light);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;margin-top:1px;
+  }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  }
+  .price-card{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    padding:40px 36px;
+    border:1.5px solid rgba(22,35,58,0.1);
+    position:relative;
+  }
+  .price-card.pro{
+    background:var(--navy);
+    color:var(--cream);
+    border-color:var(--navy);
+  }
+  .price-card .badge{
+    position:absolute;top:-13px;left:36px;
+    background:var(--brass);color:#fff;
+    font-size:12px;font-weight:700;letter-spacing:0.06em;
+    padding:5px 14px;border-radius:999px;
+  }
+  .price-card h3{font-size:15px;letter-spacing:0.08em;color:var(--ink-soft);font-weight:700;}
+  .price-card.pro h3{color:var(--brass-light);}
+  .price-card .amount{
+    font-family:"Zen Kaku Gothic New";font-weight:900;
+    font-size:42px;color:var(--navy);
+    margin:14px 0 4px;
+  }
+  .price-card.pro .amount{color:#fff;}
+  .price-card .amount span{font-size:15px;font-weight:500;color:var(--ink-soft);}
+  .price-card.pro .amount span{color:rgba(251,248,244,0.6);}
+  .price-card ul{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-direction:column;gap:13px;}
+  .price-card li{
+    font-size:14.5px;line-height:1.7;
+    padding-left:26px;position:relative;
+    color:var(--ink);
+  }
+  .price-card.pro li{color:rgba(251,248,244,0.88);}
+  .price-card li::before{
+    content:"✓";
+    position:absolute;left:0;top:0;
+    color:var(--brass);font-weight:700;
+  }
+  .price-card.pro li::before{color:var(--brass-light);}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:linear-gradient(160deg, var(--navy), var(--navy-deep));
+    color:var(--cream);
+    text-align:center;
+    padding:100px 24px;
+  }
+  .final-cta .eyebrow{color:var(--brass-light);justify-content:center;}
+  .final-cta .eyebrow::before{background:var(--brass-light);}
+  .final-cta h2{
+    color:#fff;font-size:32px;line-height:1.55;
+    max-width:640px;margin:20px auto 16px;
+  }
+  .final-cta p{color:rgba(251,248,244,0.7);font-size:15px;margin-bottom:38px;}
+  .final-cta .btn-line{font-size:16px;padding:15px 34px;}
+
+  /* ---------- Pre-registration form ---------- */
+  .form-card{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    padding:44px 40px;
+    max-width:520px;
+    margin:0 auto;
+    box-shadow:0 30px 60px -24px rgba(13,22,38,0.18);
+    text-align:left;
+  }
+  .form-card h3{
+    font-size:19px;color:var(--navy);margin-bottom:6px;
+  }
+  .form-card .form-sub{
+    font-size:13.5px;color:var(--ink-soft);margin-bottom:28px;line-height:1.7;
+  }
+  .field{margin-bottom:20px;}
+  .field-label{
+    display:flex;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:700;color:var(--navy);
+    margin-bottom:8px;
+  }
+  .badge-req, .badge-opt{
+    font-size:11px;font-weight:700;
+    padding:2px 8px;border-radius:5px;
+    letter-spacing:0.04em;
+  }
+  .badge-req{background:rgba(198,85,59,0.1);color:var(--alert);}
+  .badge-opt{background:rgba(91,98,112,0.1);color:var(--ink-soft);}
+  .field input, .field select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:10px;
+    border:1.5px solid rgba(22,35,58,0.16);
+    font-size:14.5px;
+    font-family:inherit;
+    color:var(--ink);
+    background:#fff;
+  }
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--brass);
+    box-shadow:0 0 0 3px rgba(176,141,87,0.15);
+  }
+  .form-submit{
+    width:100%;
+    background:var(--navy);
+    color:#fff;
+    font-weight:700;font-size:15.5px;
+    padding:15px;border-radius:999px;
+    border:none;cursor:pointer;
+    margin-top:6px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .form-submit:hover{background:var(--navy-deep);transform:translateY(-1px);}
+  .form-note{
+    font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;
+  }
+  .final-cta .form-card{margin-top:36px;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:rgba(251,248,244,0.55);
+    padding:40px 24px 28px;
+    font-size:12.5px;
+  }
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  }
+  footer a{text-decoration:none;color:rgba(251,248,244,0.75);}
+  footer a:hover{color:#fff;}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:52px;}
+    .hero h1{font-size:30px;}
+    .risk-card{max-width:100%;padding:28px 24px 24px;}
+    .empathy-grid{grid-template-columns:1fr;}
+    .flow{grid-template-columns:1fr;gap:40px;}
+    .flow::before{display:none;}
+    .sample-grid{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="logo"><span class="logo-mark"></span>身だしナビ</div>
+    <a class="btn-line" href="#cta">事前登録する</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">身だしなみリスク通知サービス</span>
+      <h1 style="margin-top:16px;">お客様に会う前、<br><span class="hi">身だしなみ</span>の準備は<br>できていますか？</h1>
+      <p class="sub">汗、匂い、テカリ、髪型。毎朝LINEに届く「今日のリスク」で、気づかなかった一手間に気づけます。営業も、接客も、人と会うすべての仕事に。</p>
+      <div class="hero-ctas">
+        <a class="btn-line" href="#cta">事前登録する（無料）</a>
+        <span class="hero-note">入力は<strong>1分</strong>・正式リリース時に優先案内</span>
+      </div>
+    </div>
+
+    <div class="mirror-stage">
+      <div class="risk-card">
+        <div class="risk-head">
+          <div class="score-wrap">
+            <span class="score-label">リスク項目&nbsp;</span>
+            <span class="score">2</span>
+            <span class="score-of">/ 4</span>
+          </div>
+          <div class="time-note">13:00 商談前<strong>要注意</strong></div>
+        </div>
+        <div class="risk-rows">
+          <div class="risk-row high">
+            <span class="dot"></span>
+            <span class="name">肌のテカリ</span>
+            <span class="status">要注意</span>
+          </div>
+          <div class="risk-row mid">
+            <span class="dot"></span>
+            <span class="name">口臭</span>
+            <span class="status">やや注意</span>
+          </div>
+          <div class="risk-row low">
+            <span class="dot"></span>
+            <span class="name">汗・匂い</span>
+            <span class="status">問題なし</span>
+          </div>
+          <div class="risk-row low">
+            <span class="dot"></span>
+            <span class="name">髪型</span>
+            <span class="status">問題なし</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">こんな経験、ありませんか</span>
+      <h2>身だしなみは、完全に自己流の想像に頼っている。</h2>
+      <p>学校では制服や身だしなみ指導があったのに、社会人になった途端、誰も教えてくれなくなる。気温や湿度、その日の予定によってリスクは毎日変わるのに、対処は「なんとなく」のままになっていませんか。</p>
+    </div>
+    <div class="empathy-grid">
+      <div class="empathy-card">
+        <span class="mark">汗・匂い</span>
+        <h3>客先到着前、匂いが気になって集中できない</h3>
+        <p>外回りで大量に汗をかき、客先到着前に匂いが気になって商談に集中できない。制汗剤はどれが効くか、いつ使えばいいか、想像で使っている。</p>
+      </div>
+      <div class="empathy-card">
+        <span class="mark">肌のテカリ</span>
+        <h3>湿度の高い日ほど、気づきにくい</h3>
+        <p>雨の日、湿度の高い日は顔がテカりやすい。分かってはいても、朝の忙しい時間に天気予報とケア用品を結びつけて考える余裕はない。</p>
+      </div>
+      <div class="empathy-card">
+        <span class="mark">口臭</span>
+        <h3>昼食後に商談、歯を磨けない</h3>
+        <p>ランチの後にそのまま商談へ向かう日ほど、口臭のケアが後回しになる。気づいたときには、もう目の前にお客様がいる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">身だしナビのしくみ</span>
+      <h2>毎朝1分の入力で、今日の注意点だけが届く。</h2>
+      <p>4項目すべてを律儀に報告することはしません。その日、特にリスクが高い項目だけに絞って伝えます。</p>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>今朝の予定を入力</h3>
+        <p>商談・接客の時間帯を選ぶだけ。気温・湿度・降水確率は自動で取得するので、入力の手間は最小限です。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>リスクの高い項目を通知</h3>
+        <p>汗・匂い／肌のテカリ／髪型／口臭のうち、その日特に注意すべき項目だけをLINEでお知らせします。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>具体的な対処法を確認</h3>
+        <p>「いつ」「何を」使うべきかまで、市販品ベースで具体的に提案。使った後の1タップ評価で、提案の精度が上がっていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap sample-grid">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="line-bar"><span class="dot"></span>身だしナビ</div>
+        <div class="chat">
+          <div class="bubble">
+            <div class="b-title">おはようございます</div>
+            今日は13:00にご商談のご予定ですね。気温28℃・湿度78%、午後は雨の可能性があります。
+          </div>
+          <div class="bubble">
+            <div class="b-title"><i></i>要注意：肌のテカリ</div>
+            湿度が高く、午後にかけて皮脂が浮きやすい状況です。12:30頃、あぶらとり紙で軽く押さえてから商談に向かいましょう。
+            <time>07:15</time>
+          </div>
+          <div class="bubble brass">
+            <div class="b-title"><i></i>やや注意：口臭</div>
+            ランチ後そのまま移動されるようなので、食後にタブレットやガムでのケアがおすすめです。
+            <time>07:15</time>
+          </div>
+          <div class="bubble">
+            今日も一日、良い商談になりますように。
+            <time>07:16</time>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-copy">
+      <span class="eyebrow">通知サンプル</span>
+      <h2 style="margin-top:14px;font-size:26px;line-height:1.6;">「気をつけて」ではなく、<br>「何を」「いつ」まで届く。</h2>
+      <ul class="check-list">
+        <li><span class="ico">1</span>気温・湿度・降水確率から、その日のリスクを自動判定</li>
+        <li><span class="ico">2</span>商談・接客の時間に合わせて、対処すべきタイミングを明示</li>
+        <li><span class="ico">3</span>提案はすべて、コンビニ・ドラッグストアで買える市販品ベース</li>
+        <li><span class="ico">4</span>店舗への送客は一切なし。自分で完結できるケアだけを提案</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">料金プラン</span>
+      <h2>まずは無料で。慣れてきたら、プロプランへ。</h2>
+      <p>営業成績のための身だしなみ投資として、コンビニでのケア用品1回分程度の価格に抑えています。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>無料プラン</h3>
+        <div class="amount">¥0<span> /月</span></div>
+        <ul>
+          <li>汗・匂いリスクの毎朝通知（1項目）</li>
+          <li>気温に応じたケアタイミングの提案</li>
+          <li>LINEでの通知受け取り</li>
+        </ul>
+      </div>
+      <div class="price-card pro">
+        <span class="badge">おすすめ</span>
+        <h3>プロプラン</h3>
+        <div class="amount">¥780<span> /月</span></div>
+        <ul>
+          <li>汗・匂い／肌のテカリ／髪型／口臭　全4項目の通知</li>
+          <li>商談・接客の時間に合わせた対処タイミングの提案</li>
+          <li>フィードバックによる個人傾向の学習・精度向上</li>
+          <li>散髪タイミングのお知らせ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="cta">
+  <span class="eyebrow">事前登録受付中</span>
+  <h2>お客様に会う前、身だしなみの準備はできていますか？</h2>
+  <p>正式サービスはLINEでご案内予定です。まずはこちらのフォームからご登録ください。</p>
+
+  <div class="form-card">
+    <h3>身だしナビ 事前登録フォーム</h3>
+    <p class="form-sub">正式リリース時、優先的にご案内します。登録は1分で完了します。</p>
+    <form id="registerForm">
+      <div class="field">
+        <div class="field-label">メールアドレス <span class="badge-req">必須</span></div>
+        <input type="email" name="email" placeholder="example@mail.com" required>
+      </div>
+      <div class="field">
+        <div class="field-label">お名前 <span class="badge-opt">任意</span></div>
+        <input type="text" name="name" placeholder="山田 太郎">
+      </div>
+      <div class="field">
+        <div class="field-label">お仕事の種類 <span class="badge-opt">任意</span></div>
+        <select name="job_type">
+          <option value="">選択してください</option>
+          <option>営業職</option>
+          <option>接客・販売職</option>
+          <option>その他、人と会う機会が多い仕事</option>
+        </select>
+      </div>
+      <button class="form-submit" type="submit">事前登録する</button>
+      <p class="form-note">ご登録いただいたメールアドレスは、身だしナビからのご案内以外には使用しません。</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:8px 0;">
+      <p style="font-weight:700; color:var(--navy); font-size:16px; margin:0 0 6px;">ご登録ありがとうございます。</p>
+      <p style="color:var(--ink-soft); font-size:13.5px; margin:0;">正式リリース時、優先的にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app/">運営会社</a>
+      <a href="https://showcase.p1st.app/">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xdaqlbll', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
