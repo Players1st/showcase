@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>退勤スイッチ ― 1分で、今日を終わらせる。</title>
+<meta name="description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/taikin-switch/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="退勤スイッチ ― 1分で、今日を終わらせる。">
+<meta property="og:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/taikin-switch.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="退勤スイッチ ― 1分で、今日を終わらせる。">
+<meta name="twitter:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/taikin-switch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#12172B;
+    --navy-soft:#232A47;
+    --paper:#F8F7F4;
+    --paper-dim:#EFEDE6;
+    --dusk-1:#FF8A5B;
+    --dusk-2:#E85D75;
+    --dusk-3:#5B4B8A;
+    --ink:#1C2033;
+    --ink-soft:#5B6178;
+    --line:rgba(18,23,43,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.32em;
+    font-weight:700;
+    color:var(--dusk-2);
+    text-transform:uppercase;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:#fff;
+    overflow:hidden;
+    padding:120px 0 90px;
+  }
+  .hero-sky{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, #1B2340 0%, #2C2A4E 38%, #6A4568 62%, #E07A52 100%);
+    opacity:0.9;
+  }
+  .hero-horizon{
+    position:absolute;
+    left:0;right:0;
+    bottom:0;
+    height:42%;
+    background:linear-gradient(180deg, rgba(18,23,43,0) 0%, rgba(18,23,43,0.55) 100%);
+  }
+  .hero-sun-group{
+    position:absolute;
+    right:8%;
+    top:16%;
+    width:200px;
+    text-align:center;
+  }
+  .hero-sun{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:0 auto 14px;
+    background:radial-gradient(circle at 35% 35%, #FFD9A8, #FF8A5B 55%, #E85D75 100%);
+    box-shadow:0 0 60px rgba(255,138,91,0.35);
+    animation:sink 6s ease-in-out infinite alternate;
+  }
+  @keyframes sink{
+    from{transform:translateY(0px);}
+    to{transform:translateY(16px);}
+  }
+  .hero-sun-label{
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:#FFCBA8;
+    font-weight:700;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .hero .eyebrow{color:#FFCBA8;}
+  h1.hero-title{
+    font-size:clamp(30px, 5vw, 52px);
+    font-weight:900;
+    letter-spacing:0.02em;
+    margin:20px 0 24px;
+    max-width:14ch;
+  }
+  .hero-sub{
+    font-size:clamp(15px, 2vw, 18px);
+    color:#E4E1F0;
+    max-width:38ch;
+    margin-bottom:44px;
+    font-weight:400;
+  }
+  .switch-demo{
+    display:inline-flex;
+    align-items:center;
+    gap:16px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:14px 22px;
+    border-radius:100px;
+    margin-bottom:44px;
+    backdrop-filter:blur(6px);
+  }
+  .toggle{
+    width:52px;height:30px;border-radius:20px;
+    background:rgba(255,255,255,0.2);
+    position:relative;
+    flex-shrink:0;
+    cursor:pointer;
+    border:none;
+    padding:0;
+    transition:background .3s ease;
+  }
+  .toggle::after{
+    content:'';
+    position:absolute;
+    top:3px;left:3px;
+    width:24px;height:24px;border-radius:50%;
+    background:#fff;
+    box-shadow:0 2px 6px rgba(0,0,0,0.3);
+    transition:transform .3s ease;
+  }
+  .toggle.on{
+    background:linear-gradient(90deg,#5B4B8A,#E85D75);
+  }
+  .toggle.on::after{
+    transform:translateX(22px);
+  }
+  .switch-demo span{font-size:14px;color:#EFE9DB;}
+  .switch-demo{cursor:pointer;}
+
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    display:inline-block;
+    background:linear-gradient(90deg, var(--dusk-1), var(--dusk-2));
+    color:#fff;
+    font-weight:700;
+    font-size:15px;
+    padding:16px 34px;
+    border-radius:8px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(232,93,117,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,93,117,0.45);}
+  .cta-note{font-size:13px;color:#C7C2DA;}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{
+    font-size:clamp(24px, 3.4vw, 34px);
+    font-weight:900;
+    margin-top:14px;
+    line-height:1.5;
+    color:var(--navy);
+  }
+
+  /* ===== PROBLEM ===== */
+  .problem{background:var(--paper);}
+  .problem-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  .problem-copy p{
+    font-size:16px;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .commute-diagram{
+    background:var(--navy);
+    border-radius:16px;
+    padding:36px 32px;
+    color:#fff;
+  }
+  .commute-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    font-size:14px;
+  }
+  .commute-row:last-child{border-bottom:none;}
+  .commute-row .tag{
+    font-size:11px;
+    letter-spacing:0.08em;
+    padding:4px 10px;
+    border-radius:100px;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .tag-before{background:rgba(255,138,91,0.18);color:#FFB08A;}
+  .tag-after{background:rgba(91,75,138,0.28);color:#C7BEEA;}
+
+  /* ===== SOLUTION ===== */
+  .solution{background:var(--navy);color:#fff;}
+  .solution .section-head h2{color:#fff;}
+  .solution .eyebrow{color:#FFB08A;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .step{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px;
+    padding:28px 22px;
+    position:relative;
+  }
+  .step-num{
+    font-size:13px;
+    font-weight:700;
+    color:var(--dusk-1);
+    letter-spacing:0.05em;
+    margin-bottom:16px;
+    display:block;
+  }
+  .step h3{font-size:17px;margin-bottom:10px;font-weight:700;}
+  .step p{font-size:13.5px;color:#C7C2DA;}
+
+  .log-preview{
+    margin-top:56px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:32px;
+  }
+  .log-preview h4{font-size:14px;color:#E4E1F0;margin-bottom:18px;font-weight:700;}
+  .log-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+  }
+  .log-cell{
+    aspect-ratio:1;
+    border-radius:8px;
+    background:rgba(255,255,255,0.06);
+  }
+  .log-cell.done{
+    background:linear-gradient(135deg, var(--dusk-1), var(--dusk-2));
+  }
+  .log-day{
+    text-align:center;
+    font-size:12px;
+    color:#8B85A6;
+    padding-bottom:4px;
+  }
+  .log-legend{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-top:20px;
+    font-size:12.5px;
+    color:#C7C2DA;
+  }
+  .log-legend span{display:flex;align-items:center;gap:8px;}
+  .log-legend .dot{
+    width:12px;height:12px;border-radius:4px;
+    background:rgba(255,255,255,0.08);
+    display:inline-block;
+  }
+  .log-legend .dot.done{
+    background:linear-gradient(135deg, var(--dusk-1), var(--dusk-2));
+  }
+  .log-note{
+    margin-top:14px;
+    font-size:12px;
+    color:#8B85A6;
+  }
+
+  /* ===== CTA FORM SECTION ===== */
+  .signup{background:var(--paper-dim);}
+  .signup-box{
+    background:#fff;
+    border-radius:20px;
+    padding:56px;
+    box-shadow:0 20px 60px rgba(18,23,43,0.08);
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .signup-box h2{font-size:26px;font-weight:900;color:var(--navy);margin-bottom:12px;}
+  .signup-box p{color:var(--ink-soft);font-size:14.5px;margin-bottom:32px;}
+  .form-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .form-row input{
+    flex:1;
+    padding:15px 16px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    font-family:inherit;
+    font-size:15px;
+    background:var(--paper);
+  }
+  .form-row input:focus{outline:2px solid var(--dusk-2);outline-offset:1px;}
+  .field-note{
+    text-align:left;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .badge-required{
+    background:var(--dusk-2);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:4px;
+    letter-spacing:0.05em;
+  }
+  .signup-box .btn-primary{width:100%;padding:17px;font-size:16px;}
+  .trial-note{margin-top:20px;font-size:13px;color:var(--ink-soft);}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--navy);
+    color:#B9B4CC;
+    padding:48px 0 32px;
+    font-size:13px;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    padding-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    margin-bottom:20px;
+  }
+  footer a{text-decoration:none;color:#D8D4E6;}
+  footer a:hover{color:#fff;}
+
+  @media (max-width:860px){
+    .problem-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .signup-box{padding:36px 24px;}
+    .form-row{flex-direction:column;}
+  }
+  @media (max-width:520px){
+    .steps{grid-template-columns:1fr;}
+    .hero{padding:88px 0 64px;}
+    section{padding:64px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .toggle::after, .hero-sun{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-sky"></div>
+  <div class="hero-horizon"></div>
+  <div class="hero-sun-group">
+    <div class="hero-sun"></div>
+    <p class="hero-sun-label">1日の終わり</p>
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">退勤スイッチ</p>
+    <h1 class="hero-title">今日の仕事、<br>ちゃんと終わらせていますか。</h1>
+    <p class="hero-sub">通勤がなくなった分、「終わり」も一緒になくなった。退勤スイッチひとつで、1分で心を切り替える。</p>
+
+    <div class="switch-demo" id="switchDemo" role="button" tabindex="0" aria-pressed="false">
+      <button class="toggle" id="toggleBtn" aria-hidden="true"></button>
+      <span id="switchLabel">タップして試す：18:00 退勤スイッチ</span>
+    </div>
+
+    <div class="cta-row">
+      <a href="#signup" class="btn-primary">2週間無料で試してみる</a>
+      <span class="cta-note">登録はメールアドレスのみ・1分で完了</span>
+    </div>
+  </div>
+</header>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">こんな一日、ありませんか</p>
+      <h2>気づけば夜。<br>仕事のことを考えたまま、<br>一日が終わっている。</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-copy">
+        <p>オフィス勤務の頃は、電車に乗った瞬間に頭が切り替わっていました。ドアが閉まる音、窓の外の景色、改札を出る足音。あの移動時間が、知らないうちに「今日はここまで」のスイッチになっていたのです。</p>
+        <p>在宅勤務では、それがありません。パソコンを閉じても、同じ部屋、同じ椅子、同じ景色。頭の中では会議の続きやメールの文面がぐるぐると回り続け、気づけばSNSを眺めているだけの時間が過ぎていきます。</p>
+        <p>「区切りをつけたい」と思っているのに、何をすればいいのかわからないまま、また明日も同じ一日が始まる。</p>
+      </div>
+      <div class="commute-diagram">
+        <div class="commute-row">
+          <span class="tag tag-before">出社時代</span>
+          <span>退勤 → 電車 → 帰宅。移動そのものが切り替えの時間だった。</span>
+        </div>
+        <div class="commute-row">
+          <span class="tag tag-after">在宅勤務</span>
+          <span>退勤 → そのまま同じ部屋。切り替えるきっかけが、どこにもない。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solution">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">退勤スイッチのしくみ</p>
+      <h2>退勤時間に通知が来る。<br>ボタンを押すと、1分で終わる。</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">STEP 1</span>
+        <h3>退勤時間を決める</h3>
+        <p>「毎日18:00に退勤したい」など、自分の生活リズムに合わせて退勤時間をあらかじめ設定します。</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 2</span>
+        <h3>通知が届く</h3>
+        <p>設定した時刻になると、スマホに「退勤スイッチの時間です」と通知が届きます。</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 3</span>
+        <h3>1分の儀式</h3>
+        <p>ボタンを押すと、深呼吸のガイドと「今日一番良かったこと」をひとこと書く時間が始まります。</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 4</span>
+        <h3>記録が残る</h3>
+        <p>終えるとカレンダーにスタンプが増えていきます。積み上がる記録が、次の日への後押しになります。</p>
+      </div>
+    </div>
+
+    <div class="log-preview">
+      <h4>退勤スイッチを押した日が、スタンプで積み上がっていく</h4>
+      <div class="log-grid">
+        <div class="log-day">月</div>
+        <div class="log-day">火</div>
+        <div class="log-day">水</div>
+        <div class="log-day">木</div>
+        <div class="log-day">金</div>
+        <div class="log-cell done" title="退勤スイッチを押した日"></div>
+        <div class="log-cell done" title="退勤スイッチを押した日"></div>
+        <div class="log-cell" title="押していない日"></div>
+        <div class="log-cell done" title="退勤スイッチを押した日"></div>
+        <div class="log-cell done" title="退勤スイッチを押した日"></div>
+      </div>
+      <div class="log-legend">
+        <span><i class="dot done"></i>スイッチを押して1分間の儀式を完了した日</span>
+        <span><i class="dot"></i>まだ押していない日</span>
+      </div>
+      <p class="log-note">平日の勤務日を対象に記録します（土日はお休み）</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="signup-box">
+      <h2>今日から、退勤にスイッチを。</h2>
+      <p>先行登録いただいた方には、リリース時に優先してご案内します。</p>
+      <form id="registerForm">
+        <div class="form-row">
+          <input type="email" name="email" placeholder="メールアドレス" required>
+        </div>
+        <div class="field-note">
+          <span class="badge-required">必須</span>
+          <span>メールアドレスのみで登録できます。他の情報は不要です。</span>
+        </div>
+        <button type="submit" class="btn-primary">2週間無料で先行登録する</button>
+      </form>
+      <p class="trial-note" id="trialNote">登録後も費用は発生しません。リリース時に無料期間開始のご案内をお送りします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>退勤スイッチ</span>
+      <span><a href="https://company.p1st.app/" target="_blank" rel="noopener">運営会社</a></span>
+      <span><a href="https://showcase.p1st.app/" target="_blank" rel="noopener">他のサービスを見る</a></span>
+    </div>
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var demo = document.getElementById('switchDemo');
+    var toggle = document.getElementById('toggleBtn');
+    var label = document.getElementById('switchLabel');
+    var isOn = false;
+    function setState(on){
+      isOn = on;
+      toggle.classList.toggle('on', on);
+      demo.setAttribute('aria-pressed', on ? 'true' : 'false');
+      label.textContent = on ? '退勤スイッチ ON・お疲れさまでした' : 'タップして試す：18:00 退勤スイッチ';
+    }
+    demo.addEventListener('click', function(){ setState(!isOn); });
+    demo.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); setState(!isOn); }
+    });
+  })();
+
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.btn-primary');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xwvgnygk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('trialNote').textContent = '登録しました。リリース時にご案内をお送りします。';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+</body>
+</html>
