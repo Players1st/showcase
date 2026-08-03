@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる</title>
+<meta name="description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/odekake-ok/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる">
+<meta property="og:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta property="og:image" content="https://showcase.p1st.app/og/odekake-ok.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる">
+<meta name="twitter:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/odekake-ok.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0c1930;
+    --navy-800:#132449;
+    --navy-700:#1c3163;
+    --white:#ffffff;
+    --paper:#fbf6ee;
+    --paper-deep:#f3ead9;
+    --sun:#ff8a3d;
+    --sun-deep:#e8672a;
+    --sun-tint:#fff1e2;
+    --ok-green:#2fbf8f;
+    --ok-tint:#e6f8f1;
+    --caution-amber:#e0a324;
+    --danger-coral:#e0503a;
+    --ink-soft:#4a5266;
+    --line:#e7ddd0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Zen Kaku Gothic New", -apple-system, "Hiragino Kaku Gothic ProN", sans-serif;
+    color:var(--navy-900);
+    background:var(--white);
+    line-height:1.8;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .wrap-narrow{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- header ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(251,246,238,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1080px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{
+    display:flex;align-items:center;gap:8px;
+    color:var(--navy-900);font-weight:700;font-size:17px;letter-spacing:.02em;
+  }
+  .brand-mark{
+    width:28px;height:28px;border-radius:8px;
+    background:linear-gradient(135deg,var(--sun),var(--sun-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+  }
+  .topbar .cta-small{
+    font-size:14px;font-weight:700;color:var(--white);
+    background:var(--navy-900);padding:10px 20px;border-radius:100px;
+    text-decoration:none;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(180deg, var(--paper) 0%, var(--paper) 70%, var(--white) 100%);
+    color:var(--navy-900);
+    padding:130px 0 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:-160px;right:-160px;
+    width:460px;height:460px;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,138,61,0.16), rgba(255,138,61,0) 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:.04em;
+    color:var(--sun-deep);background:var(--sun-tint);
+    border:1px solid #ffd9b8;
+    padding:8px 16px;border-radius:100px;margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.4vw,44px);
+    font-weight:900;
+    line-height:1.5;
+    letter-spacing:.01em;
+    margin-bottom:24px;
+    color:var(--navy-900);
+  }
+  .hero h1 .accent{color:var(--sun-deep);}
+  .hero p.sub{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin-bottom:36px;
+  }
+  .hero p.sub strong{color:var(--navy-900);font-weight:700;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--sun);color:var(--white);
+    font-weight:700;font-size:16.5px;
+    padding:18px 30px;border-radius:12px;
+    text-decoration:none;border:none;cursor:pointer;
+    box-shadow:0 14px 30px -12px rgba(255,138,61,0.45);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(255,138,61,0.55);}
+  .hero-note{font-size:14px;color:#8a8270;}
+
+  /* phone mockup */
+  .phone{
+    width:280px;margin:0 auto;
+    background:#0a1526;
+    border-radius:38px;
+    padding:14px;
+    box-shadow:0 40px 80px -30px rgba(30,20,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+    position:relative;
+  }
+  .phone-screen{
+    background:linear-gradient(180deg,#101d38,#0b1428);
+    border-radius:26px;
+    padding:26px 18px 22px;
+    min-height:400px;
+    position:relative;
+    overflow:hidden;
+  }
+  .phone-time{color:#9fb0cc;font-size:12px;text-align:center;margin-bottom:18px;letter-spacing:.04em;}
+  .notif-card{
+    background:rgba(255,255,255,0.97);
+    border-radius:18px;
+    padding:16px 16px 18px;
+    box-shadow:0 18px 30px -14px rgba(0,0,0,0.5);
+  }
+  .notif-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .notif-icon{
+    width:22px;height:22px;border-radius:7px;
+    background:linear-gradient(135deg,var(--sun),var(--sun-deep));
+    flex-shrink:0;
+  }
+  .notif-app{font-size:11px;font-weight:700;color:#8a94ab;letter-spacing:.03em;}
+  .notif-body{font-size:15px;font-weight:700;color:var(--navy-900);line-height:1.55;margin-bottom:12px;}
+  .status-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:700;
+    padding:6px 12px;border-radius:100px;
+    background:var(--ok-tint);color:#1c8f6a;
+  }
+  .status-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok-green);}
+  .phone-substates{
+    display:flex;flex-direction:column;gap:10px;margin-top:16px;opacity:.6;
+  }
+  .mini-card{
+    background:rgba(255,255,255,0.08);
+    border-radius:12px;padding:10px 12px;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:12px;color:#c7ceda;
+  }
+  .mini-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-right:8px;}
+  .mini-dot.amber{background:var(--caution-amber);}
+  .mini-dot.coral{background:var(--danger-coral);}
+  .mini-left{display:flex;align-items:center;}
+
+  /* ---------- story section ---------- */
+  .story-section{padding:90px 0;background:var(--white);}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .kicker{
+    font-size:13px;font-weight:700;color:var(--sun-deep);letter-spacing:.06em;margin-bottom:14px;
+  }
+  .section-head h2{font-size:clamp(24px,3.2vw,32px);font-weight:900;line-height:1.65;color:var(--navy-900);}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:16px;}
+
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .story-card{
+    border-radius:20px;padding:30px 28px;
+    border:1.5px solid var(--line);
+  }
+  .story-card.before{background:var(--paper-deep);}
+  .story-card.after{background:var(--white);border-color:var(--sun);box-shadow:0 20px 40px -26px rgba(255,138,61,0.35);}
+  .story-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:.03em;
+    padding:6px 14px;border-radius:100px;margin-bottom:18px;
+  }
+  .story-tag.before{color:var(--ink-soft);background:rgba(74,82,102,0.08);}
+  .story-tag.after{color:var(--sun-deep);background:var(--sun-tint);}
+  .story-emoji{font-size:32px;margin-bottom:14px;}
+  .story-card p{font-size:15.5px;color:var(--navy-900);line-height:1.85;}
+  .story-card p.faint{color:var(--ink-soft);font-size:14px;margin-top:14px;}
+
+  /* ---------- stats section ---------- */
+  .stats-section{
+    background:var(--paper-deep);
+    color:var(--navy-900);
+    padding:80px 0;
+  }
+  .stats-head{max-width:640px;margin-bottom:48px;}
+  .stats-head .kicker{
+    font-size:13px;font-weight:700;color:var(--sun-deep);letter-spacing:.06em;margin-bottom:14px;
+  }
+  .stats-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;line-height:1.65;}
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);
+    border-radius:20px;overflow:hidden;
+  }
+  .stat-cell{background:var(--white);padding:34px 28px;}
+  .stat-num{
+    font-size:clamp(30px,4vw,42px);font-weight:900;color:var(--sun-deep);
+    line-height:1;margin-bottom:12px;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat-num .unit{font-size:16px;font-weight:700;color:var(--sun-deep);margin-left:2px;}
+  .stat-label{font-size:14.5px;color:var(--ink-soft);line-height:1.75;}
+  .stat-quote{
+    margin-top:44px;
+    border-left:4px solid var(--sun);
+    padding:20px 26px;
+    font-size:16px;color:var(--navy-900);
+    background:var(--white);
+    border-radius:0 14px 14px 0;
+  }
+
+  /* ---------- how it works ---------- */
+  .how-section{padding:100px 0;background:var(--white);}
+
+  .steps{display:flex;flex-direction:column;gap:0;}
+  .step{
+    display:grid;grid-template-columns:64px 1fr;gap:28px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step-num{
+    font-size:15px;font-weight:900;color:var(--white);
+    background:var(--navy-900);
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{font-size:19px;font-weight:700;margin-bottom:8px;color:var(--navy-900);}
+  .step p{color:var(--ink-soft);font-size:15.5px;max-width:560px;}
+  .step .tag{
+    display:inline-block;margin-top:12px;
+    font-size:12.5px;font-weight:700;color:var(--sun-deep);
+    background:var(--sun-tint);padding:6px 14px;border-radius:100px;
+  }
+
+  /* ---------- status legend ---------- */
+  .legend-section{background:var(--paper);padding:80px 0;}
+  .legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .legend-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:16px;
+    padding:28px 24px;
+  }
+  .legend-dot{width:16px;height:16px;border-radius:50%;margin-bottom:18px;}
+  .legend-dot.green{background:var(--ok-green);}
+  .legend-dot.amber{background:var(--caution-amber);}
+  .legend-dot.coral{background:var(--danger-coral);}
+  .legend-card h4{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--navy-900);}
+  .legend-card p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- form ---------- */
+  .form-section{
+    background:var(--paper);
+    color:var(--navy-900);
+    padding:100px 0 110px;
+  }
+  .form-head{text-align:center;max-width:560px;margin:0 auto 42px;}
+  .form-head .kicker{
+    font-size:13px;font-weight:700;color:var(--sun-deep);letter-spacing:.06em;margin-bottom:14px;
+  }
+  .form-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;line-height:1.65;}
+  .form-head p{margin-top:16px;color:var(--ink-soft);font-size:15.5px;}
+
+  .form-card{
+    max-width:480px;margin:0 auto;
+    background:var(--white);color:var(--navy-900);
+    border-radius:22px;padding:38px 32px;
+    border:1.5px solid var(--line);
+    box-shadow:0 30px 60px -34px rgba(12,25,48,0.25);
+  }
+  .field{margin-bottom:20px;}
+  .field-label{
+    display:flex;align-items:center;gap:8px;
+    font-size:14.5px;font-weight:700;margin-bottom:9px;color:var(--navy-900);
+  }
+  .badge{
+    font-size:11px;font-weight:700;padding:4px 9px;border-radius:6px;letter-spacing:.03em;
+  }
+  .badge.required{background:var(--sun-tint);color:var(--sun-deep);}
+  .badge.optional{background:#eef0f5;color:var(--ink-soft);}
+  .field input{
+    width:100%;padding:14px 15px;
+    border:1.5px solid var(--line);border-radius:10px;
+    font-size:16px;font-family:inherit;
+    background:var(--paper);
+    transition:border-color .15s ease;
+  }
+  .field input:focus{outline:none;border-color:var(--sun);background:var(--white);}
+  .field input:focus-visible{outline:2px solid var(--sun);outline-offset:2px;}
+  .form-submit{
+    width:100%;padding:17px;border:none;border-radius:12px;
+    background:var(--sun);color:var(--white);
+    font-size:16.5px;font-weight:700;font-family:inherit;
+    cursor:pointer;margin-top:6px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 14px 26px -12px rgba(255,138,61,0.4);
+  }
+  .form-submit:hover{transform:translateY(-2px);}
+  .form-submit:focus-visible{outline:2px solid var(--navy-900);outline-offset:3px;}
+  .form-fine{font-size:13px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .form-success{
+    display:none;text-align:center;padding:30px 10px;
+  }
+  .form-success .check{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--ok-tint);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;color:var(--ok-green);font-size:26px;
+  }
+  .form-success h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--navy-900);}
+  .form-success p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--navy-900);color:#aab3c6;
+    padding:44px 0 32px;
+  }
+  .footer-inner{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;
+    font-size:13.5px;
+  }
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .footer-links a{text-decoration:none;color:#c7ceda;}
+  .footer-links a:hover{color:var(--white);}
+  .footer-copy{margin-top:22px;font-size:12.5px;color:#5f6a80;}
+
+  @media (max-width:840px){
+    .hero-grid{grid-template-columns:1fr;gap:52px;}
+    .hero{padding:110px 0 60px;}
+    .stats-grid{grid-template-columns:1fr;}
+    .legend-grid{grid-template-columns:1fr;}
+    .story-grid{grid-template-columns:1fr;}
+    .step{grid-template-columns:48px 1fr;gap:18px;}
+    .form-card{padding:30px 22px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">☀</span>おでかけOK</div>
+    <a class="cta-small" href="#form">事前登録</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">🌤 AIによる外出判定サービス（開発中）</span>
+      <h1>今日暑そうだけど、<br>出かけて<span class="accent">大丈夫？</span><br>をAIが毎朝教えてくれる。</h1>
+      <p class="sub">気温・湿度だけじゃない。<strong>あなたの体力・持病を踏まえた</strong>「その人のための」外出判定。<br>入力の手間はほぼゼロ。通知を見るだけ。</p>
+      <div class="hero-ctas">
+        <a href="#form" class="btn-primary">事前登録する →</a>
+      </div>
+      <p class="hero-note" style="margin-top:18px;">先行登録の方には、リリース時に優先案内をお送りします。</p>
+    </div>
+
+    <div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-time">今日 6:42</div>
+          <div class="notif-card">
+            <div class="notif-top">
+              <div class="notif-icon"></div>
+              <div class="notif-app">おでかけOK</div>
+            </div>
+            <div class="notif-body">今日はお出かけできそうですよ。10〜11時が比較的涼しい時間帯です。</div>
+            <div class="status-badge">外出OK</div>
+          </div>
+          <div class="phone-substates">
+            <div class="mini-card"><span class="mini-left"><span class="mini-dot amber"></span>要注意の日はこまめな休憩を提案</span></div>
+            <div class="mini-card"><span class="mini-left"><span class="mini-dot coral"></span>不可の日は外出を控える理由を提示</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">ある日の、こんな迷い</div>
+      <h2>「今日、買い物に行っていいのかな。」</h2>
+      <p>冷蔵庫の牛乳が切れている。でも今日は「危険な暑さ」というニュース。行くか、我慢するか ── 多くの高齢者・ご家族が、こんな小さな迷いを毎日抱えています。</p>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-card before">
+        <div class="story-tag before">これまで</div>
+        <div class="story-emoji">🥛</div>
+        <p>ひとり暮らしのTさん（78）。今日は牛乳と野菜を買いに行きたい。テレビでは「危険な暑さ」の一言。でも、それが自分にとってどれくらい危ないのかは、結局わからない。</p>
+        <p class="faint">なんとなくの感覚で、行くか我慢するかを毎回決めている。</p>
+      </div>
+      <div class="story-card after">
+        <div class="story-tag after">おでかけOKがあれば</div>
+        <div class="story-emoji">☀️</div>
+        <p>朝6時、スマホに通知が届く。「今日はお出かけできそうですよ。10〜11時が比較的涼しい時間帯です。」</p>
+        <p class="faint">Tさんは安心して、その時間に合わせて買い物に出かけた。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-head">
+      <div class="kicker">課題提示</div>
+      <h2>「気温はわかる。でも、自分が今日出ていいかどうかは、<br>結局よくわからない。」</h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">6<span class="unit">割超</span></div>
+        <div class="stat-label">熱中症で救急搬送される人のうち、65歳以上が占める割合。年々この構造は変わっていません。</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4<span class="unit">割</span></div>
+        <div class="stat-label">熱中症の発生場所として最も多いのは「屋外」ではなく「住居」。外出判断だけでなく在宅時の油断も課題です。</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">0<span class="unit">個</span></div>
+        <div class="stat-label">気温・湿度の情報はあふれていても、あなた自身の体力や持病を踏まえて「今日出ていいか」を判定してくれるサービスは、まだありません。</div>
+      </div>
+    </div>
+
+    <div class="stat-quote">
+      「危険な暑さです」と言われても、自分にとってどれくらい危険なのかは結局わからない ── 高齢者本人・ご家族から共通して聞かれる声です。
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">ソリューション説明</div>
+      <h2>やることは、最初の登録だけ。<br>あとは通知を見るだけです。</h2>
+      <p>体調入力は毎日でなくても大丈夫。直近のデータと当日の暑さ指数から、通知は途切れず届きます。</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>最初に、ざっくり登録</h3>
+          <p>年齢層・持病の有無・体力レベルの3項目だけ。1分もかかりません。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>通知で「今日の判定」が届く</h3>
+          <p>その日の暑さ指数とあなたの状態を掛け合わせて、外出可・要注意・不可の3段階で通知します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>入力を忘れても、通知は止まりません</h3>
+          <p>体調入力は任意です。入力があれば精度が上がりますが、無くても直近のデータで判定を継続します。</p>
+          <span class="tag">入力必須なし・継続の負担ゼロ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGEND -->
+<section class="legend-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">3段階の判定</div>
+      <h2>むずかしい数値ではなく、3つの言葉で。</h2>
+    </div>
+    <div class="legend-grid">
+      <div class="legend-card">
+        <div class="legend-dot green"></div>
+        <h4>外出OK</h4>
+        <p>普段どおり出かけて大丈夫な状態です。涼しい時間帯の目安もあわせてお伝えします。</p>
+      </div>
+      <div class="legend-card">
+        <div class="legend-dot amber"></div>
+        <h4>要注意</h4>
+        <p>出かける場合はこまめな休憩・水分補給を。短時間の外出を目安にお伝えします。</p>
+      </div>
+      <div class="legend-card">
+        <div class="legend-dot coral"></div>
+        <h4>外出不可</h4>
+        <p>できれば外出を控えたい日です。理由と、室内でできる注意点をあわせてお伝えします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="wrap">
+    <div class="form-head">
+      <div class="kicker">先行登録</div>
+      <h2>リリースの最新情報を、<br>一番早くお届けします。</h2>
+      <p>ご登録は30秒で完了します。ご登録いただいたメールアドレスは、本サービスのご案内以外には使用しません。</p>
+    </div>
+
+    <div class="form-card">
+      <form id="signup-form">
+        <div class="field">
+          <label class="field-label" for="email">メールアドレス <span class="badge required">必須</span></label>
+          <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+        </div>
+        <div class="field">
+          <label class="field-label" for="relation">ご自身の立場 <span class="badge optional">任意</span></label>
+          <input type="text" id="relation" name="relation" placeholder="例：本人／離れて暮らす家族">
+        </div>
+        <button type="submit" class="form-submit">事前登録する</button>
+        <p class="form-fine">登録はいつでも解除できます。営業のご連絡は行いません。</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">✓</div>
+        <h3>登録が完了しました</h3>
+        <p>リリース時に、ご登録いただいたメールアドレス宛にご案内をお送りします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signup-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mwvggopq', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
