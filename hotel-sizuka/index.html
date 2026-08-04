@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ホテルしずか | その一晩、静かに眠れるか。予約する前に、わかる。</title>
+<meta name="description" content="「壁が薄い」は、泊まってからでは遅い。実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化。予約する前に、静かに眠れるかがわかります。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/hotel-sizuka/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ホテルしずか | その一晩、静かに眠れるか。予約する前に、わかる。">
+<meta property="og:description" content="「壁が薄い」は、泊まってからでは遅い。実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化。予約する前に、静かに眠れるかがわかります。">
+<meta property="og:image" content="https://showcase.p1st.app/og/hotel-sizuka.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ホテルしずか | その一晩、静かに眠れるか。予約する前に、わかる。">
+<meta name="twitter:description" content="「壁が薄い」は、泊まってからでは遅い。実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化。予約する前に、静かに眠れるかがわかります。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/hotel-sizuka.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0c1930;
+    --navy-800:#12213f;
+    --white:#ffffff;
+    --paper:#f5f6fb;
+    --paper-deep:#eceefa;
+    --moon:#6c7bf0;
+    --moon-deep:#5261dd;
+    --moon-tint:#eef0fe;
+    --gold:#e3ac3f;
+    --gold-deep:#c98f26;
+    --gold-tint:#fdf1dd;
+    --quiet-1:#2fb894;
+    --quiet-3:#d99a2b;
+    --quiet-5:#dd5a41;
+    --ink-soft:#5b6478;
+    --line:#e3e6ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Zen Kaku Gothic New", -apple-system, "Hiragino Kaku Gothic ProN", sans-serif;
+    color:var(--navy-900);
+    background:var(--white);
+    line-height:1.8;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .wrap-narrow{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- header ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(245,246,251,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1080px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{
+    display:flex;align-items:center;gap:8px;
+    color:var(--navy-900);font-weight:700;font-size:16px;letter-spacing:.02em;
+  }
+  .brand-mark{
+    width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;
+  }
+  .topbar .cta-small{
+    font-size:13px;font-weight:700;color:var(--white);
+    background:var(--navy-900);padding:9px 18px;border-radius:100px;
+    text-decoration:none;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(180deg, var(--paper) 0%, var(--paper) 72%, var(--white) 100%);
+    color:var(--navy-900);
+    padding:130px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:-140px;right:-140px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle, rgba(108,123,240,0.14), rgba(108,123,240,0) 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:.04em;
+    color:var(--moon-deep);background:var(--moon-tint);
+    border:1px solid #d7dbfb;
+    padding:7px 14px;border-radius:100px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(27px,4vw,42px);
+    font-weight:900;
+    line-height:1.55;
+    letter-spacing:.01em;
+    margin-bottom:22px;
+    color:var(--navy-900);
+  }
+  .hero h1 .accent{color:var(--moon-deep);}
+  .hero p.sub{
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin-bottom:34px;
+  }
+  .hero p.sub strong{color:var(--navy-900);font-weight:700;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--gold);color:var(--navy-900);
+    font-weight:700;font-size:15.5px;
+    padding:16px 28px;border-radius:12px;
+    text-decoration:none;border:none;cursor:pointer;
+    box-shadow:0 14px 26px -12px rgba(227,172,63,0.55);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(227,172,63,0.65);}
+  .hero-note{font-size:13px;color:#8a8fa3;margin-top:18px;}
+
+  /* search mockup */
+  .mock{
+    background:var(--white);
+    border-radius:20px;
+    padding:22px;
+    border:1.5px solid var(--line);
+    box-shadow:0 30px 60px -32px rgba(12,25,48,0.25);
+    color:var(--navy-900);
+  }
+  .mock-search{
+    display:flex;align-items:center;gap:10px;
+    background:var(--paper);
+    border-radius:12px;padding:12px 16px;
+    font-size:13.5px;color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .mock-search-icon{width:16px;height:16px;border:2px solid var(--ink-soft);border-radius:50%;flex-shrink:0;position:relative;}
+  .mock-result{
+    border:1.5px solid var(--line);border-radius:14px;
+    padding:16px;margin-bottom:12px;
+  }
+  .mock-result:last-child{margin-bottom:0;}
+  .mock-result-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+  .mock-hotel-name{font-size:14.5px;font-weight:700;color:var(--navy-900);}
+  .mock-hotel-area{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+  .quiet-badge{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+  .quiet-dot{width:8px;height:8px;border-radius:50%;}
+  .quiet-score{font-size:13px;font-weight:900;}
+  .mock-quote{
+    font-size:12px;color:var(--ink-soft);
+    background:var(--paper);border-radius:8px;padding:8px 10px;
+    line-height:1.6;
+  }
+
+  /* ---------- stats section ---------- */
+  .stats-section{
+    background:var(--paper-deep);
+    color:var(--navy-900);
+    padding:80px 0;
+  }
+  .stats-head{max-width:640px;margin-bottom:44px;}
+  .stats-head .kicker{
+    font-size:12.5px;font-weight:700;color:var(--moon-deep);letter-spacing:.06em;margin-bottom:14px;
+  }
+  .stats-head h2{font-size:clamp(21px,3vw,28px);font-weight:900;line-height:1.65;}
+  .stat-quote{
+    border-left:4px solid var(--gold);
+    padding:20px 24px;
+    font-size:15px;color:var(--navy-900);
+    background:var(--white);
+    border-radius:0 12px 12px 0;
+    margin-bottom:18px;
+  }
+  .stat-quote:last-child{margin-bottom:0;}
+  .stat-quote .src{display:block;margin-top:10px;font-size:12px;color:var(--ink-soft);}
+
+  /* ---------- how it works ---------- */
+  .how-section{padding:100px 0;background:var(--white);}
+  .section-head{max-width:600px;margin-bottom:56px;}
+  .section-head .kicker{
+    font-size:12.5px;font-weight:700;color:var(--gold-deep);letter-spacing:.08em;margin-bottom:14px;
+  }
+  .section-head h2{font-size:clamp(23px,3vw,30px);font-weight:900;line-height:1.6;color:var(--navy-900);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:15px;}
+
+  .steps{display:flex;flex-direction:column;gap:0;}
+  .step{
+    display:grid;grid-template-columns:60px 1fr;gap:26px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step-num{
+    font-size:14px;font-weight:900;color:var(--white);
+    background:var(--navy-900);
+    width:42px;height:42px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{font-size:17.5px;font-weight:700;margin-bottom:8px;color:var(--navy-900);}
+  .step p{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+
+  /* ---------- sample preview ---------- */
+  .preview-section{background:var(--paper);padding:90px 0;}
+  .preview-grid{display:flex;flex-direction:column;gap:14px;max-width:640px;margin:0 auto;}
+  .preview-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:16px;
+    padding:20px 22px;
+  }
+  .preview-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:12px;}
+  .preview-name{font-size:15.5px;font-weight:700;color:var(--navy-900);}
+  .preview-area{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
+  .preview-quote{
+    font-size:13.5px;color:var(--ink-soft);
+    background:var(--paper);border-radius:10px;padding:12px 14px;
+    line-height:1.7;
+  }
+  .preview-note{
+    text-align:center;font-size:13px;color:var(--ink-soft);margin-top:20px;
+  }
+
+  /* ---------- form ---------- */
+  .form-section{
+    background:var(--paper);
+    color:var(--navy-900);
+    padding:100px 0 110px;
+  }
+  .form-head{text-align:center;max-width:560px;margin:0 auto 42px;}
+  .form-head .kicker{
+    font-size:12.5px;font-weight:700;color:var(--moon-deep);letter-spacing:.08em;margin-bottom:14px;
+  }
+  .form-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;line-height:1.6;}
+  .form-head p{margin-top:14px;color:var(--ink-soft);font-size:14.5px;}
+
+  .form-card{
+    max-width:480px;margin:0 auto;
+    background:var(--white);color:var(--navy-900);
+    border-radius:22px;padding:38px 32px;
+    border:1.5px solid var(--line);
+    box-shadow:0 30px 60px -34px rgba(12,25,48,0.22);
+  }
+  .field{margin-bottom:20px;}
+  .field-label{
+    display:flex;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:700;margin-bottom:8px;color:var(--navy-900);
+  }
+  .badge{
+    font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.03em;
+  }
+  .badge.required{background:var(--gold-tint);color:var(--gold-deep);}
+  .badge.optional{background:#eef0f5;color:var(--ink-soft);}
+  .field input{
+    width:100%;padding:13px 15px;
+    border:1.5px solid var(--line);border-radius:10px;
+    font-size:15px;font-family:inherit;
+    background:var(--paper);
+    transition:border-color .15s ease;
+  }
+  .field input:focus{outline:none;border-color:var(--gold);background:var(--white);}
+  .field input:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .form-submit{
+    width:100%;padding:16px;border:none;border-radius:12px;
+    background:var(--gold);color:var(--navy-900);
+    font-size:15.5px;font-weight:700;font-family:inherit;
+    cursor:pointer;margin-top:6px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 14px 26px -12px rgba(227,172,63,0.45);
+  }
+  .form-submit:hover{transform:translateY(-2px);}
+  .form-submit:focus-visible{outline:2px solid var(--navy-900);outline-offset:3px;}
+  .form-fine{font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .form-success{display:none;text-align:center;padding:30px 10px;}
+  .form-success .check{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--gold-tint);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;color:var(--gold-deep);font-size:24px;
+  }
+  .form-success h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--navy-900);}
+  .form-success p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--navy-900);color:#aab3c6;
+    padding:44px 0 32px;
+  }
+  .footer-inner{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;
+    font-size:13px;
+  }
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .footer-links a{text-decoration:none;color:#c7ceda;}
+  .footer-links a:hover{color:var(--white);}
+  .footer-copy{margin-top:22px;font-size:12px;color:#5f6a80;}
+
+  @media (max-width:840px){
+    .hero-grid{grid-template-columns:1fr;gap:48px;}
+    .hero{padding:110px 0 60px;}
+    .step{grid-template-columns:44px 1fr;gap:16px;}
+    .form-card{padding:30px 22px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">☾</span>ホテルしずか</div>
+    <a class="cta-small" href="#form">先行登録</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">☾ AIレビュー解析による静粛性スコア（開発中）</span>
+      <h1>その一晩、<span class="accent">静かに</span>眠れるか。<br>予約する前に、わかる。</h1>
+      <p class="sub"><strong>「壁が薄い」は、泊まってからでは遅い。</strong>実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化しました。</p>
+      <a href="#form" class="btn-primary">先行登録する →</a>
+      <p class="hero-note">対象都市拡大時、いち早くご案内します。</p>
+    </div>
+
+    <div>
+      <div class="mock">
+        <div class="mock-search">
+          <span class="mock-search-icon"></span>
+          新宿 ビジネスホテル
+        </div>
+        <div class="mock-result">
+          <div class="mock-result-top">
+            <div>
+              <div class="mock-hotel-name">ホテル◯◯ 新宿</div>
+              <div class="mock-hotel-area">新宿駅 徒歩5分</div>
+            </div>
+            <div class="quiet-badge">
+              <span class="quiet-dot" style="background:var(--quiet-1)"></span>
+              <span class="quiet-score" style="color:var(--quiet-1)">静か 4.6</span>
+            </div>
+          </div>
+          <div class="mock-quote">「夜は驚くほど静かでした。隣室の音は一度も気になりませんでした」</div>
+        </div>
+        <div class="mock-result">
+          <div class="mock-result-top">
+            <div>
+              <div class="mock-hotel-name">ホテル◯◯ 歌舞伎町</div>
+              <div class="mock-hotel-area">新宿駅 徒歩8分</div>
+            </div>
+            <div class="quiet-badge">
+              <span class="quiet-dot" style="background:var(--quiet-5)"></span>
+              <span class="quiet-score" style="color:var(--quiet-5)">要注意 2.1</span>
+            </div>
+          </div>
+          <div class="mock-quote">「壁が薄く、隣の話し声が聞こえました。眠りが浅くなりました」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-head">
+      <div class="kicker">課題提示</div>
+      <h2>静かさの情報は、口コミの中に埋もれている。</h2>
+    </div>
+
+    <div class="stat-quote">
+      壁が薄い、天井が低い、気密性が低いなど、ホテルの構造上の問題による騒音クレームは、業界内でも既知の課題として扱われています。
+      <span class="src">出典：ホテル運営者向けメディアの騒音対策解説記事</span>
+    </div>
+    <div class="stat-quote">
+      音に敏感な宿泊者であれば、口コミを見て利用を避けることもあるとされ、実際にネット上の口コミでも騒音の被害報告が目立っています。
+      <span class="src">出典：ホテル運営コンサルティング系メディア</span>
+    </div>
+    <div class="stat-quote">
+      ある旅行ブログでは「検索語は『静か／騒音／線路／救急』。★3以下のレビューを直近1年に絞って拾い読みすると時短になる」という、手作業での確認テクニックまで紹介されています。
+      <span class="src">出典：個人旅行ブログの静かなホテル選びガイド</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">ソリューション説明</div>
+      <h2>やることは、ホテル名を検索するだけ。</h2>
+      <p>公開されているレビューをAIが読み込み、静粛性に関する言及だけを抽出してスコア化しています。</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>ホテル名・エリアで検索</h3>
+          <p>気になっているホテルの名前、または宿泊予定のエリアを入力します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>AIが実際の口コミを解析</h3>
+          <p>公開レビューの中から「静か」「壁が薄い」等、静粛性に関する言及だけをAIが抽出・要約します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>スコアと根拠を確認して予約へ</h3>
+          <p>5段階の静粛性スコアと、実際の宿泊者の声を確認したうえで、そのまま予約サイトへ進めます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE PREVIEW -->
+<section class="preview-section">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">サンプルイメージ</div>
+      <h2>こんな形で表示されます（イメージ）</h2>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-card">
+        <div class="preview-top">
+          <div>
+            <div class="preview-name">ホテル◯◯ 大阪駅前</div>
+            <div class="preview-area">大阪駅 徒歩3分</div>
+          </div>
+          <div class="quiet-badge">
+            <span class="quiet-dot" style="background:var(--quiet-1)"></span>
+            <span class="quiet-score" style="color:var(--quiet-1)">4.4</span>
+          </div>
+        </div>
+        <div class="preview-quote">「防音がしっかりしていて、駅前とは思えないほど静かでした」</div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-top">
+          <div>
+            <div class="preview-name">ホテル◯◯ 渋谷</div>
+            <div class="preview-area">渋谷駅 徒歩6分</div>
+          </div>
+          <div class="quiet-badge">
+            <span class="quiet-dot" style="background:var(--quiet-3)"></span>
+            <span class="quiet-score" style="color:var(--quiet-3)">3.2</span>
+          </div>
+        </div>
+        <div class="preview-quote">「土日の夜は周辺の人の声がやや気になりました。平日は静かとの声も」</div>
+      </div>
+    </div>
+    <p class="preview-note">※ MVP版は東京・大阪の主要ビジネスホテル数十件から開始予定です</p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="wrap">
+    <div class="form-head">
+      <div class="kicker">先行登録</div>
+      <h2>公開時、一番早くお知らせします。</h2>
+      <p>ご登録は30秒で完了します。ご登録いただいたメールアドレスは、本サービスのご案内以外には使用しません。</p>
+    </div>
+
+    <div class="form-card">
+      <form id="signup-form">
+        <div class="field">
+          <label class="field-label" for="email">メールアドレス <span class="badge required">必須</span></label>
+          <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+        </div>
+        <div class="field">
+          <label class="field-label" for="freq">出張・宿泊の頻度 <span class="badge optional">任意</span></label>
+          <input type="text" id="freq" name="freq" placeholder="例：月2〜3回／年数回">
+        </div>
+        <button type="submit" class="form-submit">先行登録する</button>
+        <p class="form-fine">登録はいつでも解除できます。営業のご連絡は行いません。</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">✓</div>
+        <h3>登録が完了しました</h3>
+        <p>公開時、ご登録いただいたメールアドレス宛にご案内をお送りします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // NOTE: Sample hotel names/scores/quotes above are illustrative mockups, not real analyzed data.
+  document.getElementById('signup-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mbgrrjld', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
