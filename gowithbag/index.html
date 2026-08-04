@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>GoWithBag（ゴー・ウィズ・バッグ）｜車内荷物トラブルを事前申告でゼロに近づける</title>
+<meta name="description" content="新幹線にはある「荷物スペース事前予約」の仕組みが、私鉄の有料特急にはまだありません。GoWithBagは、既存のLINE運用インフラを活かして、座席予約システムに手を加えずに導入できる荷物事前申告ソリューションです。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/gowithbag/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GoWithBag（ゴー・ウィズ・バッグ）｜車内荷物トラブルを事前申告でゼロに近づける">
+<meta property="og:description" content="新幹線にはある「荷物スペース事前予約」の仕組みが、私鉄の有料特急にはまだありません。GoWithBagは、既存のLINE運用インフラを活かして、座席予約システムに手を加えずに導入できる荷物事前申告ソリューションです。">
+<meta property="og:image" content="https://showcase.p1st.app/og/gowithbag.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GoWithBag（ゴー・ウィズ・バッグ）｜車内荷物トラブルを事前申告でゼロに近づける">
+<meta name="twitter:description" content="新幹線にはある「荷物スペース事前予約」の仕組みが、私鉄の有料特急にはまだありません。GoWithBagは、既存のLINE運用インフラを活かして、座席予約システムに手を加えずに導入できる荷物事前申告ソリューションです。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/gowithbag.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0b1f3a;
+    --navy-deep: #071527;
+    --navy-mid: #16335c;
+    --white: #ffffff;
+    --off-white: #f5f7fa;
+    --accent: #b8834a;      /* GoWithBag アクセント：ビジネス向けに抑えたブロンズゴールド */
+    --accent-deep: #93662f;
+    --accent-soft: #f4ece0;
+    --btn-bg: #ecdfc6;      /* CTAボタン：薄いベージュ */
+    --btn-bg-hover: #e0cea9;
+    --btn-text: #4a3a22;
+    --gray-text: #5a6472;
+    --line: #e3e7ee;
+    --radius: 14px;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  body{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    color: var(--navy-deep);
+    background: var(--white);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  img, svg{ display:block; max-width:100%; }
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .badge-required{ background: var(--accent-soft); color: var(--accent-deep); }
+  .badge-optional{ background: #eef1f5; color: var(--gray-text); }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky; top:0; z-index: 40;
+    background: rgba(11,31,58,0.96);
+    backdrop-filter: blur(6px);
+  }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo{ display:flex; align-items:center; gap:10px; color:#fff; font-weight:900; font-size:20px; letter-spacing:.01em; }
+  .logo-mark{
+    width:34px; height:34px; border-radius:9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; color:#fff; font-weight:900;
+  }
+  .header-cta{
+    background: var(--btn-bg); color: var(--btn-text); font-weight:700; font-size:14px;
+    padding: 11px 20px; border-radius: 999px; white-space:nowrap;
+    transition: background .2s ease;
+  }
+  .header-cta:hover{ background: var(--btn-bg-hover); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 480px at 82% -10%, rgba(255,122,48,0.18), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding: 84px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-120px; bottom:-160px;
+    width:520px; height:520px; border-radius:50%;
+    background: radial-gradient(circle, rgba(255,122,48,0.14), transparent 70%);
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .eyebrow{
+    display:inline-block; font-size:13px; font-weight:700; letter-spacing:.08em;
+    color: #d9b98a; border:1px solid rgba(217,185,138,0.35);
+    padding:6px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  h1{
+    font-size: 42px; font-weight: 900; line-height: 1.45; letter-spacing: .01em;
+    max-width: 720px;
+  }
+  h1 .accent{ color: var(--accent); }
+  .hero-sub{
+    margin-top: 22px; font-size: 16px; color: #cdd7e6; max-width: 600px; line-height: 2;
+  }
+  .hero-cta-row{ margin-top: 40px; display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    background: var(--btn-bg); color: var(--btn-text); font-weight:700; font-size:16px;
+    padding: 17px 34px; border-radius: 999px; display:inline-block;
+    box-shadow: 0 14px 30px -10px rgba(0,0,0,0.25);
+    transition: transform .15s ease, background .2s ease;
+  }
+  .btn-primary:hover{ background: var(--btn-bg-hover); transform: translateY(-1px); }
+  .hero-note{ font-size: 13px; color:#8fa0ba; }
+  .hero-stats{
+    margin-top: 56px; display:grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    max-width: 640px;
+  }
+  .hero-stat{ border-top: 1px solid rgba(255,255,255,0.18); padding-top: 14px; }
+  .hero-stat b{ display:block; font-size: 26px; color:#fff; font-weight:900; }
+  .hero-stat span{ font-size: 12.5px; color:#9fb0c7; }
+
+  /* ---------- Section shared ---------- */
+  section{ padding: 88px 0; }
+  .section-off{ background: var(--off-white); }
+  .kicker{
+    font-size: 13px; font-weight: 700; letter-spacing:.08em; color: var(--accent-deep);
+    margin-bottom: 14px; text-transform: uppercase;
+  }
+  h2{ font-size: 30px; font-weight: 900; color: var(--navy-deep); line-height:1.5; }
+  .section-lead{ margin-top: 16px; color: var(--gray-text); font-size: 15.5px; max-width: 640px; }
+
+  /* ---------- Problem ---------- */
+  .problem-grid{
+    margin-top: 48px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .problem-card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    padding: 30px 26px;
+  }
+  .problem-num{
+    font-size: 13px; font-weight:900; color: var(--accent-deep);
+    background: var(--accent-soft); width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .problem-card h3{ font-size: 17px; font-weight: 700; color: var(--navy-deep); margin-bottom: 10px; }
+  .problem-card p{ font-size: 14px; color: var(--gray-text); }
+
+  .compare{
+    margin-top: 56px; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden;
+    background:#fff;
+  }
+  .compare-row{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; }
+  .compare-row + .compare-row{ border-top:1px solid var(--line); }
+  .compare-row > div{ padding: 18px 22px; font-size: 14px; }
+  .compare-row.head{ background: var(--navy-deep); color:#fff; font-weight:700; }
+  .compare-row.head > div:nth-child(1){ color:#9fb0c7; font-weight:500; }
+  .compare-row .cell-jr{ color: var(--gray-text); }
+  .compare-row .cell-private{ color: var(--accent-deep); font-weight:700; }
+  .compare-row:not(.head) > div:first-child{ font-weight:700; color: var(--navy-deep); background: var(--off-white); }
+  .cell-label{ display:none; }
+
+  /* ---------- Solution / how it works ---------- */
+  .steps{
+    margin-top: 52px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; position:relative;
+  }
+  .step{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding: 32px 24px;
+    position:relative;
+  }
+  .step-icon{
+    width:52px; height:52px; border-radius: 14px; background: var(--navy);
+    display:flex; align-items:center; justify-content:center; margin-bottom: 20px;
+  }
+  .step h3{ font-size: 16px; font-weight:700; color: var(--navy-deep); margin-bottom: 8px; }
+  .step p{ font-size: 13.5px; color: var(--gray-text); }
+  .step-label{ font-size: 12px; color: var(--accent-deep); font-weight:700; letter-spacing:.05em; margin-bottom: 8px; }
+
+  .precedent{
+    margin-top: 64px; background: var(--navy); color:#fff; border-radius: var(--radius);
+    padding: 40px; display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:center;
+  }
+  .precedent h3{ font-size: 20px; font-weight:900; margin-bottom: 14px; }
+  .precedent p{ font-size: 14px; color:#cdd7e6; }
+  .precedent-badge{
+    display:inline-block; font-size:12px; font-weight:700; color:#d9b98a;
+    border:1px solid rgba(217,185,138,0.35); padding:5px 12px; border-radius:999px; margin-bottom:16px;
+  }
+
+  /* ---------- Benefits for railway ---------- */
+  .benefit-grid{ margin-top: 48px; display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .benefit{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding: 26px 26px;
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .benefit-check{
+    flex-shrink:0; width:28px; height:28px; border-radius:50%;
+    background: var(--accent-soft); color: var(--accent-deep); font-weight:900; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .benefit h3{ font-size:15.5px; font-weight:700; color: var(--navy-deep); margin-bottom:6px; }
+  .benefit p{ font-size:13.5px; color: var(--gray-text); }
+
+  /* ---------- Pricing snapshot ---------- */
+  .pricing-grid{ margin-top: 48px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .price-card{
+    border:1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; background:#fff;
+  }
+  .price-card.highlight{ border:2px solid var(--accent); position:relative; }
+  .price-tag{
+    position:absolute; top:-13px; left: 24px; background: var(--accent); color:#fff;
+    font-size:11px; font-weight:700; padding: 4px 12px; border-radius: 999px;
+  }
+  .price-card h3{ font-size:15px; font-weight:700; color: var(--gray-text); margin-bottom:10px; }
+  .price-card .amount{ font-size: 22px; font-weight:900; color: var(--navy-deep); margin-bottom: 16px; }
+  .price-card .amount small{ font-size:12px; font-weight:500; color:var(--gray-text); }
+  .price-card ul{ list-style:none; }
+  .price-card li{ font-size:13px; color: var(--gray-text); padding-left: 18px; position:relative; margin-bottom:8px; }
+  .price-card li::before{ content:"—"; position:absolute; left:0; color: var(--accent-deep); }
+
+  /* ---------- Form ---------- */
+  .form-section{
+    background: var(--navy-deep); color:#fff;
+  }
+  .form-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:start; }
+  .form-copy h2{ color:#fff; }
+  .form-copy .section-lead{ color:#a9b7cc; }
+  .form-points{ margin-top: 32px; }
+  .form-point{ display:flex; gap:12px; margin-bottom:16px; font-size:14px; color:#cdd7e6; }
+  .form-point b{ color:#fff; }
+  .form-card{
+    background:#fff; border-radius: var(--radius); padding: 34px; color: var(--navy-deep);
+  }
+  .field{ margin-bottom: 20px; }
+  .field label{
+    display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; margin-bottom: 8px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%; border:1px solid var(--line); border-radius: 8px; padding: 12px 14px;
+    font-family: inherit; font-size: 14px; background: var(--off-white);
+  }
+  .field textarea{ resize: vertical; min-height: 88px; }
+  .form-submit{
+    width:100%; background: var(--btn-bg); color: var(--btn-text); font-weight:700; font-size: 15px;
+    border:none; padding: 15px; border-radius: 999px; cursor:pointer; margin-top: 6px;
+    transition: background .2s ease;
+  }
+  .form-submit:hover{ background: var(--btn-bg-hover); }
+  .form-fine{ font-size: 11.5px; color: var(--gray-text); margin-top: 12px; text-align:center; }
+
+  /* ---------- Footer ---------- */
+  footer{ background: var(--navy-deep); color:#8fa0ba; padding: 48px 0 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-links{ display:flex; gap: 28px; font-size: 13px; }
+  .footer-links a:hover{ color:#fff; }
+  .footer-copy{ font-size: 12px; margin-top: 24px; color:#5f7089; }
+
+  @media (max-width: 860px){
+    h1{ font-size: 30px; }
+    .problem-grid, .steps, .benefit-grid, .pricing-grid{ grid-template-columns: 1fr; }
+    .precedent, .form-wrap{ grid-template-columns: 1fr; }
+    .compare-row{ grid-template-columns: 1fr; }
+    .compare-row.head{ display:none; }
+    .compare-row > div:first-child{ background: var(--navy-deep); color:#fff; }
+    .compare-row > div{ border-top: 1px solid var(--line); }
+    .compare-row > div:first-child{ border-top:none; }
+    .cell-label{
+      display:block; font-size:11px; font-weight:700; letter-spacing:.04em;
+      color: var(--accent-deep); margin-bottom: 4px; text-transform: uppercase;
+    }
+    .hero-stats{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="logo-mark">GB</span>GoWithBag</div>
+    <a href="#contact" class="header-cta">導入相談・資料請求</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">鉄道会社様向け｜車内荷物トラブル対策ソリューション</span>
+    <h1>車内の荷物トラブル、<br><span class="accent">事前申告</span>でゼロに近づける。</h1>
+    <p class="hero-sub">
+      新幹線にはある「荷物スペース事前予約」の仕組みが、私鉄の有料特急にはまだありません。<br>
+      GoWithBagは、既存のLINE運用インフラを活かして、座席予約システムに手を加えずに導入できる
+      荷物事前申告ソリューションです。
+    </p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary">資料請求・導入相談はこちら</a>
+      <span class="hero-note">ご相談内容を確認のうえ、担当よりご連絡いたします</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>0円〜</b><span>トライアルプラン初期費用</span></div>
+      <div class="hero-stat"><b>1路線</b><span>から導入検証が可能</span></div>
+      <div class="hero-stat"><b>既存LINE</b><span>公式アカウントに追加実装</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">CHALLENGE</div>
+    <h2>荷物トラブルへのその場対応が、<br>乗務員の負担として積み重なっている。</h2>
+    <p class="section-lead">
+      インバウンド増加・大型スーツケース利用の増加により、車内での荷物トラブルは
+      一過性ではなく構造的に繰り返し発生しています。
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">1</div>
+        <h3>荷物スペースのルールが曖昧</h3>
+        <p>座席後方や荷物棚のスペースは早い者勝ちの運用となっており、後から来た乗客との間でトラブルが起きやすい構造です。</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">2</div>
+        <h3>乗車前に手が打てない</h3>
+        <p>問題が起きるのは常に乗車後。乗務員は事前に何も把握できないまま、その場での後手対応を繰り返しています。</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">3</div>
+        <h3>私鉄特急には解決策がない</h3>
+        <p>新幹線の「特大荷物スペースつき座席」のような事前予約制の仕組みは、私鉄の有料特急にはまだ導入されていません。</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-row head">
+        <div>比較項目</div>
+        <div>JR新幹線</div>
+        <div>私鉄有料特急（現状）</div>
+      </div>
+      <div class="compare-row">
+        <div>大型荷物の事前把握</div>
+        <div class="cell-jr"><span class="cell-label">JR新幹線</span>特大荷物スペースつき座席で予約制</div>
+        <div class="cell-private"><span class="cell-label">私鉄有料特急（現状）</span>仕組みなし</div>
+      </div>
+      <div class="compare-row">
+        <div>乗務員への事前共有</div>
+        <div class="cell-jr"><span class="cell-label">JR新幹線</span>座席予約データと連動</div>
+        <div class="cell-private"><span class="cell-label">私鉄有料特急（現状）</span>乗車後に現場対応</div>
+      </div>
+      <div class="compare-row">
+        <div>訪日客向け多言語案内</div>
+        <div class="cell-jr"><span class="cell-label">JR新幹線</span>案内あり</div>
+        <div class="cell-private"><span class="cell-label">私鉄有料特急（現状）</span>路線により手薄</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-off">
+  <div class="wrap">
+    <div class="kicker">SOLUTION</div>
+    <h2>座席システムに手を加えず、<br>「事前に知らせてもらう」だけで対応の質が変わる。</h2>
+    <p class="section-lead">
+      GoWithBagは、乗客がLINEで乗車前に荷物情報を申告し、乗務員側の管理画面にリアルタイムで
+      共有される仕組みです。既存の座席予約システムとの連携は不要で、短期間での導入が可能です。
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="step-label">STEP 1</div>
+        <h3>乗客がLINEで申告</h3>
+        <p>乗車便・座席・荷物サイズを、乗車前にLINEでかんたんに申告。多言語対応で訪日観光客も迷いません。</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="step-label">STEP 2</div>
+        <h3>乗務員が事前に把握</h3>
+        <p>申告内容は管理画面に一覧化され、乗務員・駅係員は乗車前に荷物の量や便ごとの傾向を確認できます。</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="step-label">STEP 3</div>
+        <h3>現場対応の負荷が下がる</h3>
+        <p>事前の見立てがあることで、配置調整や案内がスムーズになり、その場対応・トラブル件数の削減につながります。</p>
+      </div>
+    </div>
+
+    <div class="precedent">
+      <div>
+        <span class="precedent-badge">導入しやすい理由</span>
+        <h3>JR東日本「忘れ物チャット」と同型の運用モデルです</h3>
+        <p>
+          JR東日本は、LINE公式アカウント「JR東日本Chat Bot」で忘れ物の問い合わせをチャット形式で
+          自動受付し、該当の忘れ物があるかを確認してプッシュ通知で案内する仕組みをすでに運用しています。
+          遅延情報の通知やコインロッカーの空き状況確認なども同アカウント内で提供されており、
+          「乗客からの申告・問い合わせをLINEで受け、社内システムと連携して処理する」という運用の型は
+          鉄道業界で実績があります。GoWithBagはこの型を、荷物の事前申告という新たな用途に応用します。
+        </p>
+      </div>
+      <div>
+        <svg viewBox="0 0 400 280" width="100%" style="border-radius:12px; background:rgba(255,255,255,0.06); max-height:280px;">
+          <rect x="0" y="0" width="400" height="280" rx="12" fill="#0e2846"/>
+          <rect x="28" y="26" width="300" height="56" rx="16" fill="#16335c"/>
+          <text x="46" y="60" font-family="'Zen Kaku Gothic New', sans-serif" font-size="13" fill="#cdd7e6">乗車前に荷物を申告できますか？</text>
+          <rect x="152" y="98" width="220" height="52" rx="16" fill="#b8834a"/>
+          <text x="172" y="129" font-family="'Zen Kaku Gothic New', sans-serif" font-size="14" fill="#fff">はい、こちらからどうぞ →</text>
+          <rect x="28" y="166" width="240" height="52" rx="16" fill="#16335c"/>
+          <text x="48" y="188" font-family="'Zen Kaku Gothic New', sans-serif" font-size="12.5" fill="#cdd7e6">7号車・大型スーツケース1個</text>
+          <text x="48" y="207" font-family="'Zen Kaku Gothic New', sans-serif" font-size="12.5" fill="#cdd7e6">で申告しました</text>
+          <rect x="152" y="234" width="150" height="30" rx="15" fill="#2f6f5e"/>
+          <text x="172" y="254" font-family="'Zen Kaku Gothic New', sans-serif" font-size="12" fill="#fff">✓ 乗務員に共有済み</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">WHY GOWITHBAG</div>
+    <h2>導入のハードルを、できるだけ低く。</h2>
+    <p class="section-lead">貴社の座席予約システムや既存のLINE運用体制を尊重した設計にしています。</p>
+
+    <div class="benefit-grid">
+      <div class="benefit">
+        <div class="benefit-check">✓</div>
+        <div><h3>座席予約システムの改修は不要</h3><p>既存の予約フローには手を加えず、LINEでの申告・確認という別レイヤーで完結します。</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-check">✓</div>
+        <div><h3>既存LINE公式アカウントに追加可能</h3><p>すでに公式アカウントをお持ちの場合、新規メニューとして機能を追加する形での導入も可能です。</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-check">✓</div>
+        <div><h3>訪日観光客向け多言語対応</h3><p>英語をはじめとした多言語UIで、申告のハードルを下げ、乗務員側の説明負荷も軽減します。</p></div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-check">✓</div>
+        <div><h3>1路線からのトライアル導入</h3><p>全路線への一斉導入ではなく、まず1路線・limited期間での効果検証から始められます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-off">
+  <div class="wrap">
+    <div class="kicker">PRICING</div>
+    <h2>プラン構成（概算）</h2>
+    <p class="section-lead">正式なお見積りは路線数・便数・カスタマイズ内容に応じてご提案いたします。</p>
+
+    <div class="pricing-grid">
+      <div class="price-card highlight">
+        <span class="price-tag">まずはここから</span>
+        <h3>トライアルプラン</h3>
+        <div class="amount">初期費用0円 <small>／ 月額5万円〜</small></div>
+        <ul>
+          <li>1路線・3ヶ月間の試験導入</li>
+          <li>申告率・対応件数の効果測定込み</li>
+          <li>本導入時は費用を再設計</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>スタンダードプラン</h3>
+        <div class="amount">初期費用30万円〜 <small>／ 月額10万円〜</small></div>
+        <ul>
+          <li>1〜3路線での本格運用</li>
+          <li>既存LINE公式アカウントへの統合</li>
+          <li>管理画面の基本カスタマイズ</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>エンタープライズプラン</h3>
+        <div class="amount">個別見積り <small>／ 月額30万円〜</small></div>
+        <ul>
+          <li>全路線・多言語拡張</li>
+          <li>管理画面フルカスタマイズ</li>
+          <li>専任担当によるサポート</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="contact">
+  <div class="wrap">
+    <div class="form-wrap">
+      <div class="form-copy">
+        <div class="kicker" style="color:#d9b98a;">CONTACT</div>
+        <h2>資料請求・導入相談</h2>
+        <p class="section-lead">まずは資料をお送りします。導入の可否を判断する前段階でのご相談も歓迎です。</p>
+        <div class="form-points">
+          <div class="form-point"><b>①</b> 担当者より内容確認のご連絡をいたします</div>
+          <div class="form-point"><b>②</b> ご希望に応じてオンラインでのご説明も可能です</div>
+          <div class="form-point"><b>③</b> ご提供いただいた情報は本件対応の目的のみに使用します</div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="contactForm">
+          <div class="field">
+            <label>会社名 <span class="badge badge-required">必須</span></label>
+            <input type="text" name="company" placeholder="〇〇鉄道株式会社" required>
+          </div>
+          <div class="field">
+            <label>部署名 <span class="badge badge-required">必須</span></label>
+            <input type="text" name="department" placeholder="運行企画部" required>
+          </div>
+          <div class="field">
+            <label>ご担当者名 <span class="badge badge-required">必須</span></label>
+            <input type="text" name="name" placeholder="山田 太郎" required>
+          </div>
+          <div class="field">
+            <label>メールアドレス <span class="badge badge-required">必須</span></label>
+            <input type="email" name="email" placeholder="you@example.co.jp" required>
+          </div>
+          <div class="field">
+            <label>電話番号 <span class="badge badge-optional">任意</span></label>
+            <input type="tel" name="phone" placeholder="03-0000-0000">
+          </div>
+          <div class="field">
+            <label>ご相談内容 <span class="badge badge-optional">任意</span></label>
+            <textarea name="message" placeholder="対象路線、導入検討の背景などございましたらご記入ください"></textarea>
+          </div>
+          <button type="submit" class="form-submit">この内容で資料請求する</button>
+          <p class="form-fine">送信いただいた情報は、本件に関するご連絡以外の目的では使用いたしません。</p>
+        </form>
+        <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+          <p style="font-weight:700; color:var(--navy-deep); font-size:16px; margin:0 0 6px;">送信を受け付けました。</p>
+          <p style="color:var(--gray-text); font-size:13.5px; margin:0;">担当者より折り返しご連絡いたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="logo" style="color:#fff; font-size:16px;"><span class="logo-mark" style="width:26px;height:26px;font-size:12px;">GB</span>GoWithBag</div>
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Players1st Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/myegggpa', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
