@@ -6,6 +6,7 @@
 <changefreq>weekly</changefreq>
 <priority>1.0</priority>
 </url>
+
 <url>
 <loc>https://showcase.p1st.app/oikatsu/</loc>
 <lastmod>2026-07-07</lastmod>
@@ -98,6 +99,12 @@
 </url>
 <url>
 <loc>https://showcase.p1st.app/gowithbag/</loc>
+<lastmod>2026-08-04</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://showcase.p1st.app/hotel-sizuka/</loc>
 <lastmod>2026-08-04</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
