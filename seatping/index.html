@@ -254,9 +254,9 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
     padding-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1);
   }
-  .footer-col h5{color:rgba(255,255,255,0.85); font-size:12px; margin-bottom:10px; letter-spacing:0.08em;}
-  .footer-col a{display:block; color:rgba(255,255,255,0.5); text-decoration:none; margin-bottom:6px;}
-  .footer-col a:hover{color:var(--accent);}
+  .footer-links{display:flex; gap:24px; flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.5); text-decoration:none;}
+  .footer-links a:hover{color:var(--accent);}
   .copyright{margin-top:20px; color:rgba(255,255,255,0.35);}
 </style>
 </head>
@@ -413,13 +413,9 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div class="footer-col">
-        <h5 data-i18n="foot-company">運営会社</h5>
-        <a href="https://company.p1st.app" target="_blank" rel="noopener">company.p1st.app</a>
-      </div>
-      <div class="footer-col">
-        <h5 data-i18n="foot-other">その他のサービス</h5>
-        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">showcase.p1st.app</a>
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener" data-i18n="foot-company">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener" data-i18n="foot-other">他のサービスを見る</a>
       </div>
     </div>
     <div class="copyright">© 2026 Players1st Inc. All rights reserved.</div>
@@ -454,7 +450,7 @@ const dict = {
     "opt-1":"1名","opt-2":"2名","opt-3":"3〜5名","opt-4":"6名以上",
     "f-submit":"この条件でキャンセル待ちを登録する",
     "f-foot":"※ MVP検証段階のため、通知は対応路線・時間帯を順次拡大しながらお届けします。",
-    "foot-company":"運営会社","foot-other":"その他のサービス"
+    "foot-company":"運営会社","foot-other":"他のサービスを見る"
   },
   en:{
     "brand-sub":"Highway Bus Seat Alert",
