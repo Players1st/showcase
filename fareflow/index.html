@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>FareFlow — Never get stuck at the ticket machine again</title>
+<meta name="description" content="A step-by-step guide for Japan's ticket machines, in your language. Coming soon — tell us what tripped you up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/fareflow/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="FareFlow — Never get stuck at the ticket machine again">
+<meta property="og:description" content="A step-by-step guide for Japan's ticket machines, in your language.">
+<meta property="og:image" content="https://showcase.p1st.app/og/fareflow.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FareFlow — Never get stuck at the ticket machine again">
+<meta name="twitter:description" content="A step-by-step guide for Japan's ticket machines, in your language.">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/fareflow.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5; --paper-raise:#FFFFFF; --ink:#0F1E38; --steel:#6B7686;
+    --steel-light:#DBE0E5; --chuo:#F26430; --chuo-ink:#B84318;
+    --yamanote:#8FC31F; --marunouchi:#E4002B; --line-track:#C9CFD6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans","Noto Sans JP",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    background-image:repeating-linear-gradient(115deg, rgba(15,30,56,0.028) 0 2px, transparent 2px 34px);
+  }
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 24px; }
+
+  header.site{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 24px; max-width:900px; margin:0 auto;
+  }
+  .wordmark{ font-family:"Space Grotesk",sans-serif; font-size:18px; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .wordmark .dot{ width:9px;height:9px;border-radius:50%;background:var(--chuo); }
+  .kicker{ font-size:10.5px; letter-spacing:.14em; color:var(--steel); text-transform:uppercase; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:40px 24px 56px 24px; text-align:center; }
+  .hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(30px,6vw,52px); line-height:1.1; letter-spacing:-0.02em;
+    margin:0 auto 18px auto; max-width:14ch; font-weight:700;
+  }
+  .hero p{ font-size:16px; line-height:1.6; color:var(--steel); max-width:44ch; margin:0 auto 30px auto; }
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:#fff; border:none; border-radius:14px;
+    padding:15px 26px; font-size:15px; font-weight:700; cursor:pointer;
+    text-decoration:none;
+  }
+  .cta-btn:hover{ background:#182a4d; }
+  .cta-btn .arrow{ color:var(--chuo); }
+
+  .mini-track{ display:flex; align-items:center; justify-content:center; gap:6px; margin:44px 0 0 0; }
+  .mini-track .md{ width:9px; height:9px; border-radius:50%; }
+  .mini-track .ml{ width:34px; height:2px; background:var(--line-track); }
+
+  /* ---------- Problem ---------- */
+  .problem{ padding:50px 24px; border-top:1px solid var(--steel-light); }
+  .problem-inner{ max-width:640px; margin:0 auto; }
+  .section-eyebrow{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--chuo-ink); font-weight:700; margin-bottom:12px; text-align:center; }
+  .problem h2{ font-family:"Space Grotesk",sans-serif; font-size:26px; text-align:center; margin:0 0 20px 0; line-height:1.3; }
+  .problem p{ font-size:15px; line-height:1.7; color:var(--ink); margin:0 0 16px 0; }
+  .problem p.muted{ color:var(--steel); font-size:13.5px; }
+
+  .stat-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; justify-content:center; }
+  .stat-chip{
+    flex:1; min-width:160px; background:var(--paper-raise); border:1px solid var(--steel-light);
+    border-radius:14px; padding:16px 18px; position:relative;
+  }
+  .stat-chip .sc-dot{ width:8px;height:8px;border-radius:50%; position:absolute; top:16px; left:16px; }
+  .stat-chip .sc-num{ font-family:"IBM Plex Mono",monospace; font-size:22px; font-weight:600; margin:14px 0 4px 22px; }
+  .stat-chip .sc-label{ font-size:11.5px; color:var(--steel); margin-left:22px; line-height:1.4; }
+
+  /* ---------- Concept preview ---------- */
+  .preview{ padding:56px 24px; background:var(--paper-raise); border-top:1px solid var(--steel-light); border-bottom:1px solid var(--steel-light); }
+  .preview-inner{ max-width:720px; margin:0 auto; }
+  .preview h2{ font-family:"Space Grotesk",sans-serif; font-size:26px; text-align:center; margin:0 0 8px 0; }
+  .preview-tag{ text-align:center; font-size:12px; color:var(--steel); margin-bottom:36px; }
+  .preview-tag .flag{ background:#FFF4EF; color:var(--chuo-ink); border-radius:6px; padding:2px 8px; font-weight:700; font-size:10.5px; letter-spacing:.06em; margin-right:6px; }
+
+  .flow3{ display:flex; align-items:flex-start; justify-content:center; gap:0; }
+  .flow-step{ flex:1; max-width:190px; text-align:center; padding:0 10px; }
+  .flow-icon{
+    width:56px; height:56px; border-radius:16px; background:var(--paper);
+    border:1.5px solid var(--steel-light); display:flex; align-items:center; justify-content:center;
+    margin:0 auto 14px auto;
+  }
+  .flow-step h3{ font-size:14px; margin:0 0 6px 0; font-weight:700; }
+  .flow-step p{ font-size:12.5px; color:var(--steel); line-height:1.5; margin:0; }
+  .flow-connector{ width:44px; height:2px; background:var(--line-track); margin-top:27px; flex-shrink:0; }
+
+  /* ---------- Signup ---------- */
+  .signup{ padding:56px 24px 60px 24px; }
+  .signup-inner{ max-width:480px; margin:0 auto; }
+  .signup h2{ font-family:"Space Grotesk",sans-serif; font-size:24px; text-align:center; margin:0 0 10px 0; }
+  .signup > .signup-inner > p{ text-align:center; font-size:14px; color:var(--steel); margin:0 0 30px 0; }
+
+  .form-card{ background:var(--paper-raise); border:1px solid var(--steel-light); border-radius:18px; padding:26px; }
+  .field-label{ font-size:12.5px; font-weight:700; margin-bottom:10px; display:block; }
+  .survey-options{ display:flex; flex-direction:column; gap:8px; margin-bottom:26px; }
+  .survey-opt{
+    display:flex; align-items:center; gap:10px; padding:11px 14px;
+    border:1.5px solid var(--steel-light); border-radius:10px; cursor:pointer; font-size:13.5px;
+  }
+  .survey-opt input{ accent-color:var(--chuo); width:15px; height:15px; }
+  .survey-opt:has(input:checked){ border-color:var(--chuo); background:#FFF8F5; }
+
+  .email-row{ display:flex; gap:10px; }
+  .email-input{
+    flex:1; border:1.5px solid var(--steel-light); border-radius:10px; padding:13px 14px;
+    font-size:14px; font-family:inherit; color:var(--ink); background:var(--paper);
+  }
+  .email-input:focus{ outline:none; border-color:var(--chuo); }
+  .submit-btn{
+    background:var(--chuo); color:#fff; border:none; border-radius:10px; padding:13px 20px;
+    font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;
+  }
+  .submit-btn:hover{ background:var(--chuo-ink); }
+
+  .form-note{ font-size:11px; color:var(--steel); margin-top:12px; text-align:center; }
+
+  .thanks-state{ display:none; text-align:center; padding:10px 0; }
+  .thanks-state.show{ display:block; }
+  .form-card.hidden{ display:none; }
+  .check-ring{ width:52px; height:52px; border-radius:50%; background:#EEF6DD; display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto; }
+  .thanks-state h3{ font-size:17px; margin:0 0 6px 0; }
+  .thanks-state p{ font-size:13.5px; color:var(--steel); margin:0; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:24px; border-top:1px solid var(--steel-light); max-width:900px; margin:0 auto; }
+  .foot-links{ display:flex; gap:16px; font-size:11.5px; justify-content:center; margin-bottom:8px; }
+  .foot-links a{ color:var(--steel); text-decoration:none; }
+  .foot-links a:hover{ color:var(--ink); }
+  .foot-note{ font-size:10.5px; color:var(--steel); line-height:1.5; text-align:center; max-width:52ch; margin:0 auto 8px auto; }
+  .foot-copy{ font-size:10.5px; color:var(--steel); text-align:center; }
+
+  @media (max-width:560px){
+    .flow3{ flex-direction:column; align-items:center; gap:20px; }
+    .flow-connector{ width:2px; height:24px; margin:0; }
+    .flow-step{ max-width:260px; }
+    .email-row{ flex-direction:column; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+  :focus-visible{ outline:2.5px solid var(--chuo); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark"><span class="dot"></span>FareFlow</div>
+  <div class="kicker mono">Coming Soon</div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <h1>Never get stuck at the ticket machine again.</h1>
+  <p>A step-by-step guide for Japan's ticket machines, in your language. We're building it now — tell us what tripped you up, and we'll let you know the moment it's ready.</p>
+  <a href="#signup" class="cta-btn">Notify me when it's ready <span class="arrow">→</span></a>
+
+  <div class="mini-track" aria-hidden="true">
+    <div class="md" style="background:#F15A22"></div><div class="ml"></div>
+    <div class="md" style="background:#8FC31F"></div><div class="ml"></div>
+    <div class="md" style="background:#E4002B"></div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="section-eyebrow mono">The problem</div>
+    <h2>Ten minutes at a machine can ruin the first hour of a trip.</h2>
+    <p>At Shinjuku Station, we watched a family spend over ten minutes stuck at the ticket machine — unsure which button meant their destination, whether they needed a new ticket or just more balance on their card. A staff member stepped in to help. The line behind them kept growing.</p>
+    <p class="muted">Japan's ticket machines already show multiple languages. The problem isn't the words on screen — it's knowing which screen to go to next.</p>
+
+    <div class="stat-row">
+      <div class="stat-chip">
+        <span class="sc-dot" style="background:#F15A22"></span>
+        <div class="sc-num">17.4%</div>
+        <div class="sc-label">of visitors to Japan struggled with station signage or communication (JNTO survey)</div>
+      </div>
+      <div class="stat-chip">
+        <span class="sc-dot" style="background:#8FC31F"></span>
+        <div class="sc-num">10+ min</div>
+        <div class="sc-label">observed at a single machine before staff stepped in, at Shinjuku Station</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT PREVIEW ============ -->
+<section class="preview">
+  <div class="preview-inner">
+    <h2>What we're building</h2>
+    <div class="preview-tag"><span class="flag">CONCEPT PREVIEW</span>the flow below isn't live yet — it's what we're designing next</div>
+
+    <div class="flow3">
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#0F1E38" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#0F1E38" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#0F1E38" stroke-width="1.6"/><path d="M14 14h3v3h-3zM19 14h2M14 19h2M19 19h2" stroke="#F26430" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Scan</h3>
+        <p>Scan the code posted on the ticket machine you're standing at.</p>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h11M4 18h7" stroke="#0F1E38" stroke-width="1.8" stroke-linecap="round"/><circle cx="20" cy="18" r="2.4" stroke="#F26430" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Follow</h3>
+        <p>See your next step, written simply, in your own language.</p>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#8FC31F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Go</h3>
+        <p>Get your ticket and head to the platform — no app, no sign-up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNUP ============ -->
+<section class="signup" id="signup">
+  <div class="signup-inner">
+    <h2>Help us build it</h2>
+    <p>One question, then your email — that's it.</p>
+
+    <div class="form-card" id="form-card">
+      <span class="field-label">What have you gotten stuck on at a Japanese ticket machine?</span>
+      <div class="survey-options">
+        <label class="survey-opt"><input type="radio" name="stuck" value="new-ticket"> Buying a new paper ticket</label>
+        <label class="survey-opt"><input type="radio" name="stuck" value="top-up"> Topping up an IC card (Suica / Pasmo)</label>
+        <label class="survey-opt"><input type="radio" name="stuck" value="fare-adjust"> Fare adjustment when my card balance was short</label>
+        <label class="survey-opt"><input type="radio" name="stuck" value="other"> Something else</label>
+        <label class="survey-opt"><input type="radio" name="stuck" value="none"> Haven't yet — but it looks confusing</label>
+      </div>
+
+      <span class="field-label">Your email</span>
+      <div class="email-row">
+        <input type="email" class="email-input" id="email-input" name="email" placeholder="you@example.com" required>
+        <button class="submit-btn" id="submit-btn">Notify me</button>
+      </div>
+      <div class="form-note">No spam — just one email when FareFlow is ready to try.</div>
+    </div>
+
+    <div class="thanks-state" id="thanks-state">
+      <div class="check-ring">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#8FC31F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>You're on the list.</h3>
+      <p>We'll email you the moment FareFlow is ready to try at Shinjuku Station.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <a href="https://company.p1st.app" target="_blank" rel="noopener">Company</a>
+    <a href="https://showcase.p1st.app" target="_blank" rel="noopener">More from Players1st</a>
+  </div>
+  <div class="foot-note">FareFlow is an independent concept test by Players1st. It is not affiliated with, endorsed by, or operated by any railway company.</div>
+  <div class="foot-copy">© 2026 Players1st Inc. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById("submit-btn").addEventListener("click", function(){
+    var email = document.getElementById("email-input");
+    if(!email.value || !email.value.includes("@")){
+      email.focus();
+      email.style.borderColor = "#E4002B";
+      return;
+    }
+
+    var stuck = document.querySelector('input[name="stuck"]:checked');
+    var btn = document.getElementById("submit-btn");
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "...";
+
+    var body = new FormData();
+    body.append("email", email.value);
+    if (stuck) body.append("stuck", stuck.value);
+
+    fetch("https://formspree.io/f/xkjwrlln", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: body
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error("submit failed");
+        document.getElementById("form-card").classList.add("hidden");
+        document.getElementById("thanks-state").classList.add("show");
+      })
+      .catch(function(){
+        alert("Something went wrong. Please try again in a moment.");
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
