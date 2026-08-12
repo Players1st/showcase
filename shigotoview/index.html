@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>シゴトビュー｜組織の「見えない生産性ロス」を、まず無料で確認する</title>
+<meta name="description" content="会議・通話は埋まっているのに、成果につながっているか誰も把握していない。無料セルフチェックで、組織の空洞化の兆候に気づいてください。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/shigotoview/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="シゴトビュー｜組織の「見えない生産性ロス」を、まず無料で確認する">
+<meta property="og:description" content="会議・通話は埋まっているのに、成果につながっているか誰も把握していない。無料セルフチェックで、組織の空洞化の兆候に気づいてください。">
+<meta property="og:image" content="https://showcase.p1st.app/og/shigotoview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="シゴトビュー｜組織の「見えない生産性ロス」を、まず無料で確認する">
+<meta name="twitter:description" content="会議・通話は埋まっているのに、成果につながっているか誰も把握していない。無料セルフチェックで、組織の空洞化の兆候に気づいてください。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/shigotoview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root{
+    --navy-950:#0A0F1C;
+    --navy-800:#131C30;
+    --navy-700:#1B2740;
+    --white:#FFFFFF;
+    --paper:#F6F7F9;
+    --accent:#2FC77E;
+    --accent-deep:#189A5C;
+    --accent-soft:#D6F5E4;
+    --ink:#1A2233;
+    --muted:#667085;
+    --line:#E3E6EB;
+    --line-dark:#28324A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+  .wrap-narrow{ max-width:760px; margin:0 auto; padding:0 24px; }
+
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,15,28,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    color:var(--white); font-weight:900; font-size:18px; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-logo .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); }
+  .nav-cta{
+    color:var(--navy-950); background:var(--accent);
+    font-weight:700; font-size:13.5px;
+    padding:9px 18px; border-radius:100px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{ background:#DBA766; transform:translateY(-1px); }
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 78% -10%, rgba(47,199,126,0.18), transparent 60%),
+      var(--navy-950);
+    color:var(--white);
+    padding:76px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:600; letter-spacing:0.08em;
+    color:var(--accent-soft);
+    background:rgba(47,199,126,0.12);
+    border:1px solid rgba(47,199,126,0.35);
+    padding:6px 14px; border-radius:100px;
+    margin-bottom:22px;
+  }
+  .eyebrow .mono{ font-size:11.5px; }
+  h1{
+    font-size:39px; font-weight:900; line-height:1.42;
+    letter-spacing:0.01em;
+    margin-bottom:22px;
+  }
+  h1 .accent{ color:var(--accent); }
+  .hero-sub{
+    font-size:15.5px; color:#B8C0D4; line-height:1.85;
+    max-width:480px; margin-bottom:34px;
+  }
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent); color:var(--navy-950);
+    font-weight:700; font-size:15px;
+    padding:14px 26px; border-radius:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px -8px rgba(47,199,126,0.5);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(47,199,126,0.6); }
+  .btn-secondary{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--white); font-weight:600; font-size:15px;
+    padding:14px 22px; border-radius:8px;
+    border:1px solid var(--line-dark);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .btn-secondary:hover{ border-color:#4A5A7D; background:rgba(255,255,255,0.03); }
+
+  /* SIGNATURE: calendar diagnostic grid */
+  .diag-wrap{ position:relative; }
+  .diag-card{
+    background:var(--navy-800);
+    border:1px solid var(--line-dark);
+    border-radius:16px;
+    padding:24px 24px 20px;
+  }
+  .diag-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:16px; padding-bottom:14px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .diag-head .label{ font-size:12px; color:#8A93AC; letter-spacing:0.04em; }
+  .diag-head .val{ font-size:12px; color:var(--accent-soft); }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7, 1fr);
+    gap:6px;
+  }
+  .cal-cell{
+    aspect-ratio:1/1; border-radius:4px;
+    background:rgba(255,255,255,0.05);
+    position:relative;
+  }
+  .cal-cell.flag{
+    box-shadow:0 0 0 1.5px var(--accent);
+  }
+  .cal-cell.flag::after{
+    content:''; position:absolute; inset:0; border-radius:4px;
+    background:var(--accent); opacity:0.55;
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:0.35; }
+    50%{ opacity:0.75; }
+  }
+  .diag-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:16px; padding-top:14px;
+    border-top:1px solid var(--line-dark);
+    font-size:12px; color:#8A93AC;
+  }
+  .diag-foot .flagcount{ color:var(--accent); font-weight:600; }
+  @media (prefers-reduced-motion: reduce){
+    .cal-cell.flag::after{ animation:none; opacity:0.55; }
+  }
+
+  /* SECTION HEADERS */
+  .section{ padding:88px 0; }
+  .section.alt{ background:var(--paper); }
+  .section-head{ max-width:620px; margin-bottom:52px; }
+  .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px; font-weight:500; color:var(--accent-deep);
+    letter-spacing:0.06em; margin-bottom:14px; display:block;
+  }
+  .section-head h2{
+    font-size:28px; font-weight:900; line-height:1.5;
+    color:var(--ink);
+  }
+  .section-head p{
+    margin-top:14px; color:var(--muted); font-size:15px; line-height:1.85;
+  }
+
+  /* PROBLEM CARDS */
+  .cards3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .pcard{
+    background:var(--white); border:1px solid var(--line);
+    border-radius:12px; padding:28px 26px;
+  }
+  .pcard .icon-wrap{
+    width:40px; height:40px; border-radius:10px;
+    background:var(--accent-soft); color:var(--accent-deep);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .pcard h3{ font-size:16px; font-weight:700; margin-bottom:10px; line-height:1.6; }
+  .pcard p{ font-size:13.8px; color:var(--muted); line-height:1.85; }
+
+  /* PROCESS STEPS */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
+  .step{ position:relative; padding:0 22px; }
+  .step:first-child{ padding-left:0; }
+  .step:last-child{ padding-right:0; }
+  .step-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px; color:var(--accent-deep); font-weight:600;
+    margin-bottom:14px; display:block;
+  }
+  .step h3{ font-size:17px; font-weight:700; margin-bottom:10px; }
+  .step p{ font-size:13.8px; color:var(--muted); line-height:1.85; }
+  .step-arrow{
+    position:absolute; top:9px; right:-6px;
+    color:var(--line); width:18px; height:18px;
+  }
+  @media (max-width:860px){ .step-arrow{ display:none; } }
+
+  /* HONESTY CALLOUT */
+  .honesty{
+    background:var(--white); border:1px solid var(--accent-soft);
+    border-left:3px solid var(--accent);
+    border-radius:8px; padding:26px 28px;
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .honesty .icon-wrap{
+    flex-shrink:0; width:34px; height:34px; border-radius:8px;
+    background:var(--accent-soft); color:var(--accent-deep);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .honesty h4{ font-size:14.5px; font-weight:700; margin-bottom:6px; }
+  .honesty p{ font-size:13.8px; color:var(--muted); line-height:1.85; }
+
+  /* SELF CHECK */
+  .check-panel{
+    background:var(--navy-950); color:var(--white);
+    border-radius:20px; padding:48px 48px 44px;
+    max-width:680px; margin:0 auto;
+  }
+  .check-progress{
+    display:flex; gap:6px; margin-bottom:30px;
+  }
+  .check-progress span{
+    height:3px; flex:1; border-radius:2px; background:var(--line-dark);
+    transition:background .3s ease;
+  }
+  .check-progress span.done{ background:var(--accent); }
+  .check-qnum{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    color:var(--accent-soft); margin-bottom:14px; display:block;
+  }
+  .check-q{ font-size:19px; font-weight:700; line-height:1.7; margin-bottom:26px; }
+  .check-options{ display:flex; flex-direction:column; gap:10px; }
+  .opt-btn{
+    text-align:left; width:100%;
+    background:var(--navy-800); border:1px solid var(--line-dark);
+    color:var(--white); font-size:14.5px;
+    padding:15px 18px; border-radius:10px;
+    display:flex; align-items:center; justify-content:space-between;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .opt-btn:hover{ border-color:var(--accent); background:var(--navy-700); }
+  .opt-btn .chev{ opacity:0; transition:opacity .15s ease; color:var(--accent); }
+  .opt-btn:hover .chev{ opacity:1; }
+  .check-nav{ margin-top:24px; display:flex; justify-content:space-between; align-items:center; }
+  .check-back{
+    font-size:13px; color:#8A93AC; display:flex; align-items:center; gap:6px;
+  }
+  .check-back:hover{ color:var(--white); }
+  .check-back.hidden{ visibility:hidden; }
+
+  .result-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:600; padding:6px 14px; border-radius:100px;
+    margin-bottom:20px;
+  }
+  .result-badge.low{ background:rgba(52,168,120,0.15); color:#5FD8A2; }
+  .result-badge.mid{ background:rgba(230,167,74,0.18); color:#F2C879; }
+  .result-badge.high{ background:rgba(217,98,74,0.15); color:#F2917E; }
+  .result-title{ font-size:22px; font-weight:900; margin-bottom:14px; line-height:1.6; }
+  .result-body{ font-size:14.5px; color:#B8C0D4; line-height:1.9; margin-bottom:28px; }
+  .result-score{
+    background:var(--navy-800); border:1px solid var(--line-dark);
+    border-radius:10px; padding:18px 20px; margin-bottom:28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .result-score .label{ font-size:12.5px; color:#8A93AC; }
+  .result-score .value{ font-family:'JetBrains Mono', monospace; font-size:22px; font-weight:600; color:var(--accent); }
+
+  /* FORM */
+  .form-section .wrap-narrow{ }
+  .form-card{
+    background:var(--white); border:1px solid var(--line);
+    border-radius:16px; padding:44px 44px;
+  }
+  .form-card h2{ font-size:23px; font-weight:900; margin-bottom:10px; }
+  .form-card > p{ font-size:14px; color:var(--muted); margin-bottom:30px; line-height:1.85; }
+  .field{ margin-bottom:22px; }
+  .field-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:13.5px; font-weight:700; margin-bottom:8px;
+  }
+  .badge{
+    font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:4px;
+    letter-spacing:0.03em;
+  }
+  .badge.req{ background:#FCE8E5; color:#B3453A; }
+  .badge.opt{ background:#EEF0F3; color:#6B7280; }
+  .field input, .field textarea{
+    width:100%; font-family:inherit; font-size:14.5px;
+    padding:13px 15px; border:1px solid var(--line); border-radius:8px;
+    background:var(--paper); color:var(--ink);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none; border-color:var(--accent); background:var(--white);
+  }
+  .field textarea{ resize:vertical; min-height:96px; }
+  .submit-btn{
+    width:100%;
+    background:var(--navy-950); color:var(--white);
+    font-weight:700; font-size:15px; padding:16px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:background .15s ease;
+  }
+  .submit-btn:hover{ background:var(--navy-800); }
+  .form-note{ font-size:12px; color:var(--muted); margin-top:14px; text-align:center; }
+
+  .thanks{ text-align:center; padding:20px 0; }
+  .thanks .icon-wrap{
+    width:56px; height:56px; border-radius:50%;
+    background:var(--accent-soft); color:var(--accent-deep);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px;
+  }
+  .thanks h3{ font-size:19px; font-weight:900; margin-bottom:10px; }
+  .thanks p{ font-size:14px; color:var(--muted); line-height:1.85; }
+
+  .hidden{ display:none !important; }
+
+  /* FOOTER */
+  footer{ background:var(--navy-950); color:#8A93AC; padding:44px 0 34px; }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+    border-top:1px solid var(--line-dark); padding-top:28px;
+  }
+  .footer-logo{ color:var(--white); font-weight:900; font-size:15px; }
+  .footer-links{ display:flex; gap:22px; font-size:13px; }
+  .footer-links a:hover{ color:var(--white); }
+  .footer-copy{ font-size:12px; margin-top:18px; color:#5C6683; }
+
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .diag-wrap{ order:-1; max-width:420px; }
+    h1{ font-size:30px; }
+    .cards3{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; gap:32px; }
+    .step{ padding:0; }
+    .section{ padding:64px 0; }
+    .check-panel{ padding:32px 24px; }
+    .form-card{ padding:30px 24px; }
+    .footer-inner{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="dot"></span>シゴトビュー</div>
+    <a href="#check" class="nav-cta">無料セルフチェック</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="mono">BETA</span>／人的資本経営・組織診断</div>
+        <h1>その「忙しさ」、<br>本当に<span class="accent">会社の力</span>に<br>なっていますか。</h1>
+        <p class="hero-sub">会議・通話は埋まっているのに、成果につながっているか誰も把握していない。まずは無料セルフチェックで、組織の"空洞化"の兆候に気づいてください。</p>
+        <div class="cta-row">
+          <a href="#check" class="btn-primary"><i data-lucide="arrow-right"></i>無料セルフチェックを始める</a>
+          <a href="#report" class="btn-secondary">詳細レポートについて相談する</a>
+        </div>
+      </div>
+      <div class="diag-wrap">
+        <div class="diag-card">
+          <div class="diag-head">
+            <span class="label mono">WEEKLY CALENDAR SCAN</span>
+            <span class="val mono">28 events</span>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="diag-foot">
+            <span>アジェンダ不明瞭な会議</span>
+            <span class="flagcount mono">3 件を検知</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">// WHY NOW</span>
+      <h2>「見えている数字」と「実際の稼働」は、<br>別のものかもしれない。</h2>
+      <p>人的資本経営の情報開示が進む一方で、組織の"空洞化"は既存の指標のすき間に隠れています。</p>
+    </div>
+    <div class="cards3">
+      <div class="pcard">
+        <div class="icon-wrap"><i data-lucide="bar-chart-3"></i></div>
+        <h3>人的資本経営SaaSは<br>「属性データ」止まり</h3>
+        <p>離職率・エンゲージメント・研修投資額は可視化できても、業務内容が実質的に空洞化しているかどうかまでは踏み込めていません。</p>
+      </div>
+      <div class="pcard">
+        <div class="icon-wrap"><i data-lucide="phone-off"></i></div>
+        <h3>「隠れ残業」対策とは<br>逆方向の課題</h3>
+        <p>PCログで隠れ残業（申告漏れの働きすぎ）を検知するツールは複数ありますが、"忙しそうに見えて実は手待ち"はその逆で、別軸の問題です。</p>
+      </div>
+      <div class="pcard">
+        <div class="icon-wrap"><i data-lucide="search-x"></i></div>
+        <h3>概念はあるのに、<br>診断する手段がない</h3>
+        <p>ブルシット・ジョブという概念は広く知られつつありますが、これを組織単位で定量診断するサービスはまだ見当たりません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">// HOW IT WORKS</span>
+      <h2>3つのステップで、<br>まず「気づく」ところから。</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>無料セルフチェック</h3>
+        <p>6つの質問に答えるだけ。会議のあり方や稼働実態について、御社の傾向を確認します。</p>
+        <svg class="step-arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>仮説パターンを提示</h3>
+        <p>回答内容から、御社が近い「空洞化リスクの傾向」を診断結果としてその場で表示します。</p>
+        <svg class="step-arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>詳細レポート（有償）</h3>
+        <p>気になる結果が出た場合は、個別ヒアリングをもとにした詳細レポートをご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONESTY -->
+<section class="section" style="padding-top:44px;">
+  <div class="wrap">
+    <div class="honesty">
+      <div class="icon-wrap"><i data-lucide="info"></i></div>
+      <div>
+        <h4>現時点での位置づけについて</h4>
+        <p>シゴトビューは現在、自動検知エンジンではなく「気づきのきっかけ」を提供する診断サービスとして提供しています。カレンダーや通信内容の自動解析・録音は行いません。詳細レポートは、ヒアリングをもとに個別に作成しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELF CHECK -->
+<section class="section alt" id="check">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 44px; text-align:center; max-width:560px;">
+      <span class="kicker">// SELF CHECK</span>
+      <h2>無料セルフチェック</h2>
+      <p>6つの質問に答えると、御社の傾向を診断します。所要時間 約1分。</p>
+    </div>
+
+    <div class="check-panel">
+      <!-- Questions -->
+      <div id="quizArea">
+        <div class="check-progress" id="progressBar"></div>
+        <span class="check-qnum mono" id="qNum">Q1 / 6</span>
+        <div class="check-q" id="qText"></div>
+        <div class="check-options" id="qOptions"></div>
+        <div class="check-nav">
+          <span class="check-back hidden" id="backBtn"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i>ひとつ前の質問</span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="resultArea" class="hidden">
+        <span class="result-badge" id="resultBadge"></span>
+        <div class="result-title" id="resultTitle"></div>
+        <div class="result-score">
+          <span class="label mono">DIAGNOSTIC SCORE</span>
+          <span class="value mono" id="resultScore">--</span>
+        </div>
+        <div class="result-body" id="resultBody"></div>
+        <div class="cta-row">
+          <a href="#report" class="btn-primary"><i data-lucide="file-text"></i>詳細レポートに相談する</a>
+          <span class="btn-secondary" onclick="restartQuiz()" style="cursor:pointer;"><i data-lucide="rotate-ccw"></i>もう一度診断する</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT FORM -->
+<section class="section form-section" id="report">
+  <div class="wrap-narrow">
+    <div class="form-card">
+      <div id="formView">
+        <span class="kicker">// DETAILED REPORT</span>
+        <h2>詳細レポートに相談する</h2>
+        <p>個別ヒアリングをもとに、御社の傾向を整理したレポートをお作りします（都度課金・目安10万円前後）。まずはお気軽にご相談ください。</p>
+
+        <form id="leadForm" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <div class="field-label">メールアドレス <span class="badge req">必須</span></div>
+            <input type="email" name="email" required placeholder="you@company.co.jp">
+          </div>
+          <div class="field">
+            <div class="field-label">会社名 <span class="badge opt">任意</span></div>
+            <input type="text" name="company" placeholder="株式会社〇〇">
+          </div>
+          <div class="field">
+            <div class="field-label">気になっていること <span class="badge opt">任意</span></div>
+            <textarea name="message" placeholder="例：特定の部署でメンバーの稼働実態が見えづらいと感じています"></textarea>
+          </div>
+          <button type="submit" class="submit-btn"><i data-lucide="send"></i>相談する</button>
+          <p class="form-note">送信いただいた内容は、詳細レポートのご案内以外には使用しません。</p>
+        </form>
+      </div>
+
+      <div id="thanksView" class="thanks hidden">
+        <div class="icon-wrap"><i data-lucide="check"></i></div>
+        <h3>ご相談ありがとうございます</h3>
+        <p>担当より1〜2営業日以内にご連絡いたします。<br>詳細レポートの進め方について、簡単にヒアリングさせてください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">シゴトビュー</div>
+      <div class="footer-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 株式会社プレイヤーズファースト</div>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+/* ---- Signature calendar diagnostic grid ---- */
+(function(){
+  const grid = document.getElementById('calGrid');
+  const total = 28;
+  const flagged = new Set();
+  while(flagged.size < 3){ flagged.add(Math.floor(Math.random()*total)); }
+  for(let i=0;i<total;i++){
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell';
+    const density = Math.random();
+    cell.style.background = `rgba(255,255,255,${0.04 + density*0.16})`;
+    if(flagged.has(i)) cell.classList.add('flag');
+    grid.appendChild(cell);
+  }
+})();
+
+/* ---- Self-check quiz ---- */
+const questions = [
+  {
+    q: "目的やアジェンダが曖昧なまま定例化している会議が、自部門にどれくらいあると感じますか？",
+    options: [
+      { t: "ほとんどない", v: 0 },
+      { t: "いくつか思い当たる", v: 1 },
+      { t: "かなり多いと思う", v: 2 },
+    ]
+  },
+  {
+    q: "「忙しそうだが、それが成果に繋がっているか分からない」と感じるメンバーはいますか？",
+    options: [
+      { t: "いない", v: 0 },
+      { t: "1〜2人思い当たる", v: 1 },
+      { t: "複数の部署で思い当たる", v: 2 },
+    ]
+  },
+  {
+    q: "リモートワーク下で、メンバーの実際の稼働状況を把握できていますか？",
+    options: [
+      { t: "把握できている", v: 0 },
+      { t: "一部は把握しきれていない", v: 1 },
+      { t: "正直、あまり把握できていない", v: 2 },
+    ]
+  },
+  {
+    q: "人的資本経営に関する情報開示で、生産性に関する数値の裏付けにどれくらい自信がありますか？",
+    options: [
+      { t: "十分に自信がある", v: 0 },
+      { t: "ある程度は自信がある", v: 1 },
+      { t: "正直、心許ない", v: 2 },
+    ]
+  },
+  {
+    q: "過去1年で「思ったより成果が出ていない部署・チーム」に心当たりはありますか？",
+    options: [
+      { t: "特にない", v: 0 },
+      { t: "1つ思い当たる", v: 1 },
+      { t: "複数思い当たる", v: 2 },
+    ]
+  },
+  {
+    q: "こうした実態を定量的に把握するための社内ツール・仕組みは、既にありますか？",
+    options: [
+      { t: "十分にある", v: 0 },
+      { t: "部分的にある", v: 1 },
+      { t: "特にない", v: 2 },
+    ]
+  },
+];
+
+let current = 0;
+let score = 0;
+const answers = [];
+
+function renderProgress(){
+  const bar = document.getElementById('progressBar');
+  bar.innerHTML = '';
+  questions.forEach((_, i) => {
+    const s = document.createElement('span');
+    if(i < current) s.classList.add('done');
+    bar.appendChild(s);
+  });
+}
+
+function renderQuestion(){
+  renderProgress();
+  document.getElementById('qNum').textContent = `Q${current+1} / ${questions.length}`;
+  document.getElementById('qText').textContent = questions[current].q;
+  const opts = document.getElementById('qOptions');
+  opts.innerHTML = '';
+  questions[current].options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span>${opt.t}</span><span class="chev">→</span>`;
+    btn.onclick = () => selectAnswer(opt.v);
+    opts.appendChild(btn);
+  });
+  const back = document.getElementById('backBtn');
+  if(current === 0){ back.classList.add('hidden'); }
+  else{
+    back.classList.remove('hidden');
+    back.onclick = () => { current--; score -= answers.pop(); renderQuestion(); };
+  }
+}
+
+function selectAnswer(v){
+  answers.push(v);
+  score += v;
+  current++;
+  if(current >= questions.length){ showResult(); }
+  else{ renderQuestion(); }
+}
+
+function showResult(){
+  document.getElementById('quizArea').classList.add('hidden');
+  const resultArea = document.getElementById('resultArea');
+  resultArea.classList.remove('hidden');
+
+  const max = questions.length * 2;
+  document.getElementById('resultScore').textContent = `${score} / ${max}`;
+
+  const badge = document.getElementById('resultBadge');
+  const title = document.getElementById('resultTitle');
+  const body = document.getElementById('resultBody');
+
+  if(score <= 3){
+    badge.className = 'result-badge low';
+    badge.textContent = '低リスク傾向';
+    title.textContent = '現時点で大きな空洞化の兆候は見られません。';
+    body.textContent = '会議運営や稼働状況の把握は比較的できている様子です。念のため、他部署も含めた傾向を詳細レポートで確認してみるのも一つの手です。';
+  } else if(score <= 7){
+    badge.className = 'result-badge mid';
+    badge.textContent = '要注意傾向';
+    title.textContent = '一部の組織で「仕事している風」が定着している可能性があります。';
+    body.textContent = '目的の曖昧な会議や、稼働状況が見えづらいメンバーへの心当たりが複数あるようです。特定の部署に絞った詳細ヒアリングで、実態を整理することをおすすめします。';
+  } else {
+    badge.className = 'result-badge high';
+    badge.textContent = '高リスク傾向';
+    title.textContent = '複数の兆候が重なっており、詳細な診断をおすすめします。';
+    body.textContent = '会議のあり方・稼働実態の把握・情報開示の裏付けと、複数の側面で懸念が見られます。放置すると人的資本開示の信頼性にも影響しうるため、早めに詳細レポートで整理することをおすすめします。';
+  }
+
+  lucide.createIcons();
+}
+
+function restartQuiz(){
+  current = 0; score = 0; answers.length = 0;
+  document.getElementById('resultArea').classList.add('hidden');
+  document.getElementById('quizArea').classList.remove('hidden');
+  renderQuestion();
+}
+
+renderQuestion();
+
+/* ---- Lead form ---- */
+function handleSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.submit-btn');
+  const originalHTML = btn.innerHTML;
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+
+  fetch('https://formspree.io/f/xeajgwyq', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function(res){
+      if (!res.ok) throw new Error('submit failed');
+      document.getElementById('formView').classList.add('hidden');
+      document.getElementById('thanksView').classList.remove('hidden');
+      lucide.createIcons();
+    })
+    .catch(function(){
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    });
+}
+</script>
+
+</body>
+</html>
