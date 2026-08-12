@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>コスパランチ — 今日、一番コスパがいい店を、AIが1分で教える。</title>
+<meta name="description" content="予算と重視ポイントを選ぶだけ。実力店の中から、AIが本当にコスパのいい3店を選びます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/cospalunch/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="コスパランチ — 今日、一番コスパがいい店を、AIが1分で教える。">
+<meta property="og:description" content="予算と重視ポイントを選ぶだけ。実力店の中から、AIが本当にコスパのいい3店を選びます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/cospalunch.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="コスパランチ — 今日、一番コスパがいい店を、AIが1分で教える。">
+<meta name="twitter:description" content="予算と重視ポイントを選ぶだけ。実力店の中から、AIが本当にコスパのいい3店を選びます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/cospalunch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFF8EA; --paper-raise:#FFFFFF; --ink:#3E2F1C; --steel:#8C7A5E;
+    --steel-light:#EFE1C4; --miso:#F5A623; --miso-ink:#C97F0E;
+    --daikon:#6FA84B; --tougarashi:#E8593F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; }
+  a{ color:inherit; }
+
+  header.site{ display:flex; align-items:center; justify-content:space-between; padding:20px 22px; max-width:640px; margin:0 auto; }
+  .wordmark{ font-size:18px; font-weight:900; display:flex; align-items:center; gap:8px; }
+  .wordmark .dot{ width:9px;height:9px;border-radius:50%;background:var(--miso); }
+  .kicker{ font-size:10.5px; letter-spacing:.12em; color:var(--steel); }
+
+  .hero{ padding:34px 22px 46px 22px; text-align:center; }
+  .hero h1{ font-size:clamp(26px,6vw,38px); line-height:1.35; font-weight:900; margin:0 auto 16px auto; max-width:16ch; }
+  .hero p{ font-size:14.5px; line-height:1.7; color:var(--steel); max-width:36ch; margin:0 auto 26px auto; }
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:#fff;
+    border:none; border-radius:12px; padding:14px 24px; font-size:14.5px; font-weight:700;
+    cursor:pointer; text-decoration:none;
+  }
+  .cta-btn .arrow{ color:var(--miso); }
+
+  .problem{ padding:40px 22px; border-top:1px solid var(--steel-light); }
+  .problem-inner{ max-width:520px; margin:0 auto; }
+  .eyebrow{ font-size:11px; letter-spacing:.1em; color:var(--miso-ink); font-weight:700; text-align:center; margin-bottom:10px; }
+  .problem h2{ font-size:21px; text-align:center; margin:0 0 8px 0; line-height:1.5; }
+  .problem p.muted{ font-size:13px; color:var(--steel); text-align:center; margin:0 0 20px 0; }
+  .stat-row{ display:flex; gap:12px; margin-top:22px; }
+  .stat-chip{ flex:1; background:var(--paper-raise); border:1px solid var(--steel-light); border-radius:12px; padding:14px 16px; }
+  .stat-chip .n{ font-family:"IBM Plex Mono",monospace; font-size:19px; font-weight:600; }
+  .stat-chip .l{ font-size:11px; color:var(--steel); margin-top:4px; line-height:1.4; }
+  .stat-source{ font-size:10px; color:var(--steel); text-align:center; margin-top:10px; }
+
+  /* ---------- concept preview ---------- */
+  .preview{ padding:50px 22px; background:var(--paper-raise); border-top:1px solid var(--steel-light); border-bottom:1px solid var(--steel-light); }
+  .preview-inner{ max-width:560px; margin:0 auto; }
+  .preview h2{ font-size:22px; text-align:center; margin:0 0 8px 0; }
+  .preview-tag{ text-align:center; font-size:11.5px; color:var(--steel); margin-bottom:32px; }
+  .preview-tag span{ background:#FDEFE0; color:var(--miso-ink); font-size:10.5px; font-weight:700; letter-spacing:.06em; border-radius:6px; padding:3px 9px; margin-right:6px; }
+
+  .flow3{ display:flex; align-items:flex-start; justify-content:center; gap:0; }
+  .flow-step{ flex:1; max-width:170px; text-align:center; padding:0 8px; }
+  .flow-icon{ width:52px; height:52px; border-radius:14px; background:var(--paper); border:1.5px solid var(--steel-light); display:flex; align-items:center; justify-content:center; margin:0 auto 12px auto; }
+  .flow-step h3{ font-size:13.5px; margin:0 0 5px 0; font-weight:700; }
+  .flow-step p{ font-size:11.5px; color:var(--steel); line-height:1.5; margin:0; }
+  .flow-connector{ width:36px; height:2px; background:var(--steel-light); margin-top:25px; flex-shrink:0; }
+
+  /* ---------- signup ---------- */
+  .signup{ padding:50px 22px 56px 22px; }
+  .signup-inner{ max-width:440px; margin:0 auto; }
+  .signup h2{ font-size:21px; text-align:center; margin:0 0 8px 0; }
+  .signup > .signup-inner > p{ text-align:center; font-size:13px; color:var(--steel); margin:0 0 26px 0; }
+
+  .form-card{ background:var(--paper-raise); border:1px solid var(--steel-light); border-radius:16px; padding:24px; }
+  .field-label{ font-size:12.5px; font-weight:700; margin-bottom:10px; display:block; }
+  .survey-options{ display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
+  .survey-opt{ display:flex; align-items:center; gap:10px; padding:11px 14px; border:1.5px solid var(--steel-light); border-radius:10px; cursor:pointer; font-size:13.5px; }
+  .survey-opt input{ accent-color:var(--miso); width:15px; height:15px; }
+  .survey-opt:has(input:checked){ border-color:var(--miso); background:#FDEFE0; }
+
+  .email-row{ display:flex; gap:10px; }
+  .email-input{ flex:1; border:1.5px solid var(--steel-light); border-radius:10px; padding:13px 14px; font-size:14px; font-family:inherit; }
+  .email-input:focus{ outline:none; border-color:var(--miso); }
+  .submit-btn{ background:var(--miso); color:#fff; border:none; border-radius:10px; padding:13px 20px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .submit-btn:hover{ background:var(--miso-ink); }
+  .form-note{ font-size:11px; color:var(--steel); margin-top:12px; text-align:center; }
+
+  .thanks-state{ display:none; text-align:center; padding:8px 0; }
+  .thanks-state.show{ display:block; }
+  .form-card.hidden{ display:none; }
+  .check-ring{ width:50px; height:50px; border-radius:50%; background:#EAF2E2; display:flex; align-items:center; justify-content:center; margin:0 auto 14px auto; }
+  .thanks-state h3{ font-size:16px; margin:0 0 6px 0; }
+  .thanks-state p{ font-size:13px; color:var(--steel); margin:0; }
+
+  footer{ padding:22px; border-top:1px solid var(--steel-light); max-width:640px; margin:0 auto; }
+  .foot-links{ display:flex; gap:16px; font-size:11px; justify-content:center; margin-bottom:8px; }
+  .foot-links a{ color:var(--steel); text-decoration:none; }
+  .foot-note{ font-size:10.5px; color:var(--steel); text-align:center; margin-bottom:6px; }
+  .foot-copy{ font-size:10.5px; color:var(--steel); text-align:center; }
+
+  @media (max-width:480px){
+    .flow3{ flex-direction:column; align-items:center; gap:18px; }
+    .flow-connector{ width:2px; height:20px; margin:0; }
+    .flow-step{ max-width:240px; }
+    .email-row{ flex-direction:column; }
+  }
+  :focus-visible{ outline:2.5px solid var(--miso); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark"><span class="dot"></span>コスパランチ</div>
+  <div class="kicker mono">Coming Soon</div>
+</header>
+
+<section class="hero">
+  <h1>今日、一番コスパがいい店を、<br>AIが1分で教える。</h1>
+  <p>予算と重視ポイントを選ぶだけ。実力店の中から、AIが本当にコスパのいい3店を選びます。準備中 — お先に教えてください。</p>
+  <a href="#signup" class="cta-btn">先行登録する <span class="arrow">→</span></a>
+</section>
+
+<section class="problem">
+  <div class="problem-inner">
+    <div class="eyebrow mono">THE PROBLEM</div>
+    <h2>外食ランチ代は過去最高水準。<br>それでも「今日どこにするか」は、毎日ゼロから考えている。</h2>
+    <div class="stat-row">
+      <div class="stat-chip"><div class="n">¥1,338</div><div class="l">2026年の外食ランチ平均額（過去最高）</div></div>
+      <div class="stat-chip"><div class="n">1/4</div><div class="l">節約のためランチを欠食した経験がある人の割合</div></div>
+    </div>
+    <div class="stat-source mono">出典：ホットペッパーグルメ外食総研（2026年3月調査）／エデンレッドジャパン「ビジネスパーソンのランチ実態調査2026」</div>
+  </div>
+</section>
+
+<section class="preview">
+  <div class="preview-inner">
+    <h2>サービス紹介</h2>
+    <div class="preview-tag"><span>CONCEPT PREVIEW</span>現在開発中のサービスです。</div>
+
+    <div class="flow3">
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#12203D" stroke-width="1.6"/><path d="M7 9h4M7 13h7" stroke="#12203D" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>予算と重視軸を選ぶ</h3>
+        <p>「〜1000円」「量重視」など、数タップで条件を伝える。</p>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="#D9740A" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#12203D" stroke-width="1.6"/></svg>
+        </div>
+        <h3>AIが候補を選ぶ</h3>
+        <p>近くの実力店の中から、価格・量・質を見比べてランキング。</p>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#5C8A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>今日の3店</h3>
+        <p>理由つきでTOP3を提示。あとは選んで向かうだけ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="signup-inner">
+    <h2>先行登録する</h2>
+    <p>一問答えるだけ。リリース時に一番にお知らせします。</p>
+
+    <div class="form-card" id="form-card">
+      <span class="field-label">ランチのお店選びで、一番重視するのは？</span>
+      <div class="survey-options">
+        <label class="survey-opt"><input type="radio" name="priority" value="portion"> 量（がっつり食べたい）</label>
+        <label class="survey-opt"><input type="radio" name="priority" value="quality"> 質（美味しさ・満足度）</label>
+        <label class="survey-opt"><input type="radio" name="priority" value="speed"> 早さ（提供のスピード）</label>
+        <label class="survey-opt"><input type="radio" name="priority" value="cheap"> とにかく安さ</label>
+      </div>
+
+      <span class="field-label">メールアドレス</span>
+      <div class="email-row">
+        <input type="email" class="email-input" id="email-input" name="email" placeholder="you@example.com" required>
+        <button class="submit-btn" id="submit-btn">登録する</button>
+      </div>
+      <div class="form-note">スパムはしません。リリース時に1通お知らせするだけです。</div>
+    </div>
+
+    <div class="thanks-state" id="thanks-state">
+      <div class="check-ring">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#5C8A3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>登録しました。</h3>
+      <p>コスパランチが使えるようになったら、一番にお知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+    <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+  </div>
+  <div class="foot-note">コスパランチはPlayers1stによる独立した検証中のコンセプトです。特定の飲食店・プラットフォームと提携・公認されたサービスではありません。</div>
+  <div class="foot-copy">© 2026 Players1st Inc. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById("submit-btn").addEventListener("click", function(){
+    var email = document.getElementById("email-input");
+    if(!email.value || !email.value.includes("@")){
+      email.focus();
+      email.style.borderColor = "#C1272D";
+      return;
+    }
+
+    var priority = document.querySelector('input[name="priority"]:checked');
+    var btn = document.getElementById("submit-btn");
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "...";
+
+    var body = new FormData();
+    body.append("email", email.value);
+    if (priority) body.append("priority", priority.value);
+
+    fetch("https://formspree.io/f/meajgyan", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: body
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error("submit failed");
+        document.getElementById("form-card").classList.add("hidden");
+        document.getElementById("thanks-state").classList.add("show");
+      })
+      .catch(function(){
+        alert("送信に失敗しました。時間をおいて再度お試しください。");
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
