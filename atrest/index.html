@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>@Rest — Drop your bags. Take a breath.</title>
+<meta name="description" content="A quiet place to rest for 10-15 minutes near your luggage storage. No sign-up. No membership. Shibuya & Shinjuku.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/atrest/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="@Rest — Drop your bags. Take a breath.">
+<meta property="og:description" content="A quiet place to rest for 10-15 minutes near your luggage storage. No sign-up. No membership. Shibuya & Shinjuku.">
+<meta property="og:image" content="https://showcase.p1st.app/og/atrest.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="@Rest — Drop your bags. Take a breath.">
+<meta name="twitter:description" content="A quiet place to rest for 10-15 minutes near your luggage storage. No sign-up. No membership. Shibuya & Shinjuku.">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/atrest.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.46.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy-deep:#071831;
+    --navy-soft:#14508c;
+    --mint:#1d9e75;
+    --mint-light:#e1f5ee;
+    --mint-mid:#5dcaa5;
+    --sand:#f6f4ee;
+    --ink:#1a2233;
+    --ink-soft:#5b6472;
+    --line:#e2e8ee;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Space Grotesk','Zen Kaku Gothic New',sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- lang switcher ---------- */
+  .langbar{
+    background:var(--navy-deep); color:#cdd8e6; font-size:12.5px;
+    display:flex; justify-content:flex-end; align-items:center; gap:2px;
+    padding:8px 24px;
+  }
+  .langbar button{
+    background:transparent; border:none; color:#9fb2c9; font-size:12.5px;
+    padding:4px 10px; border-radius:20px; cursor:pointer; font-family:inherit;
+    transition:all .15s ease;
+  }
+  .langbar button.active, .langbar button:hover{ background:rgba(255,255,255,.12); color:#fff; }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    background:var(--navy); color:#fff;
+    padding:18px 0;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:9px; font-size:20px; font-weight:700;}
+  .brand .at{color:var(--mint-mid);}
+  .nav-cta{
+    background:var(--mint); color:#04342c; font-weight:700; font-size:14px;
+    padding:10px 20px; border-radius:100px; white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color:#fff; padding:64px 0 0; position:relative; overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; padding-bottom:56px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(93,202,165,.14); border:1px solid rgba(93,202,165,.4);
+    color:var(--mint-mid); font-size:13px; font-weight:700; letter-spacing:.04em;
+    padding:6px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  h1{
+    font-size:44px; font-weight:900; line-height:1.18; letter-spacing:-.01em;
+    margin-bottom:20px;
+  }
+  h1 .accent{color:var(--mint-mid);}
+  .sub{font-size:17px; color:#c7d3e2; max-width:480px; margin-bottom:32px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .btn{
+    font-family:inherit; font-weight:700; font-size:15.5px; padding:15px 28px;
+    border-radius:100px; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--mint); color:#04342c; box-shadow:0 10px 24px -8px rgba(29,158,117,.55);}
+  .btn-ghost{background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.28);}
+  .trust-row{display:flex; gap:26px; flex-wrap:wrap; font-size:13.5px; color:#9fb2c9;}
+  .trust-row span{display:flex; align-items:center; gap:6px;}
+  .trust-row i{color:var(--mint-mid); font-size:16px;}
+
+  .hero-card{
+    background:#fff; border-radius:20px; padding:26px; color:var(--ink);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+  }
+  .hero-card .steps{display:flex; flex-direction:column; gap:0;}
+  .step-row{display:flex; gap:14px; padding:14px 0; align-items:flex-start;}
+  .step-row + .step-row{border-top:1px dashed var(--line);}
+  .step-num{
+    width:32px; height:32px; border-radius:50%; background:var(--mint-light); color:var(--mint);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex:none;
+  }
+  .step-row h4{font-size:15px; font-weight:700; margin-bottom:2px;}
+  .step-row p{font-size:13.5px; color:var(--ink-soft);}
+  .hero-price{
+    margin-top:16px; background:var(--sand); border-radius:14px; padding:16px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .hero-price .amt{font-size:22px; font-weight:900; color:var(--navy);}
+  .hero-price .lbl{font-size:12.5px; color:var(--ink-soft);}
+
+  /* ---------- section shared ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:620px; margin:0 auto 44px; text-align:center;}
+  .kicker{
+    color:var(--mint); font-weight:700; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+    margin-bottom:12px; display:block;
+  }
+  h2{font-size:30px; font-weight:900; color:var(--navy); letter-spacing:-.01em; margin-bottom:12px;}
+  .section-head p{color:var(--ink-soft); font-size:15.5px;}
+
+  /* ---------- problem ---------- */
+  .problem{background:#fff;}
+  .problem-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .problem-card{
+    border:1px solid var(--line); border-radius:16px; padding:26px 22px; text-align:left;
+  }
+  .problem-card .ic{
+    width:44px; height:44px; border-radius:12px; background:#fdecec; color:#c0392b;
+    display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px;
+  }
+  .problem-card h3{font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--navy);}
+  .problem-card p{font-size:14px; color:var(--ink-soft);}
+
+  /* ---------- solution ---------- */
+  .solution{
+    background:var(--navy-deep); color:#fff;
+  }
+  .solution .section-head h2{color:#fff;}
+  .solution .section-head p{color:#aebcce;}
+  .sol-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .sol-card{
+    background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.12); border-radius:18px;
+    padding:28px 24px;
+  }
+  .sol-num{
+    font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:var(--mint-mid);
+    margin-bottom:14px;
+  }
+  .sol-card h3{font-size:17px; font-weight:700; margin-bottom:8px;}
+  .sol-card p{font-size:14px; color:#b6c3d6;}
+
+  /* ---------- comparison ---------- */
+  .compare{background:var(--sand);}
+  table.cmp{width:100%; border-collapse:collapse; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 1px 0 var(--line);}
+  table.cmp th, table.cmp td{padding:16px 18px; font-size:14px; text-align:left; border-bottom:1px solid var(--line);}
+  table.cmp th{background:var(--navy); color:#fff; font-weight:700; font-size:13.5px;}
+  table.cmp td:first-child, table.cmp th:first-child{color:var(--ink-soft); font-weight:500;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp td.yes{color:var(--mint); font-weight:700;}
+  table.cmp td.no{color:#b9bfc8;}
+  .cmp-highlight td{background:var(--mint-light);}
+  .cmp-highlight td:first-child{font-weight:700; color:var(--navy);}
+
+  /* ---------- location / cta ---------- */
+  .location{background:#fff;}
+  .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;}
+  .loc-card{
+    border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; gap:16px; align-items:flex-start;
+  }
+  .loc-card + .loc-card{margin-top:16px;}
+  .loc-ic{width:42px; height:42px; border-radius:10px; background:var(--mint-light); color:var(--mint); display:flex; align-items:center; justify-content:center; font-size:19px; flex:none;}
+  .loc-card h4{font-size:15.5px; font-weight:700; color:var(--navy); margin-bottom:4px;}
+  .loc-card p{font-size:13.5px; color:var(--ink-soft);}
+  .map-box{
+    background:var(--navy); border-radius:18px; height:100%; min-height:300px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; padding:32px;
+  }
+  .map-box i{font-size:34px; color:var(--mint-mid); margin-bottom:14px;}
+  .map-box h4{font-size:17px; font-weight:700; margin-bottom:6px;}
+  .map-box p{font-size:13.5px; color:#b6c3d6;}
+
+  /* ---------- final cta / form ---------- */
+  .cta-final{
+    background:linear-gradient(135deg, var(--mint) 0%, #0f6e56 100%);
+    color:#04342c;
+  }
+  .cta-box{
+    background:#fff; border-radius:22px; padding:40px; max-width:760px; margin:0 auto;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.25);
+  }
+  .cta-box h2{color:var(--navy); text-align:center; margin-bottom:6px;}
+  .cta-box > p{text-align:center; color:var(--ink-soft); margin-bottom:30px; font-size:14.5px;}
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field{margin-bottom:16px;}
+  .field.full{grid-column:1 / -1;}
+  .field label{
+    display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:6px;
+  }
+  .badge{
+    font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; letter-spacing:.02em;
+  }
+  .badge.req{background:#fdecec; color:#c0392b;}
+  .badge.opt{background:#eef1f4; color:#7c8794;}
+  input[type=text], input[type=email], select{
+    width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+    font-family:inherit; font-size:14.5px; background:#fbfbf9; color:var(--ink);
+  }
+  input:focus, select:focus{outline:2px solid var(--mint); outline-offset:1px; background:#fff;}
+  .submit-row{margin-top:8px;}
+  .btn-submit{
+    width:100%; background:var(--navy); color:#fff; font-weight:700; font-size:16px;
+    padding:16px; border-radius:12px; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .btn-submit:hover{background:var(--navy-soft);}
+  .form-note{font-size:12px; color:var(--ink-soft); text-align:center; margin-top:14px;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep); color:#8fa0b8; padding:44px 0 28px; font-size:13px;}
+  .foot-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08);}
+  .foot-links{display:flex; gap:22px; flex-wrap:wrap;}
+  .foot-links a:hover{color:#fff;}
+  .foot-bottom{padding-top:18px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .problem-grid, .sol-grid{grid-template-columns:1fr;}
+    .loc-grid{grid-template-columns:1fr;}
+    .form-grid{grid-template-columns:1fr;}
+    h1{font-size:32px;}
+    h2{font-size:25px;}
+    table.cmp{font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar">
+  <button data-lang="en" class="active">EN</button>
+  <button data-lang="ja">日本語</button>
+  <button data-lang="zh">中文</button>
+  <button data-lang="ko">한국어</button>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="at">@</span>Rest</div>
+    <a href="#book" class="nav-cta" data-i18n="nav.cta">Reserve your spot</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i class="ti ti-map-pin-filled"></i> <span data-i18n="hero.eyebrow">Shibuya &amp; Shinjuku, Tokyo</span></span>
+      <h1 data-i18n="hero.title">Drop your bags.<br>Take a <span class="accent">breath.</span></h1>
+      <p class="sub" data-i18n="hero.sub">A quiet place to rest for 10&ndash;15 minutes, right where you're already storing your luggage. No membership. No sign-up. Pay only for the time you use.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn btn-primary"><i class="ti ti-clock"></i> <span data-i18n="hero.cta1">Try your first 10 minutes free</span></a>
+        <a href="#how" class="btn btn-ghost"><span data-i18n="hero.cta2">See how it works</span></a>
+      </div>
+      <div class="trust-row">
+        <span><i class="ti ti-language"></i> <span data-i18n="hero.trust1">4 languages</span></span>
+        <span><i class="ti ti-id-off"></i> <span data-i18n="hero.trust2">No membership</span></span>
+        <span><i class="ti ti-luggage"></i> <span data-i18n="hero.trust3">Luggage included</span></span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="steps">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div><h4 data-i18n="hero.step1.t">Drop your bag</h4><p data-i18n="hero.step1.d">At the partner luggage counter</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div><h4 data-i18n="hero.step2.t">Scan &amp; pay</h4><p data-i18n="hero.step2.d">10 minutes free, then a small per-minute rate</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div><h4 data-i18n="hero.step3.t">Just sit</h4><p data-i18n="hero.step3.d">No forms, no front desk, no waiting</p></div>
+        </div>
+      </div>
+      <div class="hero-price">
+        <div><div class="amt">¥0<span style="font-size:14px;font-weight:700;"> / 10 min</span></div><div class="lbl" data-i18n="hero.price.lbl">then ¥150 per 10 min</div></div>
+        <i class="ti ti-armchair" style="font-size:30px;color:var(--mint);"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="problem.kicker">The problem</span>
+      <h2 data-i18n="problem.title">Tired, but nowhere to sit</h2>
+      <p data-i18n="problem.sub">Shibuya and Shinjuku are packed with people &mdash; and short on places to simply stop.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="ic"><i class="ti ti-armchair-off"></i></div>
+        <h3 data-i18n="problem.c1.t">Public benches are full</h3>
+        <p data-i18n="problem.c1.d">The few benches around the station are almost always taken, especially in the afternoon.</p>
+      </div>
+      <div class="problem-card">
+        <div class="ic"><i class="ti ti-coffee"></i></div>
+        <h3 data-i18n="problem.c2.t">Cafés expect an order</h3>
+        <p data-i18n="problem.c2.d">Sitting down without buying something &mdash; or lingering too long &mdash; feels awkward.</p>
+      </div>
+      <div class="problem-card">
+        <div class="ic"><i class="ti ti-clipboard-text"></i></div>
+        <h3 data-i18n="problem.c3.t">Manga cafés need hours, not minutes</h3>
+        <p data-i18n="problem.c3.d">Membership sign-up and multi-hour packages aren't built for a quick 10-minute rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solution" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="solution.kicker">How it works</span>
+      <h2 data-i18n="solution.title">Rest, without the hassle</h2>
+      <p data-i18n="solution.sub">Three steps. No account. No waiting in line.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card">
+        <div class="sol-num">01</div>
+        <h3 data-i18n="solution.c1.t">Drop your bag</h3>
+        <p data-i18n="solution.c1.d">Leave your luggage at the partner counter, same as any storage service.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">02</div>
+        <h3 data-i18n="solution.c2.t">Scan the QR code</h3>
+        <p data-i18n="solution.c2.d">Pay in your language, in seconds. Your first 10 minutes are free.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">03</div>
+        <h3 data-i18n="solution.c3.t">Sit down and breathe</h3>
+        <p data-i18n="solution.c3.d">No sign-up, no front desk conversation. Get up and go whenever you're ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="compare.kicker">Why @Rest</span>
+      <h2 data-i18n="compare.title">Built for a 10-minute rest, not a 3-hour stay</h2>
+    </div>
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th data-i18n="compare.h0"></th>
+          <th data-i18n="compare.h1">@Rest</th>
+          <th data-i18n="compare.h2">Manga cafés</th>
+          <th data-i18n="compare.h3">Luggage storage only</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cmp-highlight">
+          <td data-i18n="compare.r1">Sign-up required</td>
+          <td class="yes" data-i18n="compare.r1.a">None</td>
+          <td class="no" data-i18n="compare.r1.b">Membership card</td>
+          <td class="no" data-i18n="compare.r1.c">&mdash;</td>
+        </tr>
+        <tr>
+          <td data-i18n="compare.r2">Minimum stay</td>
+          <td class="yes" data-i18n="compare.r2.a">10 minutes</td>
+          <td class="no" data-i18n="compare.r2.b">60+ minutes</td>
+          <td class="no" data-i18n="compare.r2.c">n/a</td>
+        </tr>
+        <tr class="cmp-highlight">
+          <td data-i18n="compare.r3">Language support</td>
+          <td class="yes" data-i18n="compare.r3.a">EN / JA / ZH / KO</td>
+          <td class="no" data-i18n="compare.r3.b">Mostly Japanese</td>
+          <td class="no" data-i18n="compare.r3.c">Varies</td>
+        </tr>
+        <tr>
+          <td data-i18n="compare.r4">Includes luggage</td>
+          <td class="yes" data-i18n="compare.r4.a">Yes</td>
+          <td class="no" data-i18n="compare.r4.b">No</td>
+          <td class="yes" data-i18n="compare.r4.c">Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="location">
+  <div class="wrap loc-grid">
+    <div>
+      <span class="kicker" data-i18n="location.kicker">Where</span>
+      <h2 data-i18n="location.title" style="margin-bottom:22px;">Starting in Shibuya</h2>
+      <div class="loc-card">
+        <div class="loc-ic"><i class="ti ti-clock"></i></div>
+        <div><h4 data-i18n="location.c1.t">Open during shopping hours</h4><p data-i18n="location.c1.d">Rest whenever you're out exploring &mdash; no need to plan ahead.</p></div>
+      </div>
+      <div class="loc-card">
+        <div class="loc-ic"><i class="ti ti-plug"></i></div>
+        <div><h4 data-i18n="location.c2.t">Charging available</h4><p data-i18n="location.c2.d">Top up your phone while you rest, at no extra cost.</p></div>
+      </div>
+    </div>
+    <div class="map-box">
+      <i class="ti ti-map-2"></i>
+      <h4 data-i18n="location.map.t">Pilot location</h4>
+      <p data-i18n="location.map.d">Near Shibuya Station<br>Exact address on booking confirmation</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="book">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2 data-i18n="form.title">Book your first rest</h2>
+      <p data-i18n="form.sub">First 10 minutes are free. No account needed.</p>
+      <form id="bookForm">
+        <div class="form-grid">
+          <div class="field full">
+            <label data-i18n="form.name.l">Name <span class="badge req" data-i18n="form.req">Required</span></label>
+            <input type="text" name="name" placeholder="Jamie Lee" data-i18n-ph="form.name.p" required>
+          </div>
+          <div class="field full">
+            <label data-i18n="form.email.l">Email <span class="badge req" data-i18n="form.req">Required</span></label>
+            <input type="email" name="email" placeholder="jamie@email.com" data-i18n-ph="form.email.p" required>
+          </div>
+          <div class="field">
+            <label data-i18n="form.time.l">Preferred time <span class="badge req" data-i18n="form.req">Required</span></label>
+            <select name="preferred_time">
+              <option data-i18n="form.time.o1">Today, afternoon</option>
+              <option data-i18n="form.time.o2">Today, evening</option>
+              <option data-i18n="form.time.o3">Tomorrow</option>
+            </select>
+          </div>
+          <div class="field">
+            <label data-i18n="form.lang.l">Language <span class="badge opt" data-i18n="form.opt">Optional</span></label>
+            <select name="language">
+              <option>English</option>
+              <option>日本語</option>
+              <option>中文</option>
+              <option>한국어</option>
+            </select>
+          </div>
+        </div>
+        <div class="submit-row">
+          <button class="btn-submit" type="submit"><i class="ti ti-armchair"></i> <span data-i18n="form.submit">Reserve my free 10 minutes</span></button>
+        </div>
+      </form>
+      <p class="form-note" data-i18n="form.note">This page is a validation prototype. Submitting confirms interest &mdash; no charge is made.</p>
+      <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+        <p style="font-weight:700; color:var(--navy); font-size:17px; margin:0 0 6px;">You're booked.</p>
+        <p style="color:var(--ink-soft); font-size:13.5px; margin:0;">We'll confirm the exact location and time by email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="brand" style="color:#fff;"><span class="at" style="color:var(--mint-mid);">@</span>Rest</div>
+      <div class="foot-links">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">Players1st Inc.</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">More services</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Players1st Inc. All rights reserved.</span>
+      <span data-i18n="footer.tag">A Players1st Multi Startup project</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  en: {
+    "nav.cta":"Reserve your spot",
+    "hero.eyebrow":"Shibuya &amp; Shinjuku, Tokyo",
+    "hero.sub":"A quiet place to rest for 10&ndash;15 minutes, right where you're already storing your luggage. No membership. No sign-up. Pay only for the time you use.",
+    "hero.cta1":"Try your first 10 minutes free",
+    "hero.cta2":"See how it works",
+    "hero.trust1":"4 languages","hero.trust2":"No membership","hero.trust3":"Luggage included",
+    "hero.step1.t":"Drop your bag","hero.step1.d":"At the partner luggage counter",
+    "hero.step2.t":"Scan &amp; pay","hero.step2.d":"10 minutes free, then a small per-minute rate",
+    "hero.step3.t":"Just sit","hero.step3.d":"No forms, no front desk, no waiting",
+    "hero.price.lbl":"then ¥150 per 10 min",
+    "problem.kicker":"The problem","problem.title":"Tired, but nowhere to sit",
+    "problem.sub":"Shibuya and Shinjuku are packed with people &mdash; and short on places to simply stop.",
+    "problem.c1.t":"Public benches are full","problem.c1.d":"The few benches around the station are almost always taken, especially in the afternoon.",
+    "problem.c2.t":"Caf\u00e9s expect an order","problem.c2.d":"Sitting down without buying something &mdash; or lingering too long &mdash; feels awkward.",
+    "problem.c3.t":"Manga caf\u00e9s need hours, not minutes","problem.c3.d":"Membership sign-up and multi-hour packages aren't built for a quick 10-minute rest.",
+    "solution.kicker":"How it works","solution.title":"Rest, without the hassle","solution.sub":"Three steps. No account. No waiting in line.",
+    "solution.c1.t":"Drop your bag","solution.c1.d":"Leave your luggage at the partner counter, same as any storage service.",
+    "solution.c2.t":"Scan the QR code","solution.c2.d":"Pay in your language, in seconds. Your first 10 minutes are free.",
+    "solution.c3.t":"Sit down and breathe","solution.c3.d":"No sign-up, no front desk conversation. Get up and go whenever you're ready.",
+    "compare.kicker":"Why @Rest","compare.title":"Built for a 10-minute rest, not a 3-hour stay",
+    "compare.h0":"","compare.h1":"@Rest","compare.h2":"Manga caf\u00e9s","compare.h3":"Luggage storage only",
+    "compare.r1":"Sign-up required","compare.r1.a":"None","compare.r1.b":"Membership card","compare.r1.c":"&mdash;",
+    "compare.r2":"Minimum stay","compare.r2.a":"10 minutes","compare.r2.b":"60+ minutes","compare.r2.c":"n/a",
+    "compare.r3":"Language support","compare.r3.a":"EN / JA / ZH / KO","compare.r3.b":"Mostly Japanese","compare.r3.c":"Varies",
+    "compare.r4":"Includes luggage","compare.r4.a":"Yes","compare.r4.b":"No","compare.r4.c":"Yes",
+    "location.kicker":"Where","location.title":"Starting in Shibuya",
+    "location.c1.t":"Open during shopping hours","location.c1.d":"Rest whenever you're out exploring &mdash; no need to plan ahead.",
+    "location.c2.t":"Charging available","location.c2.d":"Top up your phone while you rest, at no extra cost.",
+    "location.map.t":"Pilot location","location.map.d":"Near Shibuya Station<br>Exact address on booking confirmation",
+    "form.title":"Book your first rest","form.sub":"First 10 minutes are free. No account needed.",
+    "form.name.l":"Name","form.name.p":"Jamie Lee","form.email.l":"Email","form.email.p":"jamie@email.com",
+    "form.time.l":"Preferred time","form.time.o1":"Today, afternoon","form.time.o2":"Today, evening","form.time.o3":"Tomorrow",
+    "form.lang.l":"Language","form.req":"Required","form.opt":"Optional",
+    "form.submit":"Reserve my free 10 minutes","form.note":"This page is a validation prototype. Submitting confirms interest &mdash; no charge is made.",
+    "footer.tag":"A Players1st Multi Startup project"
+  },
+  ja: {
+    "nav.cta":"予約する",
+    "hero.eyebrow":"東京・渋谷 / 新宿",
+    "hero.sub":"荷物を預けたその場で、10〜15分だけ静かに休める場所。会員登録なし、受付なし。利用した時間分だけお支払い。",
+    "hero.cta1":"最初の10分を無料で試す",
+    "hero.cta2":"使い方を見る",
+    "hero.trust1":"4言語対応","hero.trust2":"会員登録不要","hero.trust3":"荷物predかり込み",
+    "hero.step1.t":"荷物を預ける","hero.step1.d":"提携の荷物predかりカウンターで",
+    "hero.step2.t":"QRを読んで支払う","hero.step2.d":"最初の10分は無料、以降は少額の従量課金",
+    "hero.step3.t":"座るだけ","hero.step3.d":"書類記入なし、受付対応なし、待ち時間なし",
+    "hero.price.lbl":"以降10分あたり150円",
+    "problem.kicker":"課題","problem.title":"疲れているのに、座る場所がない",
+    "problem.sub":"渋谷・新宿は人であふれ、ただ立ち止まる場所が足りません。",
+    "problem.c1.t":"公共のベンチは満席","problem.c1.d":"駅周辺の数少ないベンチは、特に午後はほぼ埋まっています。",
+    "problem.c2.t":"カフェは注文が前提","problem.c2.d":"何も注文せずに座る、長居するのは気が引けます。",
+    "problem.c3.t":"漫画喫茶は時間単位が長い","problem.c3.d":"会員登録や数時間パックは、10分だけの休憩には合いません。",
+    "solution.kicker":"使い方","solution.title":"手続きなしで、休める","solution.sub":"3ステップ。アカウント不要。並ぶ必要もありません。",
+    "solution.c1.t":"荷物を預ける","solution.c1.d":"通常の荷物predかりと同じように、提携カウンターに預けるだけ。",
+    "solution.c2.t":"QRコードを読み取る","solution.c2.d":"母国語で数秒で決済完了。最初の10分は無料です。",
+    "solution.c3.t":"座って、ひと息","solution.c3.d":"登録も受付対応も不要。準備ができたらいつでも出発できます。",
+    "compare.kicker":"@Restを選ぶ理由","compare.title":"3時間滞在ではなく、10分の休憩のために設計",
+    "compare.h0":"","compare.h1":"@Rest","compare.h2":"漫画喫茶","compare.h3":"荷物predかりのみ",
+    "compare.r1":"会員登録","compare.r1.a":"不要","compare.r1.b":"会員証が必要","compare.r1.c":"—",
+    "compare.r2":"最低利用時間","compare.r2.a":"10分","compare.r2.b":"60分以上","compare.r2.c":"該当なし",
+    "compare.r3":"対応言語","compare.r3.a":"英/日/中/韓","compare.r3.b":"主に日本語","compare.r3.c":"店舗による",
+    "compare.r4":"荷物predかり込み","compare.r4.a":"あり","compare.r4.b":"なし","compare.r4.c":"あり",
+    "location.kicker":"場所","location.title":"渋谷からスタート",
+    "location.c1.t":"営業時間中いつでも","location.c1.d":"事前予約なしで、外出中いつでも休憩できます。",
+    "location.c2.t":"充電も可能","location.c2.d":"休憩中に追加料金なしでスマホを充電できます。",
+    "location.map.t":"パイロット店舗","location.map.d":"渋谷駅付近<br>詳しい住所は予約確定後にご案内",
+    "form.title":"最初の休憩を予約する","form.sub":"最初の10分は無料。アカウント登録不要です。",
+    "form.name.l":"お名前","form.name.p":"山田 太郎","form.email.l":"メールアドレス","form.email.p":"taro@email.com",
+    "form.time.l":"希望時間帯","form.time.o1":"本日 午後","form.time.o2":"本日 夜","form.time.o3":"明日",
+    "form.lang.l":"言語","form.req":"必須","form.opt":"任意",
+    "form.submit":"無料10分を予約する","form.note":"本ページは検証用プロトタイプです。送信しても課金は発生しません。",
+    "footer.tag":"Players1st Multi Startup プロジェクト"
+  },
+  zh: {
+    "nav.cta":"立即预约",
+    "hero.eyebrow":"东京 涩谷 / 新宿",
+    "hero.sub":"在寄存行李的地方，安静休息10-15分钟。无需会员，无需注册，按使用时长付费。",
+    "hero.cta1":"免费体验前10分钟",
+    "hero.cta2":"了解使用方法",
+    "hero.trust1":"支持4种语言","hero.trust2":"无需会员","hero.trust3":"含行李寄存",
+    "hero.step1.t":"寄存行李","hero.step1.d":"在合作行李寄存柜台",
+    "hero.step2.t":"扫码支付","hero.step2.d":"前10分钟免费，之后按分钟少量计费",
+    "hero.step3.t":"直接落座","hero.step3.d":"无需填表，无需前台对话，无需等待",
+    "hero.price.lbl":"之后每10分钟150日元",
+    "problem.kicker":"问题","problem.title":"很累，却没地方坐",
+    "problem.sub":"涩谷和新宿人潮拥挤，缺少能停下休息的地方。",
+    "problem.c1.t":"公共长椅常常坐满","problem.c1.d":"车站周边为数不多的长椅几乎总是有人，下午尤其明显。",
+    "problem.c2.t":"咖啡馆默认要点单","problem.c2.d":"不消费就坐下，或停留太久，都会让人觉得不自在。",
+    "problem.c3.t":"网咖需要数小时起","problem.c3.d":"会员注册和多小时套餐，并不适合10分钟的短暂休息。",
+    "solution.kicker":"使用方法","solution.title":"无需手续，轻松休息","solution.sub":"三个步骤，无需账户，无需排队。",
+    "solution.c1.t":"寄存行李","solution.c1.d":"和普通行李寄存一样，交给合作柜台即可。",
+    "solution.c2.t":"扫描二维码","solution.c2.d":"用您的语言，几秒内完成支付。前10分钟免费。",
+    "solution.c3.t":"坐下，深呼吸","solution.c3.d":"无需注册，无需与前台交谈。准备好随时可以离开。",
+    "compare.kicker":"为什么选择@Rest","compare.title":"专为10分钟休息设计，而非3小时长坐",
+    "compare.h0":"","compare.h1":"@Rest","compare.h2":"网咖","compare.h3":"仅行李寄存",
+    "compare.r1":"需要注册","compare.r1.a":"无需","compare.r1.b":"需要会员卡","compare.r1.c":"—",
+    "compare.r2":"最短停留时间","compare.r2.a":"10分钟","compare.r2.b":"60分钟以上","compare.r2.c":"不适用",
+    "compare.r3":"语言支持","compare.r3.a":"英/日/中/韩","compare.r3.b":"主要为日语","compare.r3.c":"因店而异",
+    "compare.r4":"含行李寄存","compare.r4.a":"是","compare.r4.b":"否","compare.r4.c":"是",
+    "location.kicker":"地点","location.title":"从涩谷开始",
+    "location.c1.t":"营业时间内随时开放","location.c1.d":"外出游玩期间随时可休息，无需提前计划。",
+    "location.c2.t":"提供充电","location.c2.d":"休息时可为手机充电，不另收费。",
+    "location.map.t":"试点门店","location.map.d":"靠近涩谷站<br>详细地址将在预约确认后告知",
+    "form.title":"预约您的第一次休息","form.sub":"前10分钟免费，无需注册账户。",
+    "form.name.l":"姓名","form.name.p":"王小明","form.email.l":"邮箱","form.email.p":"xiaoming@email.com",
+    "form.time.l":"期望时间","form.time.o1":"今天 下午","form.time.o2":"今天 晚上","form.time.o3":"明天",
+    "form.lang.l":"语言","form.req":"必填","form.opt":"选填",
+    "form.submit":"预约免费10分钟","form.note":"本页面为验证用原型，提交不会产生任何费用。",
+    "footer.tag":"Players1st Multi Startup 项目"
+  },
+  ko: {
+    "nav.cta":"예약하기",
+    "hero.eyebrow":"도쿄 시부야 / 신주쿠",
+    "hero.sub":"짐을 맡긴 바로 그 자리에서 10~15분간 조용히 쉴 수 있는 공간. 회원가입 불필요, 사용한 시간만큼만 결제.",
+    "hero.cta1":"첫 10분 무료 체험",
+    "hero.cta2":"이용 방법 보기",
+    "hero.trust1":"4개 언어 지원","hero.trust2":"회원가입 불필요","hero.trust3":"짐 보관 포함",
+    "hero.step1.t":"짐 맡기기","hero.step1.d":"제휴 짐 보관 카운터에서",
+    "hero.step2.t":"QR 스캔 후 결제","hero.step2.d":"첫 10분 무료, 이후 분당 소액 요금",
+    "hero.step3.t":"바로 착석","hero.step3.d":"서류 작성, 프런트 응대, 대기 시간 없음",
+    "hero.price.lbl":"이후 10분당 150엔",
+    "problem.kicker":"문제","problem.title":"피곤한데 앉을 곳이 없다",
+    "problem.sub":"시부야와 신주쿠는 사람들로 붐비고, 잠시 멈출 곳은 부족합니다.",
+    "problem.c1.t":"공공 벤치는 항상 만석","problem.c1.d":"역 주변의 몇 안 되는 벤치는 특히 오후에 거의 항상 차 있습니다.",
+    "problem.c2.t":"카페는 주문이 기본","problem.c2.d":"아무것도 주문하지 않고 앉거나 오래 머무르는 것은 눈치가 보입니다.",
+    "problem.c3.t":"만화카페는 몇 시간 단위","problem.c3.d":"회원가입과 다시간 패키지는 10분짜리 짧은 휴식에 맞지 않습니다.",
+    "solution.kicker":"이용 방법","solution.title":"번거로움 없이 쉬기","solution.sub":"3단계. 계정 불필요. 줄 설 필요 없음.",
+    "solution.c1.t":"짐 맡기기","solution.c1.d":"일반 짐 보관 서비스와 동일하게 제휴 카운터에 맡기면 됩니다.",
+    "solution.c2.t":"QR코드 스캔","solution.c2.d":"모국어로 몇 초 만에 결제. 첫 10분은 무료입니다.",
+    "solution.c3.t":"앉아서 숨 고르기","solution.c3.d":"가입도, 프런트와의 대화도 필요 없습니다. 준비되면 언제든 떠나세요.",
+    "compare.kicker":"@Rest를 선택하는 이유","compare.title":"3시간 체류가 아닌 10분 휴식을 위한 설계",
+    "compare.h0":"","compare.h1":"@Rest","compare.h2":"만화카페","compare.h3":"짐 보관만",
+    "compare.r1":"가입 필요","compare.r1.a":"불필요","compare.r1.b":"회원카드 필요","compare.r1.c":"—",
+    "compare.r2":"최소 이용 시간","compare.r2.a":"10분","compare.r2.b":"60분 이상","compare.r2.c":"해당 없음",
+    "compare.r3":"언어 지원","compare.r3.a":"영/일/중/한","compare.r3.b":"대부분 일본어","compare.r3.c":"매장별 상이",
+    "compare.r4":"짐 보관 포함","compare.r4.a":"예","compare.r4.b":"아니오","compare.r4.c":"예",
+    "location.kicker":"위치","location.title":"시부야에서 시작",
+    "location.c1.t":"영업시간 내 언제든","location.c1.d":"외출 중 언제든 쉴 수 있어 미리 계획할 필요가 없습니다.",
+    "location.c2.t":"충전 가능","location.c2.d":"추가 비용 없이 휴식 중 휴대폰을 충전할 수 있습니다.",
+    "location.map.t":"파일럿 매장","location.map.d":"시부야역 인근<br>정확한 주소는 예약 확정 후 안내",
+    "form.title":"첫 휴식을 예약하세요","form.sub":"첫 10분은 무료입니다. 계정이 필요 없습니다.",
+    "form.name.l":"이름","form.name.p":"김민준","form.email.l":"이메일","form.email.p":"minjun@email.com",
+    "form.time.l":"희망 시간","form.time.o1":"오늘 오후","form.time.o2":"오늘 저녁","form.time.o3":"내일",
+    "form.lang.l":"언어","form.req":"필수","form.opt":"선택",
+    "form.submit":"무료 10분 예약하기","form.note":"이 페이지는 검증용 프로토타입입니다. 제출해도 요금이 청구되지 않습니다.",
+    "footer.tag":"Players1st Multi Startup 프로젝트"
+  }
+};
+
+function applyLang(lang){
+  const dict = i18n[lang] || i18n.en;
+  document.documentElement.setAttribute('data-lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-ph');
+    if(dict[key] !== undefined){ el.setAttribute('placeholder', dict[key]); }
+  });
+  document.querySelectorAll('.langbar button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+}
+document.querySelectorAll('.langbar button').forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang')));
+});
+
+document.getElementById('bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.btn-submit');
+  const originalHTML = btn.innerHTML;
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  fetch('https://formspree.io/f/xdenddnr', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+    .then(function(res){
+      if (!res.ok) throw new Error('submit failed');
+      form.style.display = 'none';
+      document.querySelector('[data-i18n="form.sub"]').style.display = 'none';
+      document.querySelector('.form-note').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    })
+    .catch(function(){
+      alert('Something went wrong. Please try again in a moment.');
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    });
+});
+</script>
+
+</body>
+</html>
