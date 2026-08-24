@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ペアで家計｜ペアの支出を、ひとつの家計簿でまとめる。</title>
+<meta name="description" content="別財布のまま、二人分の支出をアプリが自動で合算・集計。「結局今月いくら使った？」に、もう悩まない。ペア向け家計合算アプリ「ペアで家計」事前登録受付中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/pairdekakei/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ペアで家計｜ペアの支出を、ひとつの家計簿でまとめる。">
+<meta property="og:description" content="別財布のまま、二人分の支出をアプリが自動で合算・集計。「結局今月いくら使った？」に、もう悩まない。">
+<meta property="og:image" content="https://showcase.p1st.app/og/pairdekakei.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ペアで家計｜ペアの支出を、ひとつの家計簿でまとめる。">
+<meta name="twitter:description" content="別財布のまま、二人分の支出をアプリが自動で合算・集計。「結局今月いくら使った？」に、もう悩まない。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/pairdekakei.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF7F1;
+    --bg-alt: #F2EBDF;
+    --card: #FFFFFF;
+    --ink: #242B3D;
+    --ink-dim: rgba(36, 43, 61, 0.64);
+    --ink-faint: rgba(36, 43, 61, 0.40);
+    --line: rgba(36, 43, 61, 0.12);
+    --line-soft: rgba(36, 43, 61, 0.08);
+    --navy: #242B3D;
+    --navy-2: #333C54;
+    --orange: #FF8862;
+    --orange-deep: #F0724A;
+    --orange-soft: rgba(255, 136, 98, 0.14);
+    --blue: #4FB6E0;
+    --blue-deep: #2E9BC7;
+    --blue-soft: rgba(79, 182, 224, 0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 247, 241, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo .dots { display: inline-flex; gap: 3px; }
+  .nav-logo .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .nav-logo .dot.o { background: var(--orange); }
+  .nav-logo .dot.b { background: var(--blue); }
+  .nav-cta {
+    font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--navy); color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; padding: 96px 0 112px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(255,136,98,0.13) 0%, rgba(79,182,224,0.11) 45%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-dim);
+    border: 1px solid var(--line); background: var(--card);
+    padding: 7px 14px 7px 10px; border-radius: 100px; margin-bottom: 32px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--orange-deep);
+    box-shadow: 0 0 0 0 rgba(240,114,74,0.5); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(240,114,74,0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(240,114,74,0); }
+    100% { box-shadow: 0 0 0 0 rgba(240,114,74,0); }
+  }
+
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+
+  h1 { font-size: 46px; font-weight: 900; line-height: 1.42; letter-spacing: -0.01em; color: var(--navy); }
+  h1 .hl-o { color: var(--orange-deep); }
+
+  .sub { margin-top: 24px; font-size: 16.5px; color: var(--ink-dim); max-width: 460px; }
+
+  .hero-actions { margin-top: 40px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--navy); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 16px 28px; border-radius: 100px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(36,43,61,0.22); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .hero-note { font-size: 13px; color: var(--ink-faint); }
+
+  /* ===== MERGE VISUAL (signature) ===== */
+  .merge-visual { position: relative; aspect-ratio: 1 / 1; max-width: 380px; margin: 0 auto; }
+  .merge-visual svg { width: 100%; height: 100%; overflow: visible; }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 88px 0; }
+  .section-head { max-width: 620px; margin-bottom: 56px; }
+  .section-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-faint);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  h2 { font-size: 30px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; color: var(--navy); }
+  .section-desc { margin-top: 18px; font-size: 15.5px; color: var(--ink-dim); }
+
+  /* ===== PAIN (receipt tape motif) ===== */
+  .pain { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .receipt {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 8px 0; position: relative;
+    box-shadow: 0 20px 50px -30px rgba(36,43,61,0.25);
+  }
+  .receipt::before, .receipt::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 10px;
+    background: radial-gradient(circle at 6px 5px, var(--bg-alt) 5px, transparent 5.5px) repeat-x;
+    background-size: 20px 10px;
+  }
+  .receipt::before { top: -5px; }
+  .receipt::after { bottom: -5px; transform: rotate(180deg); }
+
+  .pain-row {
+    display: flex; align-items: flex-start; gap: 18px; padding: 22px 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pain-row:last-child { border-bottom: none; }
+  .pain-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; background: var(--orange-soft);
+  }
+  .pain-icon svg { width: 19px; height: 19px; stroke: var(--orange-deep); }
+  .pain-row:nth-child(2) .pain-icon { background: var(--blue-soft); }
+  .pain-row:nth-child(2) .pain-icon svg { stroke: var(--blue-deep); }
+  .pain-row:nth-child(3) .pain-icon { background: var(--line-soft); }
+  .pain-row:nth-child(3) .pain-icon svg { stroke: var(--navy); }
+  .pain-text-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--navy); }
+  .pain-text-desc { font-size: 14px; color: var(--ink-dim); }
+  .pain-tally { margin-left: auto; font-size: 13px; color: var(--ink-faint); white-space: nowrap; padding-top: 2px; }
+
+  /* ===== HOW (real sequence -> numbered) ===== */
+  .how-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .how-card {
+    border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px; position: relative;
+    background: var(--card);
+    box-shadow: 0 20px 40px -34px rgba(36,43,61,0.3);
+  }
+  .how-num {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: var(--bg);
+    background: var(--navy); width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+  }
+  .how-card:nth-child(1) .how-num { background: var(--orange-deep); }
+  .how-card:nth-child(2) .how-num { background: var(--blue-deep); }
+  .how-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+  .how-desc { font-size: 14px; color: var(--ink-dim); }
+  .how-arrow { position: absolute; top: 44px; right: -22px; color: var(--ink-faint); font-size: 18px; }
+  .how-card:last-child .how-arrow { display: none; }
+
+  .mini-dash { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--bg-alt); }
+  .mini-dash-total { font-size: 22px; font-weight: 700; color: var(--navy); }
+  .mini-dash-bar { margin-top: 10px; height: 8px; border-radius: 4px; overflow: hidden; display: flex; }
+  .mini-dash-bar span:first-child { background: var(--orange); width: 58%; }
+  .mini-dash-bar span:last-child { background: var(--blue); width: 42%; }
+  .mini-dash-legend { margin-top: 8px; display: flex; gap: 14px; font-size: 11.5px; color: var(--ink-faint); }
+  .mini-dash-legend b { color: var(--ink-dim); font-weight: 600; }
+
+  /* ===== FEATURE STRIP ===== */
+  .feature-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .feature { background: var(--card); padding: 30px 26px; }
+  .feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+  .feature-desc { font-size: 13.5px; color: var(--ink-dim); }
+
+  /* ===== PRICING ===== */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .plan { border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px; background: var(--card); }
+  .plan.pro {
+    border-color: rgba(240,114,74,0.35);
+    background: linear-gradient(160deg, rgba(255,136,98,0.09), var(--card) 60%);
+    position: relative;
+  }
+  .plan-badge {
+    position: absolute; top: 24px; right: 24px; font-size: 11px; font-weight: 700;
+    background: var(--orange-deep); color: #fff; padding: 4px 10px; border-radius: 100px;
+  }
+  .plan-name { font-size: 13px; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .plan-price { font-size: 34px; font-weight: 900; margin: 12px 0 4px; color: var(--navy); }
+  .plan-price span { font-size: 14px; font-weight: 500; color: var(--ink-faint); }
+  .plan-list { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .plan-list li { list-style: none; display: flex; gap: 10px; font-size: 14px; color: var(--ink-dim); align-items: flex-start; }
+  .plan-list svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; stroke: var(--orange-deep); }
+  .plan:not(.pro) .plan-list svg { stroke: var(--ink-faint); }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--bg-alt); border-top: 1px solid var(--line);
+    padding: 100px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ""; position: absolute; bottom: -320px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(255,136,98,0.14), rgba(79,182,224,0.11) 50%, transparent 72%);
+  }
+  .cta-inner { position: relative; max-width: 520px; margin: 0 auto; }
+  .cta-section h2 { text-align: center; }
+  .cta-section .section-desc { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .form-box {
+    margin-top: 40px; background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px; text-align: left; box-shadow: 0 30px 60px -40px rgba(36,43,61,0.3);
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+  label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); margin-bottom: 8px; }
+  input[type=email], select {
+    width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; font-size: 14.5px; color: var(--ink); font-family: inherit;
+  }
+  input[type=email]:focus, select:focus { outline: 2px solid var(--orange-deep); outline-offset: 1px; }
+  .form-submit {
+    width: 100%; margin-top: 22px; background: var(--navy); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 15px; border-radius: 12px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .form-fine { margin-top: 14px; font-size: 12px; color: var(--ink-faint); text-align: center; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    h1 { font-size: 32px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .merge-visual { order: -1; max-width: 260px; }
+    .how-list { grid-template-columns: 1fr; }
+    .how-arrow { display: none; }
+    .feature-strip { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pain-row { flex-wrap: wrap; padding: 18px 20px; }
+    .pain-tally { margin-left: 56px; }
+    section { padding: 64px 0; }
+    .hero { padding: 64px 0 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="dots"><span class="dot o"></span><span class="dot b"></span></span>
+      ペアで家計
+    </div>
+    <a href="#register" class="nav-cta">事前登録</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>#1日1スタートアップ ｜ 事前登録受付中</div>
+      <h1>ペアの支出を、<br><span class="hl-o">ひとつ</span>の家計簿で<br>まとめる。</h1>
+      <p class="sub">別財布のまま、二人分の支出をアプリが自動で合算・集計。<br>「結局今月いくら使った？」に、もう悩まない。</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          事前登録する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="hero-note">30秒で完了・費用はかかりません</span>
+      </div>
+    </div>
+
+    <div class="merge-visual" aria-hidden="true">
+      <svg viewBox="0 0 380 380">
+        <defs>
+          <radialGradient id="gOrange" cx="35%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="#FFB199"/>
+            <stop offset="100%" stop-color="#F0724A"/>
+          </radialGradient>
+          <radialGradient id="gBlue" cx="35%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="#9BDFF7"/>
+            <stop offset="100%" stop-color="#2E9BC7"/>
+          </radialGradient>
+          <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#242B3D" flood-opacity="0.18"/>
+          </filter>
+        </defs>
+
+        <circle cx="120" cy="120" r="70" fill="url(#gOrange)" filter="url(#softShadow)"/>
+        <circle cx="260" cy="120" r="70" fill="url(#gBlue)" filter="url(#softShadow)"/>
+
+        <text x="120" y="115" text-anchor="middle" fill="#ffffff" font-family="Zen Kaku Gothic New" font-weight="700" font-size="13">あなた</text>
+        <text x="120" y="136" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono" font-weight="700" font-size="15">¥64,200</text>
+
+        <text x="260" y="115" text-anchor="middle" fill="#ffffff" font-family="Zen Kaku Gothic New" font-weight="700" font-size="13">パートナー</text>
+        <text x="260" y="136" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono" font-weight="700" font-size="15">¥47,800</text>
+
+        <line x1="150" y1="170" x2="175" y2="255" stroke="#F0724A" stroke-width="2" stroke-dasharray="3 5" opacity="0.5"/>
+        <line x1="230" y1="170" x2="205" y2="255" stroke="#2E9BC7" stroke-width="2" stroke-dasharray="3 5" opacity="0.5"/>
+
+        <circle cx="190" cy="300" r="72" fill="#ffffff" filter="url(#softShadow)"/>
+        <text x="190" y="292" text-anchor="middle" fill="#242B3D" font-family="Zen Kaku Gothic New" font-weight="700" font-size="12" opacity="0.55">今月の合計</text>
+        <text x="190" y="320" text-anchor="middle" fill="#242B3D" font-family="JetBrains Mono" font-weight="700" font-size="24">¥112,000</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">こんなこと、ありませんか</div>
+      <h2>付け合わせが面倒で、<br>結局やっていない。</h2>
+      <p class="section-desc">二人分の支出を突き合わせるのは手間がかかる。だから多くのペアは、その作業自体をやめてしまっている。</p>
+    </div>
+
+    <div class="receipt">
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div>
+          <div class="pain-text-title">今月いくら使ったか、正直よく分からない</div>
+          <div class="pain-text-desc">それぞれの財布・カードで支払っているため、合計額を把握する機会自体がない。</div>
+        </div>
+        <div class="pain-tally mono">¥ ??,???</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/></svg></div>
+        <div>
+          <div class="pain-text-title">家計簿はつけているが、内訳としては集計できていない</div>
+          <div class="pain-text-desc">別々のアプリ・別々のノートに記録があり、二人分を合わせた集計は毎回手作業になる。</div>
+        </div>
+        <div class="pain-tally mono">2冊 → 0冊</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div>
+          <div class="pain-text-title">負担の割合が、なんとなくのイメージでしか分からない</div>
+          <div class="pain-text-desc">「多分自分の方が多く払っている」という感覚はあっても、実際の数字で確認したことがない。</div>
+        </div>
+        <div class="pain-tally mono">感覚値のみ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">使い方</div>
+      <h2>入力するのは、それぞれの支出だけ。</h2>
+      <p class="section-desc">合算・集計はアプリが自動でやる。二人でやることは、いつも通り記録するだけ。</p>
+    </div>
+
+    <div class="how-list">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">それぞれが支出を記録</div>
+        <div class="how-desc">あなたはあなたの支出を、パートナーはパートナーの支出を、いつも通りアプリに入力する。</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">自動でひとつにマージ</div>
+        <div class="how-desc">別財布のまま、二人分の記録がリアルタイムでひとつのダッシュボードに合流する。</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">合計・内訳・負担比率が見える</div>
+        <div class="how-desc">月の合計、カテゴリ別内訳、二人の負担比率まで自動で集計される。</div>
+        <div class="mini-dash">
+          <div class="mini-dash-total mono">¥112,000</div>
+          <div class="mini-dash-bar"><span></span><span></span></div>
+          <div class="mini-dash-legend"><span><b>58%</b> あなた</span><span><b>42%</b> パートナー</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">できること</div>
+      <h2>手間だけを、代わりに引き受ける。</h2>
+    </div>
+    <div class="feature-strip">
+      <div class="feature">
+        <div class="feature-title">自動合算</div>
+        <div class="feature-desc">二人分の支出記録を、リアルタイムでひとつのトータルに。手動での突き合わせは不要。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">カテゴリ別内訳</div>
+        <div class="feature-desc">食費・家賃・光熱費など、何にいくら使ったかを二人分まとめて可視化。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">負担比率の自動計算</div>
+        <div class="feature-desc">誰がどれだけ払っているかを、感覚ではなく数字で確認できる。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">料金</div>
+      <h2>まずは無料で。</h2>
+      <p class="section-desc">合算・トータル表示は無料。より詳しい内訳が欲しくなったら、いつでもアップグレードできます。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">無料プラン</div>
+        <div class="plan-price">¥0<span> / 月</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>二人分の支出入力</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>自動合算・月合計表示</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <div class="plan-badge">おすすめ</div>
+        <div class="plan-name">ペアプラン</div>
+        <div class="plan-price">¥980<span> / 月（二人で）</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>無料プランの内容すべて</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>カテゴリ別内訳</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>負担比率の自動計算</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>月次推移グラフ・CSV出力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="register">
+  <div class="wrap cta-inner">
+    <div class="section-label" style="text-align:center;">事前登録</div>
+    <h2>一番乗りで、使ってみませんか。</h2>
+    <p class="section-desc">先行登録いただいた方から順にご案内します。開発の進捗も #1日1スタートアップ で発信中。</p>
+
+    <form class="form-box" id="registerForm">
+      <div class="form-row">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="willingness">ペアプラン（月額980円）、使ってみたいと思いますか？</label>
+        <select id="willingness" name="willingness">
+          <option>ぜひ使いたい</option>
+          <option>内容次第で検討したい</option>
+          <option>無料プランで十分そう</option>
+          <option>まだ分からない</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">事前登録する</button>
+      <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+      <p style="font-weight:700; color:var(--navy); font-size:17px; margin:0 0 6px;">登録しました。ありがとうございます！</p>
+      <p style="color:var(--ink-dim); font-size:14px; margin:0;">先行登録いただいた方から順にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xrpzvvqj', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
