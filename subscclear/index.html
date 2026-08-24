@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>サブスククリア｜使っていないサブスク、見つけて、やめる。</title>
+<meta name="description" content="契約中のサブスクを登録するだけで、使っていない可能性が高いものを診断。解約ガイド付きだから、面倒な一歩もすぐ踏み出せる。事前登録受付中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/subscclear/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="サブスククリア｜使っていないサブスク、見つけて、やめる。">
+<meta property="og:description" content="契約中のサブスクを登録するだけで、使っていない可能性が高いものを診断。解約ガイド付きだから、面倒な一歩もすぐ踏み出せる。">
+<meta property="og:image" content="https://showcase.p1st.app/og/subscclear.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="サブスククリア｜使っていないサブスク、見つけて、やめる。">
+<meta name="twitter:description" content="契約中のサブスクを登録するだけで、使っていない可能性が高いものを診断。解約ガイド付きだから、面倒な一歩もすぐ踏み出せる。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/subscclear.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF7F1;
+    --bg-alt: #F2EBDF;
+    --card: #FFFFFF;
+    --ink: #242B3D;
+    --ink-dim: rgba(36, 43, 61, 0.64);
+    --ink-faint: rgba(36, 43, 61, 0.40);
+    --line: rgba(36, 43, 61, 0.12);
+    --line-soft: rgba(36, 43, 61, 0.08);
+    --navy: #242B3D;
+    --green: #2FA875;
+    --green-deep: #23875E;
+    --green-soft: rgba(47, 168, 117, 0.14);
+    --amber: #F0A245;
+    --amber-deep: #DA8A2C;
+    --amber-soft: rgba(240, 162, 69, 0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 247, 241, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo .mark {
+    width: 22px; height: 22px; border-radius: 7px; background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo .mark svg { width: 13px; height: 13px; stroke: #fff; }
+  .nav-cta {
+    font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--navy); color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; padding: 96px 0 112px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(47,168,117,0.12) 0%, rgba(240,162,69,0.10) 45%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-dim);
+    border: 1px solid var(--line); background: var(--card);
+    padding: 7px 14px 7px 10px; border-radius: 100px; margin-bottom: 32px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--amber-deep);
+    box-shadow: 0 0 0 0 rgba(218,138,44,0.5); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(218,138,44,0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(218,138,44,0); }
+    100% { box-shadow: 0 0 0 0 rgba(218,138,44,0); }
+  }
+
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+
+  h1 { font-size: 44px; font-weight: 900; line-height: 1.42; letter-spacing: -0.01em; color: var(--navy); }
+  h1 .hl-g { color: var(--green-deep); }
+
+  .sub { margin-top: 24px; font-size: 16.5px; color: var(--ink-dim); max-width: 460px; }
+
+  .hero-actions { margin-top: 40px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--navy); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 16px 28px; border-radius: 100px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(36,43,61,0.22); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .hero-note { font-size: 13px; color: var(--ink-faint); }
+
+  /* ===== SCAN VISUAL (signature) ===== */
+  .scan-visual { position: relative; max-width: 340px; margin: 0 auto; }
+  .scan-stack { display: flex; flex-direction: column; gap: 10px; }
+  .sub-card {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 13px 16px;
+    box-shadow: 0 14px 30px -22px rgba(36,43,61,0.28);
+    position: relative;
+  }
+  .sub-card .icon { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; }
+  .sub-card .info { flex: 1; }
+  .sub-card .name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+  .sub-card .price { font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+  .sub-card .status {
+    font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 100px; white-space: nowrap;
+  }
+  .sub-card.flagged { border-color: rgba(218,138,44,0.4); background: linear-gradient(90deg, var(--amber-soft), var(--card) 40%); }
+  .sub-card.flagged .status { background: var(--amber); color: #fff; }
+  .sub-card.ok .status { background: var(--line-soft); color: var(--ink-faint); }
+
+  .scan-result {
+    margin-top: 18px; background: var(--green-soft); border: 1px solid rgba(47,168,117,0.3);
+    border-radius: 16px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;
+  }
+  .scan-result .check {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--green);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .scan-result .check svg { width: 18px; height: 18px; stroke: #fff; }
+  .scan-result .label { font-size: 12px; color: var(--ink-dim); }
+  .scan-result .amount { font-size: 20px; font-weight: 700; color: var(--green-deep); }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 88px 0; }
+  .section-head { max-width: 620px; margin-bottom: 56px; }
+  .section-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-faint);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  h2 { font-size: 30px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; color: var(--navy); }
+  .section-desc { margin-top: 18px; font-size: 15.5px; color: var(--ink-dim); }
+
+  /* ===== PAIN (invoice/list motif) ===== */
+  .pain { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .receipt {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 8px 0; position: relative;
+    box-shadow: 0 20px 50px -30px rgba(36,43,61,0.25);
+  }
+  .receipt::before, .receipt::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 10px;
+    background: radial-gradient(circle at 6px 5px, var(--bg-alt) 5px, transparent 5.5px) repeat-x;
+    background-size: 20px 10px;
+  }
+  .receipt::before { top: -5px; }
+  .receipt::after { bottom: -5px; transform: rotate(180deg); }
+
+  .pain-row {
+    display: flex; align-items: flex-start; gap: 18px; padding: 22px 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pain-row:last-child { border-bottom: none; }
+  .pain-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; background: var(--amber-soft);
+  }
+  .pain-icon svg { width: 19px; height: 19px; stroke: var(--amber-deep); }
+  .pain-row:nth-child(2) .pain-icon { background: var(--green-soft); }
+  .pain-row:nth-child(2) .pain-icon svg { stroke: var(--green-deep); }
+  .pain-row:nth-child(3) .pain-icon { background: var(--line-soft); }
+  .pain-row:nth-child(3) .pain-icon svg { stroke: var(--navy); }
+  .pain-text-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--navy); }
+  .pain-text-desc { font-size: 14px; color: var(--ink-dim); }
+  .pain-tally { margin-left: auto; font-size: 13px; color: var(--ink-faint); white-space: nowrap; padding-top: 2px; }
+
+  /* ===== HOW (real sequence -> numbered) ===== */
+  .how-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .how-card {
+    border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px; position: relative;
+    background: var(--card);
+    box-shadow: 0 20px 40px -34px rgba(36,43,61,0.3);
+  }
+  .how-num {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: #fff;
+    background: var(--navy); width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+  }
+  .how-card:nth-child(1) .how-num { background: var(--amber-deep); }
+  .how-card:nth-child(2) .how-num { background: var(--green-deep); }
+  .how-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+  .how-desc { font-size: 14px; color: var(--ink-dim); }
+  .how-arrow { position: absolute; top: 44px; right: -22px; color: var(--ink-faint); font-size: 18px; }
+  .how-card:last-child .how-arrow { display: none; }
+
+  .mini-guide { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--bg-alt); }
+  .mini-guide-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-dim); margin-bottom: 8px; }
+  .mini-guide-item:last-child { margin-bottom: 0; }
+  .mini-guide-item svg { width: 14px; height: 14px; stroke: var(--green-deep); flex-shrink: 0; }
+
+  /* ===== FEATURE STRIP ===== */
+  .feature-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .feature { background: var(--card); padding: 30px 26px; }
+  .feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+  .feature-desc { font-size: 13.5px; color: var(--ink-dim); }
+
+  /* ===== PRICING ===== */
+  .pricing-single {
+    border: 1px solid rgba(47,168,117,0.35);
+    background: linear-gradient(160deg, rgba(47,168,117,0.08), var(--card) 55%);
+    border-radius: 20px; padding: 36px 40px;
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+  }
+  .pricing-single .plan-name { font-size: 13px; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .pricing-single .plan-price { font-size: 30px; font-weight: 900; margin: 10px 0 6px; color: var(--navy); }
+  .pricing-single .plan-price span { font-size: 14px; font-weight: 500; color: var(--ink-faint); }
+  .pricing-single .plan-desc { font-size: 14px; color: var(--ink-dim); max-width: 380px; }
+  .pricing-free {
+    text-align: center; padding: 20px 26px; border-left: 1px dashed var(--line);
+  }
+  .pricing-free .label { font-size: 12px; color: var(--ink-faint); margin-bottom: 6px; }
+  .pricing-free .value { font-size: 24px; font-weight: 900; color: var(--green-deep); }
+  .pricing-free .sub { font-size: 11.5px; color: var(--ink-faint); margin-top: 4px; }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--bg-alt); border-top: 1px solid var(--line);
+    padding: 100px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ""; position: absolute; bottom: -320px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(47,168,117,0.14), rgba(240,162,69,0.10) 50%, transparent 72%);
+  }
+  .cta-inner { position: relative; max-width: 520px; margin: 0 auto; }
+  .cta-section h2 { text-align: center; }
+  .cta-section .section-desc { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .form-box {
+    margin-top: 40px; background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px; text-align: left; box-shadow: 0 30px 60px -40px rgba(36,43,61,0.3);
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+  label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); margin-bottom: 8px; }
+  input[type=email], select {
+    width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; font-size: 14.5px; color: var(--ink); font-family: inherit;
+  }
+  input[type=email]:focus, select:focus { outline: 2px solid var(--green-deep); outline-offset: 1px; }
+  .form-submit {
+    width: 100%; margin-top: 22px; background: var(--navy); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 15px; border-radius: 12px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .form-fine { margin-top: 14px; font-size: 12px; color: var(--ink-faint); text-align: center; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    h1 { font-size: 30px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .scan-visual { order: -1; max-width: 320px; }
+    .how-list { grid-template-columns: 1fr; }
+    .how-arrow { display: none; }
+    .feature-strip { grid-template-columns: 1fr; }
+    .pain-row { flex-wrap: wrap; padding: 18px 20px; }
+    .pain-tally { margin-left: 56px; }
+    .pricing-single { grid-template-columns: 1fr; text-align: center; }
+    .pricing-free { border-left: none; border-top: 1px dashed var(--line); }
+    section { padding: 64px 0; }
+    .hero { padding: 64px 0 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      サブスククリア
+    </div>
+    <a href="#register" class="nav-cta">事前登録</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>#1日1スタートアップ ｜ 事前登録受付中</div>
+      <h1>使っていないサブスク、<br><span class="hl-g">見つけて</span>、やめる。</h1>
+      <p class="sub">契約中のサブスクを登録するだけで、使っていない可能性が高いものを診断。<br>解約ガイド付きだから、面倒な一歩もすぐ踏み出せる。</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          事前登録する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="hero-note">30秒で完了・費用はかかりません</span>
+      </div>
+    </div>
+
+    <div class="scan-visual" aria-hidden="true">
+      <div class="scan-stack">
+        <div class="sub-card flagged">
+          <div class="icon" style="background:#E4453F;"></div>
+          <div class="info">
+            <div class="name">動画配信サービス A</div>
+            <div class="price mono">¥1,980 / 月</div>
+          </div>
+          <div class="status">3ヶ月未使用</div>
+        </div>
+        <div class="sub-card ok">
+          <div class="icon" style="background:#1DB954;"></div>
+          <div class="info">
+            <div class="name">音楽配信サービス B</div>
+            <div class="price mono">¥980 / 月</div>
+          </div>
+          <div class="status">よく利用中</div>
+        </div>
+        <div class="sub-card flagged">
+          <div class="icon" style="background:#6C5CE7;"></div>
+          <div class="info">
+            <div class="name">クラウド容量サービス C</div>
+            <div class="price mono">¥500 / 月</div>
+          </div>
+          <div class="status">重複の可能性</div>
+        </div>
+      </div>
+      <div class="scan-result">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div>
+          <div class="label">見直しで年間削減できる可能性</div>
+          <div class="amount mono">¥29,760</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">こんなこと、ありませんか</div>
+      <h2>分かっているのに、<br>見直せていない。</h2>
+      <p class="section-desc">サブスクの整理は、気づいていても後回しにしがちな作業。物価高でも、この"見えない出費"はなかなか手をつけられない。</p>
+    </div>
+
+    <div class="receipt">
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg></div>
+        <div>
+          <div class="pain-text-title">使っていないサブスク、実は年間数万円の損失に</div>
+          <div class="pain-text-desc">月額数百〜数千円の小さな出費でも、放置している数が多いほど年間の損失は大きくなる。</div>
+        </div>
+        <div class="pain-tally mono">平均 ¥30,000+/年</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div>
+          <div class="pain-text-title">解約したいのに、方法が分からず放置</div>
+          <div class="pain-text-desc">解約ページが分かりにくい、手続きが面倒で「今度でいいか」と先延ばしにしてしまう。</div>
+        </div>
+        <div class="pain-tally mono">着手率 低</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/></svg></div>
+        <div>
+          <div class="pain-text-title">家計簿アプリは、一覧表示までしかしてくれない</div>
+          <div class="pain-text-desc">支出の可視化はできても、「これは解約すべき」という判断や次の一歩までは教えてくれない。</div>
+        </div>
+        <div class="pain-tally mono">可視化止まり</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">使い方</div>
+      <h2>登録するのは、契約中のサブスクだけ。</h2>
+      <p class="section-desc">診断も、解約への道すじも、アプリが用意する。あなたがやることは、最後の一歩を選ぶだけ。</p>
+    </div>
+
+    <div class="how-list">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">契約中のサブスクを登録</div>
+        <div class="how-desc">主要サービスはアイコンから選ぶだけ。月額・契約日を入力すれば準備完了。</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">使っていない可能性を診断</div>
+        <div class="how-desc">利用頻度や重複の観点から、「見直し候補」に自動でフラグが立つ。</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">解約ガイドで、一歩を後押し</div>
+        <div class="how-desc">解約ページへの直リンクと手順ガイドで、面倒な作業もすぐに着手できる。</div>
+        <div class="mini-guide">
+          <div class="mini-guide-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>解約ページへの直リンク</div>
+          <div class="mini-guide-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>手順を1つずつ案内</div>
+          <div class="mini-guide-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>削減額を自動で記録</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">できること</div>
+      <h2>「気づく」も「動く」も、一緒にサポート。</h2>
+    </div>
+    <div class="feature-strip">
+      <div class="feature">
+        <div class="feature-title">見直し候補の自動診断</div>
+        <div class="feature-desc">利用頻度が低いもの、似た用途で重複しているものを自動で検出しフラグを立てる。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">解約ガイド</div>
+        <div class="feature-desc">サービスごとの解約ページ・手順をまとめて表示。迷わず、すぐに着手できる。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">削減額の記録</div>
+        <div class="feature-desc">解約が完了するたびに、年間でいくら削減できたかを自動で積み上げて表示。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">料金</div>
+      <h2>損しない設計で、まずは無料。</h2>
+      <p class="section-desc">サブスクの登録・診断は無料。実際に削減できたときだけ、その一部をいただきます。</p>
+    </div>
+    <div class="pricing-single">
+      <div>
+        <div class="plan-name">実行支援プラン</div>
+        <div class="plan-price">削減額の一部<span>のみ・成功時払い</span></div>
+        <div class="plan-desc">解約が完了し、実際に削減できた年間金額が確定した場合にのみ発生。事前登録時のアンケートで、想定される料率への意見も伺います。</div>
+      </div>
+      <div class="pricing-free">
+        <div class="label">登録・診断</div>
+        <div class="value">¥0</div>
+        <div class="sub">ずっと無料</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="register">
+  <div class="wrap cta-inner">
+    <div class="section-label" style="text-align:center;">事前登録</div>
+    <h2>まずは、あなたのサブスクを見てみませんか。</h2>
+    <p class="section-desc">先行登録いただいた方から順にご案内します。開発の進捗も #1日1スタートアップ で発信中。</p>
+
+    <form class="form-box" id="registerForm">
+      <div class="form-row">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="willingness">削減できた金額の何%程度なら報酬として納得できますか？</label>
+        <select id="willingness" name="willingness">
+          <option>10%程度なら</option>
+          <option>20%程度なら</option>
+          <option>30%程度なら</option>
+          <option>成果報酬より定額の方がいい</option>
+          <option>まだ分からない</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">事前登録する</button>
+      <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+      <p style="font-weight:700; color:var(--navy); font-size:17px; margin:0 0 6px;">登録しました。ありがとうございます！</p>
+      <p style="color:var(--ink-dim); font-size:14px; margin:0;">先行登録いただいた方から順にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mwlejjyr', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
