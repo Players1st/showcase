@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>UnLoss（アンロス）｜閉店前のお店に、まだ美味しいが待っている。</title>
+<meta name="description" content="渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。行けば、きっと何かに出会える。事前登録受付中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/unloss/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="UnLoss（アンロス）｜閉店前のお店に、まだ美味しいが待っている。">
+<meta property="og:description" content="渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。行けば、きっと何かに出会える。">
+<meta property="og:image" content="https://showcase.p1st.app/og/unloss.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UnLoss（アンロス）｜閉店前のお店に、まだ美味しいが待っている。">
+<meta name="twitter:description" content="渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。行けば、きっと何かに出会える。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/unloss.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF7EF;
+    --bg-alt: #F3EAD9;
+    --card: #FFFFFF;
+    --ink: #2A2620;
+    --ink-dim: rgba(42, 38, 32, 0.64);
+    --ink-faint: rgba(42, 38, 32, 0.40);
+    --line: rgba(42, 38, 32, 0.12);
+    --line-soft: rgba(42, 38, 32, 0.08);
+    --dark: #2A2620;
+    --coral: #E8603C;
+    --coral-deep: #C74B2A;
+    --coral-soft: rgba(232, 96, 60, 0.13);
+    --green: #4C9A6A;
+    --green-deep: #397E53;
+    --green-soft: rgba(76, 154, 106, 0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 247, 239, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo .mark {
+    width: 24px; height: 24px; border-radius: 7px; background: var(--coral);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo .mark svg { width: 14px; height: 14px; stroke: #fff; }
+  .nav-cta {
+    font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--dark); color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; padding: 88px 0 100px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(232,96,60,0.12) 0%, rgba(76,154,106,0.10) 45%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .area-badges { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+  .area-badge {
+    font-size: 12.5px; font-weight: 700; padding: 6px 14px; border-radius: 100px;
+    background: var(--card); border: 1px solid var(--line); color: var(--ink-dim);
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-dim);
+    border: 1px solid var(--line); background: var(--card);
+    padding: 7px 14px 7px 10px; border-radius: 100px; margin-bottom: 28px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--coral-deep);
+    box-shadow: 0 0 0 0 rgba(199,75,42,0.5); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(199,75,42,0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(199,75,42,0); }
+    100% { box-shadow: 0 0 0 0 rgba(199,75,42,0); }
+  }
+
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+
+  h1 { font-size: 42px; font-weight: 900; line-height: 1.48; letter-spacing: -0.01em; color: var(--dark); }
+  h1 .hl { color: var(--coral-deep); }
+
+  .sub { margin-top: 22px; font-size: 16px; color: var(--ink-dim); max-width: 460px; }
+
+  .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 16px 28px; border-radius: 100px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(42,38,32,0.22); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .hero-note { font-size: 13px; color: var(--ink-faint); }
+
+  /* ===== PRODUCT CARD VISUAL (signature) ===== */
+  .product-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 20px; max-width: 340px; margin: 0 auto;
+    box-shadow: 0 24px 60px -30px rgba(42,38,32,0.3);
+  }
+  .product-photo {
+    height: 160px; border-radius: 14px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #F5C99A, #E8603C 130%);
+  }
+  .timer-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(42,38,32,0.82); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 6px 11px; border-radius: 100px; display: flex; align-items: center; gap: 5px;
+  }
+  .timer-badge svg { width: 13px; height: 13px; }
+  .eco-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--green); color: #fff; font-size: 11.5px; font-weight: 700;
+    padding: 6px 10px; border-radius: 100px;
+  }
+  .product-info { padding: 18px 4px 4px; }
+  .product-shop { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 4px; }
+  .product-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .product-price-row { display: flex; align-items: baseline; gap: 10px; }
+  .price-old { font-size: 14px; color: var(--ink-faint); text-decoration: line-through; }
+  .price-new { font-size: 24px; font-weight: 900; color: var(--coral-deep); }
+  .price-off {
+    margin-left: auto; background: var(--coral-soft); color: var(--coral-deep);
+    font-size: 12.5px; font-weight: 700; padding: 5px 10px; border-radius: 8px;
+  }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 84px 0; }
+  .section-head { max-width: 620px; margin-bottom: 52px; }
+  .section-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-faint);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  h2 { font-size: 29px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; color: var(--dark); }
+  .section-desc { margin-top: 18px; font-size: 15.5px; color: var(--ink-dim); }
+
+  /* ===== PAIN ===== */
+  .pain { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .receipt {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 8px 0;
+    box-shadow: 0 20px 50px -30px rgba(42,38,32,0.25);
+  }
+  .pain-row {
+    display: flex; align-items: flex-start; gap: 18px; padding: 22px 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pain-row:last-child { border-bottom: none; }
+  .pain-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; background: var(--coral-soft);
+  }
+  .pain-icon svg { width: 19px; height: 19px; stroke: var(--coral-deep); }
+  .pain-row:nth-child(2) .pain-icon { background: var(--green-soft); }
+  .pain-row:nth-child(2) .pain-icon svg { stroke: var(--green-deep); }
+  .pain-row:nth-child(3) .pain-icon { background: var(--line-soft); }
+  .pain-row:nth-child(3) .pain-icon svg { stroke: var(--dark); }
+  .pain-text-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--dark); }
+  .pain-text-desc { font-size: 14px; color: var(--ink-dim); }
+  .pain-tally { margin-left: auto; font-size: 13px; color: var(--ink-faint); white-space: nowrap; padding-top: 2px; }
+
+  /* ===== HOW ===== */
+  .how-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .how-card {
+    border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; position: relative;
+    background: var(--card);
+    box-shadow: 0 20px 40px -34px rgba(42,38,32,0.3);
+  }
+  .how-num {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: #fff;
+    background: var(--dark); width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+  .how-card:nth-child(1) .how-num { background: var(--coral-deep); }
+  .how-card:nth-child(2) .how-num { background: var(--green-deep); }
+  .how-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+  .how-desc { font-size: 14px; color: var(--ink-dim); }
+
+  /* ===== FEATURE STRIP ===== */
+  .feature-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .feature { background: var(--card); padding: 30px 26px; }
+  .feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+  .feature-desc { font-size: 13.5px; color: var(--ink-dim); }
+
+  /* ===== PRICING ===== */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .plan { border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px; background: var(--card); }
+  .plan-name { font-size: 13px; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .plan-price { font-size: 28px; font-weight: 900; margin: 12px 0 6px; color: var(--dark); }
+  .plan-price span { font-size: 13.5px; font-weight: 500; color: var(--ink-faint); }
+  .plan-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .plan-list li { list-style: none; display: flex; gap: 10px; font-size: 14px; color: var(--ink-dim); align-items: flex-start; }
+  .plan-list svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; stroke: var(--coral-deep); }
+  .plan:nth-child(2) .plan-list svg { stroke: var(--green-deep); }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--bg-alt); border-top: 1px solid var(--line);
+    padding: 96px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ""; position: absolute; bottom: -320px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(232,96,60,0.13), rgba(76,154,106,0.11) 50%, transparent 72%);
+  }
+  .cta-inner { position: relative; max-width: 520px; margin: 0 auto; }
+  .cta-section h2 { text-align: center; }
+  .cta-section .section-desc { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .form-box {
+    margin-top: 38px; background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px; text-align: left; box-shadow: 0 30px 60px -40px rgba(42,38,32,0.3);
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+  label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); margin-bottom: 8px; }
+  input[type=email], select {
+    width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; font-size: 14.5px; color: var(--ink); font-family: inherit;
+  }
+  input[type=email]:focus, select:focus { outline: 2px solid var(--coral-deep); outline-offset: 1px; }
+  .form-submit {
+    width: 100%; margin-top: 22px; background: var(--dark); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 15px; border-radius: 12px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .form-fine { margin-top: 14px; font-size: 12px; color: var(--ink-faint); text-align: center; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    h1 { font-size: 30px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .product-card { order: -1; }
+    .how-list { grid-template-columns: 1fr; }
+    .feature-strip { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pain-row { flex-wrap: wrap; padding: 18px 20px; }
+    .pain-tally { margin-left: 56px; }
+    section { padding: 60px 0; }
+    .hero { padding: 56px 0 72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11Z"/></svg></span>
+      UnLoss（アンロス）
+    </div>
+    <a href="#register" class="nav-cta">事前登録</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="area-badges">
+      <span class="area-badge">📍 渋谷エリア</span>
+      <span class="area-badge">📍 新宿エリア</span>
+    </div>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>#1日1スタートアップ ｜ 事前登録受付中</div>
+      <h1>閉店前のお店に、<br><span class="hl">まだ美味しい</span>が<br>待っている。</h1>
+      <p class="sub">渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。<br>行けば、きっと何かに出会える。</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          事前登録する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="hero-note">30秒で完了・費用はかかりません</span>
+      </div>
+    </div>
+
+    <div class="product-card" aria-hidden="true">
+      <div class="product-photo">
+        <div class="timer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>残り2時間</div>
+        <div class="eco-badge">ロス削減に貢献</div>
+      </div>
+      <div class="product-info">
+        <div class="product-shop">渋谷区 ｜ ベーカリー ましろ</div>
+        <div class="product-name">本日の焼き菓子おまかせ袋</div>
+        <div class="product-price-row">
+          <span class="price-old mono">¥1,200</span>
+          <span class="price-new mono">¥480</span>
+          <span class="price-off">60%OFF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">知っていますか</div>
+      <h2>日本の飲食店ロスは、<br>年間523万トン。</h2>
+      <p class="section-desc">まだ美味しく食べられるのに、捨てられてしまう。お得に食べたい消費者と、ロスを減らしたい飲食店。両方の願いを、まだうまくつなげられていない。</p>
+    </div>
+
+    <div class="receipt">
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <div>
+          <div class="pain-text-title">物価高で、お得に食べる方法を探している</div>
+          <div class="pain-text-desc">閉店前の割引を知っていれば買いたいのに、そもそも「どこで何が割引になるか」を知る手段がない。</div>
+        </div>
+        <div class="pain-tally mono">年間523万t</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11Z"/></svg></div>
+        <div>
+          <div class="pain-text-title">既存のロス削減アプリは、使える店が少ない</div>
+          <div class="pain-text-desc">先行サービスはあるが、登録店舗数がまだ少なく、「近所で使えるお店がない」と感じやすい。</div>
+        </div>
+        <div class="pain-tally mono">店舗数 少</div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div>
+          <div class="pain-text-title">飲食店側も、ロスを収益に変える手段が少ない</div>
+          <div class="pain-text-desc">余った商品はそのまま廃棄コストになってしまう。捨てるより売れた方が、店にとっても嬉しい。</div>
+        </div>
+        <div class="pain-tally mono">廃棄コスト</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">使い方</div>
+      <h2>見て、予約して、受け取るだけ。</h2>
+      <p class="section-desc">渋谷・新宿エリアの対象店舗を、地図やリストからすぐに見つけられます。</p>
+    </div>
+
+    <div class="how-list">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">近くのお得を見つける</div>
+        <div class="how-desc">渋谷・新宿エリアの対象店舗の出品を、地図やリストからチェック。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">その場で予約・決済</div>
+        <div class="how-desc">欲しい商品を選んで、アプリ内でそのまま決済。受け取り用のコードが発行されます。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">お店で受け取る</div>
+        <div class="how-desc">指定の時間にお店へ。コードを見せるだけで、スムーズに受け取れます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">できること</div>
+      <h2>お得も、社会貢献も、まとめて。</h2>
+    </div>
+    <div class="feature-strip">
+      <div class="feature">
+        <div class="feature-title">最大数十%OFF</div>
+        <div class="feature-desc">通常価格より大幅にお得な価格で、飲食店の商品を購入できる。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">エリア密着</div>
+        <div class="feature-desc">渋谷・新宿エリアに絞ることで、「行けば必ず何かある」という体験を目指す。</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">フードロス削減</div>
+        <div class="feature-desc">購入することが、そのまま飲食店の廃棄削減につながる。お得と貢献が両立。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">料金</div>
+      <h2>利用者は、ずっと無料。</h2>
+      <p class="section-desc">アプリの利用・登録は無料。表示された割引価格のまま、追加手数料なしで購入できます。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">ご利用の方</div>
+        <div class="plan-price">¥0<span> / 登録・利用</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>登録・利用は無料</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>追加手数料なし（表示価格のまま）</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>渋谷・新宿エリアの店舗が対象</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="plan-name">飲食店の方</div>
+        <div class="plan-price">¥0<span> / 出品・掲載</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>出品・掲載は無料</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>売れた場合のみ、手数料が発生</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>廃棄コストの削減＋新たな収益に</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="register">
+  <div class="wrap cta-inner">
+    <div class="section-label" style="text-align:center;">事前登録</div>
+    <h2>渋谷・新宿の「もったいない」を、お得に。</h2>
+    <p class="section-desc">先行登録いただいた方から順にご案内します。開発の進捗も #1日1スタートアップ で発信中。</p>
+
+    <form class="form-box" id="registerForm">
+      <div class="form-row">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="area">よく利用するのはどちらのエリアですか？</label>
+        <select id="area" name="area">
+          <option>渋谷エリア</option>
+          <option>新宿エリア</option>
+          <option>どちらも利用する</option>
+          <option>どちらでもない</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="frequency">利用頻度の見込みは？</label>
+        <select id="frequency" name="frequency">
+          <option>週に数回使いたい</option>
+          <option>週1回程度</option>
+          <option>月に数回程度</option>
+          <option>まだ分からない</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">事前登録する</button>
+      <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+      <p style="font-weight:700; color:var(--dark); font-size:17px; margin:0 0 6px;">登録しました。ありがとうございます！</p>
+      <p style="color:var(--ink-dim); font-size:14px; margin:0;">先行登録いただいた方から順にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xzeplazk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
