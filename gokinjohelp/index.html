@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ご近所ヘルプ｜その「ちょっと困った」、ご近所の誰かが助けてくれる。</title>
+<meta name="description" content="家具の組み立て、棚の取り付け、引っ越しの荷物運び。業者を呼ぶほどでもない小さな困りごとを、近所の人にお願いできる。すきま時間で、ちょっとした収入にもなる。事前登録受付中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/gokinjohelp/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ご近所ヘルプ｜その「ちょっと困った」、ご近所の誰かが助けてくれる。">
+<meta property="og:description" content="家具の組み立て、棚の取り付け、引っ越しの荷物運び。業者を呼ぶほどでもない小さな困りごとを、近所の人にお願いできる。">
+<meta property="og:image" content="https://showcase.p1st.app/og/gokinjohelp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ご近所ヘルプ｜その「ちょっと困った」、ご近所の誰かが助けてくれる。">
+<meta name="twitter:description" content="家具の組み立て、棚の取り付け、引っ越しの荷物運び。業者を呼ぶほどでもない小さな困りごとを、近所の人にお願いできる。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/gokinjohelp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF7EF;
+    --bg-alt: #F3EAD9;
+    --card: #FFFFFF;
+    --ink: #2A2620;
+    --ink-dim: rgba(42, 38, 32, 0.64);
+    --ink-faint: rgba(42, 38, 32, 0.40);
+    --line: rgba(42, 38, 32, 0.12);
+    --line-soft: rgba(42, 38, 32, 0.08);
+    --dark: #2A2620;
+    --amber: #E8A23D;
+    --amber-deep: #C6832A;
+    --amber-soft: rgba(232, 162, 61, 0.14);
+    --blue: #3E7CB8;
+    --blue-deep: #2E5F8F;
+    --blue-soft: rgba(62, 124, 184, 0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 247, 239, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo .mark {
+    width: 24px; height: 24px; border-radius: 7px; background: var(--amber);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo .mark svg { width: 14px; height: 14px; stroke: #fff; }
+  .nav-cta {
+    font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--dark); color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; padding: 88px 0 100px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(232,162,61,0.12) 0%, rgba(62,124,184,0.10) 45%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-dim);
+    border: 1px solid var(--line); background: var(--card);
+    padding: 7px 14px 7px 10px; border-radius: 100px; margin-bottom: 28px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--amber-deep);
+    box-shadow: 0 0 0 0 rgba(198,131,42,0.5); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(198,131,42,0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(198,131,42,0); }
+    100% { box-shadow: 0 0 0 0 rgba(198,131,42,0); }
+  }
+
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+
+  h1 { font-size: 40px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; color: var(--dark); }
+  h1 .hl { color: var(--amber-deep); }
+
+  .sub { margin-top: 22px; font-size: 16px; color: var(--ink-dim); max-width: 460px; }
+
+  .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 16px 28px; border-radius: 100px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(42,38,32,0.22); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .hero-note { font-size: 13px; color: var(--ink-faint); }
+
+  /* ===== TASK CARD VISUAL (signature) ===== */
+  .task-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 22px; max-width: 340px; margin: 0 auto;
+    box-shadow: 0 24px 60px -30px rgba(42,38,32,0.3);
+  }
+  .task-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .task-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    background: var(--amber-soft); display: flex; align-items: center; justify-content: center;
+  }
+  .task-icon svg { width: 22px; height: 22px; stroke: var(--amber-deep); }
+  .task-name { font-size: 16px; font-weight: 700; color: var(--dark); }
+  .task-meta { font-size: 12.5px; color: var(--ink-faint); margin-top: 2px; }
+
+  .task-price-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line);
+    margin-bottom: 16px;
+  }
+  .task-price-label { font-size: 12.5px; color: var(--ink-faint); }
+  .task-price-value { font-size: 22px; font-weight: 900; color: var(--dark); }
+
+  .applicants { display: flex; align-items: center; gap: -8px; }
+  .applicants .avatars { display: flex; }
+  .applicants .avatar {
+    width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--card);
+    margin-left: -8px; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #fff;
+  }
+  .applicants .avatar:first-child { margin-left: 0; }
+  .applicants-text { font-size: 12.5px; color: var(--blue-deep); font-weight: 700; margin-left: 10px; }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 84px 0; }
+  .section-head { max-width: 620px; margin-bottom: 52px; }
+  .section-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-faint);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  h2 { font-size: 29px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; color: var(--dark); }
+  .section-desc { margin-top: 18px; font-size: 15.5px; color: var(--ink-dim); }
+
+  /* ===== PAIN ===== */
+  .pain { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .receipt {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 8px 0;
+    box-shadow: 0 20px 50px -30px rgba(42,38,32,0.25);
+  }
+  .pain-row {
+    display: flex; align-items: flex-start; gap: 18px; padding: 22px 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pain-row:last-child { border-bottom: none; }
+  .pain-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; background: var(--amber-soft);
+  }
+  .pain-icon svg { width: 19px; height: 19px; stroke: var(--amber-deep); }
+  .pain-row:nth-child(2) .pain-icon { background: var(--blue-soft); }
+  .pain-row:nth-child(2) .pain-icon svg { stroke: var(--blue-deep); }
+  .pain-row:nth-child(3) .pain-icon { background: var(--line-soft); }
+  .pain-row:nth-child(3) .pain-icon svg { stroke: var(--dark); }
+  .pain-text-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--dark); }
+  .pain-text-desc { font-size: 14px; color: var(--ink-dim); }
+
+  /* ===== TWO SIDES ===== */
+  .two-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .side-block {
+    border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px;
+    background: var(--card);
+  }
+  .side-block.request { border-color: rgba(232,162,61,0.35); background: linear-gradient(160deg, rgba(232,162,61,0.09), var(--card) 60%); }
+  .side-block.accept { border-color: rgba(62,124,184,0.35); background: linear-gradient(160deg, rgba(62,124,184,0.09), var(--card) 60%); }
+  .side-icon {
+    width: 48px; height: 48px; border-radius: 14px; margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .side-block.request .side-icon { background: var(--amber-soft); }
+  .side-block.request .side-icon svg { stroke: var(--amber-deep); }
+  .side-block.accept .side-icon { background: var(--blue-soft); }
+  .side-block.accept .side-icon svg { stroke: var(--blue-deep); }
+  .side-icon svg { width: 24px; height: 24px; }
+  .side-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+  .side-desc { font-size: 14.5px; color: var(--ink-dim); }
+  .side-examples { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .side-examples span {
+    font-size: 12.5px; background: var(--bg-alt); border: 1px solid var(--line);
+    padding: 5px 11px; border-radius: 100px; color: var(--ink-dim);
+  }
+
+  /* ===== HOW ===== */
+  .how-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .how-card {
+    border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px;
+    background: var(--card);
+    box-shadow: 0 20px 40px -34px rgba(42,38,32,0.3);
+  }
+  .how-num {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: #fff;
+    background: var(--dark); width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+  .how-card:nth-child(1) .how-num { background: var(--amber-deep); }
+  .how-card:nth-child(2) .how-num { background: var(--blue-deep); }
+  .how-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+  .how-desc { font-size: 14px; color: var(--ink-dim); }
+
+  /* ===== PRICING ===== */
+  .flow-card {
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px 28px; margin-bottom: 28px;
+    box-shadow: 0 20px 44px -32px rgba(42,38,32,0.25);
+  }
+  .flow-step { flex: 1; text-align: center; max-width: 200px; }
+  .flow-icon {
+    width: 44px; height: 44px; border-radius: 12px; margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .flow-icon svg { width: 21px; height: 21px; }
+  .flow-icon.request { background: var(--amber-soft); }
+  .flow-icon.request svg { stroke: var(--amber-deep); }
+  .flow-icon.fee { background: var(--line-soft); }
+  .flow-icon.fee svg { stroke: var(--dark); }
+  .flow-icon.accept { background: var(--blue-soft); }
+  .flow-icon.accept svg { stroke: var(--blue-deep); }
+  .flow-label { font-size: 13px; color: var(--ink-faint); margin-bottom: 6px; }
+  .flow-value { font-size: 20px; font-weight: 900; color: var(--dark); }
+  .flow-sub { font-size: 12px; color: var(--ink-faint); margin-top: 6px; line-height: 1.5; }
+  .flow-arrow { font-size: 20px; color: var(--ink-faint); flex-shrink: 0; }
+
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .plan { border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px; background: var(--card); }
+  .plan-name { font-size: 13px; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .plan-price { font-size: 26px; font-weight: 900; margin: 12px 0 6px; color: var(--dark); }
+  .plan-price span { font-size: 13.5px; font-weight: 500; color: var(--ink-faint); }
+  .plan-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .plan-list li { list-style: none; display: flex; gap: 10px; font-size: 14px; color: var(--ink-dim); align-items: flex-start; }
+  .plan-list svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; stroke: var(--amber-deep); }
+  .plan:nth-child(2) .plan-list svg { stroke: var(--blue-deep); }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--bg-alt); border-top: 1px solid var(--line);
+    padding: 96px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ""; position: absolute; bottom: -320px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(232,162,61,0.13), rgba(62,124,184,0.11) 50%, transparent 72%);
+  }
+  .cta-inner { position: relative; max-width: 520px; margin: 0 auto; }
+  .cta-section h2 { text-align: center; }
+  .cta-section .section-desc { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .form-box {
+    margin-top: 38px; background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px; text-align: left; box-shadow: 0 30px 60px -40px rgba(42,38,32,0.3);
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+  label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); margin-bottom: 8px; }
+  input[type=email], input[type=text], select {
+    width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; font-size: 14.5px; color: var(--ink); font-family: inherit;
+  }
+  input:focus, select:focus { outline: 2px solid var(--amber-deep); outline-offset: 1px; }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%; margin-top: 22px; background: var(--dark); color: var(--bg); font-weight: 700; font-size: 15px;
+    padding: 15px; border-radius: 12px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .form-fine { margin-top: 14px; font-size: 12px; color: var(--ink-faint); text-align: center; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    h1 { font-size: 28px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .task-card { order: -1; }
+    .two-sides { grid-template-columns: 1fr; }
+    .how-list { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .flow-card { flex-direction: column; gap: 16px; }
+    .flow-arrow { transform: rotate(90deg); }
+    .form-grid-2 { grid-template-columns: 1fr; }
+    .pain-row { flex-wrap: wrap; padding: 18px 20px; }
+    section { padding: 60px 0; }
+    .hero { padding: 56px 0 72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></span>
+      ご近所ヘルプ
+    </div>
+    <a href="#register" class="nav-cta">事前登録</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>#1日1スタートアップ ｜ 事前登録受付中</div>
+      <h1>その「ちょっと困った」、<br><span class="hl">ご近所の誰か</span>が<br>助けてくれる。</h1>
+      <p class="sub">家具の組み立て、棚の取り付け、引っ越しの荷物運び。業者を呼ぶほどでもない小さな困りごとを、近所の人にお願いできる。<br>すきま時間で、ちょっとした収入にもなる。</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          事前登録する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="hero-note">30秒で完了・費用はかかりません</span>
+      </div>
+    </div>
+
+    <div class="task-card" aria-hidden="true">
+      <div class="task-header">
+        <div class="task-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg></div>
+        <div>
+          <div class="task-name">組み立て式の本棚を設置してほしい</div>
+          <div class="task-meta">世田谷区 ｜ 今週末希望</div>
+        </div>
+      </div>
+      <div class="task-price-row">
+        <span class="task-price-label">お礼の目安</span>
+        <span class="task-price-value mono">¥2,500</span>
+      </div>
+      <div class="applicants">
+        <div class="avatars">
+          <div class="avatar" style="background:#E8A23D;">A</div>
+          <div class="avatar" style="background:#3E7CB8;">B</div>
+          <div class="avatar" style="background:#8783D1;">C</div>
+        </div>
+        <span class="applicants-text">近くの3人が応募中</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">こんなこと、ありませんか</div>
+      <h2>業者を呼ぶには小さすぎる、<br>でも自分ではやりたくない。</h2>
+      <p class="section-desc">組み立て家具、壁への棚の取り付け、重い荷物の運び出し。ちょっとした困りごとを頼める相手が、意外と身近にいない。</p>
+    </div>
+
+    <div class="receipt">
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg></div>
+        <div>
+          <div class="pain-text-title">組み立て家具、説明書を見ても心が折れる</div>
+          <div class="pain-text-desc">買ったはいいものの箱を開けたまま放置。誰かに手伝ってもらえたら、と思うことは多い。</div>
+        </div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></div>
+        <div>
+          <div class="pain-text-title">既存のマッチングサービスは、見積もりが重い</div>
+          <div class="pain-text-desc">くらしのマーケットは事業者向けの見積もり型で、小さな頼みごとには気軽に使いにくい。</div>
+        </div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div>
+          <div class="pain-text-title">個人間マッチングは、信頼性に不安が残る</div>
+          <div class="pain-text-desc">知らない人にお願いする・お邪魔する不安から、既存のサービスは十分に普及しきれていない。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">2つの立場から</div>
+      <h2>頼む人にも、助ける人にも。</h2>
+      <p class="section-desc">ご近所ヘルプは、どちらの立場からも気軽に使えるサービスを目指しています。</p>
+    </div>
+
+    <div class="two-sides">
+      <div class="side-block request">
+        <div class="side-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="side-title">頼みたい人</div>
+        <div class="side-desc">業者を呼ぶほどでもない、でも自分では大変な作業を、近所の人にお願いできます。</div>
+        <div class="side-examples">
+          <span>家具の組み立て</span><span>棚の取り付け</span><span>引っ越しの荷物運び</span>
+        </div>
+      </div>
+      <div class="side-block accept">
+        <div class="side-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <div class="side-title">助けたい人</div>
+        <div class="side-desc">すきま時間を使って、近所の困りごとを解決しながら、ちょっとした収入を得られます。</div>
+        <div class="side-examples">
+          <span>週末だけ</span><span>得意な作業だけ</span><span>近所だから気軽</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">使い方</div>
+      <h2>投稿して、応募して、お願いするだけ。</h2>
+    </div>
+
+    <div class="how-list">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">困りごとを投稿する</div>
+        <div class="how-desc">やってほしいことと、お礼の目安を入力するだけ。難しい見積もりは不要です。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">近くの人が応募する</div>
+        <div class="how-desc">対応できる近隣の人から応募が届きます。プロフィールを見て、お願いする人を選べます。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">やってもらって、決済</div>
+        <div class="how-desc">作業が終わったら、アプリ内で決済完了。現金のやり取りは不要です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">料金</div>
+      <h2>アプリの利用は無料。<br>お礼の中から、少しだけ手数料。</h2>
+      <p class="section-desc">依頼の投稿も、応募も、アプリの利用そのものにお金はかかりません。実際にお金が動くのは、依頼が成立した時だけです。</p>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-step">
+        <div class="flow-icon request"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="flow-label">頼みたい人が</div>
+        <div class="flow-value mono">¥2,500</div>
+        <div class="flow-sub">を支払う（依頼成立時のみ）</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon fee"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="flow-label">手数料</div>
+        <div class="flow-value mono">10〜20%</div>
+        <div class="flow-sub">がサービス利用料として差し引かれる</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon accept"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <div class="flow-label">助けた人が</div>
+        <div class="flow-value mono">¥2,000〜2,250</div>
+        <div class="flow-sub">を受け取る</div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">頼みたい人</div>
+        <div class="plan-price">¥0<span> / 登録・依頼投稿</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>登録・依頼投稿は無料</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>依頼が成立した時だけ、お礼の金額を支払う</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>お礼以外の追加手数料はなし</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="plan-name">助けたい人</div>
+        <div class="plan-price">¥0<span> / 登録・応募</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>登録・応募は無料</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>依頼が成立した時、お礼の金額から10〜20%を手数料として差し引いた額を受け取る</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>すきま時間で収入に</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="register">
+  <div class="wrap cta-inner">
+    <div class="section-label" style="text-align:center;">事前登録</div>
+    <h2>あなたの街でも、始まるかもしれません。</h2>
+    <p class="section-desc">登録の多い地域から、先行して提供を始める予定です。開発の進捗も #1日1スタートアップ で発信中。</p>
+
+    <form class="form-box" id="registerForm">
+      <div class="form-row">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="area">お住まいの地域</label>
+        <div class="form-grid-2">
+          <input type="text" id="prefecture" name="prefecture" placeholder="都道府県（例：東京都）" required>
+          <input type="text" id="city" name="city" placeholder="市区町村（例：世田谷区）" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="role">どちらの立場で使いたいですか？</label>
+        <select id="role" name="role">
+          <option>頼みたい（依頼したい）</option>
+          <option>助けたい（受注したい）</option>
+          <option>どちらも使いたい</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">事前登録する</button>
+      <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('.form-submit');
+    fetch('https://formspree.io/f/xljernpl', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        submitBtn.textContent = '登録しました。ありがとうございます！';
+        form.reset();
+      } else {
+        submitBtn.textContent = 'エラーが発生しました。再度お試しください。';
+      }
+    }).catch(() => {
+      submitBtn.textContent = 'エラーが発生しました。再度お試しください。';
+    });
+  });
+</script>
+
+</body>
+</html>

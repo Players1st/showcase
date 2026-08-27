@@ -181,4 +181,10 @@
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>https://showcase.p1st.app/gokinjohelp/</loc>
+<lastmod>2026-08-27</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
