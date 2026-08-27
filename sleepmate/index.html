@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>SleepMate（スリープメイト）｜そっと寄り添う、心を落ち着けるお供。</title>
+<meta name="description" content="夜は入眠ガイド、日中は3分のひと息。ひとりで抱え込まず、いつでもそばに寄り添う伴走者です。事前登録受付中。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/sleepmate/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="SleepMate（スリープメイト）｜そっと寄り添う、心を落ち着けるお供。">
+<meta property="og:description" content="夜は入眠ガイド、日中は3分のひと息。ひとりで抱え込まず、いつでもそばに寄り添う伴走者です。">
+<meta property="og:image" content="https://showcase.p1st.app/og/sleepmate.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SleepMate（スリープメイト）｜そっと寄り添う、心を落ち着けるお供。">
+<meta name="twitter:description" content="夜は入眠ガイド、日中は3分のひと息。ひとりで抱え込まず、いつでもそばに寄り添う伴走者です。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/sleepmate.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #1E2340;
+    --bg-deep: #14172B;
+    --bg-mid: #262C4F;
+    --line: rgba(241, 239, 250, 0.12);
+    --line-soft: rgba(241, 239, 250, 0.08);
+    --cream: #F1EFFA;
+    --cream-dim: rgba(241, 239, 250, 0.66);
+    --cream-faint: rgba(241, 239, 250, 0.40);
+    --lavender: #A8A4E8;
+    --lavender-deep: #8783D1;
+    --lavender-soft: rgba(168, 164, 232, 0.16);
+    --amber: #F5B971;
+    --amber-deep: #E09A45;
+    --amber-soft: rgba(245, 185, 113, 0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20, 23, 43, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+  .nav-logo .mark {
+    width: 24px; height: 24px; border-radius: 7px; background: var(--lavender);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo .mark svg { width: 14px; height: 14px; stroke: var(--bg-deep); }
+  .nav-cta {
+    font-size: 13px; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--cream); color: var(--bg-deep);
+  }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; padding: 88px 0 100px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -320px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(168,164,232,0.16) 0%, rgba(245,185,113,0.10) 45%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--cream-dim);
+    border: 1px solid var(--line); background: var(--bg-mid);
+    padding: 7px 14px 7px 10px; border-radius: 100px; margin-bottom: 28px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--lavender);
+    box-shadow: 0 0 0 0 rgba(168,164,232,0.5); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(168,164,232,0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(168,164,232,0); }
+    100% { box-shadow: 0 0 0 0 rgba(168,164,232,0); }
+  }
+
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+
+  h1 { font-size: 42px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; }
+  h1 .hl { color: var(--lavender); }
+
+  .sub { margin-top: 22px; font-size: 16px; color: var(--cream-dim); max-width: 460px; }
+
+  .hero-actions { margin-top: 36px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--cream); color: var(--bg-deep); font-weight: 700; font-size: 15px;
+    padding: 16px 28px; border-radius: 100px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.3); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .hero-note { font-size: 13px; color: var(--cream-faint); }
+
+  /* ===== MODE TOGGLE VISUAL (signature) ===== */
+  .mode-card {
+    background: var(--bg-mid); border: 1px solid var(--line); border-radius: 22px;
+    padding: 22px; max-width: 340px; margin: 0 auto;
+    box-shadow: 0 24px 60px -30px rgba(0,0,0,0.4);
+  }
+  .mode-toggle { display: flex; background: var(--bg-deep); border-radius: 100px; padding: 4px; margin-bottom: 20px; }
+  .mode-toggle .seg {
+    flex: 1; text-align: center; padding: 9px 0; border-radius: 100px; font-size: 13px; font-weight: 700;
+    color: var(--cream-faint); display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .mode-toggle .seg.active { background: var(--lavender); color: var(--bg-deep); }
+  .mode-toggle .seg svg { width: 14px; height: 14px; }
+
+  .now-playing { display: flex; align-items: center; gap: 14px; padding: 8px 4px 18px; }
+  .np-art {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--lavender), #6E69C4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .np-art svg { width: 24px; height: 24px; stroke: white; }
+  .np-title { font-size: 14.5px; font-weight: 700; color: var(--cream); }
+  .np-sub { font-size: 12px; color: var(--cream-faint); margin-top: 2px; }
+
+  .waveform { display: flex; align-items: center; gap: 3px; height: 32px; padding: 0 4px 16px; }
+  .waveform span { width: 3px; background: var(--lavender-deep); border-radius: 2px; opacity: 0.85; }
+
+  .timer-row { display: flex; align-items: center; justify-content: space-between; padding: 4px; }
+  .timer-label { font-size: 12px; color: var(--cream-faint); }
+  .timer-value { font-size: 13px; font-weight: 700; color: var(--lavender); }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 84px 0; }
+  .section-head { max-width: 620px; margin-bottom: 52px; }
+  .section-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--cream-faint);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  h2 { font-size: 29px; font-weight: 900; line-height: 1.5; letter-spacing: -0.01em; }
+  .section-desc { margin-top: 18px; font-size: 15.5px; color: var(--cream-dim); }
+
+  /* ===== PAIN ===== */
+  .pain { background: var(--bg-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .receipt {
+    background: var(--bg-mid); border: 1px solid var(--line); border-radius: 18px; padding: 8px 0;
+  }
+  .pain-row {
+    display: flex; align-items: flex-start; gap: 18px; padding: 22px 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pain-row:last-child { border-bottom: none; }
+  .pain-icon {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; background: var(--lavender-soft);
+  }
+  .pain-icon svg { width: 19px; height: 19px; stroke: var(--lavender); }
+  .pain-row:nth-child(2) .pain-icon { background: var(--amber-soft); }
+  .pain-row:nth-child(2) .pain-icon svg { stroke: var(--amber); }
+  .pain-row:nth-child(3) .pain-icon { background: var(--line-soft); }
+  .pain-row:nth-child(3) .pain-icon svg { stroke: var(--cream); }
+  .pain-text-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--cream); }
+  .pain-text-desc { font-size: 14px; color: var(--cream-dim); }
+
+  /* ===== TWO MODES ===== */
+  .two-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .two-modes.three { grid-template-columns: repeat(3, 1fr); }
+  .mode-block {
+    border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px;
+    background: var(--bg-mid);
+  }
+  .mode-block.night { border-color: rgba(168,164,232,0.3); background: linear-gradient(160deg, rgba(168,164,232,0.10), var(--bg-mid) 60%); }
+  .mode-block.day { border-color: rgba(245,185,113,0.3); background: linear-gradient(160deg, rgba(245,185,113,0.10), var(--bg-mid) 60%); }
+  .mode-block.support { border-color: rgba(241,239,250,0.22); background: linear-gradient(160deg, rgba(241,239,250,0.08), var(--bg-mid) 60%); }
+  .mode-icon {
+    width: 48px; height: 48px; border-radius: 14px; margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mode-block.night .mode-icon { background: var(--lavender-soft); }
+  .mode-block.night .mode-icon svg { stroke: var(--lavender); }
+  .mode-block.day .mode-icon { background: var(--amber-soft); }
+  .mode-block.day .mode-icon svg { stroke: var(--amber); }
+  .mode-block.support .mode-icon { background: var(--line-soft); }
+  .mode-block.support .mode-icon svg { stroke: var(--cream); }
+  .mode-icon svg { width: 24px; height: 24px; }
+  .mode-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .mode-desc { font-size: 14.5px; color: var(--cream-dim); }
+
+  /* ===== HOW ===== */
+  .how-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .how-card {
+    border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px;
+    background: var(--bg-mid);
+  }
+  .how-num {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: var(--bg-deep);
+    background: var(--cream); width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+  .how-card:nth-child(1) .how-num { background: var(--lavender); }
+  .how-card:nth-child(2) .how-num { background: var(--amber); }
+  .how-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .how-desc { font-size: 14px; color: var(--cream-dim); }
+
+  /* ===== PRICING ===== */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .plan { border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px; background: var(--bg-mid); }
+  .plan.pro {
+    border-color: rgba(168,164,232,0.4);
+    background: linear-gradient(160deg, rgba(168,164,232,0.10), var(--bg-mid) 60%);
+  }
+  .plan-name { font-size: 13px; font-weight: 700; color: var(--cream-faint); letter-spacing: 0.06em; }
+  .plan-price { font-size: 28px; font-weight: 900; margin: 12px 0 6px; }
+  .plan-price span { font-size: 13.5px; font-weight: 500; color: var(--cream-faint); }
+  .plan-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .plan-list li { list-style: none; display: flex; gap: 10px; font-size: 14px; color: var(--cream-dim); align-items: flex-start; }
+  .plan-list svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; stroke: var(--lavender); }
+  .plan:not(.pro) .plan-list svg { stroke: var(--cream-faint); }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--bg-deep); border-top: 1px solid var(--line);
+    padding: 96px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ""; position: absolute; bottom: -320px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(168,164,232,0.14), rgba(245,185,113,0.10) 50%, transparent 72%);
+  }
+  .cta-inner { position: relative; max-width: 520px; margin: 0 auto; }
+  .cta-section h2 { text-align: center; }
+  .cta-section .section-desc { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .form-box {
+    margin-top: 38px; background: var(--bg-mid); border: 1px solid var(--line); border-radius: 20px;
+    padding: 32px; text-align: left; box-shadow: 0 30px 60px -40px rgba(0,0,0,0.4);
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+  label { display: block; font-size: 12.5px; font-weight: 700; color: var(--cream-dim); margin-bottom: 8px; }
+  input[type=email], select {
+    width: 100%; background: var(--bg-deep); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; font-size: 14.5px; color: var(--cream); font-family: inherit;
+  }
+  input[type=email]:focus, select:focus { outline: 2px solid var(--lavender); outline-offset: 1px; }
+  .form-submit {
+    width: 100%; margin-top: 22px; background: var(--cream); color: var(--bg-deep); font-weight: 700; font-size: 15px;
+    padding: 15px; border-radius: 12px; border: none; cursor: pointer; font-family: inherit;
+  }
+  .form-fine { margin-top: 14px; font-size: 12px; color: var(--cream-faint); text-align: center; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 40px 0; border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-size: 12.5px; color: var(--cream-faint);
+  }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    h1 { font-size: 30px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .mode-card { order: -1; }
+    .two-modes, .two-modes.three { grid-template-columns: 1fr; }
+    .how-list { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pain-row { flex-wrap: wrap; padding: 18px 20px; }
+    section { padding: 60px 0; }
+    .hero { padding: 56px 0 72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></span>
+      SleepMate
+    </div>
+    <a href="#register" class="nav-cta">事前登録</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>#1日1スタートアップ ｜ 事前登録受付中</div>
+      <h1>そっと寄り添い、<br><span class="hl">心を落ち着ける</span>、<br>あなたの伴走者。</h1>
+      <p class="sub">夜は入眠ガイド、日中は3分のひと息。<br>ひとりで抱え込まず、いつでもそばに寄り添います。</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          事前登録する
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="hero-note">30秒で完了・費用はかかりません</span>
+      </div>
+    </div>
+
+    <div class="mode-card" aria-hidden="true">
+      <div class="mode-toggle">
+        <div class="seg active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>夜モード</div>
+        <div class="seg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>日中モード</div>
+      </div>
+      <div class="now-playing">
+        <div class="np-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div>
+          <div class="np-title">今日の疲れを、そっと手放す</div>
+          <div class="np-sub">10分 ｜ 夜用ガイド</div>
+        </div>
+      </div>
+      <div class="waveform" id="waveform"></div>
+      <div class="timer-row">
+        <span class="timer-label">スリープタイマー</span>
+        <span class="timer-value mono">15:00</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const wf = document.getElementById('waveform');
+  const heights = [8,16,24,14,30,10,20,26,12,18,28,9,22,15,24,11,19,27,13,21,16,10,25,17];
+  heights.forEach(h => {
+    const bar = document.createElement('span');
+    bar.style.height = h + 'px';
+    wf.appendChild(bar);
+  });
+</script>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">こんなこと、ありませんか</div>
+      <h2>気持ちを落ち着けたいのに、<br>ひとりだと、なかなか難しい。</h2>
+      <p class="section-desc">興味はあっても、なんとなく身構えてしまったり、いつ・どれだけやればいいか迷ったり。そんな時こそ、そばに寄り添う存在が助けになります。</p>
+    </div>
+
+    <div class="receipt">
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11Z"/></svg></div>
+        <div>
+          <div class="pain-text-title">「瞑想」と聞くと、なんとなく身構えてしまう</div>
+          <div class="pain-text-desc">興味はあっても、怪しい・スピリチュアルという印象が先に立ち、一歩を踏み出しにくいと感じる方は少なくありません。</div>
+        </div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div>
+          <div class="pain-text-title">いつ・どれだけやればいいか迷って、結局やらない</div>
+          <div class="pain-text-desc">姿勢を整えて、静かな場所を探して、時間を確保して……という準備の手間が、始める前の一番の壁になる。</div>
+        </div>
+      </div>
+      <div class="pain-row">
+        <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/></svg></div>
+        <div>
+          <div class="pain-text-title">海外の瞑想アプリは、日本語がどこかぎこちない</div>
+          <div class="pain-text-desc">翻訳調のガイド音声に集中しきれず、内容はいいはずなのにもったいなさを感じる。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">大切にしていること</div>
+      <h2>ひとりで抱えなくていい。<br>そばで、そっと支えます。</h2>
+      <p class="section-desc">SleepMateは、寝る前だけのアプリではありません。気持ちを落ち着けたい、そのすべての瞬間に寄り添う伴走者です。</p>
+    </div>
+
+    <div class="two-modes three">
+      <div class="mode-block support">
+        <div class="mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+        <div class="mode-title">そばに寄り添う、伴走者</div>
+        <div class="mode-desc">ひとりで頑張らなくていい。落ち着きたい時にそっと寄り添い、無理なく気持ちを整えるお手伝いをします。</div>
+      </div>
+      <div class="mode-block night">
+        <div class="mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></div>
+        <div class="mode-title">夜：眠りへのガイド</div>
+        <div class="mode-desc">今日の疲れを言葉と静けさでほどき、そのまま眠りへ。スリープタイマーで、聞きながら自然に眠りにつけます。</div>
+      </div>
+      <div class="mode-block day">
+        <div class="mode-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+        <div class="mode-title">日中：3分のひと息</div>
+        <div class="mode-desc">会議の前後、家事の合間、介護のひと段落。たった3分、気持ちを落ち着けて切り替えられます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">使い方</div>
+      <h2>選んで、再生するだけ。</h2>
+      <p class="section-desc">姿勢も、場所も、やり方も、考えなくていい。それが一番大事だと思っています。</p>
+    </div>
+
+    <div class="how-list">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title">今の気分を選ぶ</div>
+        <div class="how-desc">「眠りたい」「一息つきたい」など、シーンから選ぶだけ。難しい設定は一切ありません。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title">再生するだけ</div>
+        <div class="how-desc">自然な日本語のガイド音声が、静かにそばに寄り添います。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title">そのまま、眠るもよし</div>
+        <div class="how-desc">夜用ガイドはスリープタイマー付き。聞きながら、そのまま眠りについてかまいません。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">料金</div>
+      <h2>まずは無料で、聞いてみてください。</h2>
+      <p class="section-desc">基本の音声ガイドは無料。もっと聞きたくなったら、いつでもアップグレードできます。</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">無料プラン</div>
+        <div class="plan-price">¥0<span> / 月</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>夜用・日中用の基本ガイド</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>スリープタイマー</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <div class="plan-name">SleepMate プラン</div>
+        <div class="plan-price">¥480〜980<span> / 月</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>無料プランの内容すべて</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>ガイド音声のコンテンツ拡充</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>お気に入り・継続記録機能</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="register">
+  <div class="wrap cta-inner">
+    <div class="section-label" style="text-align:center;">事前登録</div>
+    <h2>今夜から、そばに置いてみませんか。</h2>
+    <p class="section-desc">先行登録いただいた方から順にご案内します。開発の進捗も #1日1スタートアップ で発信中。</p>
+
+    <form class="form-box" id="registerForm">
+      <div class="form-row">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="usage">主にどちらで使いたいですか？</label>
+        <select id="usage" name="usage">
+          <option>夜、眠る前に</option>
+          <option>日中、気分転換に</option>
+          <option>両方使いたい</option>
+          <option>まだ分からない</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="willingness">月額480〜980円、妥当だと感じますか？</label>
+        <select id="willingness" name="willingness">
+          <option>480円程度なら</option>
+          <option>980円程度でも</option>
+          <option>無料範囲で十分そう</option>
+          <option>まだ分からない</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">事前登録する</button>
+      <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
+      <p style="font-weight:700; color:var(--cream); font-size:17px; margin:0 0 6px;">登録しました。ありがとうございます！</p>
+      <p style="color:var(--cream-dim); font-size:14px; margin:0;">先行登録いただいた方から順にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/mbgjrovo', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
