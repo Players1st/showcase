@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>契約サマリー | 発注先との「言った言わない」を、キックオフの一枚で防ぐ</title>
+<meta name="description" content="契約書をアップロードするだけで、発注先にそのまま見せられる1枚サマリーを自動生成。現場で認識を合わせ、役員が出ていく前にトラブルの芽を摘みます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/keiyakusummary/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="契約サマリー｜現場で揉める前に、事前に防ぐ">
+<meta property="og:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。">
+<meta property="og:image" content="https://showcase.p1st.app/og/keiyakusummary.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="契約サマリー｜現場で揉める前に、事前に防ぐ">
+<meta name="twitter:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/keiyakusummary.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF7F1;
+    --bg-panel: #F2EBDF;
+    --ink: #242B3D;
+    --ink-soft: #5B5850;
+    --rule: #DED2B8;
+    --brass: #9C7A3C;
+    --brass-deep: #7C5F2C;
+    --paper-shadow: rgba(36,43,61,0.10);
+    --sage: #6E7A63;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif{
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+  }
+  a{ color: inherit; }
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .narrow{
+    max-width: 720px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand-row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Shippori Mincho', serif;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .brand svg{ display:block; }
+  .brand-tag{
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    border-left: 1px solid var(--rule);
+    padding-left: 10px;
+    margin-left: 2px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 74px 0 90px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 56px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    color: var(--brass-deep);
+    font-size: 13.5px;
+    margin-bottom: 22px;
+  }
+  .eyebrow-line .rule{
+    width: 30px;
+    height: 1px;
+    background: var(--brass-deep);
+  }
+  h1{
+    font-size: clamp(30px, 4.2vw, 46px);
+    line-height: 1.45;
+    margin: 0 0 26px;
+  }
+  h1 .accent{ color: var(--brass-deep); }
+  .sub{
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    max-width: 34ch;
+  }
+  .sub.second{
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 34px;
+  }
+  .cta-row{
+    display:flex;
+    align-items:center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .btn-primary{
+    display:inline-block;
+    background: var(--ink);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 3px;
+    text-decoration:none;
+    font-weight: 700;
+    font-size: 15.5px;
+    border: 1px solid var(--ink);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .btn-primary:hover{ background: var(--brass-deep); border-color: var(--brass-deep); }
+  .cta-note{
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* hero visual: papers -> single sheet */
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 10px 0;
+  }
+  .hero-visual svg{ width:100%; height:auto; max-width: 420px; }
+
+  /* ---------- problem ---------- */
+  .section{
+    padding: 78px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .section-head{
+    margin-bottom: 42px;
+  }
+  .section-kicker{
+    font-size: 13px;
+    color: var(--brass-deep);
+    margin-bottom: 10px;
+  }
+  h2{
+    font-size: clamp(22px, 3vw, 30px);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .scene{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items:start;
+  }
+  .scene p{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+  }
+  .quote-card{
+    background: var(--bg-panel);
+    border-left: 3px solid var(--brass);
+    padding: 22px 26px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+  .quote-card + .quote-card{ margin-top: 16px; }
+
+  /* ---------- solution steps ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .step{
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 30px 24px 34px;
+  }
+  .step-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--brass-deep);
+    margin-bottom: 18px;
+  }
+  .step h3{
+    font-size: 17px;
+    margin: 0 0 10px;
+  }
+  .step p{
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin:0;
+  }
+  .step-icon{ margin-bottom: 16px; }
+
+  .redact-note{
+    margin-top: 30px;
+    display:flex;
+    gap: 12px;
+    align-items:flex-start;
+    background: var(--bg-panel);
+    padding: 16px 20px;
+    border-radius: 3px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .redact-note strong{ color: var(--ink); }
+
+  /* ---------- benefits ---------- */
+  .benefit-list{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+  .benefit{
+    padding-top: 20px;
+    border-top: 2px solid var(--ink);
+  }
+  .benefit h3{
+    font-size: 17.5px;
+    margin: 0 0 10px;
+  }
+  .benefit p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin: 0;
+  }
+
+  /* ---------- for whom ---------- */
+  .whom-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+  .whom-col{
+    padding: 32px 30px;
+  }
+  .whom-col + .whom-col{
+    border-left: 1px solid var(--rule);
+  }
+  .whom-role{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--brass-deep);
+    margin-bottom: 10px;
+  }
+  .whom-col h3{
+    font-size: 18px;
+    margin: 0 0 12px;
+  }
+  .whom-col p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    background: var(--ink);
+    color: #fff;
+    padding: 88px 0;
+    text-align: center;
+  }
+  .final-cta h2{
+    color: #fff;
+    max-width: 26ch;
+    margin: 0 auto 18px;
+  }
+  .final-cta p{
+    color: #C9CCD6;
+    max-width: 42ch;
+    margin: 0 auto 36px;
+    font-size: 15px;
+  }
+  .final-cta .btn-primary{
+    background: var(--brass);
+    border-color: var(--brass);
+    color: #1C160C;
+  }
+  .final-cta .btn-primary:hover{
+    background: #B9925A;
+    border-color: #B9925A;
+  }
+
+  form.signup{
+    display:flex;
+    gap: 10px;
+    max-width: 460px;
+    margin: 0 auto 14px;
+    flex-wrap: wrap;
+    justify-content:center;
+  }
+  form.signup input[type=text], form.signup input[type=email]{
+    flex: 1 1 200px;
+    padding: 14px 16px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-size: 14.5px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+  form.signup button{
+    flex: 0 0 auto;
+    background: var(--brass);
+    color: #1C160C;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 14.5px;
+    cursor: pointer;
+  }
+  form.signup button:hover{ background: #B9925A; }
+  .form-success{
+    display:none;
+    color: #E8DDC5;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  footer{
+    padding: 34px 0 50px;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+  }
+  .footer-links a{ text-decoration:none; }
+  .footer-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-visual{ order: -1; margin-bottom: 10px; }
+    .scene{ grid-template-columns: 1fr; }
+    .steps{ grid-template-columns: 1fr 1fr; }
+    .benefit-list{ grid-template-columns: 1fr; gap: 26px; }
+    .whom-grid{ grid-template-columns: 1fr; }
+    .whom-col + .whom-col{ border-left:none; border-top:1px solid var(--rule); }
+  }
+  @media (max-width: 520px){
+    .steps{ grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap brand-row">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="1" y="1" width="20" height="20" rx="2" stroke="#242B3D" stroke-width="1.4"/>
+        <path d="M5.5 7H16.5" stroke="#9C7A3C" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M5.5 11H14" stroke="#242B3D" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M5.5 15H12" stroke="#242B3D" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      契約サマリー
+      <span class="brand-tag">for 受託開発の役員</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span>受託開発企業の役員向け</div>
+      <h1>発注先との「言った言わない」を、<br><span class="accent">キックオフの一枚</span>で防ぐ。</h1>
+      <p class="sub">現場で認識を合わせるための契約範囲共有ツール。</p>
+      <p class="sub second">現場で揉める前に、事前に防ぐ。</p>
+      <div class="cta-row">
+        <a href="#signup" class="btn-primary">お試し版の先行案内を受け取る</a>
+        <span class="cta-note">登録1分・料金の記載は伏せて先行案内します</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- scattered pages -->
+        <g transform="translate(20,26) rotate(-9)">
+          <rect x="0" y="0" width="150" height="196" rx="4" fill="#fff" stroke="#DED2B8" stroke-width="1.4"/>
+          <line x1="18" y1="34" x2="132" y2="34" stroke="#DED2B8" stroke-width="4"/>
+          <line x1="18" y1="52" x2="120" y2="52" stroke="#EDE4D2" stroke-width="4"/>
+          <line x1="18" y1="70" x2="128" y2="70" stroke="#EDE4D2" stroke-width="4"/>
+          <line x1="18" y1="88" x2="100" y2="88" stroke="#EDE4D2" stroke-width="4"/>
+          <circle cx="118" cy="150" r="14" fill="none" stroke="#B3453A" stroke-width="2"/>
+          <path d="M118 143v9" stroke="#B3453A" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="118" cy="156.5" r="1.4" fill="#B3453A"/>
+        </g>
+        <g transform="translate(70,10) rotate(7)">
+          <rect x="0" y="0" width="150" height="196" rx="4" fill="#fff" stroke="#DED2B8" stroke-width="1.4"/>
+          <line x1="18" y1="34" x2="132" y2="34" stroke="#DED2B8" stroke-width="4"/>
+          <line x1="18" y1="52" x2="112" y2="52" stroke="#EDE4D2" stroke-width="4"/>
+          <line x1="18" y1="70" x2="128" y2="70" stroke="#EDE4D2" stroke-width="4"/>
+        </g>
+        <!-- arrow -->
+        <path d="M198 178 L246 178" stroke="#9C7A3C" stroke-width="2"/>
+        <path d="M238 170 L248 178 L238 186" stroke="#9C7A3C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- final clean single sheet -->
+        <g transform="translate(262,60)">
+          <rect x="0" y="0" width="150" height="236" rx="4" fill="#fff" stroke="#242B3D" stroke-width="1.6"/>
+          <rect x="0" y="0" width="150" height="42" rx="4" fill="#242B3D"/>
+          <text x="16" y="27" font-family="Shippori Mincho, serif" font-size="14" fill="#fff">契約サマリー</text>
+          <line x1="18" y1="66" x2="132" y2="66" stroke="#EDE4D2" stroke-width="6"/>
+          <line x1="18" y1="66" x2="132" y2="66" stroke="#242B3D" stroke-width="1" stroke-dasharray="0"/>
+          <text x="18" y="62" font-family="Zen Kaku Gothic New" font-size="10" fill="#9C7A3C">業務範囲</text>
+          <line x1="18" y1="108" x2="132" y2="108" stroke="#EDE4D2" stroke-width="6"/>
+          <text x="18" y="104" font-family="Zen Kaku Gothic New" font-size="10" fill="#9C7A3C">体制・役割</text>
+          <line x1="18" y1="150" x2="132" y2="150" stroke="#EDE4D2" stroke-width="6"/>
+          <text x="18" y="146" font-family="Zen Kaku Gothic New" font-size="10" fill="#9C7A3C">NG事項</text>
+          <line x1="18" y1="192" x2="90" y2="192" stroke="#F1EEE4" stroke-width="6"/>
+          <text x="18" y="188" font-family="Zen Kaku Gothic New" font-size="9" fill="#B7ADA0">報酬条件（発注先には非表示）</text>
+          <circle cx="126" cy="212" r="12" fill="none" stroke="#6E7A63" stroke-width="2"/>
+          <path d="M120 212l4 4 8-9" stroke="#6E7A63" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">こんな場面、ありませんか</div>
+      <h2 class="narrow">気づけば役員が、発注先との<br class="mob-only">「言った言わない」に対応している。</h2>
+    </div>
+    <div class="scene">
+      <div>
+        <p>キックオフ後しばらくして、発注側の担当者から「これも当然含まれていますよね」という連絡が入る。契約書には書かれていないはずの作業。現場のPMは対応に追われ、最終的に役員が発注側の上位者と直接話をつけることになる。</p>
+        <p>契約書は結んでいる。だが、それを発注側の現場担当者が理解しているとは限らない。知る手段がなかったのか、単に気にしていなかったのかは分からない。結果として同じ構図が案件のたびに繰り返される。</p>
+      </div>
+      <div>
+        <div class="quote-card">「聞いてないです、そちらの担当がやってくれると思ってました」</div>
+        <div class="quote-card">「役員が出てこないと、この話は収まらない気がします」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-panel); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">解決の流れ</div>
+      <h2 class="narrow">契約書をアップロードするだけで、<br class="mob-only">発注先にそのまま見せられる一枚に。</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>契約書をアップロード</h3>
+        <p>案件の契約書・注文書のPDFをそのままアップロードするだけ。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>AIが要点を抽出</h3>
+        <p>業務範囲・体制・役割・NG事項をAIが読み取り、整理する。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>1枚のサマリーに</h3>
+        <p>発注先にそのまま見せられる体裁で、1枚のシートとして出力。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>キックオフで提示</h3>
+        <p>現場のPMが発注先に提示し、その場で認識を合わせる。</p>
+      </div>
+    </div>
+    <div class="redact-note">
+      <span>🔒</span>
+      <span><strong>報酬条件は自動的に非表示。</strong>発注先向けの出力には業務範囲・体制・NG事項のみを含み、金額に関する情報は含みません。</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">導入のメリット</div>
+      <h2 class="narrow">現場の一枚が、役員の時間を守る。</h2>
+    </div>
+    <div class="benefit-list">
+      <div class="benefit">
+        <h3>トラブルを未然に防ぐ</h3>
+        <p>「言った言わない」が起きる前に、キックオフの場で認識を合わせられる。</p>
+      </div>
+      <div class="benefit">
+        <h3>安定した進行</h3>
+        <p>契約範囲が明確になることで、途中のスコープ変更に振り回されず、予定通りプロジェクトを進めやすくなる。</p>
+      </div>
+      <div class="benefit">
+        <h3>役員の工数を守る</h3>
+        <p>現場レベルで認識合わせが完結し、役員が対応に出ていく場面そのものを減らせる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-bottom:1px solid var(--rule);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">誰のためのツールか</div>
+      <h2 class="narrow">導入を決めるのは役員。<br class="mob-only">使うのは現場のPM。</h2>
+    </div>
+    <div class="whom-grid">
+      <div class="whom-col">
+        <div class="whom-role">導入判断</div>
+        <h3>受注側の役員</h3>
+        <p>発注先との交渉に自ら出ていく場面を減らしたい方へ。導入を判断し、キックオフでの提示をPMに指示するだけで運用が回ります。</p>
+      </div>
+      <div class="whom-col">
+        <div class="whom-role">実際の利用</div>
+        <h3>現場PM・リーダー</h3>
+        <p>契約書をアップロードし、発注先へ提示する一枚を用意する担当者へ。専門知識がなくても、業務範囲を平易な言葉で共有できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="signup">
+  <div class="wrap">
+    <h2>お試し版の先行案内をお届けします</h2>
+    <p>正式リリースに先立ち、月1件まで無料でお試しいただける先行案内をご登録の方から順にお送りします。</p>
+    <form class="signup" id="signupForm">
+      <input type="text" name="company" placeholder="会社名" required>
+      <input type="email" name="email" placeholder="メールアドレス" required>
+      <button type="submit">先行案内を受け取る</button>
+    </form>
+    <div class="form-success" id="formSuccess">ご登録ありがとうございます。準備が整い次第、ご案内をお送りします。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    fetch('https://formspree.io/f/xljegjeq', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.textContent = '登録しました';
+        form.reset();
+      } else {
+        btn.textContent = 'エラーが発生しました。再度お試しください。';
+      }
+    }).catch(() => {
+      btn.textContent = 'エラーが発生しました。再度お試しください。';
+    });
+  });
+</script>
+
+</body>
+</html>
