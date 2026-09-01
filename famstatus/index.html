@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>FamStatus（ファムステータス）｜家族の"いつもと違う"に、みんなで気づけるように</title>
+<meta name="description" content="家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合えます。14日間無料でお試しいただけます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/famstatus/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="FamStatus（ファムステータス）｜家族の&quot;いつもと違う&quot;に、みんなで気づけるように">
+<meta property="og:description" content="家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合えます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/famstatus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FamStatus（ファムステータス）｜家族の&quot;いつもと違う&quot;に、みんなで気づけるように">
+<meta name="twitter:description" content="家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合えます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/famstatus.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F1E6;
+    --bg-alt: #EFE4D0;
+    --ink: #3A2E28;
+    --ink-soft: #6B5D52;
+    --accent: #C98A3E;
+    --accent-deep: #A66B2E;
+    --sage: #6B8F7B;
+    --sage-deep: #4F6E5D;
+    --card: #FFFDF8;
+    --line: #DCCBA8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Shippori Mincho', serif;}
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:26px 0 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.02em;
+  }
+  .brand .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--accent);
+    flex:none;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 0 88px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size:clamp(30px, 4vw, 46px);
+    line-height:1.5;
+    letter-spacing:0.01em;
+  }
+  .hero .sub{
+    margin-top:24px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:34em;
+  }
+  .cta-row{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--accent);
+    color:#FFFDF8;
+    padding:15px 30px;
+    border-radius:4px;
+    font-weight:700;
+    font-size:15.5px;
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(166,107,46,0.28);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 20px rgba(166,107,46,0.34);
+  }
+  .cta-note{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .hero-illust{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:30px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section{
+    padding:76px 0;
+  }
+  .section-alt{
+    background:var(--bg-alt);
+  }
+  .eyebrow{
+    font-size:13.5px;
+    color:var(--sage-deep);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  h2{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size:clamp(24px, 3vw, 32px);
+    line-height:1.6;
+    max-width:22em;
+  }
+  .lead{
+    margin-top:16px;
+    color:var(--ink-soft);
+    max-width:34em;
+    font-size:15.5px;
+  }
+
+  /* ---------- Voices ---------- */
+  .voices{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .voice-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 24px;
+  }
+  .voice-card .mark{
+    font-family:'Shippori Mincho', serif;
+    font-size:34px;
+    color:var(--accent);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .voice-card p{
+    font-size:15px;
+    color:var(--ink);
+  }
+  .voice-card .who{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Steps ---------- */
+  .steps{
+    margin-top:48px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr 220px;
+    gap:28px;
+    align-items:center;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{
+    border-bottom:1px solid var(--line);
+  }
+  .step-num{
+    font-family:'Shippori Mincho', serif;
+    font-size:34px;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .step h3{
+    font-family:'Shippori Mincho', serif;
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .step p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:32em;
+  }
+  .step-icon{
+    justify-self:end;
+  }
+
+  /* ---------- Pricing ---------- */
+  .price-wrap{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .price-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:34px 30px;
+  }
+  .price-card.highlight{
+    border-color:var(--accent);
+    box-shadow:0 10px 24px rgba(166,107,46,0.14);
+  }
+  .price-card .tag{
+    font-size:13px;
+    font-weight:700;
+    color:var(--sage-deep);
+    margin-bottom:10px;
+  }
+  .price-card h3{
+    font-family:'Shippori Mincho', serif;
+    font-size:20px;
+    margin-bottom:6px;
+  }
+  .price-card .amount{
+    font-family:'Shippori Mincho', serif;
+    font-size:28px;
+    margin:14px 0 18px;
+    color:var(--accent-deep);
+  }
+  .price-card .amount span{
+    font-size:14px;
+    font-weight:400;
+    color:var(--ink-soft);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+  }
+  .price-card ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .price-card li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .price-card li svg{flex:none; margin-top:3px;}
+  .family-note{
+    margin-top:36px;
+    background:transparent;
+    border-left:3px solid var(--sage);
+    padding:6px 0 6px 20px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    max-width:40em;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:left;
+  }
+  .final-cta .box{
+    background:var(--ink);
+    color:var(--bg);
+    border-radius:6px;
+    padding:56px 48px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:36px;
+    align-items:center;
+  }
+  .final-cta h2{
+    color:#FBF4E4;
+    max-width:none;
+  }
+  .final-cta .lead{
+    color:#D8C9AE;
+  }
+  .final-cta .btn-primary{
+    background:var(--accent);
+  }
+  .final-form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .final-form input{
+    padding:14px 16px;
+    border-radius:4px;
+    border:1px solid #6B5D52;
+    background:#FFFDF8;
+    font-size:15px;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+  }
+
+  footer{
+    padding:40px 0 56px;
+  }
+  footer .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    border-top:1px solid var(--line);
+    padding-top:26px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .voices{grid-template-columns:1fr;}
+    .step{grid-template-columns:44px 1fr; row-gap:14px;}
+    .step-icon{display:none;}
+    .price-wrap{grid-template-columns:1fr;}
+    .final-cta .box{grid-template-columns:1fr; padding:40px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>FamStatus</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>家族の"いつもと違う"に、<br>みんなで気づけるように。</h1>
+      <p class="sub">家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合えます。</p>
+      <div class="cta-row">
+        <a href="#signup" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#FFFDF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          14日間、無料で試してみる
+        </a>
+        <span class="cta-note">クレジットカード登録不要・家族で1つのトライアルを共有</span>
+      </div>
+    </div>
+
+    <div class="hero-illust">
+      <svg viewBox="0 0 320 300" width="100%" height="auto">
+        <!-- connecting lines -->
+        <line x1="160" y1="150" x2="60" y2="60" stroke="#DCCBA8" stroke-width="2"/>
+        <line x1="160" y1="150" x2="260" y2="55" stroke="#DCCBA8" stroke-width="2"/>
+        <line x1="160" y1="150" x2="55" y2="230" stroke="#DCCBA8" stroke-width="2"/>
+        <line x1="160" y1="150" x2="255" y2="235" stroke="#DCCBA8" stroke-width="2"/>
+
+        <!-- family nodes -->
+        <circle cx="60" cy="60" r="26" fill="#FFFDF8" stroke="#C98A3E" stroke-width="2"/>
+        <circle cx="60" cy="52" r="8" fill="#C98A3E"/>
+        <path d="M45 72c3-9 12-13 15-13s12 4 15 13" stroke="#C98A3E" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <circle cx="260" cy="55" r="26" fill="#FFFDF8" stroke="#6B8F7B" stroke-width="2"/>
+        <circle cx="260" cy="47" r="8" fill="#6B8F7B"/>
+        <path d="M245 67c3-9 12-13 15-13s12 4 15 13" stroke="#6B8F7B" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <circle cx="55" cy="230" r="26" fill="#FFFDF8" stroke="#6B8F7B" stroke-width="2"/>
+        <circle cx="55" cy="222" r="8" fill="#6B8F7B"/>
+        <path d="M40 242c3-9 12-13 15-13s12 4 15 13" stroke="#6B8F7B" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <circle cx="255" cy="235" r="26" fill="#FFFDF8" stroke="#C98A3E" stroke-width="2"/>
+        <circle cx="255" cy="227" r="8" fill="#C98A3E"/>
+        <path d="M240 247c3-9 12-13 15-13s12 4 15 13" stroke="#C98A3E" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- center check-in card -->
+        <rect x="112" y="105" width="96" height="90" rx="10" fill="#3A2E28"/>
+        <rect x="128" y="122" width="64" height="8" rx="4" fill="#F7F1E6"/>
+        <rect x="128" y="140" width="44" height="8" rx="4" fill="#C98A3E"/>
+        <circle cx="160" cy="168" r="12" fill="none" stroke="#6B8F7B" stroke-width="2.4"/>
+        <path d="M154 168l4 4 8-9" stroke="#6B8F7B" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">こんな経験はありませんか</div>
+    <h2>「気づいたときには、もう遅かった」を、繰り返さないために。</h2>
+    <p class="lead">離れて暮らす親の変化も、忙しいきょうだいの不調も、誰かが偶然気づくまで家族の誰も知らないままになりがちです。家族それぞれの記録が1か所に集まれば、その"偶然"に頼らずに済みます。</p>
+
+    <div class="voices">
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>実家に帰ったとき、母がずいぶん痩せていて驚いた。誰も気づいていなかった。</p>
+        <div class="who">40代・長女</div>
+      </div>
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>兄が体調を崩して数日寝込んでいたのを、退院の連絡が来るまで誰も知らなかった。</p>
+        <div class="who">40代・妹</div>
+      </div>
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>電話するたびに「元気だよ」としか言わないので、本当のところが分からない。</p>
+        <div class="who">40代・次男</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">FamStatusのしくみ</div>
+    <h2>むずかしいことは、なにもありません。</h2>
+    <p class="lead">親の毎日のひとことと、家族の見守りを、いつものLINEでつなぎます。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>家族それぞれが、1分だけ入力する</h3>
+          <p>「体調」「食欲」「気分」を選ぶだけの、簡単なチェックイン。親も、子世代も、それぞれ自分の分を記録します。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <rect x="24" y="8" width="24" height="56" rx="6" stroke="#3A2E28" stroke-width="2"/>
+            <circle cx="36" cy="54" r="2.4" fill="#3A2E28"/>
+            <rect x="28" y="18" width="16" height="4" rx="2" fill="#C98A3E"/>
+            <rect x="28" y="26" width="16" height="4" rx="2" fill="#DCCBA8"/>
+            <rect x="28" y="34" width="10" height="4" rx="2" fill="#DCCBA8"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>家族のLINEに、自動で届く</h3>
+          <p>新しいアプリを覚える必要はありません。いつものLINEに、家族それぞれの様子がそっと共有されます。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <path d="M12 22c0-6 5-11 12-11h24c7 0 12 5 12 11v14c0 6-5 11-12 11H30l-10 9v-9h-6c-1 0-2-1-2-2V22z" fill="#6B8F7B"/>
+            <circle cx="27" cy="29" r="2.6" fill="#FFFDF8"/>
+            <circle cx="36" cy="29" r="2.6" fill="#FFFDF8"/>
+            <circle cx="45" cy="29" r="2.6" fill="#FFFDF8"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>きょうだいみんなで、見守る</h3>
+          <p>誰の記録も、家族全員で見られます。気づいたことは、そのままコメントで共有できます。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <circle cx="24" cy="26" r="9" fill="none" stroke="#C98A3E" stroke-width="2"/>
+            <circle cx="48" cy="26" r="9" fill="none" stroke="#6B8F7B" stroke-width="2"/>
+            <circle cx="36" cy="46" r="9" fill="none" stroke="#3A2E28" stroke-width="2"/>
+            <line x1="30" y1="32" x2="32" y2="40" stroke="#DCCBA8" stroke-width="2"/>
+            <line x1="42" y1="32" x2="40" y2="40" stroke="#DCCBA8" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">料金について</div>
+    <h2>1つの契約に、家族みんなを招待できます。</h2>
+    <p class="lead">お子さんの誰か1人が契約すれば、招待した家族全員が使えます。まずは14日間、費用をかけずにお試しください。</p>
+
+    <div class="price-wrap">
+      <div class="price-card">
+        <div class="tag">無料プラン</div>
+        <h3>まずはここから</h3>
+        <div class="amount">¥0</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#6B8F7B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>毎日のチェックイン入力</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#6B8F7B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>家族での閲覧・コメント</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#6B8F7B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>LINEへの通知連携</li>
+        </ul>
+      </div>
+
+      <div class="price-card highlight">
+        <div class="tag">FamStatus Plus</div>
+        <h3>もう一歩、安心を</h3>
+        <div class="amount">¥980〜<span>/月・家族全員分</span></div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#C98A3E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>無料プランのすべての機能</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#C98A3E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>いつもと違う変化を知らせるアラート</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#C98A3E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>週に1回届く、家族向けまとめ</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="family-note">1つの契約で、招待した家族全員が使えます。ひとりあたりの料金ではなく、家族全体でひとつの安心を持つ、という考え方です。</p>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="box" id="signup">
+      <div>
+        <h2 class="serif">まずは、14日間だけ。</h2>
+        <p class="lead">登録は1分ほどで終わります。カード情報の入力は必要ありません。</p>
+      </div>
+      <form class="final-form" id="signupForm">
+        <input type="text" name="name" placeholder="お名前" required>
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit" class="btn-primary" style="justify-content:center; border:none; cursor:pointer; font-family:inherit;">無料トライアルに登録する</button>
+      </form>
+      <p class="form-success" id="formSuccess" style="display:none; margin-top:12px; font-size:13.5px; color:#D8C9AE;">登録ありがとうございます。ご案内をお送りします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>© 2026 Players1st Inc. All rights reserved.</div>
+      <div style="display:flex; gap:20px;">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    fetch('https://formspree.io/f/meaqagej', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.textContent = '登録しました';
+        form.reset();
+      } else {
+        btn.textContent = 'エラーが発生しました。再度お試しください。';
+      }
+    }).catch(() => {
+      btn.textContent = 'エラーが発生しました。再度お試しください。';
+    });
+  });
+</script>
+
+</body>
+</html>
