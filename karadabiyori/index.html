@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>からだ日和｜スマートウォッチのデータで、離れて暮らす親の"今日の調子"がわかる</title>
+<meta name="description" content="毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換。本人にはひとことのアドバイスで、家族にはLINEで届きます。Apple Watch、Fitbit、Ouraなど対応。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/karadabiyori/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="からだ日和｜スマートウォッチのデータで、離れて暮らす親の&quot;今日の調子&quot;がわかる">
+<meta property="og:description" content="毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換。本人にはひとことのアドバイスで、家族にはLINEで届きます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/karadabiyori.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="からだ日和｜スマートウォッチのデータで、離れて暮らす親の&quot;今日の調子&quot;がわかる">
+<meta name="twitter:description" content="毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換。本人にはひとことのアドバイスで、家族にはLINEで届きます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/karadabiyori.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3EFE6;
+    --bg-alt: #EAE3D3;
+    --ink: #362F2A;
+    --ink-soft: #6E6459;
+    --sky: #7C93A6;
+    --sky-deep: #56728A;
+    --sun: #E8944A;
+    --sun-deep: #C97530;
+    --coral: #D98871;
+    --card: #FFFFFF;
+    --line: #DED4C2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .rounded{font-family:'Zen Maru Gothic', sans-serif;}
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  header{padding:26px 0 0;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:900;
+    font-size:20px;
+  }
+  .brand .mark{
+    width:26px; height:26px;
+    border-radius:50%;
+    background:conic-gradient(var(--sun) 0deg 260deg, var(--line) 260deg 360deg);
+    flex:none;
+  }
+
+  .hero{padding:60px 0 40px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:900;
+    font-size:clamp(28px, 3.6vw, 40px);
+    line-height:1.55;
+  }
+  .hero .sub{
+    margin-top:22px;
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:32em;
+  }
+  .cta-row{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--sun-deep);
+    color:#FFFFFF;
+    padding:15px 30px;
+    border-radius:28px;
+    font-weight:700;
+    font-size:15.5px;
+    text-decoration:none;
+    box-shadow:0 8px 18px rgba(201,117,48,0.28);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(201,117,48,0.34);}
+  .cta-note{font-size:13.5px; color:var(--ink-soft);}
+  .device-note{
+    margin-top:18px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  /* --- forecast card illustration --- */
+  .forecast-card{
+    background:var(--card);
+    border-radius:20px;
+    padding:32px 30px;
+    box-shadow:0 20px 40px rgba(54,47,42,0.08);
+  }
+  .forecast-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .forecast-name{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .gauge-row{
+    display:flex;
+    align-items:center;
+    gap:24px;
+  }
+  .score-word{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    color:var(--sun-deep);
+  }
+  .score-sub{
+    margin-top:6px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .advice-box{
+    margin-top:20px;
+    background:var(--bg-alt);
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:14px;
+    color:var(--ink);
+  }
+
+  section{padding:72px 0;}
+  .section-alt{background:var(--bg-alt);}
+  .eyebrow{
+    font-size:13.5px;
+    color:var(--sky-deep);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  h2{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:900;
+    font-size:clamp(22px, 2.8vw, 30px);
+    line-height:1.6;
+    max-width:22em;
+  }
+  .lead{margin-top:16px; color:var(--ink-soft); max-width:34em; font-size:15.5px;}
+
+  .voices{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .voice-card{
+    background:var(--card);
+    border-radius:14px;
+    padding:26px 24px;
+  }
+  .voice-card .mark{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:30px;
+    color:var(--sky);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .voice-card p{font-size:15px; color:var(--ink);}
+  .voice-card .who{margin-top:14px; font-size:13px; color:var(--ink-soft);}
+
+  .steps{margin-top:48px; display:flex; flex-direction:column;}
+  .step{
+    display:grid;
+    grid-template-columns:60px 1fr 190px;
+    gap:28px;
+    align-items:center;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step-num{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:30px;
+    color:var(--sun);
+    font-weight:900;
+  }
+  .step h3{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .step p{color:var(--ink-soft); font-size:14.5px; max-width:32em;}
+  .step-icon{justify-self:end;}
+
+  .device-strip{
+    margin-top:40px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    background:var(--card);
+    border-radius:12px;
+    padding:18px 22px;
+  }
+  .device-strip strong{color:var(--ink); font-weight:700;}
+
+  .price-wrap{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .price-card{
+    background:var(--card);
+    border-radius:16px;
+    padding:34px 30px;
+  }
+  .price-card.highlight{
+    box-shadow:0 16px 32px rgba(201,117,48,0.16);
+    border:2px solid var(--sun);
+  }
+  .price-card .tag{
+    font-size:13px;
+    font-weight:700;
+    color:var(--sun-deep);
+    margin-bottom:10px;
+  }
+  .price-card h3{font-family:'Zen Maru Gothic', sans-serif; font-size:19px; margin-bottom:6px;}
+  .price-card .amount{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:26px;
+    margin:14px 0 18px;
+    color:var(--sun-deep);
+  }
+  .price-card .amount span{
+    font-size:14px; font-weight:400; color:var(--ink-soft);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+  }
+  .price-card ul{list-style:none; display:flex; flex-direction:column; gap:10px; font-size:14.5px;}
+  .price-card li{display:flex; gap:10px; align-items:flex-start;}
+  .price-card li svg{flex:none; margin-top:3px;}
+
+  .final-cta .box{
+    background:var(--ink);
+    color:var(--bg);
+    border-radius:20px;
+    padding:56px 48px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:36px;
+    align-items:center;
+  }
+  .final-cta h2{color:#F7F3EA; max-width:none;}
+  .final-cta .lead{color:#CFC6B8;}
+  .final-cta .btn-primary{background:var(--sun);}
+  .final-form{display:flex; flex-direction:column; gap:12px;}
+  .final-form input{
+    padding:14px 16px;
+    border-radius:10px;
+    border:1px solid #6E6459;
+    background:#FFFFFF;
+    font-size:15px;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+  }
+
+  footer{padding:40px 0 56px;}
+  .foot-inner{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px;
+    border-top:1px solid var(--line);
+    padding-top:26px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .voices{grid-template-columns:1fr;}
+    .step{grid-template-columns:40px 1fr; row-gap:14px;}
+    .step-icon{display:none;}
+    .price-wrap{grid-template-columns:1fr;}
+    .final-cta .box{grid-template-columns:1fr; padding:40px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="mark"></span>からだ日和</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>スマートウォッチのデータで、<br>離れて暮らす親の<br>"今日の調子"がわかる。</h1>
+      <p class="sub">毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換します。本人にはひとことのアドバイスで、家族にはLINEで届きます。</p>
+      <div class="cta-row">
+        <a href="#signup" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          無料ではじめる
+        </a>
+        <span class="cta-note">アプリのダウンロードだけで、すぐに使えます</span>
+      </div>
+      <div class="device-note">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6E6459" stroke-width="1.3"/><path d="M8 4v4l3 2" stroke="#6E6459" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Apple Watch、Fitbit、Ouraなど、お使いのスマートウォッチ・スマートリングに対応
+      </div>
+    </div>
+
+    <div class="forecast-card">
+      <div class="forecast-top">
+        <span class="forecast-name">お母さんの今日</span>
+        <span>9月1日（火）</span>
+      </div>
+      <div class="gauge-row">
+        <svg width="86" height="86" viewBox="0 0 86 86">
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#EAE3D3" stroke-width="10"/>
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#E8944A" stroke-width="10"
+            stroke-dasharray="226" stroke-dashoffset="52" stroke-linecap="round" transform="rotate(-90 43 43)"/>
+          <text x="43" y="49" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="22" fill="#362F2A">77</text>
+        </svg>
+        <div>
+          <div class="score-word">おだやか</div>
+          <div class="score-sub">歩数・心拍・睡眠から算出</div>
+        </div>
+      </div>
+      <div class="advice-box">今日は少しゆっくりめに過ごすのがおすすめです。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">こんな経験はありませんか</div>
+    <h2>データはあるのに、気づけない。</h2>
+    <p class="lead">スマートウォッチはつけているのに、その情報は誰にも活かされていません。</p>
+
+    <div class="voices">
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>Apple Watchはつけているけど、数字を見ても正直よく分からない。</p>
+        <div class="who">70代・親本人</div>
+      </div>
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>父の心拍データがあることは知っていたが、自分がそれを見る手段がなかった。</p>
+        <div class="who">40代・長男</div>
+      </div>
+      <div class="voice-card">
+        <div class="mark">"</div>
+        <p>電話で「元気だよ」と言われると、それ以上は聞きづらい。データで分かれば安心できるのに。</p>
+        <div class="who">50代・長女</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">からだ日和のしくみ</div>
+    <h2>むずかしい数字を、ひとことに変える。</h2>
+    <p class="lead">お使いのウェアラブルのデータが、本人にも家族にも分かる形になって届きます。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>データが、自動で集まる</h3>
+          <p>普段お使いのスマートウォッチ・スマートリングから、歩数・心拍・睡眠のデータが自動で連携されます。新しい操作は必要ありません。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="20" y="14" width="24" height="36" rx="7" stroke="#362F2A" stroke-width="2"/>
+            <rect x="26" y="8" width="12" height="8" rx="2" fill="#7C93A6"/>
+            <rect x="26" y="40" width="12" height="8" rx="2" fill="#7C93A6"/>
+            <circle cx="32" cy="30" r="6" stroke="#7C93A6" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>AIが「今日の調子」に変換する</h3>
+          <p>複数のデータを1つのスコアと、短いひとことのアドバイスにまとめます。専門的な数字を覚える必要はありません。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="24" fill="none" stroke="#EAE3D3" stroke-width="8"/>
+            <circle cx="32" cy="32" r="24" fill="none" stroke="#D98871" stroke-width="8" stroke-dasharray="150" stroke-dashoffset="40" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>本人と家族、両方に届く</h3>
+          <p>本人にはアプリでシンプルに、家族にはいつものLINEでダイジェストが届きます。見に行かなくても、自然と目に入ります。</p>
+        </div>
+        <div class="step-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M10 20c0-5 4-9 10-9h24c6 0 10 4 10 9v12c0 5-4 9-10 9H26l-9 8v-8h-4c-1 0-2-1-2-2V20z" fill="#7C93A6"/>
+            <circle cx="24" cy="26" r="2.4" fill="#FFFFFF"/>
+            <circle cx="32" cy="26" r="2.4" fill="#FFFFFF"/>
+            <circle cx="40" cy="26" r="2.4" fill="#FFFFFF"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="device-strip">
+      <strong>対応デバイス：</strong>Apple Watch／Fitbit／Oura／その他Appleヘルスケアと連携できるスマートウォッチ・スマートリング全般
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="eyebrow">料金について</div>
+    <h2>まずは無料で、はじめられます。</h2>
+    <p class="lead">基本機能は無料。もっと詳しく知りたくなったら、プレミアムに切り替えられます。</p>
+
+    <div class="price-wrap">
+      <div class="price-card">
+        <div class="tag">無料プラン</div>
+        <h3>まずはここから</h3>
+        <div class="amount">¥0</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C93A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>「今日の調子」スコア表示</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C93A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>簡易アドバイスの表示</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#7C93A6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>家族への基本ダイジェスト配信</li>
+        </ul>
+      </div>
+
+      <div class="price-card highlight">
+        <div class="tag">からだ日和 プレミアム</div>
+        <h3>もっと詳しく知りたい方に</h3>
+        <div class="amount">¥500〜800<span>/月</span></div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#D98871" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>無料プランのすべての機能</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#D98871" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>詳しい体調分析</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3.5 3.5L13 4.5" stroke="#D98871" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>週ごとの傾向レポート</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="box" id="signup">
+      <div>
+        <h2 class="rounded">まずは、無料ではじめてみませんか。</h2>
+        <p class="lead">ダウンロードして連携するだけで、今日から「今日の調子」がわかります。</p>
+      </div>
+      <form class="final-form" id="signupForm">
+        <input type="text" name="name" placeholder="お名前" required>
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit" class="btn-primary" style="justify-content:center; border:none; cursor:pointer; font-family:inherit;">無料ではじめる</button>
+      </form>
+      <p class="form-success" id="formSuccess" style="display:none; margin-top:12px; font-size:13.5px; color:#CFC6B8;">登録ありがとうございます。ご案内をお送りします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>© 2026 Players1st Inc. All rights reserved.</div>
+      <div style="display:flex; gap:20px;">
+        <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+        <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    fetch('https://formspree.io/f/mvkokaaz', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.textContent = '登録しました';
+        form.reset();
+      } else {
+        btn.textContent = 'エラーが発生しました。再度お試しください。';
+      }
+    }).catch(() => {
+      btn.textContent = 'エラーが発生しました。再度お試しください。';
+    });
+  });
+</script>
+
+</body>
+</html>
