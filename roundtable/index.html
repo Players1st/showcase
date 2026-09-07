@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ラウンドテーブル | あなたと気が合う5人を、AIが見つけて集めます</title>
+<meta name="description" content="プロフィールから相性を診断し、話が弾みそうな5人だけを厳選。待ち合わせも計画も不要、あとはお店に行くだけ。初回お試し500円。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/roundtable/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ラウンドテーブル | あなたと気が合う5人を、AIが見つけて集めます">
+<meta property="og:description" content="プロフィールから相性を診断し、話が弾みそうな5人だけを厳選。待ち合わせも計画も不要、あとはお店に行くだけ。">
+<meta property="og:image" content="https://showcase.p1st.app/og/roundtable.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ラウンドテーブル | あなたと気が合う5人を、AIが見つけて集めます">
+<meta name="twitter:description" content="プロフィールから相性を診断し、話が弾みそうな5人だけを厳選。待ち合わせも計画も不要、あとはお店に行くだけ。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/roundtable.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --plum: #2B1F2E;
+    --plum-deep: #201720;
+    --cream: #F7F1E8;
+    --cream-soft: #EFE6D8;
+    --coral: #E2735E;
+    --coral-deep: #C85A46;
+    --ink: #3A2E3C;
+    --ink-soft: #7A6B78;
+    --line: #E3D8C8;
+    --gold-dim: #D9A86A;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero (night / candlelit) ---------- */
+  .hero{
+    position: relative;
+    padding: 104px 0 88px;
+    background: radial-gradient(120% 100% at 80% 0%, #3A2A3C 0%, var(--plum) 55%, var(--plum-deep) 100%);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero-inner{ position: relative; z-index: 2; }
+
+  /* five soft dots connected — matched-people motif */
+  .network{
+    position:absolute;
+    right: -60px; top: 0;
+    width: 300px; height: 300px;
+    z-index: 1;
+    opacity: .9;
+  }
+
+  .kicker{
+    font-size: 13.5px;
+    color: var(--gold-dim);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--coral); }
+  .hero h1{
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.55;
+    margin-bottom: 22px;
+    max-width: 13ch;
+  }
+  .hero h1 .accent{ color: var(--coral); }
+  .hero-sub{
+    font-size: 15.5px;
+    color: rgba(247,241,232,.82);
+    line-height: 1.95;
+    margin-bottom: 38px;
+    max-width: 42ch;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--coral);
+    color: var(--plum-deep);
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 26px rgba(226,115,94,.35);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .cta-btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 30px rgba(226,115,94,.42); }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: rgba(247,241,232,.6);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 78px 0;
+    background: var(--cream);
+  }
+  .problem-lead{
+    font-size: 19px;
+    line-height: 2.1;
+    margin-bottom: 32px;
+  }
+  .problem-lead strong{ color: var(--coral-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  /* ---------- Value: AI matching explanation ---------- */
+  .value{
+    padding: 0 0 84px;
+  }
+  .value-card{
+    background: var(--plum);
+    border-radius: 16px;
+    padding: 40px 34px;
+    color: var(--cream);
+  }
+  .value-card h2{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--cream);
+  }
+  .value-card p{
+    font-size: 14.5px;
+    line-height: 2;
+    color: rgba(247,241,232,.82);
+    margin-bottom: 24px;
+  }
+  .tags{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag{
+    font-size: 12.5px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(247,241,232,.28);
+    color: rgba(247,241,232,.9);
+  }
+  .tag.hi{
+    background: var(--coral);
+    border-color: var(--coral);
+    color: var(--plum-deep);
+    font-weight: 700;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 88px; }
+  .section-title{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 44px;
+  }
+  .steps{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-body h3{
+    font-size: 17.5px;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .step-body p{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 90px 0 100px;
+    background: var(--cream-soft);
+    text-align: center;
+  }
+  .signup h2{
+    font-size: 27px;
+    margin-bottom: 14px;
+  }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 44ch;
+    margin: 0 auto 36px;
+  }
+  .price-note{
+    display:inline-block;
+    background: var(--coral);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .signup-form{
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #fff;
+    color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--coral);
+    outline-offset: 1px;
+    border-color: var(--coral);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--plum);
+    color: var(--cream);
+    border: none;
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-size: 15.5px;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(43,31,46,.25);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .submit-btn:hover{ transform: translateY(-1px); }
+  .form-status{
+    margin-top: 14px;
+    font-size: 13.5px;
+    display: none;
+  }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  footer{
+    padding: 32px 0 48px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--cream-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 72px 0 64px; }
+    .hero h1{ font-size: 27px; }
+    .network{ width: 220px; height: 220px; right: -30px; top: 10px; opacity: .5; }
+    .section-title{ font-size: 21px; }
+    .value-card{ padding: 28px 22px; }
+    .signup h2{ font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="network" viewBox="0 0 340 340" fill="none">
+      <line x1="170" y1="70" x2="70" y2="150" stroke="#D9A86A" stroke-width="1" stroke-opacity=".5"/>
+      <line x1="170" y1="70" x2="270" y2="150" stroke="#D9A86A" stroke-width="1" stroke-opacity=".5"/>
+      <line x1="70" y1="150" x2="120" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".5"/>
+      <line x1="270" y1="150" x2="220" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".5"/>
+      <line x1="120" y1="260" x2="220" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".5"/>
+      <line x1="70" y1="150" x2="270" y2="150" stroke="#D9A86A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="170" y1="70" x2="120" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="170" y1="70" x2="220" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="70" y1="150" x2="220" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="270" y1="150" x2="120" y2="260" stroke="#D9A86A" stroke-width="1" stroke-opacity=".3"/>
+      <circle cx="170" cy="70" r="14" fill="#E2735E"/>
+      <circle cx="70" cy="150" r="11" fill="#D9A86A"/>
+      <circle cx="270" cy="150" r="11" fill="#D9A86A"/>
+      <circle cx="120" cy="260" r="11" fill="#D9A86A"/>
+      <circle cx="220" cy="260" r="11" fill="#D9A86A"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>ラウンドテーブル</div>
+    <h1>あなたと<span class="accent">気が合う5人</span>を、<br>AIが見つけて集めます。</h1>
+    <p class="hero-sub">プロフィールから相性を診断し、話が弾みそうな5人だけを厳選。待ち合わせも計画も不要、あとはお店に行くだけ。</p>
+    <a href="#signup" class="cta-btn">お試し参加してみる</a>
+    <p class="cta-note">初回は500円。人数が集まり次第、日程をご案内します。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">大人になってから、新しい友人をつくるのは思っている以上に難しいものです。<strong>「誰でもいいわけじゃない、気の合う人と話したい」</strong>——そう感じたことはありませんか。</p>
+    <p class="problem-sub">転居したばかりの土地、知り合いの少ない職場、外国での暮らし。きっかけがないまま、日々は過ぎていきます。</p>
+  </div>
+</section>
+
+<section class="value">
+  <div class="wrap">
+    <div class="value-card">
+      <h2>ただのランダムな相席ではありません</h2>
+      <p>簡単なプロフィール入力から、興味関心・価値観・会話のテンポといった要素をAIが分析。過去の参加データと照らし合わせながら、「話が弾みそうな組み合わせ」を選び、5〜6人の食卓を編成します。</p>
+      <div class="tags">
+        <span class="tag hi">AIが相性を分析</span>
+        <span class="tag">共通の興味関心</span>
+        <span class="tag">価値観の近さ</span>
+        <span class="tag">会話のテンポ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">はじめ方はシンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>プロフィールに答える</h3>
+          <p>興味関心や、話してみたいことなど、簡単な質問に答えるだけ。所要時間は3分ほどです。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>AIが相性の良い5人を選ぶ</h3>
+          <p>単なる抽選ではなく、共通点や相性を踏まえて、話が弾みそうな組み合わせを編成します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>当日、お店に行くだけ</h3>
+          <p>集合の連絡が届いたら、あとは指定のお店へ。段取りも自己紹介の準備も必要ありません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <span class="price-note">初回お試し 500円</span>
+    <h2>気の合う5人に、会いに行きませんか</h2>
+    <p>お申し込み後、開催エリアと人数が揃い次第、日程をご案内します。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/mzebjber" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="area">希望エリア</label>
+        <input type="text" id="area" name="area" placeholder="例：渋谷・恵比寿" autocomplete="off">
+      </div>
+      <button type="submit" class="submit-btn">お試し参加を申し込む</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、マッチングとご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = 'お申し込みありがとうございます。日程が決まり次第ご案内します。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'お試し参加を申し込む';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
