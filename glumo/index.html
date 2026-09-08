@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>Glumo | 面倒のない血糖値管理、AIの力でサポート</title>
+<meta name="description" content="食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。基本機能は無料でご利用いただけます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/glumo/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="Glumo | 面倒のない血糖値管理、AIの力でサポート">
+<meta property="og:description" content="食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。">
+<meta property="og:image" content="https://showcase.p1st.app/og/glumo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glumo | 面倒のない血糖値管理、AIの力でサポート">
+<meta name="twitter:description" content="食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/glumo.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --teal: #3E7C8C;
+    --teal-deep: #2C5C69;
+    --teal-pale: #E4EFF1;
+    --amber: #F0954B;
+    --amber-deep: #D97832;
+    --paper: #FBFAF6;
+    --paper-soft: #F3F0E8;
+    --ink: #33383B;
+    --ink-soft: #7C8285;
+    --line: #DDE2DE;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 100px 0 80px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--teal-pale) 100%);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -130px; top: 70px;
+    width: 220px;
+    opacity: .95;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 480px; }
+  .kicker{
+    font-size: 13.5px;
+    color: var(--teal-deep);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+  .hero h1{
+    font-size: 33px;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .hero h1 .accent{ color: var(--teal-deep); }
+  .hero-sub{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 2;
+    margin-bottom: 36px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--amber);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(240,149,75,.32);
+    transition: transform .15s ease;
+  }
+  .cta-btn:hover{ transform: translateY(-1px); }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 76px 0;
+    background: var(--paper);
+  }
+  .problem-lead{
+    font-size: 18.5px;
+    line-height: 2.1;
+    margin-bottom: 22px;
+  }
+  .problem-lead strong{ color: var(--teal-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; background: var(--paper); }
+  .section-title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-body h3{ font-size: 17px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Report preview ---------- */
+  .report{ padding: 0 0 84px; }
+  .report-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px;
+  }
+  .report-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .report-head .title{ font-size: 15px; font-weight: 700; }
+  .report-pill{
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--teal-pale);
+    color: var(--teal-deep);
+    font-weight: 700;
+  }
+  .report-row{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid #F0EDE4;
+    font-size: 14px;
+  }
+  .report-row:last-child{ border-bottom: none; }
+  .report-row .meal{ color: var(--ink-soft); flex: 0 0 88px; font-size: 13px; }
+  .report-row .note{ flex: 1; }
+  .report-row .note strong{ display:block; margin-bottom: 3px; }
+  .report-row .note span{ color: var(--ink-soft); font-size: 13px; }
+
+  /* ---------- Reassurance ---------- */
+  .reassure{ padding: 0 0 84px; }
+  .reassure-card{
+    background: var(--teal-pale);
+    border-radius: 14px;
+    padding: 30px 28px;
+  }
+  .reassure-card h3{
+    font-size: 16px;
+    color: var(--teal-deep);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .reassure-card p{
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 2;
+  }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    background: var(--paper-soft);
+    text-align: center;
+  }
+  .signup h2{ font-size: 26px; margin-bottom: 14px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .signup-form{ max-width: 400px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line); border-radius: 6px;
+    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--teal); outline-offset: 1px; border-color: var(--teal);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--teal-deep); color: var(--white);
+    border: none; padding: 16px 30px; border-radius: 8px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(44,92,105,.24);
+  }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 70px 0 56px; }
+    .hero h1{ font-size: 26px; }
+    .hero-motif{ width: 200px; opacity: .55; }
+    .section-title{ font-size: 21px; }
+    .report-card{ padding: 22px; }
+    .signup h2{ font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 320 320" fill="none">
+      <path d="M40 200 L90 200 L110 140 L140 240 L165 100 L190 220 L215 170 L240 170"
+            stroke="#F0954B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".85"/>
+      <circle cx="240" cy="170" r="9" fill="#F0954B"/>
+      <circle cx="90" cy="200" r="5" fill="#3E7C8C" opacity=".5"/>
+      <circle cx="165" cy="100" r="5" fill="#3E7C8C" opacity=".5"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>Glumo（グルモ）</div>
+    <h1>面倒のない<span class="accent">血糖値管理</span>、<br>AIの力でサポート。</h1>
+    <p class="hero-sub">食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。</p>
+    <a href="#signup" class="cta-btn">無料ではじめる</a>
+    <p class="cta-note">基本機能は無料でご利用いただけます。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">糖尿病の治療は、<strong>一生続く自己管理</strong>です。毎日の記録や食事の工夫を積み重ねる中で、「効果が見えにくく、続ける意味を見失ってしまう」ことはありませんか。</p>
+    <p class="problem-sub">紙の記録や複雑な栄養管理アプリでは続けるのが大変。もっと手軽に、続けられる方法があれば——そんな想いから生まれたサポートアプリです。</p>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">はじめ方はシンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>食事の写真を撮る</h3>
+          <p>いつもの食事をスマホで撮影するだけ。AIがおおよその糖質量を推定します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>血糖値を記録する</h3>
+          <p>測定した数値を入力するだけ。グラフで日々の変化がひと目でわかります。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>変化が見えてくる</h3>
+          <p>食事と数値の関係をAIが整理し、続ける中で気づきが生まれます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="report">
+  <div class="wrap">
+    <div class="report-card">
+      <div class="report-head">
+        <span class="title">週間レポート（サンプル）</span>
+        <span class="report-pill">記録7日達成</span>
+      </div>
+      <div class="report-row">
+        <span class="meal">月曜 朝食</span>
+        <div class="note">
+          <strong>食後の血糖値が安定していました</strong>
+          <span>この日の食事バランスは、いつもより数値が落ち着く傾向がありました。</span>
+        </div>
+      </div>
+      <div class="report-row">
+        <span class="meal">水曜 夕食</span>
+        <div class="note">
+          <strong>いつもよりやや高めの変化</strong>
+          <span>炭水化物の量が多めの日は、数値が上がりやすい傾向が見られます。</span>
+        </div>
+      </div>
+      <div class="report-row">
+        <span class="meal">今週全体</span>
+        <div class="note">
+          <strong>記録を続けられています</strong>
+          <span>先週と比べて、食後の数値の波が少しゆるやかになってきました。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reassure">
+  <div class="wrap">
+    <div class="reassure-card">
+      <h3>診断や治療方針の変更は行いません</h3>
+      <p>Glumoは、あくまで日々の記録と気づきをサポートするツールです。治療方針の決定や薬の量の調整は、必ず主治医にご相談ください。Glumoは、あなたが治療を続けやすくなるための「記録の伴走役」です。</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、記録をはじめてみませんか</h2>
+    <p>基本機能は無料でご利用いただけます。AIによる傾向分析は2週間無料でお試しいただけます。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/xkjnqljl" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="status">現在の状況</label>
+        <select id="status" name="status">
+          <option value="治療中">治療中</option>
+          <option value="予備群">予備群</option>
+          <option value="家族としてサポート中">家族としてサポート中</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料ではじめる</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = '登録ありがとうございます。ご案内をお待ちください。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料ではじめる';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
