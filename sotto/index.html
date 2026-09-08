@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>Sotto | 毎日連絡できなくても、変わりないか、そっと気にかけておきます</title>
+<meta name="description" content="Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。2週間無料でお試しいただけます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/sotto/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="Sotto | 毎日連絡できなくても、変わりないか、そっと気にかけておきます">
+<meta property="og:description" content="Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。">
+<meta property="og:image" content="https://showcase.p1st.app/og/sotto.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sotto | 毎日連絡できなくても、変わりないか、そっと気にかけておきます">
+<meta name="twitter:description" content="Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/sotto.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --sage: #8FBE9A;
+    --sage-deep: #4F9463;
+    --sage-pale: #EAF5EC;
+    --sun: #F5C660;
+    --sun-deep: #E0A93E;
+    --paper: #FFFDF7;
+    --paper-soft: #FBF7EC;
+    --ink: #4A4A3E;
+    --ink-soft: #8B8B78;
+    --line: #E6E0CC;
+    --blue: #7FA8C9;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 100px 0 80px;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -110px; top: -10px;
+    width: 260px; opacity: .9;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 480px; }
+  .kicker{
+    font-size: 13.5px;
+    color: var(--sage-deep);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--sage); }
+  .hero h1{
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .hero-sub{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 2;
+    margin-bottom: 38px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sun);
+    color: #4A3510;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(245,198,96,.35);
+    transition: transform .15s ease;
+  }
+  .cta-btn:hover{ transform: translateY(-1px); }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 72px 0;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--sage-pale) 100%);
+  }
+  .problem-lead{
+    font-size: 18px;
+    line-height: 2.1;
+    margin-bottom: 20px;
+  }
+  .problem-lead strong{ color: var(--sage-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 50ch;
+  }
+
+  /* ---------- Reassurance box: what it does / doesn't see ---------- */
+  .reassure{ padding: 80px 0; }
+  .reassure-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .reassure-card{
+    border-radius: 14px;
+    padding: 26px 22px;
+  }
+  .reassure-card.no{
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+  }
+  .reassure-card.yes{
+    background: var(--white);
+    border: 2px solid var(--sage);
+    color: var(--ink);
+  }
+  .reassure-card h3{
+    font-size: 14.5px;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .reassure-card.no h3{ color: var(--ink-soft); }
+  .reassure-card.yes h3{ color: var(--sage-deep); }
+  .reassure-card ul{
+    margin: 0; padding: 0;
+    list-style: none;
+    font-size: 13.5px;
+  }
+  .reassure-card.no ul{ color: var(--ink-soft); }
+  .reassure-card.yes ul{ color: var(--ink); }
+  .reassure-card li{
+    padding: 6px 0;
+    display:flex;
+    gap: 8px;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; }
+  .section-title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .steps{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    color: var(--sage-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border: 1.5px solid var(--sage);
+  }
+  .step-body h3{ font-size: 16.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Recurrence plan ---------- */
+  .recur{
+    padding: 76px 0;
+    background: var(--paper-soft);
+  }
+  .recur-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 32px 28px;
+  }
+  .recur-badge{
+    display:inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .recur-card h3{ font-size: 19px; margin-bottom: 12px; }
+  .recur-card p{ font-size: 14.5px; color: var(--ink-soft); line-height: 2; }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    text-align: center;
+  }
+  .signup h2{ font-size: 25px; margin-bottom: 14px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .signup-form{ max-width: 400px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line); border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--sage); outline-offset: 1px; border-color: var(--sage);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--sage-deep); color: var(--white);
+    border: none; padding: 16px 30px; border-radius: 999px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(86,111,92,.22);
+  }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 70px 0 56px; }
+    .hero h1{ font-size: 25px; }
+    .hero-motif{ width: 180px; opacity: .5; }
+    .reassure-grid{ grid-template-columns: 1fr; }
+    .section-title{ font-size: 21px; }
+    .signup h2{ font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 300 300" fill="none">
+      <circle cx="150" cy="150" r="90" stroke="#6E8B74" stroke-width="1" stroke-opacity=".25"/>
+      <circle cx="150" cy="150" r="60" stroke="#6E8B74" stroke-width="1" stroke-opacity=".3"/>
+      <circle cx="150" cy="150" r="30" fill="#DCE6DD"/>
+      <circle cx="150" cy="150" r="6" fill="#566F5C"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>Sotto</div>
+    <h1>毎日連絡できなくても、<br>変わりないか、そっと<br>気にかけておきます。</h1>
+    <p class="hero-sub">Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。</p>
+    <a href="#signup" class="cta-btn">無料で試してみる</a>
+    <p class="cta-note">2週間無料でお試しいただけます。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">仕事や日々の生活に追われていると、<strong>「連絡しなきゃ」と思っているうちに、あっという間に時間が経ってしまう</strong>。そんな経験はありませんか。</p>
+    <p class="problem-sub">かといって、四六時中連絡すると、お子さんに気を遣わせてしまう。ちょうどいい距離感で、変わりないかだけ知りたい——そんな親御さんのための見守りです。</p>
+  </div>
+</section>
+
+<section class="reassure">
+  <div class="wrap">
+    <h2 class="section-title">見ないこと、見ること</h2>
+    <div class="reassure-grid">
+      <div class="reassure-card no">
+        <h3>見ないこと</h3>
+        <ul>
+          <li>・親子の個人LINEのやり取り</li>
+          <li>・会話の内容や、送っているスタンプ</li>
+          <li>・位置情報</li>
+        </ul>
+      </div>
+      <div class="reassure-card yes">
+        <h3>見ること</h3>
+        <ul>
+          <li>・Sottoからの軽いメッセージへの反応</li>
+          <li>・いつものパターンから外れた変化</li>
+          <li>・大きな変化があった時だけ、お知らせ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">はじめ方はシンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>親御さんが登録し、お子さんを招待</h3>
+          <p>LINEで簡単に登録し、お子さんへ招待リンクを送るだけです。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>お子さんがSottoを友だち追加</h3>
+          <p>何を見て、何を見ないかの説明を確認した上で、友だち追加していただきます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>普段は何も起きません</h3>
+          <p>いつもと違う変化があった時だけ、親御さんにそっとお知らせが届きます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recur">
+  <div class="wrap">
+    <div class="recur-card">
+      <span class="recur-badge">再発防止プラン</span>
+      <h3>休職を経験されたお子さんをお持ちの方へ</h3>
+      <p>また同じことが起きないか、心配な気持ちは自然なことです。再発防止プランでは、見守りの感度を少し高めに調整し、変化に早めに気づけるようにしています。頻繁に連絡すると負担になってしまう——そんな時こそ、そっと気にかけておく仕組みが力になります。</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>そっと、気にかけておきませんか</h2>
+    <p>まずは無料でお試しいただけます。お子さんへのご案内方法もあわせてご案内します。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/xrpgyded" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="relation">お子さんとの続柄（任意）</label>
+        <input type="text" id="relation" name="relation" placeholder="例：母、父" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="recurrence">再発防止プランへの関心</label>
+        <select id="recurrence" name="recurrence">
+          <option value="興味あり">興味がある</option>
+          <option value="まだわからない">まだわからない</option>
+          <option value="興味なし">興味はない</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料で試してみる</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、ご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = 'ご登録ありがとうございます。追ってご案内します。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料で試してみる';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
