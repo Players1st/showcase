@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>TixGuide | Scan. Understand. Buy your ticket with confidence.</title>
+<meta name="description" content="Shinjuku Station's ticket machines, explained in your language. No app to download — just scan and go. Coming soon, free to use.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/tixguide/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="TixGuide | Scan. Understand. Buy your ticket with confidence.">
+<meta property="og:description" content="Shinjuku Station's ticket machines, explained in your language. No app to download — just scan and go.">
+<meta property="og:image" content="https://showcase.p1st.app/og/tixguide.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TixGuide | Scan. Understand. Buy your ticket with confidence.">
+<meta name="twitter:description" content="Shinjuku Station's ticket machines, explained in your language. No app to download — just scan and go.">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/tixguide.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --ink: #1C1C1E;
+    --ink-soft: #6B6B6E;
+    --paper: #FFFFFF;
+    --paper-soft: #F5F5F2;
+    --line: #E3E3DE;
+    --red: #E63946;
+    --red-deep: #C62838;
+    --jr-green: #009944;
+    --metro-orange: #F39800;
+    --toei-blue: #0079C2;
+    --private-purple: #92278F;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Kaku Gothic New', 'Inter', sans-serif;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Line chips motif (operator diversity) ---------- */
+  .line-chips{
+    display:flex;
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+  .chip{
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 96px 0 76px;
+    background: var(--paper);
+    border-bottom: 8px solid var(--ink);
+  }
+  .kicker{
+    font-size: 13px;
+    color: var(--red-deep);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    max-width: 14ch;
+  }
+  .hero-sub{
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 34px;
+    max-width: 44ch;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: #fff;
+    padding: 16px 30px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .15s ease;
+  }
+  .cta-btn:hover{ transform: translateY(-1px); }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 72px 0;
+    background: var(--paper-soft);
+  }
+  .problem-lead{
+    font-size: 19px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .problem-lead strong{ color: var(--red-deep); }
+  .problem-sub{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 54ch;
+    line-height: 1.9;
+  }
+
+  /* ---------- Operators strip ---------- */
+  .operators{
+    padding: 40px 0;
+    background: var(--ink);
+  }
+  .op-row{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .op-item{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .op-dot{ width: 12px; height: 12px; border-radius: 50%; flex-shrink:0; }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 84px 0; }
+  .section-title{
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 44px;
+  }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 26px 0;
+    border-top: 2px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 2px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 42px; height: 42px;
+    background: var(--red);
+    color: #fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+  }
+  .step-body h3{ font-size: 18px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---------- Where to find ---------- */
+  .findus{
+    padding: 76px 0;
+    background: var(--paper-soft);
+  }
+  .findus-card{
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 32px 28px;
+    display:flex;
+    gap: 24px;
+    align-items:center;
+  }
+  .findus-icon{ flex-shrink:0; }
+  .findus-card h3{ font-size: 17px; margin-bottom: 8px; font-weight: 700; }
+  .findus-card p{ font-size: 14px; color: var(--ink-soft); line-height: 1.9; }
+
+  /* ---------- Try it ---------- */
+  .try{
+    padding: 88px 0 100px;
+    text-align: center;
+  }
+  .try h2{ font-size: 27px; margin-bottom: 14px; font-weight: 800; }
+  .try p{
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 44ch;
+    margin: 0 auto 36px;
+  }
+  .qr-box{
+    display:inline-flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 16px;
+    background: #fff;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    padding: 28px 36px;
+  }
+  .qr-box .caption{ font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+
+  /* ---------- Signup form ---------- */
+  .signup-form{
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 600;
+  }
+  .field input, .field select{
+    width: 100%; padding: 13px 14px;
+    border: 2px solid var(--line); border-radius: 4px;
+    font-size: 15px; font-family: 'Inter', sans-serif;
+    background: #fff; color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: none; border-color: var(--red);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--ink); color: #fff;
+    border: none; padding: 16px 30px; border-radius: 4px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+  }
+  .submit-btn:hover{ background: var(--red-deep); }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 2px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 29px; }
+    .section-title{ font-size: 22px; }
+    .op-row{ flex-direction: column; }
+    .findus-card{ flex-direction: column; text-align: center; }
+    .try h2{ font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="line-chips">
+      <div class="chip" style="background:#009944">JR</div>
+      <div class="chip" style="background:#F39800">M</div>
+      <div class="chip" style="background:#0079C2">都</div>
+      <div class="chip" style="background:#92278F">私</div>
+    </div>
+    <div class="kicker">TixGuide · Shinjuku Station</div>
+    <h1>Scan. Understand. Buy your ticket with confidence.</h1>
+    <p class="hero-sub">Shinjuku Station's ticket machines, explained in your language. No app to download — just scan and go.</p>
+    <a href="#try" class="cta-btn">Get notified at launch →</a>
+    <p class="cta-note">Coming soon. Free to use — no app required.</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">Shinjuku is the busiest station in the world — and it's shared by <strong>four different operators</strong>, each with its own machines, fare rules, and IC card handling.</p>
+    <p class="problem-sub">Switching the machine's display to English doesn't explain <em>which machine to use</em>, <em>how fares differ between operators</em>, or <em>how to charge an IC card</em>. TixGuide fills that gap — with step-by-step photo guides for the machine you're actually standing in front of.</p>
+  </div>
+</section>
+
+<section class="operators">
+  <div class="wrap">
+    <div class="op-row">
+      <div class="op-item"><span class="op-dot" style="background:#009944"></span>JR East</div>
+      <div class="op-item"><span class="op-dot" style="background:#F39800"></span>Tokyo Metro</div>
+      <div class="op-item"><span class="op-dot" style="background:#0079C2"></span>Toei Subway</div>
+      <div class="op-item"><span class="op-dot" style="background:#92278F"></span>Private Lines</div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Scan the QR code</h3>
+          <p>Find the TixGuide code at your hotel, the tourist information center, or near the machine you're using.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Choose your language and line</h3>
+          <p>Select from English, 中文, or 한국어, then pick the operator you're buying a ticket for.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Follow the photo steps</h3>
+          <p>Real photos of the actual machine screens guide you through, button by button.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="findus">
+  <div class="wrap">
+    <div class="findus-card">
+      <svg class="findus-icon" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <rect x="6" y="10" width="44" height="36" rx="3" stroke="#1C1C1E" stroke-width="2.5"/>
+        <line x1="6" y1="20" x2="50" y2="20" stroke="#1C1C1E" stroke-width="2.5"/>
+        <circle cx="28" cy="33" r="7" stroke="#E63946" stroke-width="2.5"/>
+      </svg>
+      <div>
+        <h3>Coming to hotels & information centers</h3>
+        <p>We're planning to make TixGuide available at hotels and tourist information centers near Shinjuku Station. Sign up below to be notified when it's ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="try" id="try">
+  <h2>Be the first to know when it launches</h2>
+  <p>TixGuide isn't live yet. Leave your email and we'll notify you as soon as it's ready — before your next trip to Tokyo.</p>
+
+  <form id="signup-form" class="signup-form" action="https://formspree.io/f/mnpqornn" method="POST">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="language">Preferred language</label>
+      <select id="language" name="language">
+        <option value="English">English</option>
+        <option value="中文">中文</option>
+        <option value="한국어">한국어</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <button type="submit" class="submit-btn">Notify me</button>
+    <p class="form-status" id="form-status"></p>
+  </form>
+  <p class="signup-note">We'll only use your email to let you know when TixGuide launches.</p>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'Form endpoint not configured yet (admin: set a Formspree URL etc. in the action attribute).';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = "Thanks! We'll email you when TixGuide launches.";
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong. Please try again.';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = 'Something went wrong. Please check your connection.';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'Notify me';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
