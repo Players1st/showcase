@@ -235,10 +235,4 @@
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
-<url>
-<loc>https://showcase.p1st.app/tixguide/</loc>
-<lastmod>2026-09-09</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
 </urlset>
