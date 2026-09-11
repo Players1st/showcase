@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>ベテランズ | 「高齢者だから」じゃない。経験を、次の仕事へ。</title>
+<meta name="description" content="シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。登録・ご紹介はすべて無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/veterans/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ベテランズ | 「高齢者だから」じゃない。経験を、次の仕事へ。">
+<meta property="og:description" content="シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。">
+<meta property="og:image" content="https://showcase.p1st.app/og/veterans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ベテランズ | 「高齢者だから」じゃない。経験を、次の仕事へ。">
+<meta name="twitter:description" content="シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/veterans.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --wine: #E08A3E;
+    --wine-deep: #2F6B4F;
+    --wine-pale: #FBEFDD;
+    --brass: #E08A3E;
+    --brass-deep: #C46F28;
+    --paper: #FFFBF3;
+    --paper-soft: #F5EFDF;
+    --ink: #33362E;
+    --ink-soft: #7B7A6C;
+    --line: #E9DFC7;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.95;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 96px 0 76px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--wine-pale) 100%);
+  }
+  .kicker{
+    font-size: 15px;
+    color: var(--wine-deep);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:8px; height:8px; border-radius:50%; background: var(--brass); }
+  .hero h1{
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent{ color: var(--wine-deep); }
+  .hero-sub{
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 2.1;
+    margin-bottom: 40px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--wine-deep);
+    color: var(--white);
+    padding: 20px 38px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(82,39,46,.25);
+  }
+  .cta-note{
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 76px 0;
+    background: var(--paper);
+  }
+  .problem-lead{
+    font-size: 20px;
+    line-height: 2.1;
+    margin-bottom: 26px;
+    font-weight: 500;
+  }
+  .problem-lead strong{ color: var(--wine-deep); }
+  .problem-list{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .problem-item{
+    display:flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .problem-item .x{
+    flex-shrink:0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--wine-pale);
+    color: var(--wine-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; }
+  .section-title{
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 44px;
+  }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--wine-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .step-body h3{ font-size: 19px; margin-bottom: 8px; font-weight: 700; }
+  .step-body p{ font-size: 15.5px; color: var(--ink-soft); }
+
+  /* ---------- Value box ---------- */
+  .value{ padding: 0 0 84px; }
+  .value-card{
+    background: var(--wine-deep);
+    border-radius: 14px;
+    padding: 38px 32px;
+    color: var(--white);
+  }
+  .value-card h2{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .value-card p{
+    font-size: 15.5px;
+    line-height: 2.1;
+    color: rgba(255,255,255,.88);
+  }
+  .value-card .brass-text{ color: var(--brass); font-weight: 700; }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    background: var(--paper-soft);
+    text-align: center;
+  }
+  .signup h2{ font-size: 26px; margin-bottom: 16px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 44ch;
+    margin: 0 auto 36px;
+  }
+  .signup-form{ max-width: 420px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 18px; }
+  .field label{
+    display:block; font-size: 14px; color: var(--ink-soft);
+    margin-bottom: 8px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 15px 16px;
+    border: 1.5px solid var(--line); border-radius: 8px;
+    font-size: 17px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--brass); outline-offset: 1px; border-color: var(--brass);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--wine-deep); color: var(--white);
+    border: none; padding: 18px 30px; border-radius: 8px;
+    font-size: 17px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(82,39,46,.22);
+  }
+  .form-status{ margin-top: 16px; font-size: 14.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 20px; font-size: 13.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 32px 0 48px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    body{ font-size: 16px; }
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 27px; }
+    .section-title{ font-size: 22px; }
+    .value-card{ padding: 28px 22px; }
+    .signup h2{ font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span>ベテランズ</div>
+    <h1>「<span class="accent">高齢者だから</span>」じゃない。<br>経験を、次の仕事へ。</h1>
+    <p class="hero-sub">シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。</p>
+    <a href="#signup" class="cta-btn">無料で登録する</a>
+    <p class="cta-note">登録・ご紹介は、すべて無料です。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">退職後、<strong>年金だけでは少し心もとない</strong>。そう感じながらも、自分に合う仕事の探し方が分からずにいませんか。</p>
+    <div class="problem-list">
+      <div class="problem-item"><span class="x">✕</span>シルバー人材センターは、時給の低い仕事が中心</div>
+      <div class="problem-item"><span class="x">✕</span>大手の求人サイトは、若い世代向けの仕事ばかり</div>
+      <div class="problem-item"><span class="x">✕</span>自分の経験や体力に合わせた提案をしてくれる場所がない</div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">ご利用は、3つのステップだけ</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>ご経験・体力・得意なことを登録</h3>
+          <p>簡単な質問にお答えいただくだけです。難しい入力はありません。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>あなたに合った仕事をご紹介</h3>
+          <p>体力やご希望の働き方に合わせて、無理のない仕事をご提案します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>面談から採用まで、無料でサポート</h3>
+          <p>企業とのやり取りも、こちらでお手伝いします。費用は一切かかりません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="wrap">
+    <div class="value-card">
+      <h2>「仕方なく雇う」ではありません</h2>
+      <p>長年の経験を積んだ人材は、育成にかかる時間もコストも少なく、即戦力として活躍いただけます。<span class="brass-text">「経験豊富で、無理のない条件で働ける方」</span>として、企業からも積極的に選ばれています。</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、登録してみませんか</h2>
+    <p>登録は数分で完了します。ご希望に合う仕事が見つかり次第、ご連絡いたします。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/xoeqrplg" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="experience">これまでのご経験を一言で</label>
+        <input type="text" id="experience" name="experience" placeholder="例：経理、営業、製造、接客 など" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="style">希望する働き方</label>
+        <select id="style" name="style">
+          <option value="フルタイム">フルタイム</option>
+          <option value="パート">パート</option>
+          <option value="スポット">スポット・単発</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料で登録する</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、お仕事のご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = 'ご登録ありがとうございます。担当より追ってご連絡いたします。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料で登録する';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
