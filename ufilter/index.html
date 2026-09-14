@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>UFilter | どの案件を狙うべきか、検索条件をお伝えします</title>
+<meta name="description" content="手当たり次第の応募で疲れていませんか。あなたの実績に合った検索条件を、AIがお伝えします。基本の診断は無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/ufilter/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="UFilter | どの案件を狙うべきか、検索条件をお伝えします">
+<meta property="og:description" content="手当たり次第の応募で疲れていませんか。あなたの実績に合った検索条件を、AIがお伝えします。">
+<meta property="og:image" content="https://showcase.p1st.app/og/ufilter.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UFilter | どの案件を狙うべきか、検索条件をお伝えします">
+<meta name="twitter:description" content="手当たり次第の応募で疲れていませんか。あなたの実績に合った検索条件を、AIがお伝えします。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/ufilter.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --cobalt: #2B5797;
+    --cobalt-deep: #1E3E6E;
+    --cobalt-pale: #E6ECF5;
+    --lime: #C9D93A;
+    --lime-deep: #A6B620;
+    --paper: #FAFAF8;
+    --paper-soft: #F0EFE9;
+    --ink: #262A33;
+    --ink-soft: #75798A;
+    --line: #E1E2E6;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 100px 0 80px;
+    background: var(--cobalt-deep);
+    color: var(--white);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -120px; top: 130px;
+    width: 190px;
+    opacity: .95;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 480px; }
+  .kicker{
+    font-size: 13.5px;
+    color: var(--lime);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--lime); }
+  .hero h1{
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .hero-sub{
+    font-size: 15.5px;
+    color: rgba(255,255,255,.78);
+    line-height: 1.95;
+    margin-bottom: 38px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lime);
+    color: var(--cobalt-deep);
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(201,217,58,.28);
+  }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.6);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 76px 0;
+    background: var(--paper);
+  }
+  .problem-lead{
+    font-size: 19px;
+    line-height: 2.05;
+    margin-bottom: 22px;
+  }
+  .problem-lead strong{ color: var(--cobalt-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; }
+  .section-title{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--cobalt-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-body h3{ font-size: 16.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Sample output ---------- */
+  .sample{ padding: 0 0 84px; background: var(--paper-soft); padding-top: 76px; }
+  .sample-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px 26px;
+  }
+  .sample-row{
+    display:flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F0EFE9;
+    font-size: 14px;
+  }
+  .sample-row:last-child{ border-bottom: none; }
+  .sample-row .label{ color: var(--ink-soft); flex: 0 0 100px; font-size: 12.5px; }
+  .sample-row .val{ flex: 1; font-weight: 500; }
+
+  /* ---------- Honesty box ---------- */
+  .honest{ padding: 84px 0; }
+  .honest-card{
+    background: var(--cobalt-pale);
+    border-radius: 12px;
+    padding: 28px 26px;
+  }
+  .honest-card h3{ font-size: 15.5px; color: var(--cobalt-deep); margin-bottom: 10px; font-weight: 700; }
+  .honest-card p{ font-size: 13.5px; color: var(--ink); line-height: 1.9; }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ padding: 0 0 84px; }
+  .price-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .price-card{
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 22px;
+    background: var(--white);
+  }
+  .price-card.highlight{ border: 2px solid var(--lime-deep); }
+  .price-card .amount{ font-size: 26px; font-weight: 900; margin-bottom: 4px; }
+  .price-card .amount .unit{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .price-card .desc{ font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    text-align: center;
+  }
+  .signup h2{ font-size: 25px; margin-bottom: 14px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .signup-form{ max-width: 400px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line); border-radius: 6px;
+    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--cobalt); outline-offset: 1px; border-color: var(--cobalt);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--cobalt-deep); color: var(--white);
+    border: none; padding: 16px 30px; border-radius: 6px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(30,62,110,.22);
+  }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 26px; }
+    .hero-motif{ width: 190px; opacity: .5; }
+    .section-title{ font-size: 21px; }
+    .price-grid{ grid-template-columns: 1fr; }
+    .signup h2{ font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 300 300" fill="none">
+      <path d="M40 60 H260 L170 160 V240 L130 220 V160 L40 60 Z" stroke="#C9D93A" stroke-width="5" stroke-linejoin="round" fill="none"/>
+      <circle cx="40" cy="60" r="5" fill="#C9D93A"/>
+      <circle cx="260" cy="60" r="5" fill="#C9D93A"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>UFilter</div>
+    <h1>どの案件を狙うべきか、<br>検索条件をお伝えします。</h1>
+    <p class="hero-sub">手当たり次第の応募で疲れていませんか。あなたの実績に合った検索条件を、AIがお伝えします。</p>
+    <a href="#signup" class="cta-btn">無料で診断してみる</a>
+    <p class="cta-note">基本の診断は無料です。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p class="problem-lead">「新着順」「人気順」で探しても、<strong>自分に合う案件かどうかは分からない。</strong>そう感じながら、手当たり次第に応募を続けていませんか。</p>
+    <p class="problem-sub">クラウドソーシングサイトの検索機能は、あなたの実績やスキルレベルに合わせた「狙い目」までは教えてくれません。UFilterは、その判断の土台となる検索条件をお伝えします。</p>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">使い方は、3つのステップ</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>スキル・実績を入力する</h3>
+          <p>職種・経験年数・実績件数など、簡単な質問に答えるだけです。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>検索条件を受け取る</h3>
+          <p>狙うべき単価帯やキーワードなど、具体的な検索条件が届きます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>クラウドソーシングサイトで検索する</h3>
+          <p>お使いのサイトで、受け取った条件をもとに検索・応募してください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap">
+    <h2 class="section-title">お届けする内容のイメージ</h2>
+    <div class="sample-card">
+      <div class="sample-row">
+        <span class="label">狙うべき単価帯</span>
+        <span class="val">1文字1.5円〜2円（相場よりやや低めから実績を作る）</span>
+      </div>
+      <div class="sample-row">
+        <span class="label">検索キーワード</span>
+        <span class="val">「初心者歓迎」「継続依頼あり」「マニュアルあり」</span>
+      </div>
+      <div class="sample-row">
+        <span class="label">避けたい特徴</span>
+        <span class="val">応募者数が極端に多い案件、納期が極端に短い案件</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-card">
+      <h3>正直にお伝えしたいこと</h3>
+      <p>必ず受注できるとお約束するものではありません。お伝えするのは検索条件であり、実際の案件検索・応募は、お使いのクラウドソーシングサイトで行っていただきます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="price-grid">
+      <div class="price-card highlight">
+        <div class="amount">¥0</div>
+        <div class="desc">基本の検索条件は、無料でお届けします</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">¥940 <span class="unit">/ 回</span></div>
+        <div class="desc">より詳しい条件・避けるべき案件の特徴まで（詳細診断）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、診断してみませんか</h2>
+    <p>あなたの実績に合わせた検索条件を、無料でお届けします。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/xoeqoygj" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="job">職種</label>
+        <input type="text" id="job" name="job" placeholder="例：ライティング、デザイン、事務" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="months">クラウドソーシング歴</label>
+        <select id="months" name="months">
+          <option value="3ヶ月未満">3ヶ月未満</option>
+          <option value="3〜6ヶ月">3〜6ヶ月</option>
+          <option value="6ヶ月〜1年">6ヶ月〜1年</option>
+          <option value="1年以上">1年以上</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料で診断してみる</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = '登録ありがとうございます。追ってご案内します。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料で診断してみる';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
