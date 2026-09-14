@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>PropoCheck | その提案文、なぜ通らないか診断します</title>
+<meta name="description" content="クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。初回の診断は無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/propocheck/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="PropoCheck | その提案文、なぜ通らないか診断します">
+<meta property="og:description" content="クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。">
+<meta property="og:image" content="https://showcase.p1st.app/og/propocheck.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PropoCheck | その提案文、なぜ通らないか診断します">
+<meta name="twitter:description" content="クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/propocheck.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --slate: #46536B;
+    --slate-deep: #333E52;
+    --slate-pale: #E9ECF1;
+    --coral: #FF6B4A;
+    --coral-deep: #E24E2C;
+    --paper: #FAFAF8;
+    --paper-soft: #F1F0EB;
+    --ink: #2B2E33;
+    --ink-soft: #767C87;
+    --line: #E2E4E4;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 96px 0 76px;
+    background: var(--paper);
+  }
+  .kicker{
+    font-size: 13.5px;
+    color: var(--coral-deep);
+    font-weight: 700;
+    margin-bottom: 22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--coral); }
+  .hero h1{
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.55;
+    margin-bottom: 22px;
+    max-width: 15ch;
+  }
+  .hero-sub{
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    line-height: 1.95;
+    margin-bottom: 36px;
+    max-width: 44ch;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--slate-deep);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(51,62,82,.2);
+  }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem stats ---------- */
+  .problem{
+    padding: 72px 0;
+    background: var(--slate-deep);
+    color: var(--white);
+  }
+  .stat-row{
+    display:flex;
+    gap: 40px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .stat{ flex: 1 1 200px; }
+  .stat .num{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat .label{
+    font-size: 13px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.8;
+  }
+  .problem-lead{
+    font-size: 17px;
+    line-height: 2;
+    color: rgba(255,255,255,.92);
+    border-top: 1px solid rgba(255,255,255,.18);
+    padding-top: 30px;
+  }
+  .problem-lead strong{ color: var(--coral); font-weight: 700; }
+
+  /* ---------- Diagnostic points ---------- */
+  .points{ padding: 84px 0 0; }
+  .points-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .point-card{
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 20px;
+    background: var(--white);
+  }
+  .point-card .n{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--coral-deep);
+    margin-bottom: 8px;
+  }
+  .point-card h3{ font-size: 15px; margin-bottom: 8px; font-weight: 700; }
+  .point-card p{ font-size: 13px; color: var(--ink-soft); line-height: 1.8; }
+
+  /* ---------- Before/After sample ---------- */
+  .sample{ padding: 84px 0; }
+  .sample-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .sample-block{ padding: 26px 26px; }
+  .sample-block.before{ border-bottom: 1px solid var(--line); }
+  .sample-label{
+    display:inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .sample-label.before{ background: #FBE4DD; color: var(--coral-deep); }
+  .sample-label.after{ background: var(--slate-pale); color: var(--slate-deep); }
+  .sample-text{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+  .sample-text .mark{
+    background: #FDE1D9;
+    color: var(--coral-deep);
+    padding: 1px 3px;
+    border-radius: 3px;
+    text-decoration: line-through;
+  }
+  .sample-note{
+    font-size: 12.5px;
+    color: var(--coral-deep);
+    display:flex;
+    gap: 8px;
+  }
+  .sample-note.ok{ color: var(--slate-deep); }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; }
+  .section-title{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--slate-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-body h3{ font-size: 16.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Honesty box ---------- */
+  .honest{ padding: 0 0 84px; }
+  .honest-card{
+    background: var(--slate-pale);
+    border-radius: 12px;
+    padding: 28px 26px;
+  }
+  .honest-card h3{ font-size: 15.5px; color: var(--slate-deep); margin-bottom: 10px; font-weight: 700; }
+  .honest-card p{ font-size: 13.5px; color: var(--ink); line-height: 1.9; }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ padding: 0 0 84px; }
+  .price-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .price-card{
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 22px;
+    background: var(--white);
+  }
+  .price-card.highlight{ border: 2px solid var(--coral); }
+  .price-card .amount{ font-size: 26px; font-weight: 900; margin-bottom: 4px; }
+  .price-card .amount .unit{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .price-card .desc{ font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    background: var(--paper-soft);
+    text-align: center;
+  }
+  .signup h2{ font-size: 25px; margin-bottom: 14px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .signup-form{ max-width: 400px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line); border-radius: 6px;
+    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--coral); outline-offset: 1px; border-color: var(--coral);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--slate-deep); color: var(--white);
+    border: none; padding: 16px 30px; border-radius: 6px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(51,62,82,.2);
+  }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 26px; }
+    .section-title{ font-size: 21px; }
+    .price-grid{ grid-template-columns: 1fr; }
+    .signup h2{ font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span>PropoCheck</div>
+    <h1>その提案文、なぜ通らないか診断します。</h1>
+    <p class="hero-sub">クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。</p>
+    <a href="#signup" class="cta-btn">無料で診断してみる</a>
+    <p class="cta-note">初回の診断は無料です。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">500万人超</div>
+        <div class="label">クラウドワークス登録者数は500万人を超えると言われていますが、継続的に案件を受注できている人はごく一部です。</div>
+      </div>
+      <div class="stat">
+        <div class="num">数ヶ月</div>
+        <div class="label">登録してから最初の案件が取れないまま、数ヶ月が経過してしまう初心者が少なくありません。</div>
+      </div>
+    </div>
+    <p class="problem-lead">「提案文がダメなのか、実績が足りないのか、単価が高いのか——」<strong>何が原因か分からないまま、応募を繰り返してしまう。</strong>そんな自己診断不能な状態から、まず提案文だけでも客観的に見てもらいませんか。</p>
+  </div>
+</section>
+
+<section class="points">
+  <div class="wrap">
+    <h2 class="section-title">PropoCheckが見ている、5つのポイント</h2>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="n">01</div>
+        <h3>長さ・読みやすさ</h3>
+        <p>長すぎたり要点が埋もれていたりしないか、クライアント目線で確認します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">02</div>
+        <h3>実績アピールの仕方</h3>
+        <p>実績があっても、伝え方次第で印象は大きく変わります。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">03</div>
+        <h3>案件への理解度</h3>
+        <p>テンプレート的な文面になっていないか、案件内容への言及があるかを見ます。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">04</div>
+        <h3>単価・条件の伝え方</h3>
+        <p>金額や納期の提示の仕方が、不安を与えていないかを確認します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">05</div>
+        <h3>次の行動への導線</h3>
+        <p>クライアントが「返信しやすい」文面になっているかもチェックします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap">
+    <h2 class="section-title">診断イメージ</h2>
+    <div class="sample-card">
+      <div class="sample-block before">
+        <span class="sample-label before">Before</span>
+        <p class="sample-text"><span class="mark">はじめまして。未経験ですが</span>一生懸命頑張りますのでよろしくお願いします。<span class="mark">できることは何でもやります。</span></p>
+        <p class="sample-note">✕ 実績や強みが見えず、他の応募者と差がつかない</p>
+      </div>
+      <div class="sample-block after">
+        <span class="sample-label after">After</span>
+        <p class="sample-text">これまで〇〇の制作を3件担当し、納期を守りながら△△の改善提案も行ってきました。今回の案件でも、同様の視点でお力になれます。</p>
+        <p class="sample-note ok">◯ 実績と、案件への具体的な貢献が伝わる</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">使い方は、とてもシンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>提案文を貼り付ける</h3>
+          <p>実際に送った、または送ろうとしている提案文をそのまま貼り付けます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>AIが具体的に診断</h3>
+          <p>長さ・実績アピール・単価感など、観点別に「なぜ通りにくいか」を指摘します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>改善版をそのまま使える</h3>
+          <p>診断結果をもとにした改善版の文面が届くので、コピーしてすぐ使えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-card">
+      <h3>正直にお伝えしたいこと</h3>
+      <p>受注できるかどうかは、提案文だけでなく実績や単価設定など複数の要因で決まります。PropoCheckは、その中であなた自身がすぐに改善できる「提案文」に絞ってサポートするツールです。</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="price-grid">
+      <div class="price-card highlight">
+        <div class="amount">¥0</div>
+        <div class="desc">初回1回限り、無料でお試しいただけます</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">¥940 <span class="unit">/ 回</span></div>
+        <div class="desc">2回目以降。3回分パッケージ（¥2,500）もご用意</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、診断してみませんか</h2>
+    <p>今送ろうとしている提案文、または過去に通らなかった提案文をお持ちください。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/mppzgkbd" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="months">クラウドソーシング歴</label>
+        <select id="months" name="months">
+          <option value="3ヶ月未満">3ヶ月未満</option>
+          <option value="3〜6ヶ月">3〜6ヶ月</option>
+          <option value="6ヶ月〜1年">6ヶ月〜1年</option>
+          <option value="1年以上">1年以上</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料で診断してみる</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = '登録ありがとうございます。追ってご案内します。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料で診断してみる';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
