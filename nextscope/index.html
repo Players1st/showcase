@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>NextScope | 内製化の優先順位とロードマップの叩き台を、AIが生成</title>
+<meta name="description" content="「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。お見積もりは無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/nextscope/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="NextScope | 内製化の優先順位とロードマップの叩き台を、AIが生成">
+<meta property="og:description" content="「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。">
+<meta property="og:image" content="https://showcase.p1st.app/og/nextscope.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NextScope | 内製化の優先順位とロードマップの叩き台を、AIが生成">
+<meta name="twitter:description" content="「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/nextscope.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --graphite: #2E3138;
+    --graphite-deep: #202226;
+    --amber: #E0A23E;
+    --amber-deep: #C4842A;
+    --amber-pale: #FBF1DF;
+    --paper: #FAFAF9;
+    --paper-soft: #F1F1EF;
+    --ink: #26282C;
+    --ink-soft: #767A82;
+    --line: #E2E3E4;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Prev-step banner ---------- */
+  .prevstep{
+    background: var(--graphite-deep);
+    padding: 14px 0;
+  }
+  .prevstep .wrap{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.7);
+  }
+  .prevstep a{ color: var(--amber); font-weight: 700; text-decoration: underline; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 88px 0 80px;
+    background: var(--graphite-deep);
+    color: var(--white);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -110px; top: 200px;
+    width: 190px;
+    opacity: .95;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 500px; }
+  .kicker{
+    font-size: 13px;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 22px;
+    display:flex; align-items:center; gap:10px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+  .hero h1{
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent{ color: var(--amber); }
+  .hero-sub{
+    font-size: 15px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.95;
+    margin-bottom: 36px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--amber);
+    color: var(--graphite-deep);
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 72px 0;
+    background: var(--paper);
+  }
+  .stat-row{
+    display:flex;
+    gap: 36px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .stat{ flex: 1 1 200px; }
+  .stat .num{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--amber-deep);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat .label{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .problem-lead{
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+  .problem-lead strong{ color: var(--amber-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ---------- Checklist ---------- */
+  .checklist{ padding: 0 0 80px; }
+  .check-grid{ display:flex; flex-direction: column; gap: 0; }
+  .check-item{
+    display:flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .check-item:last-child{ border-bottom: 1px solid var(--line); }
+  .check-item .mark{
+    flex-shrink:0;
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    background: var(--amber-pale);
+    color: var(--amber-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* ---------- Priority points ---------- */
+  .points{ padding: 0 0 80px; }
+  .points-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .point-card{
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 18px;
+    background: var(--white);
+  }
+  .point-card .n{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--amber-deep);
+    margin-bottom: 8px;
+  }
+  .point-card h3{ font-size: 14px; margin-bottom: 6px; font-weight: 700; }
+  .point-card p{ font-size: 12.5px; color: var(--ink-soft); line-height: 1.8; }
+
+  /* ---------- Honesty box ---------- */
+  .honest{ padding: 0 0 80px; }
+  .section-title{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 34px;
+  }
+  .honest-card{
+    background: var(--amber-pale);
+    border-radius: 10px;
+    padding: 26px 24px;
+  }
+  .honest-card h3{ font-size: 14.5px; color: var(--amber-deep); margin-bottom: 10px; font-weight: 700; }
+  .honest-card p{ font-size: 13px; color: var(--ink); line-height: 1.9; }
+
+  /* ---------- Roadmap sample ---------- */
+  .sample{ padding: 0 0 80px; }
+  .phase-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .phase-row{
+    display:flex;
+    gap: 18px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .phase-row:last-child{ border-bottom: none; }
+  .phase-tag{
+    flex-shrink:0;
+    width: 66px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--amber-deep);
+    padding-top: 2px;
+  }
+  .phase-body strong{ display:block; font-size: 14.5px; margin-bottom: 5px; }
+  .phase-body span{ font-size: 12.5px; color: var(--ink-soft); line-height: 1.8; }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 80px; }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--graphite-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+  }
+  .step-body h3{ font-size: 15.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ padding: 0 0 80px; }
+  .price-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .price-card{
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 20px;
+    background: var(--white);
+  }
+  .price-card.highlight{ border: 2px solid var(--amber); }
+  .price-card .tag{
+    display:inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber-deep);
+    background: var(--amber-pale);
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .price-card .amount{ font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+  .price-card .desc{ font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 80px 0 100px;
+    background: var(--paper-soft);
+  }
+  .signup h2{ font-size: 22px; margin-bottom: 12px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 50ch;
+    margin: 0 0 30px;
+  }
+  .signup-form{ max-width: 460px; }
+  .field{ margin-bottom: 15px; }
+  .field label{
+    display:block; font-size: 12px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 5px;
+    font-size: 14.5px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--amber); outline-offset: 1px; border-color: var(--amber);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--graphite-deep); color: var(--white);
+    border: none; padding: 15px 28px; border-radius: 5px;
+    font-size: 14.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+  }
+  .form-status{ margin-top: 14px; font-size: 13px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 16px; font-size: 12px; color: var(--ink-soft); }
+
+  footer{
+    padding: 28px 0 44px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 60px 0 56px; }
+    .hero h1{ font-size: 24px; }
+    .hero-motif{ width: 190px; opacity: .4; }
+    .section-title{ font-size: 19px; }
+    .price-grid{ grid-template-columns: 1fr; }
+    .phase-row{ flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="prevstep">
+  <div class="wrap">
+    まずは現状把握から。外注依存度を可視化する <a href="../gaichustatus/">外注ステータス →</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 320 320" fill="none">
+      <circle cx="60" cy="240" r="10" fill="#E0A23E"/>
+      <circle cx="160" cy="180" r="10" fill="#E0A23E" opacity=".8"/>
+      <circle cx="260" cy="90" r="10" fill="#E0A23E" opacity=".6"/>
+      <path d="M60 240 L160 180 L260 90" stroke="#E0A23E" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>NextScope</div>
+    <h1>内製化の<span class="accent">優先順位</span>と<br>ロードマップの叩き台を、<br>AIが生成する。</h1>
+    <p class="hero-sub">「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。</p>
+    <a href="#signup" class="cta-btn">ロードマップ叩き台を相談する →</a>
+    <p class="cta-note">お見積もりは無料です。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">数百万円〜</div>
+        <div class="label">経営コンサルティングによる内製化ロードマップ策定は、プロジェクト単位で数百万円規模が一般的です。</div>
+      </div>
+      <div class="stat">
+        <div class="num">数週間〜</div>
+        <div class="label">外部コンサルへの依頼から初期ドラフトが出るまで、数週間〜数ヶ月かかることも珍しくありません。</div>
+      </div>
+    </div>
+    <p class="problem-lead">内製化の方針は決まった。でも、<strong>どの業務から・どの順番で着手すべきか、説明できる根拠がない。</strong>経営会議で聞かれるたびに、担当者の経験と勘で答えていませんか。</p>
+    <p class="problem-sub">経営コンサルティングは高額で属人的になりがちです。NextScopeは、外注依存度のデータをもとに、内製化計画の叩き台をAIが自動生成することで、検討のスピードを上げ、コストを大きく下げます。</p>
+  </div>
+</section>
+
+<section class="checklist">
+  <div class="wrap">
+    <h2 class="section-title">こんな課題感はありませんか</h2>
+    <div class="check-grid">
+      <div class="check-item"><span class="mark">✓</span>「内製化すべき」という方針は決まったが、実行計画に落とし込めていない</div>
+      <div class="check-item"><span class="mark">✓</span>どの業務から着手すべきか、担当者の経験と勘に頼ってしまっている</div>
+      <div class="check-item"><span class="mark">✓</span>コンサルティングを依頼するには、予算・期間ともにハードルが高い</div>
+      <div class="check-item"><span class="mark">✓</span>経営層に説明するための、根拠のある叩き台がほしい</div>
+    </div>
+  </div>
+</section>
+
+<section class="points">
+  <div class="wrap">
+    <h2 class="section-title">優先順位を決める、4つの観点</h2>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="n">01</div>
+        <h3>コストインパクト</h3>
+        <p>内製化した場合の削減効果が大きい業務から検討します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">02</div>
+        <h3>実現の難易度</h3>
+        <p>採用・育成にかかる期間やコストを踏まえた着手のしやすさを整理します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">03</div>
+        <h3>業務の専門性</h3>
+        <p>専門性が高く代替が難しい業務は、より慎重な計画が必要になります。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">04</div>
+        <h3>緊急性・リスク</h3>
+        <p>特定の外注先への依存度が高い業務は、リスクの観点からも優先度を検討します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-card">
+      <h3>正直にお伝えしたいこと</h3>
+      <p>NextScopeが出すのは「決定事項」ではなく「検討のための叩き台」です。内製化すべきかどうかの最終判断は、貴社の経営層が行うものだと考えています。AIは、その検討を素早く始めるための論点整理を担います。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap">
+    <h2 class="section-title" style="font-size:26px">お届けする叩き台のイメージ</h2>
+    <div class="phase-card">
+      <div class="phase-row">
+        <span class="phase-tag">短期<br>（〜半年）</span>
+        <div class="phase-body">
+          <strong>事務・バックオフィス業務の一部内製化</strong>
+          <span>外注依存度が低く、代替可能性が高い業務から着手。育成コストも比較的小さい領域です。</span>
+        </div>
+      </div>
+      <div class="phase-row">
+        <span class="phase-tag">中期<br>（半年〜1年）</span>
+        <div class="phase-body">
+          <strong>データ分析業務の体制構築</strong>
+          <span>採用・育成を並行しながら、外注と内製のハイブリッド体制へ移行することを検討。</span>
+        </div>
+      </div>
+      <div class="phase-row">
+        <span class="phase-tag">長期<br>（1年〜）</span>
+        <div class="phase-body">
+          <strong>システム開発の中核機能の内製化</strong>
+          <span>専門性が高く依存度も高いため、最も慎重な検討と長期的な採用計画が必要な領域です。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">使い方は、シンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>依存度データをお預かりする</h3>
+          <p>外注ステータスの診断結果、または自己申告ベースのデータをご用意ください。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>AIが優先順位を整理する</h3>
+          <p>コスト・継続性・専門性・契約の集中度などから、着手すべき順番を整理します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>叩き台のロードマップが届く</h3>
+          <p>短期・中期・長期に分けたレポートが届きます。そこから社内での検討を始められます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="price-grid">
+      <div class="price-card highlight">
+        <span class="tag">セット割引</span>
+        <div class="amount">¥600,000〜</div>
+        <div class="desc">外注ステータス（現状診断）＋NextScope（ロードマップ）のセット</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">¥300,000〜</div>
+        <div class="desc">NextScopeのみ（自己申告データに基づく簡易版）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは、お見積もりから</h2>
+    <p>貴社の状況を伺った上で、最適なプランをご提案します。外注ステータスをまだご利用でない場合も、まずご相談ください。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/xzebnorb" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="company">会社名</label>
+        <input type="text" id="company" name="company" required autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="used_status">外注ステータスのご利用状況</label>
+        <select id="used_status" name="used_status">
+          <option value="利用済み">既に利用した</option>
+          <option value="未利用">まだ利用していない</option>
+          <option value="知らない">外注ステータスを知らない</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">お見積もりを相談する</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、ご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = 'ありがとうございます。担当より追ってご連絡いたします。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'お見積もりを相談する';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
