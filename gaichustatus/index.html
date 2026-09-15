@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>外注ステータス | 外注依存度を、部門別・業務別に可視化する</title>
+<meta name="description" content="契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。簡易診断は無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/gaichustatus/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="外注ステータス | 外注依存度を、部門別・業務別に可視化する">
+<meta property="og:description" content="契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。">
+<meta property="og:image" content="https://showcase.p1st.app/og/gaichustatus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="外注ステータス | 外注依存度を、部門別・業務別に可視化する">
+<meta name="twitter:description" content="契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/gaichustatus.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --graphite: #2E3138;
+    --graphite-deep: #202226;
+    --cyan: #3EA6D9;
+    --cyan-deep: #2A85B3;
+    --cyan-pale: #E5F2F8;
+    --paper: #FAFAF9;
+    --paper-soft: #F1F1EF;
+    --ink: #26282C;
+    --ink-soft: #767A82;
+    --line: #E2E3E4;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 100px 0 80px;
+    background: var(--graphite-deep);
+    color: var(--white);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -130px; top: 250px;
+    width: 170px;
+    opacity: .95;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 500px; }
+  .kicker{
+    font-size: 13px;
+    color: var(--cyan);
+    font-weight: 700;
+    margin-bottom: 22px;
+    display:flex; align-items:center; gap:10px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--cyan); }
+  .hero h1{
+    font-size: 33px;
+    font-weight: 900;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent{ color: var(--cyan); }
+  .hero-sub{
+    font-size: 15px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.95;
+    margin-bottom: 36px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cyan);
+    color: var(--graphite-deep);
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 72px 0;
+    background: var(--paper);
+  }
+  .stat-row{
+    display:flex;
+    gap: 36px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .stat{ flex: 1 1 200px; }
+  .stat .num{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--cyan-deep);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat .label{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .problem-lead{
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+  .problem-lead strong{ color: var(--cyan-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ---------- Checklist ---------- */
+  .checklist{ padding: 0 0 80px; }
+  .check-grid{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .check-item{
+    display:flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .check-item:last-child{ border-bottom: 1px solid var(--line); }
+  .check-item .mark{
+    flex-shrink:0;
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    background: var(--cyan-pale);
+    color: var(--cyan-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* ---------- Analysis points ---------- */
+  .points{ padding: 0 0 80px; }
+  .points-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .point-card{
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 18px;
+    background: var(--white);
+  }
+  .point-card .n{
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyan-deep);
+    margin-bottom: 8px;
+  }
+  .point-card h3{ font-size: 14px; margin-bottom: 6px; font-weight: 700; }
+  .point-card p{ font-size: 12.5px; color: var(--ink-soft); line-height: 1.8; }
+
+  /* ---------- Score sample ---------- */
+  .score{ padding: 0 0 80px; }
+  .section-title{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 34px;
+  }
+  .score-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 30px 28px;
+  }
+  .score-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 22px;
+  }
+  .score-head .label{ font-size: 13px; color: var(--ink-soft); }
+  .score-head .num{ font-size: 30px; font-weight: 900; color: var(--cyan-deep); }
+  .score-bars{ display:flex; flex-direction: column; gap: 14px; }
+  .score-bar-row{ display:flex; align-items:center; gap: 14px; }
+  .score-bar-row .name{ flex: 0 0 100px; font-size: 12.5px; color: var(--ink-soft); }
+  .score-bar-track{ flex: 1; height: 10px; background: var(--paper-soft); border-radius: 6px; overflow:hidden; }
+  .score-bar-fill{ height: 100%; background: var(--cyan); border-radius: 6px; }
+  .score-bar-row .pct{ flex: 0 0 40px; text-align: right; font-size: 12.5px; font-weight: 700; color: var(--ink); }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 80px; }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--graphite-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+  }
+  .step-body h3{ font-size: 15.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- Honesty box ---------- */
+  .honest{ padding: 0 0 80px; }
+  .honest-card{
+    background: var(--cyan-pale);
+    border-radius: 10px;
+    padding: 26px 24px;
+  }
+  .honest-card h3{ font-size: 14.5px; color: var(--cyan-deep); margin-bottom: 10px; font-weight: 700; }
+  .honest-card p{ font-size: 13px; color: var(--ink); line-height: 1.9; }
+
+  /* ---------- Next step (link to No.2) ---------- */
+  .nextstep{ padding: 0 0 80px; }
+  .nextstep-card{
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 24px 24px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .nextstep-card .text{ font-size: 13px; color: var(--ink-soft); max-width: 42ch; }
+  .nextstep-card .text strong{ color: var(--ink); display:block; font-size: 14.5px; margin-bottom: 4px; }
+  .nextstep-card a{
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan-deep);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 80px 0 100px;
+    background: var(--paper-soft);
+  }
+  .signup h2{ font-size: 22px; margin-bottom: 12px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 50ch;
+    margin: 0 0 30px;
+  }
+  .signup-form{ max-width: 460px; }
+  .field{ margin-bottom: 15px; }
+  .field label{
+    display:block; font-size: 12px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input, .field select{
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 5px;
+    font-size: 14.5px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--cyan); outline-offset: 1px; border-color: var(--cyan);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--graphite-deep); color: var(--white);
+    border: none; padding: 15px 28px; border-radius: 5px;
+    font-size: 14.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+  }
+  .form-status{ margin-top: 14px; font-size: 13px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 16px; font-size: 12px; color: var(--ink-soft); }
+
+  footer{
+    padding: 28px 0 44px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 25px; }
+    .hero-motif{ width: 190px; opacity: .45; }
+    .section-title{ font-size: 19px; }
+    .nextstep-card{ flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 320 320" fill="none">
+      <rect x="40" y="200" width="30" height="70" fill="#3EA6D9" opacity=".9"/>
+      <rect x="90" y="150" width="30" height="120" fill="#3EA6D9" opacity=".7"/>
+      <rect x="140" y="100" width="30" height="170" fill="#3EA6D9"/>
+      <rect x="190" y="170" width="30" height="100" fill="#3EA6D9" opacity=".5"/>
+      <circle cx="155" cy="80" r="10" fill="#3EA6D9"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>外注ステータス</div>
+    <h1>外注依存度を、<br><span class="accent">部門別・業務別</span>に<br>可視化する。</h1>
+    <p class="hero-sub">契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。</p>
+    <a href="#signup" class="cta-btn">無料で簡易診断を試す →</a>
+    <p class="cta-note">簡易診断は無料です。詳細レポートは別途お見積もりします。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">30〜40%</div>
+        <div class="label">大企業のIT・DX関連予算に占める外注費の割合は、業種によっては30〜40%規模ともいわれています。</div>
+      </div>
+      <div class="stat">
+        <div class="num">属人的</div>
+        <div class="label">内製化の優先順位づけは、担当者の経験や勘に頼っているケースが多く、根拠を説明しにくい状態です。</div>
+      </div>
+    </div>
+    <p class="problem-lead">外注に依存しすぎていることは分かっていても、<strong>どこから内製化すればいいのか判断する材料がない。</strong>契約データ・稼働時間・業務内容が部門ごとに分散し、全体像を把握できていないことはありませんか。</p>
+    <p class="problem-sub">内製化の優先順位づけが属人的な勘に頼っている状態では、経営層への説明も難しくなります。外注ステータスは、その第一歩となる「現状の可視化」に特化したツールです。</p>
+  </div>
+</section>
+
+<section class="checklist">
+  <div class="wrap">
+    <h2 class="section-title">こんな課題感はありませんか</h2>
+    <div class="check-grid">
+      <div class="check-item"><span class="mark">✓</span>どの部門がどれだけ外注に依存しているか、正確な数字で説明できない</div>
+      <div class="check-item"><span class="mark">✓</span>契約データが部門ごとにExcel・紙・システムに分散していて、突き合わせに時間がかかる</div>
+      <div class="check-item"><span class="mark">✓</span>「内製化すべき」という方針は決まったが、どこから着手すべきかの根拠がない</div>
+      <div class="check-item"><span class="mark">✓</span>経営会議で外注依存について聞かれた時、感覚的な説明しかできない</div>
+    </div>
+  </div>
+</section>
+
+<section class="points">
+  <div class="wrap">
+    <h2 class="section-title">分析する4つの観点</h2>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="n">01</div>
+        <h3>コスト比率</h3>
+        <p>総コストに占める外注費の割合を、部門・業務別に算出します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">02</div>
+        <h3>業務の継続性</h3>
+        <p>単発の外注か、継続的に依存している業務かを見分けます。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">03</div>
+        <h3>専門性の高さ</h3>
+        <p>汎用的な業務か、専門性が高く代替が難しい業務かを整理します。</p>
+      </div>
+      <div class="point-card">
+        <div class="n">04</div>
+        <h3>契約の集中度</h3>
+        <p>特定の外注先に業務が集中していないか（ベンダーロックインのリスク）を確認します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="score">
+  <div class="wrap">
+    <h2 class="section-title">お届けする診断イメージ</h2>
+    <div class="score-card">
+      <div class="score-head">
+        <span class="label">総合外注依存度スコア</span>
+        <span class="num">68<span style="font-size:16px;font-weight:500;color:var(--ink-soft)"> / 100</span></span>
+      </div>
+      <div class="score-bars">
+        <div class="score-bar-row">
+          <span class="name">システム開発</span>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:82%"></div></div>
+          <span class="pct">82%</span>
+        </div>
+        <div class="score-bar-row">
+          <span class="name">データ分析</span>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:64%"></div></div>
+          <span class="pct">64%</span>
+        </div>
+        <div class="score-bar-row">
+          <span class="name">デザイン</span>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:45%"></div></div>
+          <span class="pct">45%</span>
+        </div>
+        <div class="score-bar-row">
+          <span class="name">事務・バックオフィス</span>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:30%"></div></div>
+          <span class="pct">30%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">使い方は、シンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>概算の数値を入力する</h3>
+          <p>外注費・総コスト・主な外注業務の種類など、機密性の低い概算値だけで診断できます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>依存度スコアを受け取る</h3>
+          <p>部門別・業務別の依存度スコアと、一般的な傾向コメントが届きます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>詳細分析が必要なら、ご相談ください</h3>
+          <p>より詳しい部門別・業務別の分析、内製化余地の試算はレポートとしてご提供します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-card">
+      <h3>正直にお伝えしたいこと</h3>
+      <p>外注ステータスは、現状を客観的なスコアで可視化することに特化したツールです。「内製化すべきかどうか」という経営判断そのものは行いません。優先順位・実行計画の立案は、内製化ロードマップAIで別途ご案内しています。</p>
+    </div>
+  </div>
+</section>
+
+<section class="nextstep">
+  <div class="wrap">
+    <div class="nextstep-card">
+      <div class="text">
+        <strong>診断結果をもとに、次の一歩へ</strong>
+        外注ステータスで現状を把握した後は、内製化の優先順位とロードマップをAIが自動生成する「内製化ロードマップAI」もご検討ください。
+      </div>
+      <a href="#" target="_blank" rel="noopener">内製化ロードマップAIを見る →</a>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、簡易診断を</h2>
+    <p>概算の数値を入力いただくだけで、貴社の外注依存度スコアをお届けします。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/mqpkrnzz" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="company">会社名</label>
+        <input type="text" id="company" name="company" required autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="department">部門</label>
+        <select id="department" name="department">
+          <option value="経営企画">経営企画</option>
+          <option value="DX推進">DX推進</option>
+          <option value="情報システム">情報システム</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">無料で簡易診断を申し込む</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、診断のご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = 'お申し込みありがとうございます。担当より追ってご連絡いたします。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料で簡易診断を申し込む';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
