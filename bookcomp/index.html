@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>BookComp | 好きな作家の「持ってたっけ？」を、なくす。</title>
+<meta name="description" content="作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。登録・利用は無料です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/bookcomp/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="BookComp | 好きな作家の「持ってたっけ？」を、なくす。">
+<meta property="og:description" content="作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。">
+<meta property="og:image" content="https://showcase.p1st.app/og/bookcomp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BookComp | 好きな作家の「持ってたっけ？」を、なくす。">
+<meta name="twitter:description" content="作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/bookcomp.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  :root{
+    --brown: #4A3428;
+    --brown-deep: #362519;
+    --brown-pale: #F0E6D8;
+    --mustard: #D9A233;
+    --mustard-deep: #B9841F;
+    --paper: #FBF7EF;
+    --paper-soft: #F3ECDD;
+    --ink: #322A22;
+    --ink-soft: #7D7266;
+    --line: #E6DBC6;
+    --white: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 100px 0 80px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--brown-pale) 100%);
+    overflow: hidden;
+  }
+  .hero-motif{
+    position: absolute;
+    right: -110px; top: 250px;
+    width: 170px;
+    opacity: .95;
+  }
+  .hero-inner{ position: relative; z-index: 2; max-width: 480px; }
+  .kicker{
+    font-size: 20px;
+    color: var(--mustard-deep);
+    font-weight: 900;
+    margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--mustard); }
+  .kicker .yomi{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .hero h1{
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    color: var(--brown-deep);
+  }
+  .hero-sub{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 2;
+    margin-bottom: 38px;
+  }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--brown-deep);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(54,37,25,.2);
+  }
+  .cta-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem{
+    padding: 76px 0;
+    background: var(--paper);
+  }
+  .stat-row{
+    display:flex;
+    gap: 36px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .stat{ flex: 1 1 200px; }
+  .stat .num{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--mustard-deep);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat .label{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .problem-lead{
+    font-size: 18.5px;
+    line-height: 2.1;
+    margin-bottom: 20px;
+  }
+  .problem-lead strong{ color: var(--mustard-deep); font-weight: 700; }
+  .problem-sub{
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  /* ---------- Checklist ---------- */
+  .checklist{ padding: 0 0 84px; }
+  .check-grid{ display:flex; flex-direction: column; gap: 0; }
+  .check-item{
+    display:flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .check-item:last-child{ border-bottom: 1px solid var(--line); }
+  .check-item .mark{
+    flex-shrink:0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--brown-pale);
+    color: var(--brown-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ---------- Features grid ---------- */
+  .features{ padding: 0 0 84px; }
+  .features-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .feature-card{
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 16px;
+    background: var(--white);
+    text-align: center;
+  }
+  .feature-card .icon{
+    width: 36px; height: 36px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--brown-pale);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .feature-card h3{ font-size: 13.5px; margin-bottom: 6px; font-weight: 700; }
+  .feature-card p{ font-size: 11.5px; color: var(--ink-soft); line-height: 1.7; }
+
+  /* ---------- Sample list ---------- */
+  .sample{ padding: 0 0 84px; }
+  .section-title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 34px;
+  }
+  .book-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+  .book-card-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .book-card-head .author{ font-size: 15.5px; font-weight: 700; font-family: 'Noto Serif JP', serif; }
+  .book-card-head .count{ font-size: 12px; color: var(--ink-soft); }
+  .book-row{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  .book-row .chk{
+    flex-shrink:0;
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    border: 2px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .book-row .chk.done{ background: var(--mustard); border-color: var(--mustard); }
+  .book-row .title{ flex: 1; font-family: 'Noto Serif JP', serif; }
+  .book-row.unread .title{ color: var(--ink-soft); }
+  .book-row .tag{
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--brown-pale);
+    color: var(--brown-deep);
+    font-weight: 700;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{ padding: 0 0 84px; }
+  .steps{ display:flex; flex-direction: column; gap: 0; }
+  .step{
+    display:flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line); }
+  .step-num{
+    flex-shrink:0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--brown-deep);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-body h3{ font-size: 16.5px; margin-bottom: 6px; font-weight: 700; }
+  .step-body p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Note box ---------- */
+  .note{ padding: 0 0 84px; }
+  .note-card{
+    background: var(--brown-pale);
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+  .note-card h3{ font-size: 15px; color: var(--brown-deep); margin-bottom: 10px; font-weight: 700; }
+  .note-card p{ font-size: 13.5px; color: var(--ink); line-height: 1.9; }
+
+  /* ---------- Signup ---------- */
+  .signup{
+    padding: 88px 0 100px;
+    background: var(--paper-soft);
+    text-align: center;
+  }
+  .signup h2{ font-size: 25px; margin-bottom: 14px; }
+  .signup p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .signup-form{ max-width: 400px; margin: 0 auto; text-align: left; }
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block; font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .field input{
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--line); border-radius: 6px;
+    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--ink);
+  }
+  .field input:focus{
+    outline: 2px solid var(--mustard); outline-offset: 1px; border-color: var(--mustard);
+  }
+  .submit-btn{
+    width: 100%;
+    background: var(--brown-deep); color: var(--white);
+    border: none; padding: 16px 30px; border-radius: 6px;
+    font-size: 15.5px; font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(54,37,25,.2);
+  }
+  .form-status{ margin-top: 14px; font-size: 13.5px; display: none; }
+  .form-status.ok{ color: #2E7D4F; }
+  .form-status.err{ color: #B23A3A; }
+  .signup-note{ margin-top: 18px; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer{
+    padding: 30px 0 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-top: 1px solid var(--line);
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-links{ display:flex; gap:20px; }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ color: var(--ink); }
+
+  @media (max-width: 560px){
+    .hero{ padding: 68px 0 56px; }
+    .hero h1{ font-size: 26px; }
+    .hero-motif{ width: 190px; opacity: .5; }
+    .section-title{ font-size: 21px; }
+    .signup h2{ font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <svg class="hero-motif" viewBox="0 0 300 300" fill="none">
+      <rect x="40" y="60" width="26" height="180" fill="#4A3428"/>
+      <rect x="72" y="80" width="26" height="160" fill="#D9A233"/>
+      <rect x="104" y="50" width="26" height="190" fill="#4A3428" opacity=".7"/>
+      <rect x="136" y="90" width="26" height="150" fill="#D9A233" opacity=".7"/>
+      <rect x="168" y="70" width="26" height="170" fill="#4A3428" opacity=".5"/>
+      <circle cx="100" cy="100" r="26" fill="#D9A233"/>
+      <path d="M88 100 L97 109 L114 90" stroke="#FBF7EF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="kicker"><span class="dot"></span>BookComp<span class="yomi">（ブックコンプ）</span></div>
+    <h1>好きな作家の<br>「持ってたっけ？」を、<br>なくす。</h1>
+    <p class="hero-sub">作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。</p>
+    <a href="#signup" class="cta-btn">無料ではじめる</a>
+    <p class="cta-note">登録・利用は無料です。</p>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">100冊超</div>
+        <div class="label">人気作家になると既刊が100冊を超えることも珍しくなく、全部を記憶しておくのは困難です。</div>
+      </div>
+      <div class="stat">
+        <div class="num">あるある</div>
+        <div class="label">「同じ本を2冊買ってしまった」「気になっていた新刊を買い忘れた」という経験は、読書好きの間でよく聞く悩みです。</div>
+      </div>
+    </div>
+    <p class="problem-lead">好きな作家の新刊コーナーで、<strong>「これ、もう持ってたかな？」と迷った経験</strong>はありませんか。結局買わずに帰って、実は未読だった——そんなすれ違いをなくします。</p>
+    <p class="problem-sub">全部読もうと思っているのに、気づけば重複購入や買い忘れが積み重なっていく。BookCompは、その場でサッと確認できる「作家別の所持リスト」です。</p>
+  </div>
+</section>
+
+<section class="checklist">
+  <div class="wrap">
+    <h2 class="section-title">こんな経験、ありませんか</h2>
+    <div class="check-grid">
+      <div class="check-item"><span class="mark">✓</span>本屋で「これ持ってたっけ？」と迷い、結局買わずに帰ってしまう</div>
+      <div class="check-item"><span class="mark">✓</span>同じ本を2冊買ってしまい、1冊は人にあげるかそのまま眠っている</div>
+      <div class="check-item"><span class="mark">✓</span>お気に入り作家の新刊情報を追いきれず、気づいたら発売から時間が経っていた</div>
+      <div class="check-item"><span class="mark">✓</span>読書メモアプリはあるが、入力が面倒で続かなかった</div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="wrap">
+    <h2 class="section-title">BookCompの3つのこだわり</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9 L7 14 L16 4" stroke="#4A3428" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>入力はチェックだけ</h3>
+        <p>人気作家の既刊データは用意済み。検索してチェックするだけです。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#4A3428" stroke-width="2"/></svg>
+        </div>
+        <h3>その場で照合できる</h3>
+        <p>書店店頭でスマホを開くだけ。日常的な入力の手間は最小限です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#4A3428" stroke-width="2"/></svg>
+        </div>
+        <h3>完全無料で使える</h3>
+        <p>基本機能はずっと無料。気軽に登録して試せます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap">
+    <h2 class="section-title">こんなふうに管理できます</h2>
+    <div class="book-card">
+      <div class="book-card-head">
+        <span class="author">東野圭吾</span>
+        <span class="count">既読 24 / 既刊 98</span>
+      </div>
+      <div class="book-row">
+        <span class="chk done">✓</span>
+        <span class="title">白夜行</span>
+      </div>
+      <div class="book-row">
+        <span class="chk done">✓</span>
+        <span class="title">容疑者Xの献身</span>
+      </div>
+      <div class="book-row unread">
+        <span class="chk"></span>
+        <span class="title">魔球</span>
+        <span class="tag">未所持</span>
+      </div>
+      <div class="book-row unread">
+        <span class="chk"></span>
+        <span class="title">変身</span>
+        <span class="tag">未所持</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="section-title">使い方は、とてもシンプルです</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>好きな作家を検索する</h3>
+          <p>人気作家の既刊データはあらかじめ用意されているので、検索するだけで一覧が表示されます。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>持っている本にチェックを入れる</h3>
+          <p>読んだ・持っている作品にチェックするだけ。未所持の作品がひと目でわかります。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>書店やスマホで、その場に確認</h3>
+          <p>次に読むべき一冊が、迷わず見つかります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="note">
+  <div class="wrap">
+    <div class="note-card">
+      <h3>まずは人気作家から</h3>
+      <p>現在ご用意しているのは、人気作家を中心とした既刊データです。お好きな作家が見つからない場合は、順次追加していく予定です。ご要望があれば、ぜひお聞かせください。</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <h2>まずは無料で、はじめてみませんか</h2>
+    <p>好きな作家を登録して、既刊の管理をはじめましょう。</p>
+
+    <form id="signup-form" class="signup-form" action="https://formspree.io/f/maenwdke" method="POST">
+      <div class="field">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="author">好きな作家（複数可）</label>
+        <input type="text" id="author" name="author" placeholder="例：東野圭吾、村上春樹" autocomplete="off">
+      </div>
+      <button type="submit" class="submit-btn">無料ではじめる</button>
+      <p class="form-status" id="form-status"></p>
+    </form>
+    <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('action');
+      if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
+        status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+        return;
+      }
+      var btn = form.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(res){
+        if(res.ok){
+          status.textContent = '登録ありがとうございます。追ってご案内します。';
+          status.className = 'form-status ok';
+          form.reset();
+        } else {
+          status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          status.className = 'form-status err';
+        }
+        status.style.display = 'block';
+      }).catch(function(){
+        status.textContent = '送信に失敗しました。通信環境をご確認ください。';
+        status.className = 'form-status err';
+        status.style.display = 'block';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = '無料ではじめる';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
