@@ -81,13 +81,18 @@
   }
   .hero-inner{ position: relative; z-index: 2; max-width: 480px; }
   .kicker{
-    font-size: 13.5px;
+    font-size: 20px;
     color: var(--mustard-deep);
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 24px;
     display:flex; align-items:center; gap:10px;
   }
   .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--mustard); }
+  .kicker .yomi{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
   .hero h1{
     font-size: 34px;
     font-weight: 900;
@@ -371,7 +376,7 @@
       <circle cx="100" cy="100" r="26" fill="#D9A233"/>
       <path d="M88 100 L97 109 L114 90" stroke="#FBF7EF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <div class="kicker"><span class="dot"></span>BookComp</div>
+    <div class="kicker"><span class="dot"></span>BookComp<span class="yomi">（ブックコンプ）</span></div>
     <h1>好きな作家の<br>「持ってたっけ？」を、<br>なくす。</h1>
     <p class="hero-sub">作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。</p>
     <a href="#signup" class="cta-btn">無料ではじめる</a>
