@@ -737,6 +737,7 @@
         regForm.classList.add('hide');
         formThanks.classList.add('show');
         formThanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        gtag('event', 'generate_lead', { 'service_name': 'mitsumorist' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');

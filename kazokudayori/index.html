@@ -756,6 +756,7 @@
         if (!res.ok) throw new Error('submit failed');
         document.getElementById('form-success').style.display = 'block';
         form.style.display = 'none';
+        gtag('event', 'generate_lead', { 'service_name': 'kazokudayori' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');

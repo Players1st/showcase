@@ -317,6 +317,7 @@
         if (!res.ok) throw new Error("submit failed");
         document.getElementById("form-card").classList.add("hidden");
         document.getElementById("thanks-state").classList.add("show");
+        gtag('event', 'generate_lead', { 'service_name': 'fareflow' });
       })
       .catch(function(){
         alert("Something went wrong. Please try again in a moment.");

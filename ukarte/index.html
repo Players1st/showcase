@@ -1210,6 +1210,7 @@ function submitEmailForm(event, form) {
     .then(function(res) {
       if (!res.ok) throw new Error('submit failed');
       form.innerHTML = '<p style="font-weight:700;">🎉 登録ありがとうございます！リリース時に優先でお知らせします。</p>';
+      gtag('event', 'generate_lead', { 'service_name': 'ukarte' });
     })
     .catch(function() {
       alert('送信に失敗しました。時間をおいて再度お試しください。');

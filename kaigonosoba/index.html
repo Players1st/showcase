@@ -992,6 +992,7 @@ function handleSubmit(event) {
       const thanks = document.getElementById('reg-thanks');
       thanks.style.display = 'block';
       thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      gtag('event', 'generate_lead', { 'service_name': 'kaigonosoba' });
     })
     .catch(() => {
       alert('送信に失敗しました。時間をおいて再度お試しください。');

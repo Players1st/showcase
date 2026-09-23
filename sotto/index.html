@@ -462,6 +462,7 @@
           status.textContent = 'ご登録ありがとうございます。追ってご案内します。';
           status.className = 'form-status ok';
           form.reset();
+          gtag('event', 'generate_lead', { 'service_name': 'sotto' });
         } else {
           status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           status.className = 'form-status err';

@@ -479,6 +479,7 @@
           status.textContent = 'お申し込みありがとうございます。日程が決まり次第ご案内します。';
           status.className = 'form-status ok';
           form.reset();
+          gtag('event', 'generate_lead', { 'service_name': 'roundtable' });
         } else {
           status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           status.className = 'form-status err';

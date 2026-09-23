@@ -718,6 +718,7 @@
         const fields = form.querySelectorAll('.frow, button, .form-note');
         fields.forEach(el => el.style.display = 'none');
         document.getElementById('successMsg').style.display = 'block';
+        gtag('event', 'generate_lead', { 'service_name': 'fitgate' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');
