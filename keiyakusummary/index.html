@@ -614,6 +614,7 @@
         document.getElementById('formSuccess').style.display = 'block';
         btn.textContent = '登録しました';
         form.reset();
+        gtag('event', 'generate_lead', { 'service_name': 'keiyakusummary' });
       } else {
         btn.textContent = 'エラーが発生しました。再度お試しください。';
       }

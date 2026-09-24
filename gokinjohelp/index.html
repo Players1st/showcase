@@ -587,6 +587,7 @@
       if (response.ok) {
         submitBtn.textContent = '登録しました。ありがとうございます！';
         form.reset();
+        gtag('event', 'generate_lead', { 'service_name': 'gokinjohelp' });
       } else {
         submitBtn.textContent = 'エラーが発生しました。再度お試しください。';
       }

@@ -796,6 +796,7 @@ function submitForm(event) {
       if (!res.ok) throw new Error('submit failed');
       form.style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
+      gtag('event', 'generate_lead', { 'service_name': 'oikatsu' });
     })
     .catch(function() {
       alert('送信に失敗しました。時間をおいて再度お試しください。');

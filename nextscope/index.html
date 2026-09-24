@@ -612,6 +612,7 @@
           status.textContent = 'ありがとうございます。担当より追ってご連絡いたします。';
           status.className = 'form-status ok';
           form.reset();
+          gtag('event', 'generate_lead', { 'service_name': 'nextscope' });
         } else {
           status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           status.className = 'form-status err';

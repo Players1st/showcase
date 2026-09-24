@@ -607,6 +607,7 @@
         if (!res.ok) throw new Error('submit failed');
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
+        gtag('event', 'generate_lead', { 'service_name': 'sleepmate' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');

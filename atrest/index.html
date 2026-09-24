@@ -683,6 +683,7 @@ document.getElementById('bookForm').addEventListener('submit', function(e){
       document.querySelector('[data-i18n="form.sub"]').style.display = 'none';
       document.querySelector('.form-note').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
+      gtag('event', 'generate_lead', { 'service_name': 'atrest' });
     })
     .catch(function(){
       alert('Something went wrong. Please try again in a moment.');

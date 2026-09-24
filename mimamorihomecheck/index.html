@@ -520,6 +520,7 @@
           status.textContent = '登録ありがとうございます。サービス開始時にご案内します。';
           status.className = 'form-status ok';
           form.reset();
+          gtag('event', 'generate_lead', { 'service_name': 'mimamorihomecheck' });
         } else {
           status.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           status.className = 'form-status err';

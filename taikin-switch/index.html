@@ -565,6 +565,7 @@
         if (!res.ok) throw new Error('submit failed');
         form.style.display = 'none';
         document.getElementById('trialNote').textContent = '登録しました。リリース時にご案内をお送りします。';
+        gtag('event', 'generate_lead', { 'service_name': 'taikin-switch' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');

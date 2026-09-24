@@ -875,6 +875,7 @@
         form.querySelectorAll('.form-row').forEach(el => el.style.display = 'none');
         btn.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
+        gtag('event', 'generate_lead', { 'service_name': 'syokurekiquestion' });
       })
       .catch(function(){
         alert('送信に失敗しました。時間をおいて再度お試しください。');
