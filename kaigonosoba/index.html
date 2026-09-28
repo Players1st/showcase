@@ -992,6 +992,7 @@
           <option value="other">その他・興味がある</option>
         </select>
       </div>
+      <input type="hidden" name="source" id="sourceField">
       <button class="form-btn" id="f-btn" type="submit">事前登録する（無料）</button>
       <p class="cta-note">登録は無料 · クレジットカード不要 · いつでも解除できます</p>
     </form>
@@ -1014,6 +1015,16 @@
 </footer>
 
 <script>
+function getTrafficSource(){
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get('utm_source');
+  if (utmSource) return utmSource;
+  if (document.referrer) {
+    try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+  }
+  return 'direct';
+}
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -1028,6 +1039,7 @@ function handleSubmit(event) {
   const btn = document.getElementById('f-btn');
   btn.disabled = true;
   btn.textContent = '登録中...';
+  document.getElementById('sourceField').value = getTrafficSource();
 
   fetch('https://formspree.io/f/mpqgokjz', {
     method: 'POST',

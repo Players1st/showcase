@@ -612,6 +612,7 @@
             <label>メールアドレス <span class="badge req">必須</span></label>
             <input type="email" name="email" placeholder="you@company.co.jp" required>
           </div>
+          <input type="hidden" name="source" id="sourceField">
           <button type="submit" class="form-submit">初月無料トライアルに申し込む</button>
           <p class="form-fine">送信後、導入ガイドPDFを担当者様宛にお送りします。</p>
         </form>
@@ -640,6 +641,16 @@
 <script>
   lucide.createIcons();
 
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
@@ -647,6 +658,7 @@
     const originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = '送信中...';
+    form.querySelector('#sourceField').value = getTrafficSource();
 
     fetch('https://formspree.io/f/mbdnkjdn', {
       method: 'POST',
