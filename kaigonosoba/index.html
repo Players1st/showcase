@@ -528,6 +528,32 @@
     font-weight: 300;
   }
 
+  /* ── PRICING ─────────────────────── */
+  .pricing {
+    padding: 80px 24px;
+    background: var(--paper);
+  }
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .price-card {
+    padding: 28px 24px;
+    border-radius: 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .price-card.main { border: 2px solid var(--sage); }
+  .price-label { font-size: 13px; font-weight: 700; color: var(--sage-dk); letter-spacing: 0.06em; }
+  .price-value { font-size: 36px; font-weight: 700; color: var(--forest); margin: 10px 0 4px; }
+  .price-value span { font-size: 15px; font-weight: 500; color: var(--mid); }
+  .price-desc { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .price-note { text-align: center; font-size: 13px; color: var(--mid); margin-top: 20px; }
+
   /* ── CTA ─────────────────────────── */
   .cta-section {
     padding: 100px 24px;
@@ -622,6 +648,7 @@
     .cycle-steps { grid-template-columns: repeat(4, 1fr); row-gap: 16px; }
     .how-grid, .how-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 36px; }
     .why-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 480px) {
@@ -754,7 +781,7 @@
       <strong>次に進む勇気を、そばで一緒に作るアプリです。</strong>
     </p>
     <a href="#register" class="line-cta">事前登録して、リリースを待つ</a>
-    <p class="hero-note">無料 · 1分で完了 · クレジットカード不要</p>
+    <p class="hero-note">初月無料・以降 月額980円 · 登録は1分</p>
   </div>
   <div class="scroll-hint">
     <div class="scroll-line"></div>
@@ -920,12 +947,33 @@
   </div>
 </section>
 
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <span class="section-eyebrow">料金</span>
+    <h2 class="section-title">最初の1ヶ月は無料。<br>続けるなら、月額980円。</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-label">お試し</div>
+        <div class="price-value">¥0<span> / 初月</span></div>
+        <p class="price-desc">すべての機能を1ヶ月、無料で使えます。</p>
+      </div>
+      <div class="price-card main">
+        <div class="price-label">2ヶ月目から</div>
+        <div class="price-value">¥980<span> / 月</span></div>
+        <p class="price-desc">LINEでの相談・今日やることの提案・翌日の声かけが使い放題。</p>
+      </div>
+    </div>
+    <p class="price-note">いつでも解約できます。事前登録の時点では料金はかかりません。</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="register">
   <div class="cta-inner">
     <span class="section-eyebrow">β版 事前登録受付中</span>
     <h2 class="cta-h">今日から、介護の相棒を<br>持ってみませんか。</h2>
-    <p class="cta-p">かいごのそばはβ版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。</p>
+    <p class="cta-p">かいごのそばはβ版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。初月無料、2ヶ月目から月額980円です。</p>
 
     <form class="reg-form" id="reg-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
@@ -945,7 +993,7 @@
         </select>
       </div>
       <button class="form-btn" id="f-btn" type="submit">事前登録する（無料）</button>
-      <p class="cta-note">クレジットカード不要 · いつでも解除できます</p>
+      <p class="cta-note">登録は無料 · クレジットカード不要 · いつでも解除できます</p>
     </form>
 
     <div class="reg-thanks" id="reg-thanks" style="display:none;">
