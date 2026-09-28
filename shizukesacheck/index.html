@@ -497,6 +497,7 @@
       <p class="lead">物件詳細レポート ¥440 / 土地詳細レポート ¥3,980。先行登録いただいた方には、提供開始のご案内を優先してお届けします。</p>
       <form class="final-form" id="signupForm">
         <input type="email" name="email" placeholder="メールアドレス" required>
+        <input type="hidden" name="source" id="sourceField">
         <button type="submit" class="btn-primary">登録する</button>
       </form>
       <p class="form-success" id="formSuccess" style="display:none; margin-top:12px; font-size:13.5px; color:var(--ink-soft);">登録ありがとうございます。ご案内をお送りします。</p>
@@ -517,10 +518,21 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signupForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('button');
+    form.querySelector('#sourceField').value = getTrafficSource();
     fetch('https://formspree.io/f/xwlkbrro', {
       method: 'POST',
       body: new FormData(form),

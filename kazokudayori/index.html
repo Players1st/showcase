@@ -714,6 +714,7 @@
           <label>見守りたいご家族の人数 <span class="badge optional">任意</span></label>
           <input type="text" name="family_count" placeholder="例：父のみ／父母ふたり">
         </div>
+        <input type="hidden" name="source" id="sourceField">
         <button type="submit" class="form-submit">無料お試しに登録する ▶</button>
         <p class="form-note">登録後、LINE公式アカウントの友だち追加案内をメールでお送りします。</p>
       </form>
@@ -739,6 +740,16 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
@@ -746,6 +757,7 @@
     const originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = '送信中...';
+    form.querySelector('#sourceField').value = getTrafficSource();
 
     fetch('https://formspree.io/f/xojgedjk', {
       method: 'POST',
