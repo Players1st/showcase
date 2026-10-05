@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>PropoCheck | その提案文、なぜ通らないか診断します</title>
-<meta name="description" content="クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。初回の診断は無料です。">
+<meta name="description" content="クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。1回¥940、3回分パッケージ¥2,500。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/propocheck/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -344,8 +344,8 @@
     <div class="kicker"><span class="dot"></span>PropoCheck</div>
     <h1>その提案文、なぜ通らないか診断します。</h1>
     <p class="hero-sub">クラウドソーシングで送った提案文を、AIが具体的に診断。「何が悪いか分からない」から抜け出す、最初の一歩です。</p>
-    <a href="#signup" class="cta-btn">無料で診断してみる</a>
-    <p class="cta-note">初回の診断は無料です。</p>
+    <a href="#signup" class="cta-btn">事前登録する</a>
+    <p class="cta-note">料金は1回¥940（3回分パッケージ¥2,500）です。</p>
   </div>
 </section>
 
@@ -459,12 +459,12 @@
     <h2 class="section-title">料金</h2>
     <div class="price-grid">
       <div class="price-card highlight">
-        <div class="amount">¥0</div>
-        <div class="desc">初回1回限り、無料でお試しいただけます</div>
+        <div class="amount">¥940 <span class="unit">/ 回</span></div>
+        <div class="desc">提案文1通の診断と、改善版の文面</div>
       </div>
       <div class="price-card">
-        <div class="amount">¥940 <span class="unit">/ 回</span></div>
-        <div class="desc">2回目以降。3回分パッケージ（¥2,500）もご用意</div>
+        <div class="amount">¥2,500 <span class="unit">/ 3回分</span></div>
+        <div class="desc">3回分パッケージ（1回あたり約¥833）</div>
       </div>
     </div>
   </div>
@@ -472,7 +472,7 @@
 
 <section class="signup" id="signup">
   <div class="wrap">
-    <h2>まずは無料で、診断してみませんか</h2>
+    <h2>事前登録で、リリース時にご案内します</h2>
     <p>今送ろうとしている提案文、または過去に通らなかった提案文をお持ちください。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/mppzgkbd" method="POST">
@@ -493,7 +493,9 @@
           <option value="1年以上">1年以上</option>
         </select>
       </div>
-      <button type="submit" class="submit-btn">無料で診断してみる</button>
+      <input type="hidden" name="price_shown" value="¥940/回（3回分¥2,500）">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
@@ -512,10 +514,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -547,7 +561,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料で診断してみる';
+        btn.textContent = '事前登録する';
       });
     });
   })();
