@@ -131,6 +131,7 @@
   .btn-primary svg { width: 16px; height: 16px; }
 
   .hero-note { font-size: 13px; color: var(--cream-faint); }
+  .hero-price { margin-top: 14px; font-size: 13.5px; color: var(--cream-dim); }
 
   /* ===== MODE TOGGLE VISUAL (signature) ===== */
   .mode-card {
@@ -344,6 +345,7 @@
         </a>
         <span class="hero-note">30秒で完了・費用はかかりません</span>
       </div>
+      <p class="hero-price">基本ガイドは無料／有料プランは月額¥480</p>
     </div>
 
     <div class="mode-card" id="modeCard">
@@ -529,7 +531,7 @@
       </div>
       <div class="plan pro">
         <div class="plan-name">SleepMate プラン</div>
-        <div class="plan-price">¥480〜980<span> / 月</span></div>
+        <div class="plan-price">¥480<span> / 月</span></div>
         <ul class="plan-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>無料プランの内容すべて</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>ガイド音声のコンテンツ拡充</li>
@@ -561,14 +563,15 @@
         </select>
       </div>
       <div class="form-row">
-        <label for="willingness">月額480〜980円、妥当だと感じますか？</label>
+        <label for="willingness">月額¥480で使いたいと思いますか？</label>
         <select id="willingness" name="willingness">
-          <option>480円程度なら</option>
-          <option>980円程度でも</option>
-          <option>無料範囲で十分そう</option>
+          <option>ぜひ使いたい</option>
+          <option>内容次第で検討したい</option>
+          <option>無料プランで十分そう</option>
           <option>まだ分からない</option>
         </select>
       </div>
+      <input type="hidden" name="source" id="sourceField">
       <button type="submit" class="form-submit">事前登録する</button>
       <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
     </form>
@@ -590,9 +593,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;

@@ -246,6 +246,24 @@
   .preview-note{
     text-align:center;font-size:13px;color:var(--ink-soft);margin-top:20px;
   }
+  .preview-label{
+    display:inline-block;margin-bottom:8px;
+    font-size:11.5px;font-weight:700;color:var(--gold-deep);
+    background:var(--gold-tint);padding:3px 10px;border-radius:6px;
+  }
+
+  /* ---------- pricing ---------- */
+  .pricing-section{background:var(--white);padding:90px 0;}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .price-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:16px;
+    padding:24px 22px;
+  }
+  .price-card.highlight{border:2px solid var(--gold);}
+  .price-name{font-size:13.5px;font-weight:700;color:var(--ink-soft);}
+  .price-amount{font-size:28px;font-weight:900;color:var(--navy-900);margin:6px 0 8px;}
+  .price-amount span{font-size:13.5px;font-weight:500;color:var(--ink-soft);}
+  .price-desc{font-size:14px;color:var(--ink-soft);}
 
   /* ---------- form ---------- */
   .form-section{
@@ -325,6 +343,7 @@
     .hero-grid{grid-template-columns:1fr;gap:48px;}
     .hero{padding:110px 0 60px;}
     .step{grid-template-columns:44px 1fr;gap:16px;}
+    .price-grid{grid-template-columns:1fr;}
     .form-card{padding:30px 22px;}
   }
   @media (prefers-reduced-motion: reduce){
@@ -349,7 +368,7 @@
       <h1>その一晩、<span class="accent">静かに</span>眠れるか。<br>予約する前に、わかる。</h1>
       <p class="sub"><strong>「壁が薄い」は、泊まってからでは遅い。</strong>実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化しました。</p>
       <a href="#form" class="btn-primary">先行登録する →</a>
-      <p class="hero-note">対象都市拡大時、いち早くご案内します。</p>
+      <p class="hero-note">対象都市拡大時、いち早くご案内します。詳細レポートは1ホテル¥348/回。</p>
     </div>
 
     <div>
@@ -439,8 +458,8 @@
       <div class="step">
         <div class="step-num">3</div>
         <div>
-          <h3>スコアと根拠を確認して予約へ</h3>
-          <p>5段階の静粛性スコアと、実際の宿泊者の声を確認したうえで、そのまま予約サイトへ進めます。</p>
+          <h3>スコアを確認し、必要なら詳細レポート（¥348/回）で根拠を見て、予約へ</h3>
+          <p>5段階の静粛性スコアは無料で確認できます。根拠となる宿泊者の声を詳しく見たいときは詳細レポートで確認し、そのまま予約サイトへ進めます。</p>
         </div>
       </div>
     </div>
@@ -453,6 +472,7 @@
     <div class="section-head">
       <div class="kicker">サンプルイメージ</div>
       <h2>こんな形で表示されます（イメージ）</h2>
+      <p>5段階のスコアは無料で表示されます。宿泊者の声の引用は、詳細レポート（¥348/回）のイメージです。</p>
     </div>
 
     <div class="preview-grid">
@@ -467,6 +487,7 @@
             <span class="quiet-score" style="color:var(--quiet-1)">4.4</span>
           </div>
         </div>
+        <div class="preview-label">詳細レポート（¥348/回）のイメージ</div>
         <div class="preview-quote">「防音がしっかりしていて、駅前とは思えないほど静かでした」</div>
       </div>
       <div class="preview-card">
@@ -480,10 +501,33 @@
             <span class="quiet-score" style="color:var(--quiet-3)">3.2</span>
           </div>
         </div>
+        <div class="preview-label">詳細レポート（¥348/回）のイメージ</div>
         <div class="preview-quote">「土日の夜は周辺の人の声がやや気になりました。平日は静かとの声も」</div>
       </div>
     </div>
     <p class="preview-note">※ MVP版は東京・大阪の主要ビジネスホテル数十件から開始予定です</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">料金</div>
+      <h2>スコアは無料。根拠を詳しく見たいときだけ、1ホテル¥348。</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-name">静粛性スコア</div>
+        <div class="price-amount">¥0<span>（無料）</span></div>
+        <p class="price-desc">ホテル名・エリアで検索し、5段階の静粛性スコアを表示します。</p>
+      </div>
+      <div class="price-card highlight">
+        <div class="price-name">詳細レポート</div>
+        <div class="price-amount">¥348<span> / 回</span></div>
+        <p class="price-desc">1ホテルの静粛性に関する宿泊者の声の要約と、その根拠。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -506,6 +550,7 @@
           <label class="field-label" for="freq">出張・宿泊の頻度 <span class="badge optional">任意</span></label>
           <input type="text" id="freq" name="freq" placeholder="例：月2〜3回／年数回">
         </div>
+        <input type="hidden" name="source" id="sourceField">
         <button type="submit" class="form-submit">先行登録する</button>
         <p class="form-fine">登録はいつでも解除できます。営業のご連絡は行いません。</p>
       </form>
@@ -533,9 +578,20 @@
 
 <script>
   // NOTE: Sample hotel names/scores/quotes above are illustrative mockups, not real analyzed data.
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signup-form').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;
