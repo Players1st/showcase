@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>受注者の盾｜写真1枚で、泣き寝入りを終わらせる</title>
-<meta name="description" content="発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
+<meta name="description" content="発注元とのやり取りをLINEで送るだけ。AIが取適法（中小受託取引適正化法、旧：下請法）上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/jutyushanotate/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="受注者の盾｜写真1枚で、泣き寝入りを終わらせる">
-<meta property="og:description" content="発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
+<meta property="og:description" content="発注元とのやり取りをLINEで送るだけ。AIが取適法（中小受託取引適正化法、旧：下請法）上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
 <meta property="og:image" content="https://showcase.p1st.app/og/jutyushanotate.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="受注者の盾｜写真1枚で、泣き寝入りを終わらせる">
-<meta name="twitter:description" content="発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
+<meta name="twitter:description" content="発注元とのやり取りをLINEで送るだけ。AIが取適法（中小受託取引適正化法、旧：下請法）上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/jutyushanotate.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -254,6 +254,23 @@
   .trust-box p{font-size:14.5px;color:var(--slate);}
   .trust-box p + p{margin-top:8px;}
 
+  /* ---------- PRICING ---------- */
+  .pricing{padding-top:0;}
+  .plan-card{
+    background:#fff;border:2px solid var(--amber);border-radius:22px;
+    padding:36px 32px;max-width:520px;margin:0 auto;
+  }
+  .plan-name{font-size:14px;font-weight:700;color:var(--slate);}
+  .plan-price{font-family:'Zen Kaku Gothic New',sans-serif;font-size:40px;font-weight:900;color:var(--navy);line-height:1.3;margin:6px 0 18px;}
+  .plan-price span{font-size:15px;font-weight:500;color:var(--slate);}
+  .plan-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .plan-list li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink);}
+  .plan-list li::before{
+    content:"";position:absolute;left:3px;top:.6em;width:11px;height:6px;
+    border-left:2.5px solid var(--amber-deep);border-bottom:2.5px solid var(--amber-deep);
+    transform:rotate(-45deg);
+  }
+
   /* ---------- FINAL CTA ---------- */
   .final-cta{
     background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
@@ -314,7 +331,6 @@
     .pain-grid,.steps{grid-template-columns:1fr;}
     .steps::before{display:none;}
     .trust-box{grid-template-columns:1fr;}
-    .nav-cta span.long{display:none;}
   }
 </style>
 </head>
@@ -323,7 +339,7 @@
 <header>
   <div class="container nav">
     <div class="logo"><span class="mark">盾</span>受注者の盾</div>
-    <a href="#cta" class="nav-cta">事前登録<span class="long">（無料）</span></a>
+    <a href="#cta" class="nav-cta">事前登録</a>
   </div>
 </header>
 
@@ -332,10 +348,10 @@
     <div>
       <span class="eyebrow">下請け事業者のための一次判定ツール</span>
       <h1>写真1枚で、<br><span class="accent">泣き寝入り</span>を終わらせる。</h1>
-      <p class="sub">発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意します。</p>
+      <p class="sub">発注元とのやり取りをLINEで送るだけ。AIが取適法（中小受託取引適正化法、旧：下請法）上のリスクを判定し、そのまま使える対応文まで用意します。</p>
       <div class="cta-row">
         <a href="#cta" class="btn-line">事前登録する</a>
-        <span class="cta-note">登録30秒・診断は何度でも無料</span>
+        <span class="cta-note">登録30秒・事前登録は無料。ご利用は月額¥980</span>
       </div>
     </div>
     <div class="phone-wrap">
@@ -399,7 +415,7 @@
       <div class="step">
         <div class="num">2</div>
         <h3>AIが数秒で一次判定</h3>
-        <p>下請法上のリスクをスタンプ表示。「問題なし／要注意／専門家へ相談」の3段階でひと目でわかります。</p>
+        <p>取適法上のリスクをスタンプ表示。「問題なし／要注意／専門家へ相談」の3段階でひと目でわかります。</p>
       </div>
       <div class="step">
         <div class="num">3</div>
@@ -416,9 +432,28 @@
       <div class="icon">⚖️</div>
       <div>
         <h3>この判定は、最終的な法的結論ではありません。</h3>
-        <p>「受注者の盾」がお伝えするのは、あくまで一次的なスクリーニング結果です。実際の状況は取引の経緯によって判断が変わるため、必要に応じて「下請かけこみ寺」などの公的相談窓口や専門家への橋渡しも行います。</p>
+        <p>「受注者の盾」がお伝えするのは、あくまで一次的なスクリーニング結果です。実際の状況は取引の経緯によって判断が変わるため、必要に応じて「取引かけこみ寺（旧：下請かけこみ寺）」などの公的相談窓口や専門家への橋渡しも行います。</p>
         <p>大切なのは、ひとりで抱え込まず「まず確かめる」こと。そこから先の一歩を、盾が一緒に支えます。</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <h2>料金</h2>
+      <p>判定は何度でも。月額ひとつの料金です。</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">受注者の盾プラン</div>
+      <div class="plan-price">¥980<span> / 月</span></div>
+      <ul class="plan-list">
+        <li>判定回数は無制限</li>
+        <li>そのまま使える対応文の生成</li>
+        <li>数日後のフォロー</li>
+        <li>公的相談窓口・専門家への橋渡しのご案内</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -442,7 +477,7 @@
           <textarea id="signupTrouble" name="trouble" placeholder="例：発注元から急な値引きを求められて困っている　など"></textarea>
         </div>
         <button type="submit" class="btn-line">事前登録する →</button>
-        <span class="form-note">登録は30秒・費用はかかりません</span>
+        <span class="form-note">事前登録は無料です。サービスのご利用は月額¥980を予定しています</span>
       </form>
       <div class="signup-success" id="signupSuccess">
         ✓ ご登録ありがとうございます。リリース時にご案内します。
