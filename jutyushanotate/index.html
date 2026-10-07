@@ -476,6 +476,7 @@
           <label for="signupTrouble">困っていること<span class="opt">任意</span></label>
           <textarea id="signupTrouble" name="trouble" placeholder="例：発注元から急な値引きを求められて困っている　など"></textarea>
         </div>
+        <input type="hidden" name="source" id="sourceField">
         <button type="submit" class="btn-line">事前登録する →</button>
         <span class="form-note">事前登録は無料です。サービスのご利用は月額¥980を予定しています</span>
       </form>
@@ -496,9 +497,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signupForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = document.getElementById('signupForm');
+    form.querySelector('#sourceField').value = getTrafficSource();
     const success = document.getElementById('signupSuccess');
     const btn = form.querySelector('button');
     const originalText = btn.textContent;

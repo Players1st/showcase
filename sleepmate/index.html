@@ -571,6 +571,7 @@
           <option>まだ分からない</option>
         </select>
       </div>
+      <input type="hidden" name="source" id="sourceField">
       <button type="submit" class="form-submit">事前登録する</button>
       <p class="form-fine">登録は無料です。ご案内以外の目的でメールアドレスを利用することはありません。</p>
     </form>
@@ -592,9 +593,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;

@@ -550,6 +550,7 @@
           <label class="field-label" for="freq">出張・宿泊の頻度 <span class="badge optional">任意</span></label>
           <input type="text" id="freq" name="freq" placeholder="例：月2〜3回／年数回">
         </div>
+        <input type="hidden" name="source" id="sourceField">
         <button type="submit" class="form-submit">先行登録する</button>
         <p class="form-fine">登録はいつでも解除できます。営業のご連絡は行いません。</p>
       </form>
@@ -577,9 +578,20 @@
 
 <script>
   // NOTE: Sample hotel names/scores/quotes above are illustrative mockups, not real analyzed data.
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signup-form').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;
