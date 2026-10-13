@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>てつづき帳｜家族が亡くなったあとの手続きを、期限順に並べて、きょうだいで分担</title>
+<meta name="description" content="質問に答えると、役所・年金・銀行・携帯・サブスクなどの手続きを、期限が近い順のリストにします。窓口と持ち物、記入メモ、担当者と進み具合も、きょうだいで共有できます。4,980円（買切）。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/tetsuzukicho/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="てつづき帳｜家族が亡くなったあとの手続きを、期限順に並べて、きょうだいで分担">
+<meta property="og:description" content="手続きを期限順のリストにして、担当と進み具合をきょうだいで共有。4,980円（買切）。">
+<meta property="og:image" content="https://showcase.p1st.app/og/tetsuzukicho.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="てつづき帳｜家族が亡くなったあとの手続きを、期限順に並べて、きょうだいで分担">
+<meta name="twitter:description" content="手続きを期限順のリストにして、担当と進み具合をきょうだいで共有。4,980円（買切）。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/tetsuzukicho.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F6F5;
+    --ink:#22302F;
+    --soft:#566664;
+    --line:#D3DEDB;
+    --spruce:#2F6B63;
+    --spruce-dark:#21504A;
+    --spruce-tint:#DCEBE7;
+    --amber:#E4B363;
+    --amber-tint:#FBF0DA;
+    --amber-dark:#8A6414;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Kaku Gothic New",sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.95;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+  header{background:#fff;padding:14px 0;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--spruce-dark);text-decoration:none}
+  .logo svg{width:30px;height:30px}
+  .head-cta{font-size:16px;font-weight:700;color:#fff;text-decoration:none;background:var(--spruce);border-radius:10px;padding:8px 20px}
+
+  .hero{padding:56px 0 76px;background:#fff;border-bottom:1px solid var(--line)}
+  .hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}
+  .eyebrow{display:inline-block;font-size:15px;font-weight:700;color:var(--amber-dark);background:var(--amber-tint);border-radius:8px;padding:2px 14px;margin-bottom:18px}
+  h1{font-size:34px;line-height:1.55;font-weight:900;margin-bottom:20px}
+  h1 .u{background:linear-gradient(transparent 62%,var(--amber-tint) 62%)}
+  .lead{font-size:18px;color:var(--soft);margin-bottom:30px}
+  .btn{display:inline-block;background:var(--spruce);color:#fff;font-weight:900;font-size:19px;text-decoration:none;border:none;border-radius:12px;padding:18px 32px;cursor:pointer;font-family:inherit;transition:background .15s}
+  .btn:hover{background:var(--spruce-dark)}
+  .btn-note{display:block;font-size:15px;color:var(--soft);margin-top:12px}
+
+  /* チェックリストのモック */
+  .list{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(33,80,74,.12);max-width:440px;margin:0 auto;overflow:hidden}
+  .list .top{background:var(--spruce);color:#fff;padding:12px 18px;font-weight:900;font-size:17px}
+  .list .top small{display:block;font-weight:500;font-size:13px;opacity:.9}
+  .item{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--spruce-tint);font-size:15px;line-height:1.5}
+  .item:last-child{border-bottom:none}
+  .box{width:20px;height:20px;border:2px solid var(--spruce);border-radius:5px;position:relative}
+  .item.done .box{background:var(--spruce)}
+  .item.done .box::after{content:"";position:absolute;left:4px;top:2px;width:8px;height:4px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
+  .item.done .t{color:var(--soft);text-decoration:line-through;text-decoration-color:var(--line)}
+  .item .d{display:block;font-size:12.5px;font-weight:700;color:var(--amber-dark)}
+  .who{font-size:12.5px;font-weight:700;background:var(--spruce-tint);color:var(--spruce-dark);border-radius:999px;padding:1px 10px;white-space:nowrap}
+  .who.none{background:var(--amber-tint);color:var(--amber-dark)}
+  .caption{font-size:14px;color:var(--soft);text-align:center;margin-top:12px}
+
+  section{padding:76px 0}
+  .sec-label{font-size:15px;font-weight:900;color:var(--spruce);letter-spacing:.1em;margin-bottom:8px}
+  h2{font-size:29px;line-height:1.6;font-weight:900;margin-bottom:24px}
+
+  .scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .scene{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+  .scene .q{font-weight:900;font-size:19px;margin-bottom:8px;line-height:1.6}
+  .scene p{font-size:16px;color:var(--soft)}
+  .voice{margin-top:24px;background:var(--spruce-tint);border-left:5px solid var(--spruce);padding:18px 22px;border-radius:0 12px 12px 0;font-size:17px}
+  .voice a{color:var(--spruce-dark);font-size:15px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{background:#fff;border-radius:14px;padding:26px;border:1px solid var(--line)}
+  .step .num{display:inline-flex;width:38px;height:38px;border-radius:50%;background:var(--spruce);color:#fff;font-weight:900;align-items:center;justify-content:center;margin-bottom:12px}
+  .step h3{font-size:20px;margin-bottom:8px}
+  .step p{font-size:16px;color:var(--soft)}
+
+  .contents{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card-i{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .card-i h3{font-size:17px;margin-bottom:6px;color:var(--spruce-dark)}
+  .card-i p{font-size:14.5px;color:var(--soft);line-height:1.75}
+  .note-line{margin-top:18px;font-size:15px;color:var(--soft)}
+
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat .f{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+  .feat h3{font-size:19px;margin-bottom:8px;color:var(--spruce-dark)}
+  .feat p{font-size:16px;color:var(--soft)}
+
+  .scope .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .scope h3{font-size:20px;margin-bottom:12px}
+  .scope ul{list-style:none;font-size:17px}
+  .scope li{padding-left:28px;position:relative;margin-bottom:8px}
+  .scope .yes{background:var(--spruce-tint);border-radius:14px;padding:22px}
+  .scope .no{background:#fff;border:2px dashed var(--line);border-radius:14px;padding:22px}
+  .scope .yes li::before{content:"";position:absolute;left:3px;top:.66em;width:12px;height:7px;border-left:3px solid var(--spruce);border-bottom:3px solid var(--spruce);transform:rotate(-45deg)}
+  .scope .no li::before{content:"×";position:absolute;left:3px;top:0;color:var(--soft);font-weight:900}
+
+  .pricing{background:var(--spruce-tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .plan{background:#fff;border-radius:16px;padding:32px;max-width:580px;margin:10px auto 0;border:1px solid var(--line);box-shadow:0 10px 30px rgba(33,80,74,.12)}
+  .plan h3{font-size:20px;margin-bottom:4px}
+  .price{font-size:46px;font-weight:900;line-height:1.3;color:var(--spruce-dark)}
+  .price small{font-size:16px;font-weight:500;color:var(--soft)}
+  .plan ul{list-style:none;margin-top:14px;font-size:17px;color:var(--soft)}
+  .plan li{padding-left:24px;position:relative;margin-bottom:6px}
+  .plan li::before{content:"";position:absolute;left:2px;top:.72em;width:11px;height:6px;border-left:3px solid var(--spruce);border-bottom:3px solid var(--spruce);transform:rotate(-45deg)}
+  .price-note{font-size:15px;color:var(--soft);margin-top:18px;text-align:center}
+
+  .signup .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:38px;max-width:660px;margin:0 auto;box-shadow:0 10px 30px rgba(33,80,74,.12)}
+  .signup h2{text-align:center}
+  .signup .sub{text-align:center;color:var(--soft);margin-bottom:26px;font-size:17px}
+  label{display:block;font-weight:700;font-size:17px;margin-bottom:8px}
+  input[type=email],select{width:100%;font-family:inherit;font-size:18px;padding:15px 16px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--spruce)}
+  .field{margin-bottom:24px}
+  .opt{font-weight:400;color:var(--soft);font-size:15px}
+  .choices{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .choices.three{grid-template-columns:repeat(3,1fr)}
+  .choices label{font-weight:500;margin:0}
+  .choices input{position:absolute;opacity:0}
+  .choices span{display:block;text-align:center;border:2px solid var(--line);border-radius:12px;padding:13px 4px;cursor:pointer;font-size:16px;background:var(--bg)}
+  .choices input:checked + span{border-color:var(--spruce);background:var(--spruce-tint);font-weight:900;color:var(--spruce-dark)}
+  .choices input:focus-visible + span{outline:3px solid var(--amber)}
+  .signup .btn{width:100%}
+  .form-note{font-size:14px;color:var(--soft);text-align:center;margin-top:12px}
+  .thanks{display:none;text-align:center;padding:10px 0}
+  .thanks h3{font-size:24px;margin-bottom:10px}
+  .thanks .urgent{margin-top:18px;text-align:left;background:var(--amber-tint);border-radius:12px;padding:16px 18px;font-size:16px}
+  .prepay{margin-top:24px;padding-top:22px;border-top:1.5px dashed var(--line);text-align:center}
+  .prepay p{font-size:16px;color:var(--soft);margin-bottom:12px}
+  .btn-ghost{display:inline-block;font-weight:900;font-size:18px;color:#fff;text-decoration:none;border-radius:12px;padding:14px 24px;background:var(--spruce)}
+
+  .disclaimer{padding:0 0 40px}
+  .disclaimer p{font-size:14px;color:var(--soft);max-width:780px;margin:0 auto 8px}
+  footer{padding:32px 0;font-size:13px;color:var(--soft);border-top:1px solid var(--line)}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-links{display:flex;gap:20px}
+  .foot-links a{text-decoration:none}
+  .foot-links a:hover{color:var(--ink)}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:820px){
+    body{font-size:17px}
+    h1{font-size:24px;white-space:nowrap}
+    h2{font-size:23px}
+    .hero .wrap{grid-template-columns:1fr;gap:34px}
+    .scenes,.steps,.feat,.scope .cols{grid-template-columns:1fr}
+    .signup .card{padding:26px 20px}
+    .choices,.choices.three{grid-template-columns:1fr 1fr}
+    section{padding:56px 0}
+    .head-cta{display:none}
+    .price{font-size:40px}
+  }
+  @media (max-width:520px){
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#2F6B63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="20" height="24" rx="3"/><path d="M11 12h10M11 18h6"/><path d="M19 22l2.2 2.2L25 20" stroke="#E4B363"/></svg>
+      てつづき帳
+    </a>
+    <a class="head-cta" href="#signup">先行登録</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">先行登録受付中｜4,980円（買切）</span>
+      <h1>家族が亡くなったあとの<br>手続きを、<span class="u">期限順に並べて</span>、<br>きょうだいで分担できます。</h1>
+      <p class="lead">いくつかの質問に答えると、役所・年金・銀行・携帯・サブスクなどの手続きが、期限が近い順のリストになります。窓口と持ち物、記入メモ、担当者と進み具合も、みんなで見られます。</p>
+      <a class="btn" href="#signup">料金を確認して先行登録する</a>
+      <span class="btn-note">てつづき帳 4,980円（買切・1回）。登録だけなら費用はかかりません。</span>
+    </div>
+    <div>
+      <div class="list" aria-hidden="true">
+        <div class="top">手続きリスト<small>期限が近い順（例）</small></div>
+        <div class="item done"><span class="box"></span><span class="t">死亡届の提出（市区町村）<span class="d">7日以内</span></span><span class="who">長女</span></div>
+        <div class="item"><span class="box"></span><span class="t">年金受給停止の届出<span class="d">10〜14日以内</span></span><span class="who">次男</span></div>
+        <div class="item"><span class="box"></span><span class="t">健康保険・介護保険の資格喪失<span class="d">14日以内</span></span><span class="who none">未定</span></div>
+        <div class="item"><span class="box"></span><span class="t">携帯・サブスクの解約<span class="d">料金が発生し続けるため早めに</span></span><span class="who">長女</span></div>
+        <div class="item"><span class="box"></span><span class="t">準確定申告（税務署）<span class="d">4か月以内</span></span><span class="who none">未定</span></div>
+        <div class="item"><span class="box"></span><span class="t">相続税の申告<span class="d">10か月以内</span></span><span class="who none">未定</span></div>
+      </div>
+      <p class="caption">画面のイメージです。期限は一般的な目安で、実際は状況によって変わります。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-label">こんなことで、困っていませんか</p>
+    <h2>何をいつまでにするのか、<br>誰がどこまでやったのか。分からなくなります。</h2>
+    <div class="scenes">
+      <div class="scene"><p class="q">何から手をつければいいか、分からない</p><p>役所、年金、銀行、携帯、保険、サブスク。区役所で行う手続きだけでも62にのぼる自治体があります（江戸川区の案内）。民間の手続きは、さらに別です。</p></div>
+      <div class="scene"><p class="q">きょうだいで、誰が何をしたか分からなくなる</p><p>連絡は電話やLINEに散らばります。同じ手続きを二重にしたり、誰も手をつけていなかったりします。</p></div>
+      <div class="scene"><p class="q">解約や届出が、あとから次々に出てくる</p><p>気づいたときには料金が引き落とされ続けている。そんな契約が、あとから見つかることがあります。</p></div>
+    </div>
+    <div class="voice">
+      <p>公開されている相談でも、「母が亡くなり、長姉が銀行に伝えたところ口座が凍結され、葬儀費用の支払いに困っている」という、きょうだいで手続きを進める中での声が寄せられています。</p>
+      <a href="https://gentosha-go.com/articles/-/61819" target="_blank" rel="noopener">幻冬舎ゴールドオンラインの相談記事を見る</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label">てつづき帳でできること</p>
+    <h2>質問に答えると、手続きが期限順のリストになります。</h2>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>質問に答える</h3><p>故人との関係、年金や加入していた保険、契約しているサービスなどを、選ぶ形で答えます。</p></div>
+      <div class="step"><span class="num">2</span><h3>期限順のリストを受け取る</h3><p>やることを、期限が近い順に並べます。窓口、持ち物、記入メモも、手続きごとに確認できます。</p></div>
+      <div class="step"><span class="num">3</span><h3>担当と進み具合を共有する</h3><p>手続きごとに担当者を決め、済んだらチェックを入れます。きょうだいは、同じ画面で状況を見られます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contents">
+  <div class="wrap">
+    <p class="sec-label">リストに入る手続き</p>
+    <h2>役所の手続きだけでなく、民間の契約までまとめます。</h2>
+    <div class="cards">
+      <div class="card-i"><h3>役所</h3><p>死亡届、世帯主の変更、健康保険・介護保険、住民票 など</p></div>
+      <div class="card-i"><h3>年金・保険</h3><p>年金の受給停止、未支給年金、生命保険の請求 など</p></div>
+      <div class="card-i"><h3>お金</h3><p>銀行口座、クレジットカード、公共料金、準確定申告 など</p></div>
+      <div class="card-i"><h3>携帯・ネット・サブスク</h3><p>携帯電話、インターネット、動画・音楽などの定額サービス の解約</p></div>
+    </div>
+    <p class="note-line">相続の手続き（相続放棄の検討、遺産の分け方、相続税の申告）も、期限と窓口の一覧に入ります。内容の判断はしません。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-label">ほかの方法との違い</p>
+    <h2>一覧を見るだけでなく、進め方まで管理できます。</h2>
+    <div class="feat">
+      <div class="f"><h3>期限順に並ぶ</h3><p>自治体の案内や冊子は、手続きの種類ごとに並んでいることが多く、いつまでに何をするかを自分で拾う必要があります。</p></div>
+      <div class="f"><h3>担当を決められる</h3><p>手続きごとに、誰が行くのかを決められます。済んだものと、まだのものが一目で分かります。</p></div>
+      <div class="f"><h3>記入メモが付く</h3><p>窓口や申込書で聞かれる項目を整理したメモです。手元の情報を書き写して使えます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scope" style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label">できること・しないこと</p>
+    <h2>手続きの代行はしません。整理と管理をお手伝いします。</h2>
+    <div class="cols">
+      <div class="yes"><h3>やること</h3><ul>
+        <li>質問への回答をもとに、手続きを期限順に整理する</li>
+        <li>手続きごとの窓口・持ち物・記入項目をまとめる</li>
+        <li>担当者と進み具合を、家族で共有する</li>
+        <li>手続きの期限を「一般的な目安」として示す</li>
+      </ul></div>
+      <div class="no"><h3>しないこと</h3><ul>
+        <li>窓口やオンラインでの手続きの代行</li>
+        <li>書類の作成や、官公署への提出</li>
+        <li>法律・税務の個別の相談や助言</li>
+        <li>専門家や事業者の紹介・斡旋（紹介料は受け取りません）</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <p class="sec-label">料金</p>
+    <h2>てつづき帳 4,980円。買い切りです。</h2>
+    <div class="plan">
+      <h3>てつづき帳（買切・1回）</h3>
+      <p class="price">4,980円<small>（税込）</small></p>
+      <ul>
+        <li>質問への回答にもとづく、期限順の手続きリスト</li>
+        <li>窓口・持ち物・記入メモ</li>
+        <li>担当者の設定と進み具合の共有（きょうだい・家族）</li>
+        <li>追加料金・自動更新はありません</li>
+      </ul>
+    </div>
+    <p class="price-note">※ 正式リリース前のため、内容と料金は変更になる場合があります。先行登録された方には、リリース時に最初にご案内します。</p>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="card">
+      <h2>先行登録（登録は無料）</h2>
+      <p class="sub">リリース時に、いちばん最初にご案内をお送りします。</p>
+
+      <form id="signup-form" action="https://formspree.io/f/mgaoljrb" method="POST">
+        <input type="hidden" name="service" value="てつづき帳">
+        <input type="hidden" name="price_shown" value="てつづき帳4,980円（買切）">
+        <input type="hidden" name="source" id="source" value="direct">
+
+        <div class="field">
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label>亡くなった方は、あなたから見て</label>
+          <div class="choices">
+            <label><input type="radio" name="relation" value="親" required><span>親</span></label>
+            <label><input type="radio" name="relation" value="配偶者"><span>配偶者</span></label>
+            <label><input type="radio" name="relation" value="きょうだい"><span>きょうだい</span></label>
+            <label><input type="radio" name="relation" value="その他"><span>その他</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="elapsed">亡くなってから <span class="opt">（任意）</span></label>
+          <select id="elapsed" name="elapsed">
+            <option value="" selected>選んでください</option>
+            <option>1週間以内</option>
+            <option>1か月以内</option>
+            <option>3か月以内</option>
+            <option>3か月より前</option>
+            <option>将来に備えて見ておきたい</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>きょうだいや家族で、手続きを分担する予定は <span class="opt">（任意）</span></label>
+          <div class="choices three">
+            <label><input type="radio" name="share" value="あり"><span>ある</span></label>
+            <label><input type="radio" name="share" value="なし"><span>ない</span></label>
+            <label><input type="radio" name="share" value="未定"><span>まだ分からない</span></label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">先行登録する</button>
+        <p class="form-note">ご案内以外の目的でメールアドレスを使うことはありません。</p>
+      </form>
+
+      <div class="thanks" id="thanks">
+        <h3>ご登録ありがとうございます</h3>
+        <p>リリースの準備ができしだい、メールでご案内します。</p>
+        <p class="urgent">お急ぎの手続きは、お住まいの市区町村の窓口（「おくやみコーナー」などの名称で設けられていることがあります）で確認できます。</p>
+
+        <!-- 先行予約（S3）：STRIPE_PAYMENT_LINK を置き換えると表示されます -->
+        <div class="prepay" id="prepay" hidden>
+          <p>早く使いたい方へ：4,980円で先行予約すると、リリース時にてつづき帳をお届けします。リリースされない場合は、全額を返金します。</p>
+          <a class="btn-ghost" id="prepay-link" href="STRIPE_PAYMENT_LINK">先行予約する（4,980円）</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="disclaimer">
+  <div class="wrap">
+    <p>本サービスは、死亡後の手続きに関する一般的な情報を整理し、進み具合を管理するためのものです。手続きの代行、書類の作成・提出、法律・税務の相談や助言は行いません。手続きの期限や必要書類は一般的な目安で、お住まいの自治体や状況によって異なります。正確な内容は、各窓口でご確認ください。相続や税金の判断が必要な場合は、弁護士・司法書士・行政書士・税理士などの専門家にご相談ください。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Players1st Inc. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="https://company.p1st.app" target="_blank" rel="noopener">運営会社</a>
+      <a href="https://showcase.p1st.app" target="_blank" rel="noopener">他のサービスを見る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 流入元：utm_source → referrer のホスト名 → "direct"
+  (function(){
+    var src = "direct";
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var utm = p.get("utm_source");
+      if (utm) { src = utm; }
+      else if (document.referrer) {
+        var host = new URL(document.referrer).hostname;
+        if (host && host !== window.location.hostname) src = host;
+      }
+    } catch(e) {}
+    document.getElementById("source").value = src;
+
+    // 先行予約リンクに流入元を引き継ぐ（Stripeのclient_reference_id）
+    var link = document.getElementById("prepay-link");
+    var href = link.getAttribute("href");
+    if (href && href.indexOf("STRIPE_PAYMENT_LINK") === -1) {
+      var sep = href.indexOf("?") === -1 ? "?" : "&";
+      link.href = href + sep + "client_reference_id=" + encodeURIComponent(src);
+      document.getElementById("prepay").hidden = false;
+    }
+  })();
+
+  // 送信（ページ遷移なしで完了表示）
+  document.getElementById("signup-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector("button");
+    btn.disabled = true; btn.textContent = "送信中…";
+    fetch(form.action, { method:"POST", body:new FormData(form), headers:{ "Accept":"application/json" } })
+      .then(function(r){
+        if (r.ok) { form.style.display = "none"; document.getElementById("thanks").style.display = "block"; gtag('event', 'generate_lead', { 'service_name': 'tetsuzukicho' }); }
+        else { throw new Error(); }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = "先行登録する";
+        alert("送信できませんでした。時間をおいてもう一度お試しください。");
+      });
+  });
+</script>
+</body>
+</html>
