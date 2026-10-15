@@ -210,6 +210,21 @@
   .step h4{font-size:15.5px; font-weight:700; margin-bottom:8px;}
   .step p{font-size:13px; color:var(--text-sub);}
 
+  .hero-price{margin-top:18px; font-size:13.5px; color:rgba(255,255,255,0.72); max-width:640px;}
+  .hero-price b{color:var(--accent);}
+
+  /* ---------- pricing ---------- */
+  .price-grid{margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:720px;}
+  @media (max-width:560px){ .price-grid{grid-template-columns:1fr;} }
+  .price-card{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:26px;}
+  .price-card.paid{border:2px solid var(--accent-dim);}
+  .price-name{font-size:13px; font-weight:700; color:var(--text-sub);}
+  .price-amount{font-size:30px; font-weight:700; margin:6px 0 14px;}
+  .price-amount span{font-size:13px; color:var(--text-sub);}
+  .price-list{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .price-list li{position:relative; padding-left:22px; font-size:14px;}
+  .price-list li::before{content:""; position:absolute; left:3px; top:.62em; width:10px; height:5px; border-left:2px solid var(--accent-dim); border-bottom:2px solid var(--accent-dim); transform:rotate(-45deg);}
+
   /* ---------- form ---------- */
   .form-section{background:var(--navy-2);}
   .form-card{
@@ -280,9 +295,10 @@
     <h1 data-i18n="h1">高速バスの「満席」で終わらせない。<span class="hi">会社をまたいで、</span>空席の瞬間をお届けします。</h1>
     <p class="sub" data-i18n="sub">発車オーライネットも、高速バスドットコムも教えてくれないキャンセル待ち。SeatPingは複数のバス会社をまとめて見張り、空きが出たらすぐ通知します。</p>
     <div class="cta-row">
-      <a href="#register" class="btn btn-primary" data-i18n="cta1">今すぐキャンセル待ち登録</a>
+      <a href="#register" class="btn btn-primary" data-i18n="cta1">¥480/月で事前登録する</a>
       <a href="#how" class="btn btn-ghost" data-i18n="cta2">仕組みを見る</a>
     </div>
+    <p class="hero-price" data-i18n="hero-price">無料：1路線のメール通知まで／<b>有料プラン ¥480/月</b>：即時LINE通知・複数路線の同時監視・複数日程の一括登録</p>
 
     <div class="board">
       <div class="board-head">
@@ -364,11 +380,36 @@
   </div>
 </section>
 
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow-lt" data-i18n="pr-eyebrow">PRICING</div>
+    <h2 data-i18n="pr-h2">無料プランと、有料プラン ¥480/月。</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-name" data-i18n="pr-free-name">無料プラン</div>
+        <div class="price-amount mono">¥0</div>
+        <ul class="price-list">
+          <li data-i18n="pr-free-1">1路線のメール通知</li>
+        </ul>
+      </div>
+      <div class="price-card paid">
+        <div class="price-name" data-i18n="pr-paid-name">有料プラン</div>
+        <div class="price-amount mono" data-i18n="pr-paid-price">¥480<span>/月</span></div>
+        <ul class="price-list">
+          <li data-i18n="pr-paid-1">即時LINE通知</li>
+          <li data-i18n="pr-paid-2">複数路線の同時監視</li>
+          <li data-i18n="pr-paid-3">複数日程の一括登録</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="register" class="form-section">
   <div class="wrap">
     <div class="eyebrow-lt" style="color:var(--accent);" data-i18n="f-eyebrow">REGISTER</div>
-    <h2 style="color:var(--white);" data-i18n="f-h2">キャンセル待ちを登録する</h2>
-    <p class="lead" style="color:rgba(255,255,255,0.6);" data-i18n="f-lead">登録は1分で完了します。空席が出たら、すぐにお知らせします。</p>
+    <h2 style="color:var(--white);" data-i18n="f-h2">有料プランに事前登録する</h2>
+    <p class="lead" style="color:rgba(255,255,255,0.6);" data-i18n="f-lead">登録は1分で完了します。有料プラン（¥480/月）のリリース時に、ご案内をお送りします。</p>
 
     <div class="form-card">
       <form id="registerForm">
@@ -399,12 +440,14 @@
             <input type="email" name="email" placeholder="you@example.com" required>
           </div>
         </div>
-        <button type="submit" class="form-submit" data-i18n="f-submit">この条件でキャンセル待ちを登録する</button>
+        <input type="hidden" name="price_shown" value="有料プラン ¥480/月（無料は1路線のメール通知まで）">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="form-submit" data-i18n="f-submit">¥480/月で事前登録する</button>
         <p class="form-foot" data-i18n="f-foot">※ MVP検証段階のため、通知は対応路線・時間帯を順次拡大しながらお届けします。</p>
       </form>
       <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
         <p style="font-weight:700; color:var(--navy); font-size:16px; margin:0 0 6px;">登録が完了しました。</p>
-        <p style="color:var(--text-sub); font-size:13.5px; margin:0;">空席が出たら、すぐにお知らせします。</p>
+        <p style="color:var(--text-sub); font-size:13.5px; margin:0;">有料プランのリリース時に、ご案内をお送りします。</p>
       </div>
     </div>
   </div>
@@ -429,7 +472,8 @@ const dict = {
     "eyebrow":"バス空席速報 — 会社横断",
     "h1":'「満席」で終わらせない。<span class="hi">会社をまたいで、</span>空席の瞬間をお届けします。',
     "sub":"発車オーライネットも、高速バスドットコムも教えてくれないキャンセル待ち。SeatPingは複数のバス会社をまとめて見張り、空きが出たらすぐ通知します。",
-    "cta1":"今すぐキャンセル待ち登録","cta2":"仕組みを見る",
+    "cta1":"¥480/月で事前登録する","cta2":"仕組みを見る",
+    "hero-price":"無料：1路線のメール通知まで／<b>有料プラン ¥480/月</b>：即時LINE通知・複数路線の同時監視・複数日程の一括登録",
     "board-title":"LIVE STATUS — 高速バス空席状況",
     "route1":"新宿 → 富士急ハイランド","route2":"新宿 → 河口湖","route3":"新宿 → 松本",
     "full":"満席","open":"1席 空きあり",
@@ -443,12 +487,15 @@ const dict = {
     "s2-h":"路線と便を登録","s2-p":"乗りたい路線・便・人数を入力して登録します。",
     "s3-h":"複数社を横断監視","s3-p":"SeatPingが対応バス会社のサイトをまとめて見張ります。",
     "s4-h":"空きが出たら即通知","s4-p":"ブラウザ通知・メールで、空席発生をすぐにお知らせします。",
-    "f-eyebrow":"登録","f-h2":"キャンセル待ちを登録する","f-lead":"登録は1分で完了します。空席が出たら、すぐにお知らせします。",
+    "pr-eyebrow":"料金","pr-h2":"無料プランと、有料プラン ¥480/月。",
+    "pr-free-name":"無料プラン","pr-free-1":"1路線のメール通知",
+    "pr-paid-name":"有料プラン","pr-paid-price":"¥480<span>/月</span>","pr-paid-1":"即時LINE通知","pr-paid-2":"複数路線の同時監視","pr-paid-3":"複数日程の一括登録",
+    "f-eyebrow":"登録","f-h2":"有料プランに事前登録する","f-lead":"登録は1分で完了します。有料プラン（¥480/月）のリリース時に、ご案内をお送りします。",
     "fl-route":"乗りたい路線","fl-date":"出発日","fl-num":"人数","fl-time":"希望時間帯","fl-email":"通知先メール",
     "req":"必須","opt":"任意",
     "ph-route":"例）新宿 → 富士急ハイランド","ph-time":"例）21時以降",
     "opt-1":"1名","opt-2":"2名","opt-3":"3〜5名","opt-4":"6名以上",
-    "f-submit":"この条件でキャンセル待ちを登録する",
+    "f-submit":"¥480/月で事前登録する",
     "f-foot":"※ MVP検証段階のため、通知は対応路線・時間帯を順次拡大しながらお届けします。",
     "foot-company":"運営会社","foot-other":"他のサービスを見る"
   },
@@ -457,7 +504,8 @@ const dict = {
     "eyebrow":"CROSS-OPERATOR BUS SEAT ALERT",
     "h1":'Don\'t stop at "fully booked." <span class="hi">Across every operator,</span> we catch the moment a seat opens.',
     "sub":"No bus comparison site — not Hyperdia, not Kosokubus.com — tells you about cancellations. SeatPing watches every operator at once and alerts you the second a seat opens up.",
-    "cta1":"Join the waitlist now","cta2":"See how it works",
+    "cta1":"Pre-register for ¥480/month","cta2":"See how it works",
+    "hero-price":"Free: email alerts for 1 route / <b>Paid plan ¥480/month</b>: instant LINE alerts, multiple routes watched at once, multiple dates registered at once",
     "board-title":"LIVE STATUS — Highway bus availability",
     "route1":"Shinjuku → Fuji-Q Highland","route2":"Shinjuku → Kawaguchiko","route3":"Shinjuku → Matsumoto",
     "full":"Full","open":"1 seat open",
@@ -471,12 +519,15 @@ const dict = {
     "s2-h":"Register your route","s2-p":"Enter the route, bus, and number of passengers.",
     "s3-h":"We watch every operator","s3-p":"SeatPing monitors every supported bus company at once.",
     "s4-h":"Get notified instantly","s4-p":"Browser notification or email, the moment a seat opens.",
-    "f-eyebrow":"REGISTER","f-h2":"Join the waitlist","f-lead":"Takes about a minute. We'll notify you the moment a seat opens.",
+    "pr-eyebrow":"PRICING","pr-h2":"A free plan, and a paid plan at ¥480/month.",
+    "pr-free-name":"Free plan","pr-free-1":"Email alerts for 1 route",
+    "pr-paid-name":"Paid plan","pr-paid-price":"¥480<span>/month</span>","pr-paid-1":"Instant LINE alerts","pr-paid-2":"Watch multiple routes at once","pr-paid-3":"Register multiple dates at once",
+    "f-eyebrow":"REGISTER","f-h2":"Pre-register for the paid plan","f-lead":"Takes about a minute. We'll contact you when the paid plan (¥480/month) launches.",
     "fl-route":"Route","fl-date":"Departure date","fl-num":"Passengers","fl-time":"Preferred time","fl-email":"Notification email",
     "req":"Required","opt":"Optional",
     "ph-route":"e.g. Shinjuku → Fuji-Q Highland","ph-time":"e.g. after 9 PM",
     "opt-1":"1 person","opt-2":"2 people","opt-3":"3–5 people","opt-4":"6+ people",
-    "f-submit":"Join the waitlist",
+    "f-submit":"Pre-register for ¥480/month",
     "f-foot":"※ This is an early MVP — supported routes and hours are expanding gradually.",
     "foot-company":"Operator","foot-other":"Other services"
   },
@@ -485,7 +536,8 @@ const dict = {
     "eyebrow":"跨公司 巴士候补速报",
     "h1":'不止于"满座"。<span class="hi">跨越所有公司，</span>第一时间为您捕捉空位。',
     "sub":"无论是发车Orai-net还是高速巴士网，都不提供候补功能。SeatPing 同时监控多家巴士公司，一有空位立即通知您。",
-    "cta1":"立即登记候补","cta2":"了解运作方式",
+    "cta1":"以¥480/月预先登记","cta2":"了解运作方式",
+    "hero-price":"免费：1条路线的邮件通知／<b>付费方案 ¥480/月</b>：LINE即时通知・同时监控多条路线・批量登记多个日期",
     "board-title":"实时状态 — 高速巴士空位情况",
     "route1":"新宿 → 富士急乐园","route2":"新宿 → 河口湖","route3":"新宿 → 松本",
     "full":"满座","open":"剩1席 有空位",
@@ -499,12 +551,15 @@ const dict = {
     "s2-h":"登记路线与班次","s2-p":"输入您想乘坐的路线、班次与人数。",
     "s3-h":"跨公司同时监控","s3-p":"SeatPing 同时监控所有支持的巴士公司网站。",
     "s4-h":"出现空位立即通知","s4-p":"通过浏览器通知或邮件，第一时间告知您空位信息。",
-    "f-eyebrow":"登记","f-h2":"登记候补空位","f-lead":"登记只需1分钟。一旦出现空位，我们会立即通知您。",
+    "pr-eyebrow":"价格","pr-h2":"免费方案，以及¥480/月的付费方案。",
+    "pr-free-name":"免费方案","pr-free-1":"1条路线的邮件通知",
+    "pr-paid-name":"付费方案","pr-paid-price":"¥480<span>/月</span>","pr-paid-1":"LINE即时通知","pr-paid-2":"同时监控多条路线","pr-paid-3":"批量登记多个日期",
+    "f-eyebrow":"登记","f-h2":"预先登记付费方案","f-lead":"登记只需1分钟。付费方案（¥480/月）上线时，我们会通知您。",
     "fl-route":"想乘坐的路线","fl-date":"出发日期","fl-num":"人数","fl-time":"期望时间段","fl-email":"通知邮箱",
     "req":"必填","opt":"选填",
     "ph-route":"例）新宿 → 富士急乐园","ph-time":"例）21点以后",
     "opt-1":"1人","opt-2":"2人","opt-3":"3〜5人","opt-4":"6人以上",
-    "f-submit":"以此条件登记候补",
+    "f-submit":"以¥480/月预先登记",
     "f-foot":"※ 目前为MVP验证阶段，支持的路线与时间段将陆续扩大。",
     "foot-company":"运营公司","foot-other":"其他服务"
   },
@@ -513,7 +568,8 @@ const dict = {
     "eyebrow":"업체 횡단 버스 좌석 알림",
     "h1":'"만석"으로 끝내지 않습니다. <span class="hi">모든 업체를 가로질러,</span> 좌석이 나오는 순간을 알려드립니다.',
     "sub":"발차오라이넷도, 고속버스닷컴도 알려주지 않는 취소 대기. SeatPing은 여러 버스 회사를 한번에 모니터링하고, 빈 좌석이 생기면 즉시 알려드립니다.",
-    "cta1":"지금 취소 대기 등록","cta2":"작동 방식 보기",
+    "cta1":"월 ¥480로 사전 등록하기","cta2":"작동 방식 보기",
+    "hero-price":"무료: 1개 노선 이메일 알림 / <b>유료 플랜 월 ¥480</b>: LINE 즉시 알림・여러 노선 동시 모니터링・여러 날짜 일괄 등록",
     "board-title":"실시간 현황 — 고속버스 좌석 상황",
     "route1":"신주쿠 → 후지큐 하이랜드","route2":"신주쿠 → 가와구치코","route3":"신주쿠 → 마쓰모토",
     "full":"만석","open":"1석 여유",
@@ -527,12 +583,15 @@ const dict = {
     "s2-h":"노선과 편 등록","s2-p":"타고 싶은 노선·편·인원수를 입력해 등록합니다.",
     "s3-h":"여러 업체 동시 모니터링","s3-p":"SeatPing이 지원 버스 회사 사이트를 한번에 모니터링합니다.",
     "s4-h":"빈 좌석 발생 시 즉시 알림","s4-p":"브라우저 알림·이메일로 좌석 발생을 바로 알려드립니다.",
-    "f-eyebrow":"등록","f-h2":"취소 대기 등록하기","f-lead":"등록은 1분이면 완료됩니다. 좌석이 생기면 바로 알려드립니다.",
+    "pr-eyebrow":"요금","pr-h2":"무료 플랜과 월 ¥480 유료 플랜.",
+    "pr-free-name":"무료 플랜","pr-free-1":"1개 노선 이메일 알림",
+    "pr-paid-name":"유료 플랜","pr-paid-price":"¥480<span>/월</span>","pr-paid-1":"LINE 즉시 알림","pr-paid-2":"여러 노선 동시 모니터링","pr-paid-3":"여러 날짜 일괄 등록",
+    "f-eyebrow":"등록","f-h2":"유료 플랜 사전 등록","f-lead":"등록은 1분이면 완료됩니다. 유료 플랜(월 ¥480) 출시 시 안내해 드립니다.",
     "fl-route":"타고 싶은 노선","fl-date":"출발일","fl-num":"인원수","fl-time":"희망 시간대","fl-email":"알림 받을 이메일",
     "req":"필수","opt":"선택",
     "ph-route":"예) 신주쿠 → 후지큐 하이랜드","ph-time":"예) 21시 이후",
     "opt-1":"1명","opt-2":"2명","opt-3":"3〜5명","opt-4":"6명 이상",
-    "f-submit":"이 조건으로 취소 대기 등록",
+    "f-submit":"월 ¥480로 사전 등록하기",
     "f-foot":"※ MVP 검증 단계로, 지원 노선·시간대는 순차적으로 확대됩니다.",
     "foot-company":"운영 회사","foot-other":"다른 서비스"
   }
@@ -573,9 +632,20 @@ setInterval(()=>{
   }
 }, 4500);
 
+function getTrafficSource(){
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get('utm_source');
+  if (utmSource) return utmSource;
+  if (document.referrer) {
+    try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+  }
+  return 'direct';
+}
+
 document.getElementById('registerForm').addEventListener('submit', function(e){
   e.preventDefault();
   const form = e.target;
+  form.querySelector('#sourceField').value = getTrafficSource();
   const btn = form.querySelector('.form-submit');
   const originalText = btn.textContent;
   btn.disabled = true;
