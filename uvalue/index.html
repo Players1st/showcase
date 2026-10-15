@@ -13,20 +13,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<title>UValue | 自分の価値に見合った単価で、働こう。</title>
-<meta name="description" content="単価交渉は適切な言い方が必要です。あなたの状況に合わせた交渉のための文章と、AIとの練習で、その一歩を後押しします。初回の文章生成は無料です。">
+<title>UValue | 相場単価の目安と、単価を上げるために足りない経験がわかる</title>
+<meta name="description" content="準委任・業務委託のフリーランスエンジニア向け。スキル・経験年数・直近の案件を入力すると、想定される相場単価、単価を上げるために足りない経験と上がり幅の目安、それを根拠にした単価交渉の文面をまとめた診断レポートが届きます。¥3,480／回。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/uvalue/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="UValue | 自分の価値に見合った単価で、働こう。">
-<meta property="og:description" content="単価交渉は適切な言い方が必要です。あなたの状況に合わせた交渉のための文章と、AIとの練習で、その一歩を後押しします。">
+<meta property="og:title" content="UValue | 相場単価の目安と、単価を上げるために足りない経験がわかる">
+<meta property="og:description" content="準委任・業務委託のフリーランスエンジニア向け。相場単価の目安、単価を上げるために足りない経験、単価交渉の文面をまとめた診断レポート。¥3,480／回。">
 <meta property="og:image" content="https://showcase.p1st.app/og/uvalue.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="UValue | 自分の価値に見合った単価で、働こう。">
-<meta name="twitter:description" content="単価交渉は適切な言い方が必要です。あなたの状況に合わせた交渉のための文章と、AIとの練習で、その一歩を後押しします。">
+<meta name="twitter:title" content="UValue | 相場単価の目安と、単価を上げるために足りない経験がわかる">
+<meta name="twitter:description" content="準委任・業務委託のフリーランスエンジニア向け。相場単価の目安、単価を上げるために足りない経験、単価交渉の文面をまとめた診断レポート。¥3,480／回。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/uvalue.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
@@ -91,6 +91,15 @@
     letter-spacing: .06em;
   }
   .kicker .dot{ width:6px; height:6px; border-radius:50%; background: var(--mint); }
+  .target{
+    display: inline-block;
+    font-size: 13px; font-weight: 700;
+    color: var(--paper);
+    border: 1px solid rgba(250,250,248,.35);
+    border-radius: 999px;
+    padding: 3px 14px;
+    margin-bottom: 18px;
+  }
   .hero h1{
     font-size: 36px;
     font-weight: 900;
@@ -166,6 +175,51 @@
   }
   .pillar-card h3{ font-size: 16.5px; margin-bottom: 10px; font-weight: 700; }
   .pillar-card p{ font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; }
+  .pillar-grid.three{ grid-template-columns: 1fr; }
+  .pillar-grid.three .pillar-card{ display:grid; grid-template-columns: 44px 1fr; column-gap: 18px; }
+  .pillar-grid.three .pillar-icon{ grid-row: span 2; margin-bottom: 0; }
+  .pillar-grid.three .pillar-card h3{ margin-bottom: 4px; }
+  .pillar-note{ margin-top: 18px; font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- Sample report ---------- */
+  .sample{ padding: 76px 0 84px; }
+  .report{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .report-row{ padding: 18px 22px; border-bottom: 1px solid var(--line); }
+  .report-row:last-child{ border-bottom: none; }
+  .report-label{
+    display:inline-block;
+    font-size: 11.5px; font-weight: 700;
+    color: var(--indigo-deep); background: var(--indigo-pale);
+    padding: 3px 10px; border-radius: 4px; margin-bottom: 8px;
+  }
+  .report-row p{ font-size: 14px; color: var(--ink); line-height: 1.85; }
+  .report-big{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 22px !important; font-weight: 900; color: var(--indigo-deep) !important; }
+  .report-big span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .report-note{ margin-top: 14px; font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ padding: 0 0 84px; }
+  .price-card{
+    background: var(--white);
+    border: 2px solid var(--mint);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+  .price-name{ font-size: 13.5px; font-weight: 700; color: var(--ink-soft); }
+  .price-amount{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 34px; font-weight: 900; color: var(--indigo-deep); margin: 4px 0 14px; }
+  .price-amount span{ font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+  .price-list{ list-style: none; padding: 0; margin: 0; display:flex; flex-direction: column; gap: 8px; }
+  .price-list li{ position: relative; padding-left: 24px; font-size: 14px; }
+  .price-list li::before{
+    content:""; position:absolute; left: 3px; top: .62em; width: 10px; height: 5px;
+    border-left: 2.5px solid var(--mint-deep); border-bottom: 2.5px solid var(--mint-deep);
+    transform: rotate(-45deg);
+  }
 
   /* ---------- How it works ---------- */
   .how{ padding: 0 0 84px; background: var(--paper-soft); padding-top: 76px; }
@@ -275,75 +329,124 @@
       <circle cx="230" cy="100" r="6" fill="#45C8B0" opacity=".6"/>
     </svg>
     <div class="kicker"><span class="dot"></span>UValue</div>
-    <h1>自分の<span class="accent">価値</span>に見合った<br>単価で、働こう。</h1>
-    <p class="hero-sub">単価交渉は適切な言い方が必要です。あなたの状況に合わせた交渉のための文章と、AIとの練習で、その一歩を後押しします。</p>
-    <a href="#signup" class="cta-btn">無料で試してみる</a>
-    <p class="cta-note">初回の文章生成は無料です。</p>
+    <p class="target">準委任・業務委託のフリーランスエンジニア向け</p>
+    <h1>相場単価の目安と、<br><span class="accent">単価を上げるために</span><br>足りない経験がわかる。</h1>
+    <p class="hero-sub">スキル・経験年数・直近の案件内容を入力すると、想定される相場単価、単価を上げるために足りないスキル・経験と上がり幅の目安、それを根拠にした単価交渉の文面を、1つの診断レポートにまとめてお届けします。</p>
+    <a href="#signup" class="cta-btn">¥3,480で事前登録する</a>
+    <p class="cta-note">診断レポート一式 ¥3,480／回</p>
   </div>
 </section>
 
 <section class="problem">
   <div class="wrap">
-    <p class="problem-lead">単価を上げたいと思いながら、<strong>「言い出すタイミングがわからない」「関係を壊すのが怖い」</strong>——そんな理由で、時間だけが過ぎていませんか。</p>
-    <p class="problem-sub">交渉のノウハウ記事はたくさんあっても、自分の状況にそのまま使えるものは少ない。UValueは、あなたの契約状況に合わせた交渉の進め方を一緒に考えます。</p>
+    <p class="problem-lead">単価を上げたいと思いながら、<strong>「今の単価が相場と比べて高いのか低いのかわからない」「何を身につければ単価が上がるのかわからない」</strong>まま、契約更新を迎えていませんか。</p>
+    <p class="problem-sub">交渉の言い方を工夫する前に、まず自分の相場と、単価を上げるために足りないものを知る必要があります。UValueは、フリーランス歴2〜5年の準委任・業務委託のエンジニアが、その2つを確かめたうえで交渉に臨めるようにするサービスです。</p>
   </div>
 </section>
 
 <section class="pillars">
   <div class="wrap">
-    <h2 class="section-title">2つの壁に、両方から</h2>
-    <div class="pillar-grid">
+    <h2 class="section-title">診断レポートで、わかること</h2>
+    <div class="pillar-grid three">
       <div class="pillar-card">
         <div class="pillar-icon" style="background:var(--indigo-pale)">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 17 L8 12 L12 15 L19 6" stroke="#443A6E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>交渉のための文章を作成</h3>
-        <p>稼働期間・実績・契約内容を入力するだけで、あなたの状況に合わせた交渉の文面をAIが作成します。</p>
+        <h3>① 想定される相場単価</h3>
+        <p>スキル・経験年数・直近の案件内容から、あなたの条件で想定される相場単価を、月額のレンジで示します。</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-icon" style="background:#E4F5F2">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 4h14v10H8l-4 4V4z" stroke="#2F9E89" stroke-width="2.2" stroke-linejoin="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 18V5M5 11l6-6 6 6" stroke="#2F9E89" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>AIとのロールプレイ</h3>
-        <p>「予算が厳しい」等、想定される反論への切り返しを、AI相手に何度でも練習できます。</p>
+        <h3>② 単価を上げるために足りないもの</h3>
+        <p>単価を上げるために足りないスキル・経験と、それが加わった場合の上がり幅の目安を挙げます。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background:var(--indigo-pale)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 4h14v10H8l-4 4V4z" stroke="#443A6E" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>③ 単価交渉の文面</h3>
+        <p>①と②を根拠にした、発注元への単価交渉の文面です。切り出し方から、想定される反論への返し方まで含みます。</p>
       </div>
     </div>
+    <p class="pillar-note">交渉の前に、「予算が厳しい」などの反論への切り返しを、AI相手に練習することもできます。</p>
   </div>
 </section>
 
 <section class="how">
   <div class="wrap">
-    <h2 class="section-title">はじめ方はシンプルです</h2>
+    <h2 class="section-title">使い方</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>今の状況を入力する</h3>
-          <p>現在の単価、稼働期間、実績など、簡単な質問に答えるだけです。</p>
+          <p>スキル、経験年数、直近の案件内容、現在の単価を入力します。</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>交渉のための文章を受け取る</h3>
-          <p>切り出し方から、想定される反論への返し方まで、たたき台が届きます。</p>
+          <h3>診断レポートを受け取る</h3>
+          <p>想定される相場単価、足りないスキル・経験と上がり幅の目安、単価交渉の文面が、1つのレポートで届きます。</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>AIと練習してから、本番へ</h3>
-          <p>不安なら、実際の交渉の前にAI相手でリハーサルできます。</p>
+          <h3>レポートを根拠に、単価交渉をする</h3>
+          <p>文面をもとに、発注元やエージェントに単価の見直しを相談します。不安なら、その前にAI相手に練習できます。</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample">
+  <div class="wrap">
+    <h2 class="section-title">診断レポートのイメージ</h2>
+    <div class="report">
+      <div class="report-row">
+        <span class="report-label">入力の例</span>
+        <p>バックエンド（Go・Python）／経験5年／直近の案件：SaaSのAPI開発（準委任）</p>
+      </div>
+      <div class="report-row">
+        <span class="report-label">① 想定される相場単価</span>
+        <p class="report-big">月 65〜80万円 <span>（目安）</span></p>
+      </div>
+      <div class="report-row">
+        <span class="report-label">② 単価を上げるために足りないもの</span>
+        <p>インフラ構築（AWS・Terraform）の経験を加えると、+5〜10万円/月の可能性</p>
+      </div>
+      <div class="report-row">
+        <span class="report-label">③ 単価交渉の文面（冒頭）</span>
+        <p>「契約更新にあたり、単価についてご相談させてください。この半年でAPIの設計から運用まで担当範囲が広がったため……」</p>
+      </div>
+    </div>
+    <p class="report-note">※ 表示のイメージです。数値と文面はすべて架空の例で、実際の診断結果ではありません。相場単価と上がり幅は目安で、単価を保証するものではありません。</p>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="price-card">
+      <div class="price-name">診断レポート一式</div>
+      <div class="price-amount">¥3,480 <span>/ 回</span></div>
+      <ul class="price-list">
+        <li>想定される相場単価（レンジ）</li>
+        <li>単価を上げるために足りないスキル・経験と、上がり幅の目安</li>
+        <li>①②を根拠にした、単価交渉の文面</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section class="signup" id="signup">
   <div class="wrap">
-    <h2>まずは無料で、試してみませんか</h2>
-    <p>初回の文章生成は無料です。あわせて、どちらの機能に関心があるか教えてください。</p>
+    <h2>事前登録で、リリース時にご案内します</h2>
+    <p>診断レポート一式 ¥3,480／回。あわせて、いちばん関心のある機能を教えてください。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/xqpkvgpb" method="POST">
       <div class="field">
@@ -365,12 +468,15 @@
       <div class="field">
         <label>関心のある機能</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="interest" value="交渉のための文章" checked> 交渉のための文章の作成</label>
+          <label class="radio-item"><input type="radio" name="interest" value="単価アップ診断" checked> 相場単価と、足りない経験の診断</label>
+          <label class="radio-item"><input type="radio" name="interest" value="交渉のための文章"> 単価交渉の文面</label>
           <label class="radio-item"><input type="radio" name="interest" value="ロールプレイ"> AIとのロールプレイ練習</label>
-          <label class="radio-item"><input type="radio" name="interest" value="両方"> 両方</label>
+          <label class="radio-item"><input type="radio" name="interest" value="すべて"> すべて</label>
         </div>
       </div>
-      <button type="submit" class="submit-btn">無料で試してみる</button>
+      <input type="hidden" name="price_shown" value="診断レポート一式 ¥3,480/回">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥3,480で事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
@@ -389,10 +495,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -424,7 +542,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料で試してみる';
+        btn.textContent = '¥3,480で事前登録する';
       });
     });
   })();
