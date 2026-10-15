@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>みまもりホームチェック | 実家の写真を送るだけ、転倒リスクが数分でわかる</title>
-<meta name="description" content="帰省できなくても、実家の危険は見つけられる。AIが段差・照明・床材をチェックして、今日からできる対策を教えます。初回の簡易診断は無料です。">
+<meta name="description" content="帰省できなくても、実家の危険は見つけられる。AIが段差・照明・床材をチェックして、今日からできる対策を教えます。診断は1回¥480。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/mimamorihomecheck/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -346,6 +346,20 @@
     .signup h2{ font-size: 22px; }
     .report-card{ padding: 22px; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 0 0 84px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--gold); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -364,9 +378,9 @@
         <path d="M17 28 L17 31" stroke="#FFFDF9" stroke-width="1.6" stroke-linecap="round"/>
         <circle cx="17" cy="18" r="2.4" fill="#C99A3C"/>
       </svg>
-      無料で診断してみる
+      ¥480/回で事前登録する
     </a>
-    <p class="cta-note">初回の簡易診断は無料です。クレジットカード登録は不要です。</p>
+    <p class="cta-note">診断は1回¥480です。</p>
   </div>
 </section>
 
@@ -460,10 +474,27 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">転倒リスク診断</div>
+        <div class="pz-amount">¥480 <span>/ 回</span></div>
+        <ul class="pz-list">
+          <li>実家の写真（数枚）をもとにした、AIによる診断</li>
+          <li>段差・照明・床材のチェック</li>
+          <li>今日からできる対策をまとめた、診断結果レポート</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
     <h2>事前登録して、公開時にお知らせを受け取る</h2>
-    <p>「みまもりホームチェック」はまだ準備中です。事前登録いただいた方には、サービス開始時に優先してご案内します。</p>
+    <p>「みまもりホームチェック」はまだ準備中です。診断は1回¥480。事前登録いただいた方には、サービス開始時に優先してご案内します。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/xvkowooy" method="POST">
       <div class="field">
@@ -478,7 +509,9 @@
         <label for="parent_area">親御さんの住まい（都道府県・任意）</label>
         <input type="text" id="parent_area" name="parent_area" autocomplete="address-level1">
       </div>
-      <button type="submit" class="submit-btn">事前登録する</button>
+      <input type="hidden" name="price_shown" value="転倒リスク診断 ¥480/回">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥480/回で事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
@@ -497,10 +530,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -532,7 +577,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '事前登録する';
+        btn.textContent = '¥480/回で事前登録する';
       });
     });
   })();

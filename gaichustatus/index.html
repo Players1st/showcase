@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>外注ステータス | 外注依存度を、部門別・業務別に可視化する</title>
-<meta name="description" content="契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。簡易診断は無料です。">
+<meta name="description" content="契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。診断レポートは1回¥100,000。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/gaichustatus/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -357,6 +357,20 @@
     .section-title{ font-size: 19px; }
     .nextstep-card{ flex-direction: column; align-items: flex-start; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 0 0 84px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--cyan); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--cyan); border-bottom: 2px solid var(--cyan); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -373,8 +387,8 @@
     <div class="kicker"><span class="dot"></span>外注ステータス</div>
     <h1>外注依存度を、<br><span class="accent">部門別・業務別</span>に<br>可視化する。</h1>
     <p class="hero-sub">契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。</p>
-    <a href="#signup" class="cta-btn">無料で簡易診断を試す →</a>
-    <p class="cta-note">簡易診断は無料です。詳細レポートは別途お見積もりします。</p>
+    <a href="#signup" class="cta-btn">¥100,000で診断レポートを申し込む →</a>
+    <p class="cta-note">診断レポートは1回¥100,000です。</p>
   </div>
 </section>
 
@@ -490,8 +504,8 @@
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>詳細分析が必要なら、ご相談ください</h3>
-          <p>より詳しい部門別・業務別の分析、内製化余地の試算はレポートとしてご提供します。</p>
+          <h3>診断レポートで、内製化の余地まで確認する</h3>
+          <p>詳しい部門別・業務別の分析と、内製化余地の試算を、診断レポート（1回¥100,000）としてお届けします。</p>
         </div>
       </div>
     </div>
@@ -519,10 +533,27 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">診断レポート</div>
+        <div class="pz-amount">¥100,000 <span>/ 回</span></div>
+        <ul class="pz-list">
+          <li>部門別・業務別の外注依存度スコア</li>
+          <li>詳しい部門別・業務別の分析</li>
+          <li>内製化余地の試算</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
-    <h2>まずは無料で、簡易診断を</h2>
-    <p>概算の数値を入力いただくだけで、貴社の外注依存度スコアをお届けします。</p>
+    <h2>診断レポートを申し込む</h2>
+    <p>概算の数値を入力いただくだけで、貴社の外注依存度スコアと内製化余地の試算をまとめた診断レポートをお届けします。料金は1回¥100,000です。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/mqpkrnzz" method="POST">
       <div class="field">
@@ -546,7 +577,9 @@
           <option value="その他">その他</option>
         </select>
       </div>
-      <button type="submit" class="submit-btn">無料で簡易診断を申し込む</button>
+      <input type="hidden" name="price_shown" value="診断レポート ¥100,000/回">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥100,000で診断レポートを申し込む</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、診断のご案内以外の目的には使用しません。</p>
@@ -565,10 +598,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -600,7 +645,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料で簡易診断を申し込む';
+        btn.textContent = '¥100,000で診断レポートを申し込む';
       });
     });
   })();

@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>Sotto | 毎日連絡できなくても、変わりないか、そっと気にかけておきます</title>
-<meta name="description" content="Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。2週間無料でお試しいただけます。">
+<meta name="description" content="Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。ライト月額¥380、再発防止プラン月額¥1,480（2週間の無料お試しあり）。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/sotto/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -304,6 +304,20 @@
     .section-title{ font-size: 21px; }
     .signup h2{ font-size: 21px; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 0 0 84px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--sage-deep); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--sage-deep); border-bottom: 2px solid var(--sage-deep); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -319,8 +333,8 @@
     <div class="kicker"><span class="dot"></span>Sotto</div>
     <h1>毎日連絡できなくても、<br>変わりないか、そっと<br>気にかけておきます。</h1>
     <p class="hero-sub">Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。</p>
-    <a href="#signup" class="cta-btn">無料で試してみる</a>
-    <p class="cta-note">2週間無料でお試しいただけます。</p>
+    <a href="#signup" class="cta-btn">¥380/月から事前登録する</a>
+    <p class="cta-note">ライト 月額¥380／再発防止プラン 月額¥1,480。最初の2週間は無料でお試しいただけます。</p>
   </div>
 </section>
 
@@ -394,10 +408,35 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">ライト</div>
+        <div class="pz-amount">¥380 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>Sottoがお子さんと軽くやり取り</li>
+          <li>いつもと違う変化があった時だけ、親御さんにお知らせ</li>
+        </ul>
+      </div>
+      <div class="pz-card">
+        <div class="pz-name">再発防止プラン</div>
+        <div class="pz-amount">¥1,480 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>ライトの内容すべて</li>
+          <li>見守りの感度を高めに調整し、変化に早めに気づく</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pz-note">どちらのプランも、最初の2週間は無料でお試しいただけます。3週目からは、ライト月額¥380、再発防止プラン月額¥1,480です。</p>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
     <h2>そっと、気にかけておきませんか</h2>
-    <p>まずは無料でお試しいただけます。お子さんへのご案内方法もあわせてご案内します。</p>
+    <p>ライト月額¥380／再発防止プラン月額¥1,480（最初の2週間は無料でお試しいただけます）。お子さんへのご案内方法もあわせてご案内します。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/xrpgyded" method="POST">
       <div class="field">
@@ -420,7 +459,9 @@
           <option value="興味なし">興味はない</option>
         </select>
       </div>
-      <button type="submit" class="submit-btn">無料で試してみる</button>
+      <input type="hidden" name="price_shown" value="ライト ¥380/月、再発防止プラン ¥1,480/月（2週間無料お試しあり）">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥380/月から事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、ご案内以外の目的には使用しません。</p>
@@ -439,10 +480,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -474,7 +527,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料で試してみる';
+        btn.textContent = '¥380/月から事前登録する';
       });
     });
   })();

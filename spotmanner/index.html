@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>スポットマナー｜その場で伝われば、マナーは守られる。</title>
-<meta name="description" content="外国人観光客のマナー違反、原因は文化差ではなく情報不足かもしれません。違反が起きるその場所にピクトグラム＋多言語ガイドを届ける、施設・自治体向けの無償パイロット募集中。">
+<meta name="description" content="外国人観光客のマナー違反、原因は文化差ではなく情報不足かもしれません。違反が起きるその場所にピクトグラム＋多言語ガイドを届ける、施設・自治体向けの有料パイロット（月額¥50,000・3か月〜）募集中。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/spotmanner/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="スポットマナー｜その場で伝われば、マナーは守られる。">
-<meta property="og:description" content="違反が起きるその場所に、ピクトグラム＋多言語ガイドを届ける施設向けサービス。無償パイロット募集中。">
+<meta property="og:description" content="違反が起きるその場所に、ピクトグラム＋多言語ガイドを届ける施設向けサービス。有料パイロット（月額¥50,000・3か月〜）募集中。">
 <meta property="og:image" content="https://showcase.p1st.app/og/spotmanner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="スポットマナー｜その場で伝われば、マナーは守られる。">
-<meta name="twitter:description" content="違反が起きるその場所に、ピクトグラム＋多言語ガイドを届ける施設向けサービス。無償パイロット募集中。">
+<meta name="twitter:description" content="違反が起きるその場所に、ピクトグラム＋多言語ガイドを届ける施設向けサービス。有料パイロット（月額¥50,000・3か月〜）募集中。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/spotmanner.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -244,6 +244,21 @@
   .footer-links{display:flex; gap:22px; font-size:13px; color:var(--ink-dim);}
   .footer-links a:hover{color:var(--amber);}
   .copyright{font-size:12px; color:var(--ink-dim);}
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--navy-800); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--amber); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-dim); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-dim); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--amber); border-bottom: 2px solid var(--amber); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-dim); }
+  .pz .pz-grid{ max-width: 600px; margin-top: 8px; }
 </style>
 </head>
 <body>
@@ -260,14 +275,14 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge"><span class="dot"></span>無償パイロット施設　募集中</span>
+      <span class="badge"><span class="dot"></span>有料パイロット施設　募集中</span>
       <h1 class="headline">その場で伝われば、<br><span class="accent">マナーは守られる。</span></h1>
       <p class="sub">外国人観光客のマナー違反、原因は文化差ではなく情報不足かもしれません。違反が起きるその場所に、ピクトグラム＋多言語ガイドを届け、行動が起きる前に気づいてもらいます。</p>
       <div class="hero-cta-row">
-        <a href="#pilot" class="btn-primary">無償パイロットに申し込む<i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+        <a href="#pilot" class="btn-primary">¥50,000/月でパイロットに申し込む<i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
         <a href="#how" class="btn-ghost">仕組みを見る<i data-lucide="play" style="width:14px;height:14px;"></i></a>
       </div>
-      <p class="hero-note"><i data-lucide="info" style="width:13px;height:13px;"></i>費用負担なし・掲示物のみで導入可能</p>
+      <p class="hero-note"><i data-lucide="info" style="width:13px;height:13px;"></i>有料パイロット 月額¥50,000（3か月〜）・掲示物のみで導入可能</p>
     </div>
     <div class="signage">
       <div class="ping"></div>
@@ -369,7 +384,7 @@
       <div class="step">
         <div class="num">3</div>
         <h3>苦情件数・反応を計測</h3>
-        <p>設置前後の苦情件数やスタッフの声を記録し、効果を可視化。パイロット期間はすべて無償で実施します。</p>
+        <p>設置前後の苦情件数やスタッフの声を記録し、効果を可視化。パイロットは月額¥50,000（3か月〜）で実施します。</p>
       </div>
     </div>
   </div>
@@ -404,14 +419,34 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Pricing</span>
+      <h2>有料パイロット 月額¥50,000（3か月〜）</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">有料パイロット</div>
+        <div class="pz-amount">¥50,000 <span>/ 月（3か月〜）</span></div>
+        <ul class="pz-list">
+          <li>違反が起きる場所への、ピクトグラム＋QR掲示物の設置（制作・設置を含む）</li>
+          <li>多言語コンテンツの、AIによる作成・更新</li>
+          <li>設置前後の苦情件数・反応の計測</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="pilot">
   <div class="wrap">
     <div class="cta-panel">
       <div class="cta-left">
         <span class="label">Pilot Program</span>
-        <h2 style="margin-top:12px;">無償パイロット施設を<br>募集しています</h2>
-        <p>まずは1〜3箇所への設置から。費用負担はありません。効果を確認いただいた上で、本格導入をご検討いただけます。</p>
-        <div class="perk"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>掲示物の制作・設置は無償で対応</div>
+        <h2 style="margin-top:12px;">有料パイロット施設を<br>募集しています</h2>
+        <p>まずは1〜3箇所への設置から。料金は月額¥50,000で、期間は3か月からです。効果を確認いただいた上で、本格導入をご検討いただけます。</p>
+        <div class="perk"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>掲示物の制作・設置は、パイロットの料金に含みます</div>
         <div class="perk"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>多言語コンテンツはAIで作成・随時更新</div>
         <div class="perk"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i>導入判断を急がせるものではありません</div>
       </div>
@@ -443,7 +478,9 @@
             <label>現在困っている場面 <span class="opt">任意</span></label>
             <textarea name="detail" placeholder="例）撮影禁止エリアでの無断撮影が多く、対応に困っている"></textarea>
           </div>
-          <button type="submit" class="submit-btn">無償パイロットに申し込む<i data-lucide="send" style="width:16px;height:16px;"></i></button>
+          <input type="hidden" name="price_shown" value="有料パイロット ¥50,000/月（3か月〜）">
+          <input type="hidden" name="source" id="sourceField">
+          <button type="submit" class="submit-btn">¥50,000/月でパイロットに申し込む<i data-lucide="send" style="width:16px;height:16px;"></i></button>
           <p class="form-foot">送信後、担当より個別にご連絡いたします</p>
         </form>
         <div class="thanks" id="thanks">
@@ -471,9 +508,20 @@
 
 <script>
   lucide.createIcons();
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('pilot-form').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.submit-btn');
     const originalHTML = btn.innerHTML;
     btn.disabled = true;

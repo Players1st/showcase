@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる</title>
-<meta name="description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta name="description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。月額¥480。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/odekake-ok/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる">
-<meta property="og:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta property="og:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。月額¥480。">
 <meta property="og:image" content="https://showcase.p1st.app/og/odekake-ok.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="おでかけOK | 今日、出かけて大丈夫？をAIが教えてくれる">
-<meta name="twitter:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。">
+<meta name="twitter:description" content="気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロ、通知を見るだけで今日出かけて大丈夫かがわかります。月額¥480。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/odekake-ok.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,6 +387,21 @@
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 90px 0; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--sun); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--navy-900); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--navy-900); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--sun); border-bottom: 2px solid var(--sun); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+  .pz .section-head{ margin-bottom: 32px; }
 </style>
 </head>
 <body>
@@ -406,9 +421,9 @@
       <h1>今日暑そうだけど、<br>出かけて<span class="accent">大丈夫？</span><br>をAIが毎朝教えてくれる。</h1>
       <p class="sub">気温・湿度だけじゃない。<strong>あなたの体力・持病を踏まえた</strong>「その人のための」外出判定。<br>入力の手間はほぼゼロ。通知を見るだけ。</p>
       <div class="hero-ctas">
-        <a href="#form" class="btn-primary">事前登録する →</a>
+        <a href="#form" class="btn-primary">¥480/月で事前登録する →</a>
       </div>
-      <p class="hero-note" style="margin-top:18px;">先行登録の方には、リリース時に優先案内をお送りします。</p>
+      <p class="hero-note" style="margin-top:18px;">料金は月額¥480です。先行登録の方には、リリース時に優先案内をお送りします。</p>
     </div>
 
     <div>
@@ -552,12 +567,32 @@
 </section>
 
 <!-- FORM -->
+<section class="pz" id="pricing">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="kicker">料金</div>
+      <h2>おでかけOK 月額¥480</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">おでかけOK</div>
+        <div class="pz-amount">¥480 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>体力・持病を踏まえた、その人のための外出判定</li>
+          <li>毎朝の通知</li>
+          <li>むずかしい数値ではなく、3つの言葉で表示</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="form-section" id="form">
   <div class="wrap">
     <div class="form-head">
       <div class="kicker">先行登録</div>
       <h2>リリースの最新情報を、<br>一番早くお届けします。</h2>
-      <p>ご登録は30秒で完了します。ご登録いただいたメールアドレスは、本サービスのご案内以外には使用しません。</p>
+      <p>料金は月額¥480です。ご登録は30秒で完了します。ご登録いただいたメールアドレスは、本サービスのご案内以外には使用しません。</p>
     </div>
 
     <div class="form-card">
@@ -570,7 +605,9 @@
           <label class="field-label" for="relation">ご自身の立場 <span class="badge optional">任意</span></label>
           <input type="text" id="relation" name="relation" placeholder="例：本人／離れて暮らす家族">
         </div>
-        <button type="submit" class="form-submit">事前登録する</button>
+        <input type="hidden" name="price_shown" value="おでかけOK ¥480/月">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="form-submit">¥480/月で事前登録する</button>
         <p class="form-fine">登録はいつでも解除できます。営業のご連絡は行いません。</p>
       </form>
 
@@ -596,9 +633,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signup-form').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;

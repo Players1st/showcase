@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>老い活 — 毎日をポチって、元気を積み上げよう</title>
-<meta name="description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。">
+<meta name="description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。家族プラン月額¥980。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/oikatsu/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="老い活 — 毎日をポチって、元気を積み上げよう">
-<meta property="og:description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。">
+<meta property="og:description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。家族プラン月額¥980。">
 <meta property="og:image" content="https://showcase.p1st.app/og/oikatsu.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="老い活 — 毎日をポチって、元気を積み上げよう">
-<meta name="twitter:description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。">
+<meta name="twitter:description" content="シニアの日々の習慣をスコア化して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。家族プラン月額¥980。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/oikatsu.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
@@ -497,6 +497,24 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 72px 5vw; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--green); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-muted); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-muted); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-muted); }
+  .pz-inner{ max-width: 720px; margin: 0 auto; }
+  .pz .pz-list li{ font-size: 16px; }
+  .pz .pz-name{ font-size: 15px; }
+  .pz .pz-amount{ font-size: 32px; }
 </style>
 </head>
 <body>
@@ -504,7 +522,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo"><span>老い</span>活</div>
-  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">無料で始める</button>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">¥980/月で事前登録</button>
 </nav>
 
 <!-- HERO -->
@@ -522,10 +540,10 @@
         毎日の小さな積み上げが、自信に変わります。
       </p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">無料で老い活を始める</button>
+        <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">¥980/月で事前登録する</button>
         <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">使い方を見る</button>
       </div>
-      <p class="hero-note">登録無料・スマホだけで始められます</p>
+      <p class="hero-note">家族プラン 月額¥980・スマホだけで始められます</p>
     </div>
     <div class="hero-visual">
       <div class="phone">
@@ -661,6 +679,23 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="pz-inner">
+    <div class="section-eyebrow">料金</div>
+    <h2 class="section-title">家族プラン 月額¥980</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">家族プラン</div>
+        <div class="pz-amount">¥980 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>散歩・服薬・食事などを、ボタンひとつで毎日記録</li>
+          <li>今日の元気スコアと、連続日数のバッジ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA / 事前登録 -->
 <section class="cta-section" id="cta">
   <div class="cta-inner">
@@ -724,8 +759,10 @@
         <div class="form-error" id="device-error">選択してください</div>
       </div>
 
+      <input type="hidden" name="price_shown" value="家族プラン ¥980/月">
+      <input type="hidden" name="source" id="sourceField">
       <button class="form-submit" id="submit-btn" type="submit">
-        事前登録する（無料）
+        ¥980/月で事前登録する
       </button>
       <p class="form-note">個人情報はリリースのご連絡にのみ使用します</p>
     </form>
@@ -751,6 +788,16 @@ function selectRadio(el, name) {
   el.classList.add('selected');
   el.querySelector('input[type=radio]').checked = true;
   document.getElementById(name+'-error').style.display = 'none';
+}
+
+function getTrafficSource() {
+  var params = new URLSearchParams(window.location.search);
+  var utmSource = params.get('utm_source');
+  if (utmSource) return utmSource;
+  if (document.referrer) {
+    try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+  }
+  return 'direct';
 }
 
 function submitForm(event) {
@@ -783,6 +830,7 @@ function submitForm(event) {
   if (!ok) return;
 
   var form = document.getElementById('reg-form');
+  document.getElementById('sourceField').value = getTrafficSource();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = '登録中...';
@@ -801,7 +849,7 @@ function submitForm(event) {
     .catch(function() {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
       btn.disabled = false;
-      btn.textContent = '事前登録する（無料）';
+      btn.textContent = '¥980/月で事前登録する';
     });
 }
 </script>

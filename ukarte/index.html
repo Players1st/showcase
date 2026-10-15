@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>Ukarte（ユーカルテ）- あなたのカルテ、あなたが持つ。</title>
-<meta name="description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。">
+<meta name="description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。家族プラン月額¥980。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/ukarte/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="Ukarte（ユーカルテ）- あなたのカルテ、あなたが持つ。">
-<meta property="og:description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。">
+<meta property="og:description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。家族プラン月額¥980。">
 <meta property="og:image" content="https://showcase.p1st.app/og/ukarte.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ukarte（ユーカルテ）- あなたのカルテ、あなたが持つ。">
-<meta name="twitter:description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。">
+<meta name="twitter:description" content="薬袋を撮影するだけで服薬管理が完了し、診察内容や家族との共有までサポートするヘルスケア記録アプリです。家族プラン月額¥980。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/ukarte.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -921,6 +921,22 @@
     .how-steps { grid-template-columns: 1fr; }
     .phone { width: 220px; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 80px 24px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--blue); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--mid); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--dark); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--mid); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--dark); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--blue); border-bottom: 2px solid var(--blue); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--mid); }
+  .pz .section-title{ margin-bottom: 32px; }
+  .pz-grid{ max-width: 560px; }
 </style>
 </head>
 <body>
@@ -944,9 +960,11 @@
       </p>
       <form class="hero-form" id="register" onsubmit="submitEmailForm(event, this)">
         <input type="email" name="email" class="hero-input" placeholder="メールアドレスを入力" required />
-        <button class="hero-btn" type="submit">無料で事前登録</button>
+        <input type="hidden" name="price_shown" value="家族プラン ¥980/月">
+        <input type="hidden" name="source" class="source-field">
+        <button class="hero-btn" type="submit">¥980/月で事前登録</button>
       </form>
-      <p class="hero-note">クレジットカード不要・リリース時に優先通知でお知らせします</p>
+      <p class="hero-note">家族プラン 月額¥980・リリース時に優先通知でお知らせします</p>
     </div>
 
     <div class="hero-visual">
@@ -1170,6 +1188,24 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">料金</div>
+    <h2 class="section-title">家族プラン 月額¥980</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">家族プラン</div>
+        <div class="pz-amount">¥980 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>薬袋を撮るだけの服薬リマインダー</li>
+          <li>診察後の音声メモと、AIによる記録の整理</li>
+          <li>家族への記録の共有と、緊急時の医療サマリー</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <div class="cta-inner">
@@ -1178,9 +1214,11 @@
     <p>Ukarteは現在β版を開発中です。事前登録いただいた方には、リリース時に優先でご案内します。</p>
     <form class="cta-form" onsubmit="submitEmailForm(event, this)">
       <input type="email" name="email" class="cta-input" placeholder="メールアドレスを入力してください" required />
-      <button class="cta-btn" type="submit">無料で事前登録する →</button>
+      <input type="hidden" name="price_shown" value="家族プラン ¥980/月">
+      <input type="hidden" name="source" class="source-field">
+      <button class="cta-btn" type="submit">¥980/月で事前登録する →</button>
     </form>
-    <p class="cta-note">登録は1分で完了・料金は一切かかりません</p>
+    <p class="cta-note">登録は1分で完了・ご利用は家族プラン月額¥980です</p>
   </div>
 </section>
 
@@ -1194,8 +1232,19 @@
 </footer>
 
 <script>
+function getTrafficSource() {
+  var params = new URLSearchParams(window.location.search);
+  var utmSource = params.get('utm_source');
+  if (utmSource) return utmSource;
+  if (document.referrer) {
+    try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+  }
+  return 'direct';
+}
+
 function submitEmailForm(event, form) {
   event.preventDefault();
+  form.querySelector('.source-field').value = getTrafficSource();
 
   var btn = form.querySelector('button');
   var originalText = btn.textContent;

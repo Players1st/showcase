@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>退勤スイッチ ― 1分で、今日を終わらせる。</title>
-<meta name="description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta name="description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。月額¥380（2週間の無料お試しあり）。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/taikin-switch/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="退勤スイッチ ― 1分で、今日を終わらせる。">
-<meta property="og:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta property="og:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。月額¥380（2週間の無料お試しあり）。">
 <meta property="og:image" content="https://showcase.p1st.app/og/taikin-switch.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="退勤スイッチ ― 1分で、今日を終わらせる。">
-<meta name="twitter:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。">
+<meta name="twitter:description" content="通勤がなくなった分、「終わり」も一緒になくなった。退勤時間に届く通知をタップするだけで、1分の儀式が始まり、仕事から気持ちを切り替えられます。月額¥380（2週間の無料お試しあり）。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/taikin-switch.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -393,6 +393,21 @@
   @media (prefers-reduced-motion: reduce){
     .toggle::after, .hero-sun{animation:none;}
   }
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--navy); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+  .pz .wrap{ max-width: 720px; }
 </style>
 </head>
 <body>
@@ -415,8 +430,8 @@
     </div>
 
     <div class="cta-row">
-      <a href="#signup" class="btn-primary">2週間無料で試してみる</a>
-      <span class="cta-note">登録はメールアドレスのみ・1分で完了</span>
+      <a href="#signup" class="btn-primary">¥380/月で事前登録する</a>
+      <span class="cta-note">月額¥380（最初の2週間は無料でお試しいただけます）・登録はメールアドレスのみ</span>
     </div>
   </div>
 </header>
@@ -499,11 +514,32 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">料金</p>
+      <h2>退勤スイッチ 月額¥380。</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">退勤スイッチ</div>
+        <div class="pz-amount">¥380 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>設定した退勤時間の通知</li>
+          <li>1分の儀式（深呼吸のガイドと、ひとこと記録）</li>
+          <li>カレンダーのスタンプ記録</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pz-note">最初の2週間は無料でお試しいただけます。3週目からは月額¥380です。</p>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
     <div class="signup-box">
       <h2>今日から、退勤にスイッチを。</h2>
-      <p>先行登録いただいた方には、リリース時に優先してご案内します。</p>
+      <p>月額¥380（最初の2週間は無料でお試しいただけます）。先行登録いただいた方には、リリース時に優先してご案内します。</p>
       <form id="registerForm">
         <div class="form-row">
           <input type="email" name="email" placeholder="メールアドレス" required>
@@ -512,9 +548,11 @@
           <span class="badge-required">必須</span>
           <span>メールアドレスのみで登録できます。他の情報は不要です。</span>
         </div>
-        <button type="submit" class="btn-primary">2週間無料で先行登録する</button>
+        <input type="hidden" name="price_shown" value="退勤スイッチ ¥380/月（2週間無料お試しあり）">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="btn-primary">¥380/月で事前登録する</button>
       </form>
-      <p class="trial-note" id="trialNote">登録後も費用は発生しません。リリース時に無料期間開始のご案内をお送りします。</p>
+      <p class="trial-note" id="trialNote">事前登録の時点では費用は発生しません。リリース時に、2週間の無料お試しのご案内をお送りします。お試しのあとは月額¥380です。</p>
     </div>
   </div>
 </section>
@@ -548,9 +586,20 @@
     });
   })();
 
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.btn-primary');
     const originalText = btn.textContent;
     btn.disabled = true;

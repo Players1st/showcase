@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>スコープログ｜その「ついでに」、資料にして見せませんか。</title>
-<meta name="description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。">
+<meta name="description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。月額¥1,980。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/scopelog/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="スコープログ｜その「ついでに」、資料にして見せませんか。">
-<meta property="og:description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。">
+<meta property="og:description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。月額¥1,980。">
 <meta property="og:image" content="https://showcase.p1st.app/og/scopelog.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="スコープログ｜その「ついでに」、資料にして見せませんか。">
-<meta name="twitter:description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。">
+<meta name="twitter:description" content="スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。月額¥1,980。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/scopelog.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -263,6 +263,22 @@
     .pain-grid,.steps{grid-template-columns:1fr;}
     .trust-box{grid-template-columns:1fr;}
   }
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--indigo); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--sub); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--sub); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--indigo); border-bottom: 2px solid var(--indigo); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--sub); }
+  .pz .pz-grid{ max-width: 520px; margin: 0 auto; }
+  .pz .section-head{ margin-bottom: 32px; }
 </style>
 </head>
 <body>
@@ -270,7 +286,7 @@
 <header>
   <div class="container nav">
     <div class="logo"><span class="dot"></span>スコープログ<span class="en">ScopeLog</span></div>
-    <a href="#cta" class="nav-cta">無料で試す</a>
+    <a href="#cta" class="nav-cta">¥1,980/月で事前登録</a>
   </div>
 </header>
 
@@ -281,8 +297,8 @@
       <h1>その<span class="u">「ついでに」</span>、<br>資料にして見せませんか。</h1>
       <p class="sub">スクショを貼るだけで、変更依頼の記録が資料になる。言いにくかった追加費用の話が、少しだけ言いやすくなります。</p>
       <div class="cta-row">
-        <a href="#cta" class="btn-primary">無料で試す →</a>
-        <span class="cta-note">// メールアドレスのみ・クレジットカード不要</span>
+        <a href="#cta" class="btn-primary">¥1,980/月で事前登録する →</a>
+        <span class="cta-note">// 月額¥1,980・登録はメールアドレスのみ</span>
       </div>
     </div>
     <div class="browser">
@@ -383,11 +399,31 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">料金</span>
+      <h2>スコープログ 月額¥1,980</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">スコープログ</div>
+        <div class="pz-amount">¥1,980 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>スクショを貼るだけの、変更依頼の記録</li>
+          <li>AIによる、中立的な業務資料への整理</li>
+          <li>PDF・共有リンクでの出力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta">
   <div class="container">
     <div class="final-cta">
       <h2>まずは、記録することから。</h2>
-      <p>無料アカウントで、今日から変更依頼の記録を始められます。</p>
+      <p>月額¥1,980。事前登録いただいた方に、リリース時にご案内をお送りします。</p>
       <form class="signup-form" id="signupForm">
         <div>
           <label for="signupEmail">メールアドレス</label>
@@ -401,8 +437,10 @@
           <label for="signupExpectation">期待していること<span class="opt">任意</span></label>
           <textarea id="signupExpectation" name="expectation" placeholder="例：追加費用の交渉に使える資料が欲しい、記録の手間を減らしたい　など"></textarea>
         </div>
-        <button type="submit" class="btn-primary">無料で試す →</button>
-        <span class="form-note">// クレジットカード不要・いつでも解約可能</span>
+        <input type="hidden" name="price_shown" value="スコープログ ¥1,980/月">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="btn-primary">¥1,980/月で事前登録する →</button>
+        <span class="form-note">// 月額¥1,980・いつでも解約可能</span>
       </form>
       <div class="signup-success" id="signupSuccess">
         ✓ ありがとうございます。案内メールをお送りします。
@@ -421,9 +459,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signupForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = document.getElementById('signupForm');
+    form.querySelector('#sourceField').value = getTrafficSource();
     const success = document.getElementById('signupSuccess');
     const btn = form.querySelector('button');
     const originalText = btn.textContent;

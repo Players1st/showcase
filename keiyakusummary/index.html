@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>契約サマリー | 発注先との「言った言わない」を、キックオフの一枚で防ぐ</title>
-<meta name="description" content="契約書をアップロードするだけで、発注先にそのまま見せられる1枚サマリーを自動生成。現場で認識を合わせ、役員が出ていく前にトラブルの芽を摘みます。">
+<meta name="description" content="契約書をアップロードするだけで、発注先にそのまま見せられる1枚サマリーを自動生成。現場で認識を合わせ、役員が出ていく前にトラブルの芽を摘みます。月額¥30,000。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/keiyakusummary/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="契約サマリー｜現場で揉める前に、事前に防ぐ">
-<meta property="og:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。">
+<meta property="og:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。月額¥30,000。">
 <meta property="og:image" content="https://showcase.p1st.app/og/keiyakusummary.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="契約サマリー｜現場で揉める前に、事前に防ぐ">
-<meta name="twitter:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。">
+<meta name="twitter:description" content="発注先との『言った言わない』を、キックオフの一枚で防ぐ契約範囲共有ツール。月額¥30,000。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/keiyakusummary.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -404,6 +404,21 @@
   @media (prefers-reduced-motion: reduce){
     *{ transition: none !important; animation: none !important; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--brass); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--brass); border-bottom: 2px solid var(--brass); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+  .pz .pz-grid{ max-width: 560px; }
 </style>
 </head>
 <body>
@@ -431,8 +446,8 @@
       <p class="sub">現場で認識を合わせるための契約範囲共有ツール。</p>
       <p class="sub second">現場で揉める前に、事前に防ぐ。</p>
       <div class="cta-row">
-        <a href="#signup" class="btn-primary">お試し版の先行案内を受け取る</a>
-        <span class="cta-note">登録1分・料金の記載は伏せて先行案内します</span>
+        <a href="#signup" class="btn-primary">¥30,000/月で先行登録する</a>
+        <span class="cta-note">月額¥30,000・登録1分</span>
       </div>
     </div>
     <div class="hero-visual">
@@ -577,14 +592,35 @@
   </div>
 </section>
 
+<section class="section pz" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">料金</div>
+      <h2 class="narrow">契約サマリー 月額¥30,000</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">契約サマリー</div>
+        <div class="pz-amount">¥30,000 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>契約書のアップロードだけで、1枚サマリーを自動生成</li>
+          <li>発注先にそのまま見せられる、業務範囲の共有</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="final-cta" id="signup">
   <div class="wrap">
-    <h2>お試し版の先行案内をお届けします</h2>
-    <p>正式リリースに先立ち、月1件まで無料でお試しいただける先行案内をご登録の方から順にお送りします。</p>
+    <h2>先行登録で、リリース時にご案内します</h2>
+    <p>契約サマリーは月額¥30,000です。正式リリースに先立ち、ご登録の方から順にご案内をお送りします。</p>
     <form class="signup" id="signupForm">
       <input type="text" name="company" placeholder="会社名" required>
       <input type="email" name="email" placeholder="メールアドレス" required>
-      <button type="submit">先行案内を受け取る</button>
+      <input type="hidden" name="price_shown" value="契約サマリー ¥30,000/月">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit">¥30,000/月で先行登録する</button>
     </form>
     <div class="form-success" id="formSuccess">ご登録ありがとうございます。準備が整い次第、ご案内をお送りします。</div>
   </div>
@@ -601,9 +637,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signupForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('button');
     fetch('https://formspree.io/f/xljegjeq', {
       method: 'POST',
