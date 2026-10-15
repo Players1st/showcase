@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>巻ヅメ | その巻、もう持ってる？その場でわかる。</title>
-<meta name="description" content="紙と電子、両方で読んでいると「何巻まで持ってたっけ」が分からなくなる。バーコードをスキャンするだけで、即座にわかります。登録・利用は無料です。">
+<meta name="description" content="紙と電子、両方で読んでいると「何巻まで持ってたっけ」が分からなくなる。バーコードをスキャンするだけで、即座にわかります。月額¥300。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/kanzume/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -337,6 +337,20 @@
     .section-title{ font-size: 20px; }
     .signup h2{ font-size: 21px; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 0 0 84px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--crimson); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--crimson); border-bottom: 2px solid var(--crimson); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -355,8 +369,8 @@
     </div>
     <h1>その巻、もう持ってる？<br>その場でわかる。</h1>
     <p class="hero-sub">紙と電子、両方で読んでいると「何巻まで持ってたっけ」が分からなくなる。バーコードをスキャンするだけで、即座にわかります。</p>
-    <a href="#signup" class="cta-btn">無料ではじめる</a>
-    <p class="cta-note">登録・利用は無料です。</p>
+    <a href="#signup" class="cta-btn">¥300/月で事前登録する</a>
+    <p class="cta-note">料金は月額¥300です。</p>
   </div>
 </section>
 
@@ -450,10 +464,26 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">巻ヅメ</div>
+        <div class="pz-amount">¥300 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>作品の登録と、紙・電子それぞれの所持巻の記録</li>
+          <li>店頭でのバーコードスキャンと、所持状況の表示</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
-    <h2>無料ではじめる</h2>
-    <p>好きな漫画を登録して、紙・電子の所持状況をまとめて管理しましょう。</p>
+    <h2>事前登録で、リリース時にご案内します</h2>
+    <p>月額¥300。好きな漫画を登録して、紙・電子の所持状況をまとめて管理しましょう。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/mrpbzydo" method="POST">
       <div class="field">
@@ -468,7 +498,9 @@
         <label for="manga">好きな漫画（複数可）</label>
         <input type="text" id="manga" name="manga" placeholder="例：ONE PIECE、鬼滅の刃" autocomplete="off">
       </div>
-      <button type="submit" class="submit-btn">無料ではじめる</button>
+      <input type="hidden" name="price_shown" value="巻ヅメ ¥300/月">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥300/月で事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
@@ -487,10 +519,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -522,7 +566,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料ではじめる';
+        btn.textContent = '¥300/月で事前登録する';
       });
     });
   })();

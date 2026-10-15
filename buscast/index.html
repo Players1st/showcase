@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>BusCast（バスキャスト）| バスターミナル運営者向け 繁忙日予報レポート</title>
-<meta name="description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。">
+<meta name="description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。月額¥50,000（1拠点あたり）。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/buscast/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="BusCast（バスキャスト）| バスターミナル運営者向け 繁忙日予報レポート">
-<meta property="og:description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。">
+<meta property="og:description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。月額¥50,000（1拠点あたり）。">
 <meta property="og:image" content="https://showcase.p1st.app/og/buscast.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BusCast（バスキャスト）| バスターミナル運営者向け 繁忙日予報レポート">
-<meta name="twitter:description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。">
+<meta name="twitter:description" content="連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートです。月額¥50,000（1拠点あたり）。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/buscast.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -255,6 +255,21 @@
   .footer-links a{color:rgba(255,255,255,0.5); text-decoration:none;}
   .footer-links a:hover{color:var(--accent);}
   .copyright{margin-top:20px; color:rgba(255,255,255,0.35);}
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--accent-dim); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--text-sub); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--navy); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--text-sub); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--navy); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--accent-dim); border-bottom: 2px solid var(--accent-dim); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--text-sub); }
+  .pz .pz-grid{ margin-top: 40px; max-width: 520px; }
 </style>
 </head>
 <body>
@@ -262,7 +277,7 @@
 <header>
   <div class="header-inner">
     <div class="brand"><span class="ring"></span>BusCast<span class="brand-sub">バス繁忙日予報レポート</span></div>
-    <a href="#register" class="nav-cta">無料トライアル申込</a>
+    <a href="#register" class="nav-cta">¥50,000/月で申し込む</a>
   </div>
 </header>
 
@@ -272,7 +287,7 @@
     <h1>繁忙日の「想定外」を、<span class="hi">なくす。</span></h1>
     <p class="sub">連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポート。</p>
     <div class="cta-row">
-      <a href="#register" class="btn btn-primary">無料で繁忙日予報を試す</a>
+      <a href="#register" class="btn btn-primary">¥50,000/月/拠点で申し込む</a>
       <a href="#how" class="btn btn-ghost">仕組みを見る</a>
     </div>
 
@@ -416,11 +431,28 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <div class="eyebrow-lt">PRICING</div>
+    <h2>BusCast 月額¥50,000（1拠点あたり）</h2>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">BusCast</div>
+        <div class="pz-amount">¥50,000 <span>/ 月 / 拠点</span></div>
+        <ul class="pz-list">
+          <li>公開データにもとづく、繁忙日の予測</li>
+          <li>繁忙日予報レポートの配信</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="register" class="form-section">
   <div class="wrap">
     <div class="eyebrow-lt" style="color:var(--accent);">REGISTER</div>
-    <h2 style="color:var(--white);">無料トライアルに申し込む</h2>
-    <p class="lead" style="color:rgba(255,255,255,0.6);">直近の繁忙日予報レポートを1回、無料でお届けします。担当者様の情報をご記入ください。</p>
+    <h2 style="color:var(--white);">BusCastに申し込む</h2>
+    <p class="lead" style="color:rgba(255,255,255,0.6);">料金は1拠点あたり月額¥50,000です。担当者様の情報をご記入ください。</p>
 
     <div class="form-card">
       <form id="registerForm">
@@ -450,7 +482,9 @@
             <textarea name="message" placeholder="乗り入れているバス会社数、1日の発着便数、現在感じている運営上の課題などをご記入ください"></textarea>
           </div>
         </div>
-        <button type="submit" class="form-submit">無料トライアルに申し込む</button>
+        <input type="hidden" name="price_shown" value="BusCast ¥50,000/月/拠点">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="form-submit">¥50,000/月/拠点で申し込む</button>
         <p class="form-foot">※ MVP検証段階のため、レポート対応範囲は順次拡大しながらお届けします。</p>
       </form>
       <div class="form-success" id="formSuccess" style="display:none; text-align:center; padding:12px 0;">
@@ -474,9 +508,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('registerForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = e.target;
+    form.querySelector('#sourceField').value = getTrafficSource();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
     btn.disabled = true;

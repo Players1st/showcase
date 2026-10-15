@@ -14,19 +14,19 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。</title>
-<meta name="description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta name="description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。月額¥29,800（1社あたり）。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/projectnavi/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。">
-<meta property="og:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta property="og:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。月額¥29,800（1社あたり）。">
 <meta property="og:image" content="https://showcase.p1st.app/og/projectnavi.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="プロジェクトナビ｜非エンジニアでも、燃えないプロジェクトへ。">
-<meta name="twitter:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。">
+<meta name="twitter:description" content="非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで、次にすべきことをそのまま使える形でお渡しします。月額¥29,800（1社あたり）。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/projectnavi.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -303,6 +303,22 @@
     .exec-grid{grid-template-columns:1fr;}
     .rail-labels{font-size:8.5px;}
   }
+
+  /* ---------- Pricing (#148) ---------- */
+
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--paper-panel); border: 1px solid var(--paper-line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--cyan); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--sub-dark); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink-dark); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--sub-dark); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink-dark); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--cyan); border-bottom: 2px solid var(--cyan); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--sub-dark); }
+  .pz .pz-grid{ max-width: 520px; margin: 0 auto; }
+  .pz .section-head{ margin-bottom: 32px; }
 </style>
 </head>
 <body>
@@ -310,7 +326,7 @@
 <header>
   <div class="container nav">
     <div class="logo"><span class="icon"></span>プロジェクトナビ</div>
-    <a href="#cta" class="nav-cta">無料相談</a>
+    <a href="#cta" class="nav-cta">¥29,800/月で申し込む</a>
   </div>
 </header>
 
@@ -321,8 +337,8 @@
       <h1>非エンジニアでも、<br><span class="cyan">燃えない</span>プロジェクトへ。</h1>
       <p class="sub">要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理まで。次にすべきことを、そのまま使える形でお渡しします。</p>
       <div class="cta-row">
-        <a href="#cta" class="btn-primary">無料で相談する →</a>
-        <span class="cta-note">// 導入企業様向け・個別ヒアリングから</span>
+        <a href="#cta" class="btn-primary">¥29,800/月/社で導入を申し込む →</a>
+        <span class="cta-note">// 月額¥29,800（1社あたり）・個別ヒアリングから</span>
       </div>
     </div>
     <div class="dash">
@@ -437,11 +453,31 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">料金</span>
+      <h2>プロジェクトナビ 月額¥29,800（1社あたり）</h2>
+    </div>
+    <div class="pz-grid">
+      <div class="pz-card main">
+        <div class="pz-name">プロジェクトナビ</div>
+        <div class="pz-amount">¥29,800 <span>/ 月 / 社</span></div>
+        <ul class="pz-list">
+          <li>要件定義のたたき台の作成</li>
+          <li>ベンダーの提案書・見積書のチェック</li>
+          <li>検収の要点の提示</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta">
   <div class="container">
     <div class="final-cta">
       <h2>まずは、現状をお聞かせください。</h2>
-      <p>案件の状況をお伺いした上で、導入のご相談に対応します。</p>
+      <p>月額¥29,800（1社あたり）。案件の状況をお伺いした上で、導入のご案内をします。</p>
       <form class="signup-form" id="signupForm">
         <div>
           <label for="signupEmail">メールアドレス</label>
@@ -455,7 +491,9 @@
           <label for="signupExpectation">現在の案件状況・期待していること<span class="opt">任意</span></label>
           <textarea id="signupExpectation" name="expectation" placeholder="例：システム刷新を検討中だが要件定義の進め方に不安がある　など"></textarea>
         </div>
-        <button type="submit" class="btn-primary">無料で相談する →</button>
+        <input type="hidden" name="price_shown" value="プロジェクトナビ ¥29,800/月/社">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="btn-primary">¥29,800/月/社で導入を申し込む →</button>
         <span class="form-note">// 個別ヒアリングの上でご案内します</span>
       </form>
       <div class="signup-success" id="signupSuccess">
@@ -475,9 +513,20 @@
 </footer>
 
 <script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
   document.getElementById('signupForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = document.getElementById('signupForm');
+    form.querySelector('#sourceField').value = getTrafficSource();
     const success = document.getElementById('signupSuccess');
     const btn = form.querySelector('button');
     const originalText = btn.textContent;

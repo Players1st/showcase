@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>Glumo | 面倒のない血糖値管理、AIの力でサポート</title>
-<meta name="description" content="食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。基本機能は無料でご利用いただけます。">
+<meta name="description" content="食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。基本の記録は無料、AI分析・傾向レポートは月額¥980。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/glumo/">
 <meta property="og:site_name" content="P1st Startup Showcase">
@@ -296,6 +296,20 @@
     .report-card{ padding: 22px; }
     .signup h2{ font-size: 21px; }
   }
+
+  /* ---------- Pricing (#148) ---------- */
+  .pz{ padding: 0 0 84px; }
+  .pz-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pz-card{ background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 22px; text-align: left; }
+  .pz-card.main{ border: 2px solid var(--teal); }
+  .pz-name{ font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .pz-amount{ font-size: 28px; font-weight: 900; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+  .pz-amount span{ font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .pz-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .pz-list li{ position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+  .pz-list li::before{ content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 5px;
+    border-left: 2px solid var(--teal); border-bottom: 2px solid var(--teal); transform: rotate(-45deg); }
+  .pz-note{ margin-top: 14px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -312,8 +326,8 @@
     <div class="kicker"><span class="dot"></span>Glumo（グルモ）</div>
     <h1>面倒のない<span class="accent">血糖値管理</span>、<br>AIの力でサポート。</h1>
     <p class="hero-sub">食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。</p>
-    <a href="#signup" class="cta-btn">無料ではじめる</a>
-    <p class="cta-note">基本機能は無料でご利用いただけます。</p>
+    <a href="#signup" class="cta-btn">¥980/月で事前登録する</a>
+    <p class="cta-note">基本の記録は無料。AI分析・傾向レポートは月額¥980（最初の2週間は無料でお試しいただけます）。</p>
   </div>
 </section>
 
@@ -394,10 +408,34 @@
   </div>
 </section>
 
+<section class="pz" id="pricing">
+  <div class="wrap">
+    <h2 class="section-title">料金</h2>
+    <div class="pz-grid">
+      <div class="pz-card">
+        <div class="pz-name">基本の記録</div>
+        <div class="pz-amount">¥0</div>
+        <ul class="pz-list">
+          <li>食事の写真と、血糖値の記録</li>
+        </ul>
+      </div>
+      <div class="pz-card main">
+        <div class="pz-name">AI分析・傾向レポート</div>
+        <div class="pz-amount">¥980 <span>/ 月</span></div>
+        <ul class="pz-list">
+          <li>AIによる血糖値の変化の分析</li>
+          <li>週ごとの傾向レポート</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pz-note">AI分析・傾向レポートは、最初の2週間は無料でお試しいただけます。3週目からは月額¥980です。</p>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="wrap">
-    <h2>まずは無料で、記録をはじめてみませんか</h2>
-    <p>基本機能は無料でご利用いただけます。AIによる傾向分析は2週間無料でお試しいただけます。</p>
+    <h2>事前登録で、リリース時にご案内します</h2>
+    <p>基本の記録は無料。AI分析・傾向レポートは月額¥980で、最初の2週間は無料でお試しいただけます。</p>
 
     <form id="signup-form" class="signup-form" action="https://formspree.io/f/xkjnqljl" method="POST">
       <div class="field">
@@ -416,7 +454,9 @@
           <option value="家族としてサポート中">家族としてサポート中</option>
         </select>
       </div>
-      <button type="submit" class="submit-btn">無料ではじめる</button>
+      <input type="hidden" name="price_shown" value="AI分析・傾向レポート ¥980/月（基本の記録は無料、2週間無料お試しあり）">
+      <input type="hidden" name="source" id="sourceField">
+      <button type="submit" class="submit-btn">¥980/月で事前登録する</button>
       <p class="form-status" id="form-status"></p>
     </form>
     <p class="signup-note">ご登録いただいた情報は、サービスのご案内以外の目的には使用しません。</p>
@@ -435,10 +475,22 @@
 
 <script>
   (function(){
+    // 流入元：utm_source → referrer のホスト名 → "direct"
+    function getTrafficSource(){
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get('utm_source');
+      if (utmSource) return utmSource;
+      if (document.referrer) {
+        try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+      }
+      return 'direct';
+    }
+
     var form = document.getElementById('signup-form');
     var status = document.getElementById('form-status');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      document.getElementById('sourceField').value = getTrafficSource();
       var endpoint = form.getAttribute('action');
       if(!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1){
         status.textContent = 'フォーム送信先が未設定です（管理者向け：Formspree等のURLをaction属性に設定してください）';
@@ -470,7 +522,7 @@
         status.style.display = 'block';
       }).finally(function(){
         btn.disabled = false;
-        btn.textContent = '無料ではじめる';
+        btn.textContent = '¥980/月で事前登録する';
       });
     });
   })();
