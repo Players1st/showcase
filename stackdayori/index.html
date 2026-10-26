@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXY9TPFVZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FXY9TPFVZN');
+</script>
+<script src="../js/lp-events.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>スタック便り｜あなたの案件スタックに関係する技術情報だけ、毎週3〜5件。</title>
+<meta name="description" content="準委任・業務委託のエンジニア向け。使っている技術と関心分野を登録すると、案件・単価・契約更新への影響が一言でわかる技術ニュースを、週1回3〜5件に絞ってメールかLINEで配信します。月額480円（税込）。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://showcase.p1st.app/stackdayori/">
+<meta property="og:site_name" content="P1st Startup Showcase">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="スタック便り｜あなたの案件スタックに関係する技術情報だけ、毎週3〜5件。">
+<meta property="og:description" content="準委任・業務委託のエンジニア向け。登録したスタックに関係する技術ニュースだけを、案件・単価・更新への影響の一言つきで週1回配信。月額480円（税込）。">
+<meta property="og:image" content="https://showcase.p1st.app/og/stackdayori.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="スタック便り｜あなたの案件スタックに関係する技術情報だけ、毎週3〜5件。">
+<meta name="twitter:description" content="準委任・業務委託のエンジニア向け。登録したスタックに関係する技術ニュースだけを、案件・単価・更新への影響の一言つきで週1回配信。月額480円（税込）。">
+<meta name="twitter:image" content="https://showcase.p1st.app/og/stackdayori.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1115;
+    --panel:#161a20;
+    --panel-2:#1c212a;
+    --line:#2a313b;
+    --text:#e9ecf0;
+    --sub:#9ba4af;
+    --lime:#c8f542;
+    --lime-ink:#10150a;
+    --lime-dim:rgba(200,245,66,.14);
+    --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+    --sans:'Noto Sans JP',system-ui,-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .container{max-width:1040px;margin:0 auto;padding:0 20px}
+  .mono{font-family:var(--mono)}
+
+  header.top{position:sticky;top:0;z-index:10;background:rgba(14,17,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header.top .container{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+  .logo{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+  .logo b{color:var(--lime)}
+  .nav-cta{font-size:13px;font-weight:700;text-decoration:none;color:var(--lime-ink);background:var(--lime);padding:7px 14px;border-radius:6px;white-space:nowrap}
+
+  .btn-primary{display:inline-block;border:0;cursor:pointer;font-family:var(--sans);font-size:16px;font-weight:700;color:var(--lime-ink);background:var(--lime);padding:14px 26px;border-radius:8px;text-decoration:none;transition:transform .12s,filter .12s}
+  .btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .btn-primary:disabled{opacity:.6;cursor:default;transform:none}
+
+  .hero{padding:56px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--lime);margin-bottom:14px}
+  h1{font-size:clamp(28px,4.4vw,44px);line-height:1.35;font-weight:900;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--lime)}
+  .hero .lead{margin-top:18px;color:var(--sub);font-size:16px}
+  .hero .lead strong{color:var(--text);font-weight:700}
+  .price-chip{display:inline-flex;align-items:baseline;gap:8px;margin-top:22px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+  .price-chip .amt{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--lime)}
+  .price-chip .unit{font-size:13px;color:var(--sub)}
+  .hero-cta{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  .hero-note{font-family:var(--mono);font-size:12px;color:var(--sub)}
+
+  .term{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--panel-2);border-bottom:1px solid var(--line)}
+  .term-bar i{width:9px;height:9px;border-radius:50%;background:#3a424d;display:block}
+  .term-bar span{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--sub)}
+  .term-body{padding:16px 16px 18px;font-family:var(--mono);font-size:12.5px;line-height:1.85;color:var(--text);overflow-x:auto}
+  .term-body .c{color:var(--sub)}
+  .term-body .k{color:var(--lime)}
+  .term-body .arrow{display:block;margin:10px 0;color:var(--sub)}
+  .term-body .item{display:block;padding:8px 10px;margin-top:6px;background:var(--bg);border-left:2px solid var(--lime);border-radius:0 6px 6px 0;white-space:normal}
+  .term-body .item small{display:block;color:var(--sub);font-size:11.5px;margin-top:2px}
+
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .section-head{margin-bottom:30px}
+  .section-head .eyebrow{margin-bottom:8px}
+  h2{font-size:clamp(22px,3.2vw,30px);line-height:1.45;font-weight:900}
+  .section-head p{margin-top:10px;color:var(--sub);max-width:640px}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .card .no{font-family:var(--mono);font-size:12px;color:var(--lime);margin-bottom:8px;display:block}
+  .card h3{font-size:16px;line-height:1.55;font-weight:700;margin-bottom:6px}
+  .card p{font-size:14.5px;color:var(--sub)}
+
+  .sample{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .sample-head{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--panel-2);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--sub)}
+  .sample-head .tag{color:var(--lime-ink);background:var(--lime);font-weight:700;padding:2px 8px;border-radius:4px}
+  .digest{list-style:none}
+  .digest li{padding:18px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:28px 1fr;gap:6px 12px}
+  .digest li:last-child{border-bottom:0}
+  .digest .n{font-family:var(--mono);color:var(--lime);font-weight:700}
+  .digest .t{font-weight:700}
+  .digest .why{grid-column:2;font-size:14px;color:var(--sub)}
+  .digest .why b{font-family:var(--mono);font-size:11.5px;color:var(--lime);font-weight:500;margin-right:8px;letter-spacing:.04em}
+  .sample-foot{padding:12px 20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--sub)}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .list{list-style:none}
+  .list li{position:relative;padding-left:22px;margin-top:10px;font-size:15px}
+  .list li::before{content:"";position:absolute;left:0;top:.78em;width:10px;height:2px;background:var(--lime)}
+  .list.no li::before{background:var(--sub)}
+  .list.no li{color:var(--sub)}
+  .card h3.mono{font-family:var(--mono);font-size:13px;color:var(--lime);letter-spacing:.04em}
+
+  .pz{max-width:460px;margin:0 auto;background:var(--panel);border:1px solid var(--lime);border-radius:14px;padding:28px;box-shadow:0 0 0 4px var(--lime-dim)}
+  .pz .name{font-family:var(--mono);font-size:13px;color:var(--lime)}
+  .pz .amount{margin:6px 0 14px;font-size:44px;font-weight:900;line-height:1.2}
+  .pz .amount span{font-size:15px;font-weight:500;color:var(--sub);margin-left:6px}
+
+  details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:0 18px;margin-top:10px}
+  summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--mono);color:var(--lime)}
+  details[open] summary::after{content:"−"}
+  details p{padding:0 0 16px;color:var(--sub);font-size:14.5px}
+
+  .final-cta{max-width:560px;margin:0 auto;text-align:center}
+  .final-cta > p{margin-top:10px;color:var(--sub)}
+  .signup-form{margin-top:26px;text-align:left;display:grid;gap:16px}
+  .signup-form.hide{display:none}
+  label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px}
+  label .opt{font-weight:400;color:var(--sub);margin-left:8px;font-size:12px}
+  input[type=email],input[type=text],select,textarea{width:100%;font-family:var(--sans);font-size:16px;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  textarea{min-height:84px;resize:vertical}
+  select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--sub) 50%),linear-gradient(135deg,var(--sub) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--lime);outline-offset:1px;border-color:transparent}
+  ::placeholder{color:#6b7480}
+  .signup-form .btn-primary{width:100%}
+  .form-note{font-family:var(--mono);font-size:12px;color:var(--sub);text-align:center;display:block}
+  .signup-success{display:none;margin-top:26px;padding:20px;border:1px solid var(--lime);border-radius:10px;background:var(--lime-dim);color:var(--text)}
+  .signup-success.show{display:block}
+
+  footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+  footer p{margin-top:6px}
+  footer .fnote{font-family:var(--mono);font-size:11.5px}
+
+  @media (max-width:820px){
+    .hero{padding:36px 0 44px}
+    .hero-grid{grid-template-columns:1fr;gap:28px}
+    .grid3,.two{grid-template-columns:1fr}
+    section{padding:48px 0}
+    .nav-cta{padding:7px 10px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <a class="logo" href="#top">stack<b>_</b>dayori</a>
+    <a class="nav-cta" href="#cta">¥480/月で事前登録</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" style="border-top:0">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">// 準委任・業務委託のエンジニア向け</span>
+      <h1>あなたの案件スタックに関係する<em>技術情報だけ</em>、毎週3〜5件。</h1>
+      <p class="lead">使っている技術と関心分野を登録すると、<strong>週1回、メールまたはLINEで</strong>届きます。各ニュースに「<strong>案件・単価・契約更新にどう関係するか</strong>」を一言添えるので、読む前に自分に必要かどうかがわかります。</p>
+      <div class="price-chip"><span class="amt">¥480</span><span class="unit">/ 月（税込）</span></div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#cta">月額480円で事前登録する →</a>
+        <span class="hero-note">// 登録時点では課金されません</span>
+      </div>
+    </div>
+
+    <div class="term" aria-label="登録したスタックから週次の配信が届くイメージ（架空の例）">
+      <div class="term-bar"><i></i><i></i><i></i><span>stack_dayori — イメージ（架空の例）</span></div>
+      <div class="term-body">
+        <span class="c"># あなたが登録するもの</span><br>
+        <span class="k">stack</span>: Java / Spring Boot / AWS<br>
+        <span class="k">interest</span>: セキュリティ, 生成AI活用<br>
+        <span class="k">delivery</span>: メール（毎週1回）
+        <span class="arrow">↓ 週1回、3〜5件に絞って配信</span>
+        <span class="item">1. 利用中のライブラリに、メジャー更新の予定<small>→ 案件への影響: 更新作業の依頼が来る可能性</small></span>
+        <span class="item">2. 関心分野の新しい手法が広がり始めている<small>→ 単価への影響: 次の面談で話せる材料になる</small></span>
+        <span class="item">3. 使っているサービスの仕様変更<small>→ 更新への影響: 稼働中の案件に要確認</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// 課題</span>
+      <h2>情報は多いのに、自分の案件に効くものを選ぶ時間がない。</h2>
+      <p>準委任・業務委託で稼働していると、日々の作業が優先になり、技術のキャッチアップが後回しになりがちです。</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="no">01</span>
+        <h3>作業に追われて、インプットが追い付かない</h3>
+        <p>稼働時間の中で技術情報を追う余裕がなく、気づくと関心のある分野の動きがわからなくなっている。</p>
+      </div>
+      <div class="card">
+        <span class="no">02</span>
+        <h3>ニュースレターやSNSは、量が多い</h3>
+        <p>全員に同じ内容が流れてくるため、自分の案件のスタックに関係する情報を探す作業が発生する。</p>
+      </div>
+      <div class="card">
+        <span class="no">03</span>
+        <h3>読んでも、自分への影響がわからない</h3>
+        <p>案件・単価・契約更新にどう効くのかまで考える時間がなく、結局、読み流して終わってしまう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// 使い方</span>
+      <h2>登録するのは、スタックと関心分野だけ。</h2>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="no">STEP 1</span>
+        <h3>スタックと関心分野を登録する</h3>
+        <p>今の案件で使っている技術と、追いたい分野を入力します。受け取り方法はメールかLINEから選べます。</p>
+      </div>
+      <div class="card">
+        <span class="no">STEP 2</span>
+        <h3>週1回、3〜5件が届く</h3>
+        <p>登録した内容に関係するニュースだけを絞って配信します。数十件のリストではなく、3〜5件です。</p>
+      </div>
+      <div class="card">
+        <span class="no">STEP 3</span>
+        <h3>一言で、自分への影響がわかる</h3>
+        <p>各件に「案件・単価・契約更新にどう関係するか」を一言添えます。詳しく読むかどうかを、すぐ決められます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// 配信イメージ</span>
+      <h2>こんな形で届きます。</h2>
+      <p>以下は、サービスの形を伝えるための架空のサンプルです。実在のニュースや製品ではありません。</p>
+    </div>
+    <div class="sample">
+      <div class="sample-head">
+        <span>週次ダイジェスト｜登録スタック: Java / Spring Boot / AWS</span>
+        <span class="tag">架空のサンプル</span>
+      </div>
+      <ol class="digest">
+        <li>
+          <span class="n">01</span>
+          <span class="t">利用中ライブラリの次期メジャー版で、非推奨APIが削除される予定</span>
+          <span class="why"><b>案件への影響</b>現行案件で該当APIを使っていれば、更新作業の依頼が来る可能性があります。</span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span class="t">関心分野に登録した「セキュリティ」で、新しい検査手法が広がり始めている</span>
+          <span class="why"><b>単価への影響</b>次の面談や提案で、具体的な話ができる材料になります。</span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span class="t">使っているクラウドサービスの仕様変更の告知</span>
+          <span class="why"><b>更新への影響</b>稼働中の案件で設定の見直しが必要か、確認しておくと安心です。</span>
+        </li>
+      </ol>
+      <div class="sample-foot">// 実際の配信内容は、登録されたスタック・関心分野に合わせて作成します</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// 対象</span>
+      <h2>誰のためのサービスか。</h2>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3 class="mono">FOR</h3>
+        <ul class="list">
+          <li>準委任・業務委託で稼働している、フリーランスのエンジニア</li>
+          <li>案件のスタックが決まっていて、関連する動きだけ知りたい人</li>
+          <li>次の面談や契約更新に備えて、キャッチアップの時間を減らしたい人</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="mono">NOT FOR</h3>
+        <ul class="list no">
+          <li>正社員のエンジニア（会社が研修や情報環境を用意している場合）</li>
+          <li>学習を始めたばかりで、基礎から体系的に学びたい人</li>
+          <li>技術情報を幅広く集めること自体が趣味の人</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// 料金</span>
+      <h2>スタック便り 月額480円（税込）</h2>
+    </div>
+    <div class="pz">
+      <div class="name">スタック便り</div>
+      <div class="amount">¥480<span>/ 月（税込）</span></div>
+      <ul class="list">
+        <li>登録したスタック・関心分野に合わせた、週1回の配信</li>
+        <li>1回あたり3〜5件に絞った内容</li>
+        <li>各件に「案件・単価・契約更新への影響」の一言つき</li>
+        <li>メールまたはLINEで受け取り</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <details>
+      <summary>無料のニュースレターや技術メディアとの違いは？</summary>
+      <p>無料のものは、全員に同じ内容が届きます。スタック便りは、登録したスタックと関心分野ごとに内容を絞り、各件に「案件・単価・契約更新への影響」の一言を添える点が違います。</p>
+    </details>
+    <details>
+      <summary>事前登録で課金されますか？</summary>
+      <p>事前登録の時点では課金されません。配信を始める準備ができ次第、登録のメールアドレスにご案内をお送りします。</p>
+    </details>
+    <details>
+      <summary>配信はいつから始まりますか？</summary>
+      <p>開始時期は未定です。事前登録いただいた内容を見ながら準備を進め、決まり次第ご案内します。</p>
+    </details>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <div class="final-cta">
+      <span class="eyebrow">// 事前登録</span>
+      <h2>自分のスタックだけの、週次ダイジェストを。</h2>
+      <p>月額480円（税込）。事前登録いただいた方に、準備ができ次第ご案内をお送りします。</p>
+      <form class="signup-form" id="signupForm">
+        <div>
+          <label for="signupEmail">メールアドレス</label>
+          <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label for="signupStack">使っている技術スタック</label>
+          <input type="text" id="signupStack" name="stack" placeholder="例：Java, Spring Boot, AWS, TypeScript" required>
+        </div>
+        <div>
+          <label for="signupInterest">関心分野<span class="opt">任意</span></label>
+          <input type="text" id="signupInterest" name="interest" placeholder="例：セキュリティ、生成AI活用、インフラ自動化">
+        </div>
+        <div>
+          <label for="signupDelivery">受け取り方法</label>
+          <select id="signupDelivery" name="delivery" required>
+            <option value="メール">メール</option>
+            <option value="LINE">LINE</option>
+          </select>
+        </div>
+        <div>
+          <label for="signupExpectation">期待していること<span class="opt">任意</span></label>
+          <textarea id="signupExpectation" name="expectation" placeholder="例：面談前に押さえるべき点を知りたい、更新に影響する変更を見逃したくない　など"></textarea>
+        </div>
+        <input type="hidden" name="price_shown" value="スタック便り ¥480/月（税込）">
+        <input type="hidden" name="source" id="sourceField">
+        <button type="submit" class="btn-primary">¥480/月（税込）で事前登録する →</button>
+        <span class="form-note">// 月額¥480（税込）・登録時点では課金されません</span>
+      </form>
+      <div class="signup-success" id="signupSuccess">
+        ✓ ありがとうございます。準備ができ次第、ご案内メールをお送りします。
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p class="fnote">// 掲載内容は情報提供を目的としたもので、契約条件や案件選択の判断を代行するものではありません。</p>
+    <p>運営会社 <a href="https://company.p1st.app/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">株式会社プレイヤーズファースト</a></p>
+    <p><a href="https://showcase.p1st.app/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">他のサービスを見る</a></p>
+    <p>© 2026 Players1st Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function getTrafficSource(){
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source');
+    if (utmSource) return utmSource;
+    if (document.referrer) {
+      try { return new URL(document.referrer).hostname; } catch(e) { return 'direct'; }
+    }
+    return 'direct';
+  }
+
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = document.getElementById('signupForm');
+    form.querySelector('#sourceField').value = getTrafficSource();
+    const success = document.getElementById('signupSuccess');
+    const btn = form.querySelector('button');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    fetch('https://formspree.io/f/xzeeezeb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        form.classList.add('hide');
+        success.classList.add('show');
+        gtag('event', 'generate_lead', { 'service_name': 'stackdayori' });
+      })
+      .catch(function(){
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
+</body>
+</html>
