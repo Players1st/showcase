@@ -239,6 +239,31 @@
   .step h3{font-size:16.5px;margin-bottom:10px;}
   .step p{font-size:13.5px;color:#c3cbe0;}
 
+  /* ---------- EXAMPLES ---------- */
+  .example-list{display:grid;grid-template-columns:1fr;gap:26px;max-width:760px;margin:0 auto;}
+  .example-card .label{
+    font-size:11.5px;font-weight:700;color:var(--slate);
+    letter-spacing:.04em;margin-bottom:6px;
+  }
+  .example-card .msg{
+    background:#f1ede3;border-radius:14px;padding:12px 16px;
+    font-size:14.5px;color:var(--ink);margin-bottom:18px;
+  }
+  .example-card .verdict{
+    display:inline-flex;align-items:baseline;gap:8px;
+    border:2px solid var(--amber);border-radius:999px;
+    background:var(--navy);color:var(--amber);
+    padding:4px 16px;margin-bottom:18px;
+  }
+  .example-card .verdict .big{font-size:15px;font-weight:900;font-family:'Zen Kaku Gothic New';}
+  .example-card .verdict .small{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:#f3d9ad;}
+  .example-card .reason{font-size:14px;color:var(--slate);margin-bottom:18px;}
+  .example-card .reply{
+    border-left:3px solid var(--line-green);padding:2px 0 2px 14px;
+    font-size:14px;color:var(--ink);
+  }
+  .example-note{max-width:760px;margin:22px auto 0;font-size:12px;color:var(--slate);}
+
   /* ---------- TRUST ---------- */
   .trust{background:var(--cream);}
   .trust-box{
@@ -425,6 +450,48 @@
         <p>そのまま送れる返信テンプレートを生成。数日後には「送ってみましたか？」とフォローもします。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="examples" id="examples">
+  <div class="container">
+    <div class="section-head">
+      <h2>判定の例</h2>
+      <p>こんなやり取りが来たら、こう返ってきます（イメージ）</p>
+    </div>
+    <div class="example-list">
+      <div class="pain-card example-card">
+        <span class="tag">値引き</span>
+        <div class="label">発注元からのメッセージ</div>
+        <div class="msg">来月から単価1割下げでお願いします。急なんですが。</div>
+        <div class="verdict"><span class="big">要注意</span><span class="small">一次判定</span></div>
+        <div class="label">理由</div>
+        <p class="reason">協議のないまま、一方的に単価を下げようとしている可能性があります。代金の減額や買いたたきに当たる場合があります。</p>
+        <div class="label">対応文の例</div>
+        <p class="reply">ご連絡ありがとうございます。単価の変更は、条件を整理したうえで、双方で合意してから適用したいと考えています。変更の理由と適用開始時期を、書面でいただけますか。</p>
+      </div>
+      <div class="pain-card example-card">
+        <span class="tag">支払い遅延</span>
+        <div class="label">発注元からのメッセージ</div>
+        <div class="msg">今月分の支払いは、来月末まで待ってもらえませんか。</div>
+        <div class="verdict"><span class="big">要注意</span><span class="small">一次判定</span></div>
+        <div class="label">理由</div>
+        <p class="reason">支払期日は、納品から60日以内が原則です。それを超える先送りは問題になる場合があります。遅延利息の対象になることもあります。</p>
+        <div class="label">対応文の例</div>
+        <p class="reply">ご連絡ありがとうございます。お支払いは、当初の期日でお願いしたく存じます。難しい場合は、理由と支払日を書面でご連絡ください。</p>
+      </div>
+      <div class="pain-card example-card">
+        <span class="tag">口頭の追加依頼</span>
+        <div class="label">発注元からのメッセージ</div>
+        <div class="msg">ついでにここも直しておいてください。</div>
+        <div class="verdict"><span class="big">要注意</span><span class="small">一次判定</span></div>
+        <div class="label">理由</div>
+        <p class="reason">追加作業の内容と費用が決まらないまま、依頼されています。不当な給付内容の変更ややり直しに当たる場合があります。</p>
+        <div class="label">対応文の例</div>
+        <p class="reply">追加の作業は承ります。内容・費用・納期を書面で確認させてください。見積りをお送りします。</p>
+      </div>
+    </div>
+    <p class="example-note">判定例はイメージです。実際の出力は、入力内容によって異なります。取引の内容によっては、取適法の対象外となる場合があります。</p>
   </div>
 </section>
 
