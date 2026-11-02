@@ -262,6 +262,16 @@ text-align: center;
 color: var(--muted);
 font-size: 14px;
 }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.category { margin-bottom: 56px; scroll-margin-top: 16px; }
+.category-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 18px; }
+.category-head h3 { font-size: 1.5rem; margin: 0; }
+.category-head p { margin: 0; color: var(--muted); }
+.category-count { display: inline-block; margin-left: 8px; padding: 1px 9px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); color: var(--muted); font-size: .8rem; font-weight: 700; }
+.button.outline:hover { border-color: var(--primary); }
+.back-link { margin: 16px 0 0; text-align: right; font-size: 14px; }
+.back-link a { color: var(--muted); }
 @media (max-width: 960px) {
 .hero-grid { grid-template-columns: 1fr; }
 .service-grid { grid-template-columns: 1fr; }
@@ -284,8 +294,15 @@ P1st <span>Startup</span> Showcase
 <div class="hero-copy">
 <h1>暮らしの中の「ちょっと困った」に、<br>向き合う。</h1>
 <p>プレイヤーズファーストが開発中のサービスをご紹介します。気になるものがあれば、ぜひ詳しくご覧ください。</p>
-<div class="hero-cta">
-<a class="button primary" href="#services">サービスを見る</a>
+<div class="hero-cta" id="categories">
+<a class="button outline" href="#cat-care-medical">介護・医療<span class="category-count">8</span></a>
+<a class="button outline" href="#cat-senior">シニア<span class="category-count">6</span></a>
+<a class="button outline" href="#cat-family">親子・夫婦<span class="category-count">5</span></a>
+<a class="button outline" href="#cat-life">暮らし・お金・健康<span class="category-count">8</span></a>
+<a class="button outline" href="#cat-travel">旅行・訪日<span class="category-count">4</span></a>
+<a class="button outline" href="#cat-food-books">食事・読書<span class="category-count">5</span></a>
+<a class="button outline" href="#cat-freelance">フリーランス<span class="category-count">9</span></a>
+<a class="button outline" href="#cat-business">ビジネス<span class="category-count">12</span></a>
 </div>
 </div>
 <div class="hero-panel">
@@ -305,22 +322,12 @@ P1st <span>Startup</span> Showcase
 <h2>開発中のサービス</h2>
 <p>現在、以下の57のサービスを開発・検証中です。</p>
 </div>
+<div class="category" id="cat-care-medical">
+<div class="category-head">
+<h3>介護・医療<span class="category-count">8</span></h3>
+<p>親の見守りや介護から、受診・入院まで。</p>
+</div>
 <div class="service-grid">
-
-<article class="service-card">
-<a href="oikatsu/">
-<div class="service-icon" style="background: #F59E0B1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978" /><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978" /><path d="M18 9h1.5a1 1 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /><path d="M6 9H4.5a1 1 0 0 1 0-5H6" /></svg>
-</div>
-<h3 class="service-title">老い活 — 毎日をポチって、元気を積み上げよう</h3>
-<p class="service-desc">シニアの日々の習慣を「スコア化」して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。</p>
-<div class="service-meta">
-<span>シニア向け習慣化</span>
-<span>ゲーム感覚</span>
-<span>家族の安心</span>
-</div>
-</a>
-</article>
 
 <article class="service-card">
 <a href="ukarte/">
@@ -353,115 +360,6 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="scopelog/">
-<div class="service-icon" style="background: #4C51BF1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4C51BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M9 10h6" /><path d="M12 13V7" /><path d="M9 17h6" /></svg>
-</div>
-<h3 class="service-title">スコープログ — その「ついでに」、資料にして見せませんか。</h3>
-<p class="service-desc">スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。</p>
-<div class="service-meta">
-<span>変更依頼の記録</span>
-<span>受託・制作事業者向け</span>
-<span>AIで資料化</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="projectnavi/">
-<div class="service-icon" style="background: #3FC4B81A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3FC4B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3" /><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /><circle cx="18" cy="5" r="3" /></svg>
-</div>
-<h3 class="service-title">プロジェクトナビ — 非エンジニアでも、燃えないプロジェクトへ。</h3>
-<p class="service-desc">非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理までサポートします。</p>
-<div class="service-meta">
-<span>要件定義サポート</span>
-<span>ベンダー提案チェック</span>
-<span>検収サポート</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="jutyushanotate/">
-<div class="service-icon" style="background: #E2A13B1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E2A13B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>
-</div>
-<h3 class="service-title">受注者の盾 — 写真1枚で、泣き寝入りを終わらせる。</h3>
-<p class="service-desc">発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。</p>
-<div class="service-meta">
-<span>下請け事業者向け</span>
-<span>AIリスク判定</span>
-<span>対応文テンプレ</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="fitgate/">
-<div class="service-icon" style="background: #1F6F541A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F6F54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /><path d="M7 11h10" /><path d="M7 15h6" /><path d="M7 7h8" /></svg>
-</div>
-<h3 class="service-title">FitGate — リモート採用のミスマッチを、契約前になくす。</h3>
-<p class="service-desc">面談だけでは見抜けないテキストのやり取り——意図把握力・質問力・敬語対応を、契約前の15分でチェックできる高単価フリーランス採用向けの適性診断サービスです。</p>
-<div class="service-meta">
-<span>契約前診断</span>
-<span>フリーランス採用</span>
-<span>AIスコアリング</span>
-</div>
-</a>
-</article>
-
-
-<article class="service-card">
-<a href="syokurekiquestion/">
-<div class="service-icon" style="background: #1F3A5C1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F3A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6H8Z" /><path d="M14 3v6h6" /><path d="m9 15 2 2 4-4" /></svg>
-</div>
-<h3 class="service-title">職歴クエスチョン — 経歴書の「余白」を、面談前に洗い出す。</h3>
-<p class="service-desc">職務経歴書の「参画」「貢献」といったあいまいな記述から、面談で確認すべき質問リストを数秒で生成する、フリーランスエンジニア採用向けのサービスです。</p>
-<div class="service-meta">
-<span>職務経歴書の読み解き</span>
-<span>面談質問リスト生成</span>
-<span>フリーランス採用</span>
-</div>
-</a>
-</article>
-
-
-<article class="service-card">
-<a href="voipoke/">
-<div class="service-icon" style="background: #C9A2271A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="22" /></svg>
-</div>
-<h3 class="service-title">ボイポケ — その不満、Googleレビューに書かれる前に。</h3>
-<p class="service-desc">来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける飲食店・小売店向けの非公開フィードバックツール。QRコードを置くだけで、悪評が公開される前に店内で気づいて対応できます。</p>
-<div class="service-meta">
-<span>非公開フィードバック</span>
-<span>QRコード導入</span>
-<span>飲食・小売店向け</span>
-</div>
-</a>
-</article>
-
-
-<article class="service-card">
-<a href="mitsumorist/">
-<div class="service-icon" style="background: #B145481A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B14548" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" /><path d="M8 7h8" /><path d="M8 11h8" /><path d="M8 15h5" /></svg>
-</div>
-<h3 class="service-title">ミツモリスト — その見積もり、相場のどこにいますか？</h3>
-<p class="service-desc">見積書をアップロードするだけで、AIが工数・単価・記載漏れを診断するサービス。数百万〜数千万円の発注でも、技術的妥当性を確認できないまま承認してしまう課題を解決します。</p>
-<div class="service-meta">
-<span>見積もり妥当性AI診断</span>
-<span>相場比較</span>
-<span>発注前チェック</span>
-</div>
-</a>
-</article>
-
-
-<article class="service-card">
 <a href="kazokudayori/">
 <div class="service-icon" style="background: #C85A261A;">
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C85A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
@@ -477,20 +375,277 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="carerpulse/">
-<div class="service-icon" style="background: #3E75661A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3E7566" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M3.22 8.5h1.66l1.12 3.11 1.94-6.11 1.12 3h6.9" /></svg>
+<a href="karadabiyori/">
+<div class="service-icon" style="background: #C975301A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C97530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="5" width="10" height="14" rx="3" /><rect x="9" y="2" width="6" height="4" rx="1" /><rect x="9" y="17" width="6" height="4" rx="1" /><circle cx="12" cy="12" r="2.4" /></svg>
 </div>
-<h3 class="service-title">ケアラーパルス — 介護離職の予兆に、人事が気づける仕組み。</h3>
-<p class="service-desc">社員の匿名回答から、離職リスクを匿名集計で早期把握する人事向けツール。個人情報は一切収集せず、月額定額・審査不要で人事部門お一人の判断から導入できます。</p>
+<h3 class="service-title">からだ日和 — スマートウォッチのデータで、離れて暮らす親の"今日の調子"がわかる。</h3>
+<p class="service-desc">毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換。本人にはひとことのアドバイスで、家族にはLINEで届きます。Apple Watch、Fitbit、Ouraなど主要なスマートウォッチに対応しています。</p>
 <div class="service-meta">
-<span>介護離職の早期把握</span>
-<span>匿名集計ダッシュボード</span>
-<span>人事向け</span>
+<span>ウェアラブル連携</span>
+<span>AIによる体調スコア化</span>
+<span>家族へLINE通知</span>
 </div>
 </a>
 </article>
 
+<article class="service-card">
+<a href="mimamorihomecheck/">
+<div class="service-icon" style="background: #A87E2C1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#A87E2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5" /><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" /><path d="M10 20v-5h4v5" /></svg>
+</div>
+<h3 class="service-title">みまもりホームチェック — 実家の写真を送るだけ、転倒リスクが数分でわかる。</h3>
+<p class="service-desc">帰省できなくても、実家の危険は見つけられる。AIが段差・照明・床材をチェックして、今日からできる対策を教えます。診断は1回¥480。</p>
+<div class="service-meta">
+<span>写真を送るだけ</span>
+<span>AIによる転倒リスク診断</span>
+<span>1回¥480</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="glumo/">
+<div class="service-icon" style="background: #2C5C691A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2C5C69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h3l2-5 3 8 3-11 2 8h5" /></svg>
+</div>
+<h3 class="service-title">Glumo（グルモ） — 面倒のない血糖値管理、AIの力でサポート。</h3>
+<p class="service-desc">食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。基本の記録は無料、AI分析・傾向レポートは月額¥980。</p>
+<div class="service-meta">
+<span>食事写真から糖質推定</span>
+<span>AIによる傾向分析</span>
+<span>AI分析 ¥980/月</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="tetsuzukicho/">
+<div class="service-icon" style="background: #2F6B631A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#2F6B63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="20" height="24" rx="3"/><path d="M11 12h10M11 18h6"/><path d="M19 22l2.2 2.2L25 20" stroke="#E4B363"/></svg>
+</div>
+<h3 class="service-title">てつづき帳 — 家族が亡くなったあとの手続きを、期限順に並べて、きょうだいで分担。</h3>
+<p class="service-desc">質問に答えると、役所・年金・銀行・携帯・サブスクなどの手続きを、期限が近い順のリストにします。窓口と持ち物、記入メモ、担当者と進み具合も、きょうだいで共有できます。4,980円（買切）。</p>
+<div class="service-meta">
+<span>期限順の手続きリスト</span>
+<span>きょうだいで分担・共有</span>
+<span>買い切り4,980円</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="nyuinnavi/">
+<div class="service-icon" style="background: #1F7A6B1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4"/><path d="m8.5 14 2.5 2.5 4.5-5"/></svg>
+</div>
+<h3 class="service-title">入院当日ナビ — 初めての入院、当日の流れと署名前の確認項目を前日までに整理。</h3>
+<p class="service-desc">入院の種類と病院の規模を選ぶと、当日の流れ・必要書類・差額ベッド同意書などの署名前に確認したい項目をチェックリストにします。入院するご本人にも、付き添うご家族にも。買い切り1,480円（税込）。</p>
+<div class="service-meta">
+<span>当日の流れ・必要書類</span>
+<span>署名前の確認項目</span>
+<span>買い切り1,480円</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-senior">
+<div class="category-head">
+<h3>シニア<span class="category-count">6</span></h3>
+<p>老後の暮らし・備え・仕事に。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="oikatsu/">
+<div class="service-icon" style="background: #F59E0B1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978" /><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978" /><path d="M18 9h1.5a1 1 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /><path d="M6 9H4.5a1 1 0 0 1 0-5H6" /></svg>
+</div>
+<h3 class="service-title">老い活 — 毎日をポチって、元気を積み上げよう</h3>
+<p class="service-desc">シニアの日々の習慣を「スコア化」して、続けることを楽しくするサービス。散歩や服薬の記録を押すだけで達成感を可視化します。</p>
+<div class="service-meta">
+<span>シニア向け習慣化</span>
+<span>ゲーム感覚</span>
+<span>家族の安心</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="odekake-ok/">
+<div class="service-icon" style="background: #E8672A1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8672A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
+</div>
+<h3 class="service-title">おでかけOK — 今日、出かけて大丈夫？をAIが教えてくれる</h3>
+<p class="service-desc">気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロで、高齢者本人やご家族の毎日の小さな迷いを解消します。</p>
+<div class="service-meta">
+<span>AIによる外出判定</span>
+<span>毎朝通知</span>
+<span>高齢者・ご家族向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="nokosucloud/">
+<div class="service-icon" style="background: #B15F421A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B15F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6-8-11a4 4 0 0 1 8-2 4 4 0 0 1 8 2c0 5-4 8-8 11Z" /></svg>
+</div>
+<h3 class="service-title">遺すクラウド — 書いて、なくさず、ちゃんと家族に届く、エンディングノート。</h3>
+<p class="service-desc">スマホで記入するエンディングノート。クラウドにずっと残り、招待した家族だけに、あなたの承認で共有できる。紙のノートのように、なくしたり伝え忘れたりしません。</p>
+<div class="service-meta">
+<span>エンディングノート</span>
+<span>クラウド保存</span>
+<span>家族への承認制共有</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="veterans/">
+<div class="service-icon" style="background: #2F6B4F1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20" /></svg>
+</div>
+<h3 class="service-title">ベテランズ — 「高齢者だから」じゃない。経験を、次の仕事へ。</h3>
+<p class="service-desc">シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。登録・ご紹介はすべて無料です。</p>
+<div class="service-meta">
+<span>経験・体力に合わせた紹介</span>
+<span>面談から採用まで無料サポート</span>
+<span>登録無料</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="omoinokoe/">
+<div class="service-icon" style="background: #1F5C631A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#1F5C63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13v6M11 9v14M16 5v22M21 10v12M26 14v4" /></svg>
+</div>
+<h3 class="service-title">おもいのこえ — 親の昔話を、本人の声のまま手描きの映像と本に。</h3>
+<p class="service-desc">スマホで親の話を録音するか、残っているボイスメモを取り込むだけ。AIが話に合わせて手描き風の映像と読める文章をつくり、家族の棚に並べます。5話まで無料。</p>
+<div class="service-meta">
+<span>声は加工せず本人のまま</span>
+<span>AIが手描き風の映像に</span>
+<span>5話まで無料</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="sonae-check/">
+<div class="service-icon" style="background: #5A48A01A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#5A48A0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8" stroke="#3FB59A"/></svg>
+</div>
+<h3 class="service-title">備えチェック — 認知症になる前に、お金と暮らしの備えを10分で一枚に。</h3>
+<p class="service-desc">質問に答えるだけで、将来の生活費・介護費用の目安、頼れる人と足りない準備、使える制度の一覧を「備えレポート」にまとめます。家族に渡せる1枚付き。1,980円（買切）。</p>
+<div class="service-meta">
+<span>10分の質問に答えるだけ</span>
+<span>家族に渡せる1枚付き</span>
+<span>買い切り1,980円</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-family">
+<div class="category-head">
+<h3>親子・夫婦<span class="category-count">5</span></h3>
+<p>子育てや夫婦のお金・連絡の困りごとに。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="pairdekakei/">
+<div class="service-icon" style="background: #2E9BC71A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E9BC7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg>
+</div>
+<h3 class="service-title">ペアで家計 — ペアの支出を、ひとつの家計簿でまとめる。</h3>
+<p class="service-desc">別財布のまま、二人分の支出をアプリが自動で合算・集計。「結局今月いくら使った？」に、もう悩まない。負担比率まで見えるペア向け家計合算アプリです。</p>
+<div class="service-meta">
+<span>支出の自動合算</span>
+<span>負担比率の可視化</span>
+<span>カップル・夫婦向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="famstatus/">
+<div class="service-icon" style="background: #6B8F7B1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B8F7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" /><path d="M9 8h6M9 12h4" /><path d="M9.5 16.5l1.7 1.7L14.5 15" /></svg>
+</div>
+<h3 class="service-title">FamStatus（ファムステータス） — 家族の"いつもと違う"に、みんなで気づけるように。</h3>
+<p class="service-desc">家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合える見守りサービスです。</p>
+<div class="service-meta">
+<span>毎日1分のチェックイン</span>
+<span>LINE連携</span>
+<span>家族全員で見守り</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="sotto/">
+<div class="service-icon" style="background: #4F94631A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4F9463" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6-8-11a4 4 0 0 1 8-2 4 4 0 0 1 8 2c0 5-4 8-8 11Z" /></svg>
+</div>
+<h3 class="service-title">Sotto — 毎日連絡できなくても、変わりないか、そっと気にかけておきます。</h3>
+<p class="service-desc">Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。ライト月額¥380、再発防止プラン月額¥1,480（2週間の無料お試しあり）。</p>
+<div class="service-meta">
+<span>変化があった時だけ通知</span>
+<span>LINEで簡単登録</span>
+<span>月額¥380から</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="gakudo-remind/">
+<div class="service-icon" style="background: #1F4FD81A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#1F4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="24" height="21" rx="4"/><path d="M4 14h24M10 4v6M22 4v6"/><path d="M11 21l4 4 7-8" stroke="#1A1F2B"/></svg>
+</div>
+<h3 class="service-title">学童リマインド — 学童の申込・更新の締切を、期限の前にお知らせ。</h3>
+<p class="service-desc">自治体名と学年を入れるだけ。学童の更新、夏休み限定利用、長期休みの申込の締切と、就労証明書などの書類を準備し始める日を、メールで期限の前にお知らせします。月額348円。</p>
+<div class="service-meta">
+<span>自治体と学年を入れるだけ</span>
+<span>書類の準備日もお知らせ</span>
+<span>月額348円</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="yoiku-renraku/">
+<div class="service-icon" style="background: #17788E1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#17788E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h22v14H15l-6 5v-5H5z"/><path d="M10 12h12M10 16h7" stroke="#F2C94C"/></svg>
+</div>
+<h3 class="service-title">養育連絡帳 — 元配偶者への連絡を、事実・依頼・日時だけの文面に整えます。</h3>
+<p class="service-desc">書いた下書きをAIが事実・依頼・日時だけの中立な文面に整え、コピーしてLINEやメールで送れます。やりとり・日程・費用は時系列で保存し、PDFで書き出せます。相手の登録は不要。月額980円。</p>
+<div class="service-meta">
+<span>相手の登録は不要</span>
+<span>やりとりを時系列で保存</span>
+<span>月額980円</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-life">
+<div class="category-head">
+<h3>暮らし・お金・健康<span class="category-count">8</span></h3>
+<p>お金・健康・住まい・人づきあいなど、個人の暮らしの課題に。</p>
+</div>
+<div class="service-grid">
 
 <article class="service-card">
 <a href="midashinavi/">
@@ -523,171 +678,6 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="odekake-ok/">
-<div class="service-icon" style="background: #E8672A1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8672A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
-</div>
-<h3 class="service-title">おでかけOK — 今日、出かけて大丈夫？をAIが教えてくれる</h3>
-<p class="service-desc">気温・湿度だけでなく、あなたの体力・持病を踏まえた「その人のための」外出判定を毎朝通知。入力の手間はほぼゼロで、高齢者本人やご家族の毎日の小さな迷いを解消します。</p>
-<div class="service-meta">
-<span>AIによる外出判定</span>
-<span>毎朝通知</span>
-<span>高齢者・ご家族向け</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="gowithbag/">
-<div class="service-icon" style="background: #B8834A1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8834A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8H6Z" /><path d="M8 8V6a4 4 0 0 1 8 0v2" /><path d="M10 20v-8" /><path d="M14 20v-8" /></svg>
-</div>
-<h3 class="service-title">GoWithBag — 車内の荷物トラブル、事前申告でゼロに近づける。</h3>
-<p class="service-desc">既存のLINE運用インフラを活かし、座席予約システムに手を加えずに導入できる荷物事前申告ソリューション。私鉄有料特急の車内荷物トラブルを、乗車前の申告で減らす鉄道会社向けサービスです。</p>
-<div class="service-meta">
-<span>荷物事前申告</span>
-<span>LINEで運用</span>
-<span>鉄道会社向け</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="hotel-sizuka/">
-<div class="service-icon" style="background: #6C7BF01A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6C7BF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
-</div>
-<h3 class="service-title">ホテルしずか — その一晩、静かに眠れるか。予約する前に、わかる。</h3>
-<p class="service-desc">実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化。「壁が薄い」は泊まってからでは遅いという課題を、予約前の一目でわかる静粛性スコアで解消します。</p>
-<div class="service-meta">
-<span>AIレビュー解析</span>
-<span>静粛性スコア</span>
-<span>宿泊予約前チェック</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="seatping/">
-<div class="service-icon" style="background: #00D68F1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00A874" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
-</div>
-<h3 class="service-title">SeatPing — 会社横断・高速バス空席速報</h3>
-<p class="service-desc">発車オーライネットも、高速バスドットコムも教えてくれないキャンセル待ち。複数のバス会社をまとめて見張り、空きが出た瞬間に通知する多言語対応サービスです。</p>
-<div class="service-meta">
-<span>会社横断の空席監視</span>
-<span>キャンセル待ち通知</span>
-<span>多言語対応</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="buscast/">
-<div class="service-icon" style="background: #E086001A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E08600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34" /><path d="M4 6h.01" /><path d="M2.29 9.62A10 10 0 1 0 21.31 8.35" /><path d="M16.24 7.76A6 6 0 1 0 8.23 16.67" /><path d="M12 18h.01" /><path d="M17.99 11.66A6 6 0 0 1 15.77 16.67" /><circle cx="12" cy="12" r="2" /></svg>
-</div>
-<h3 class="service-title">BusCast — バスターミナル運営者向け 繁忙日予報レポート</h3>
-<p class="service-desc">連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートサービスです。</p>
-<div class="service-meta">
-<span>繁忙日リスク予報</span>
-<span>レポート配信</span>
-<span>バスターミナル運営者向け</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="shigotoview/">
-<div class="service-icon" style="background: #189A5C1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#189A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4" /><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
-</div>
-<h3 class="service-title">シゴトビュー — 組織の「見えない生産性ロス」を、まず無料で確認する</h3>
-<p class="service-desc">会議・通話は埋まっているのに、成果につながっているか誰も把握していない。無料セルフチェックで、組織の"空洞化"の兆候に気づける人的資本経営・組織診断サービスです。</p>
-<div class="service-meta">
-<span>組織の空洞化診断</span>
-<span>無料セルフチェック</span>
-<span>人的資本経営</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="fareflow/">
-<div class="service-icon" style="background: #F264301A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F26430" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /><path d="M13 5v2" /><path d="M13 17v2" /><path d="M13 11v2" /></svg>
-</div>
-<h3 class="service-title">FareFlow — 券売機で迷わない、外国人旅行者向け操作ガイド</h3>
-<p class="service-desc">新宿駅で家族連れが券売機の前で10分以上立ち往生する様子を見て着想。QRを読み込むだけで、次にどのボタンを押せばいいかを自分の言語で案内する、訪日旅行者向けのガイドです。</p>
-<div class="service-meta">
-<span>訪日旅行者向け</span>
-<span>券売機操作ガイド</span>
-<span>多言語対応</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="cospalunch/">
-<div class="service-icon" style="background: #6FA84B1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6FA84B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg>
-</div>
-<h3 class="service-title">コスパランチ — 今日、一番コスパがいい店を、AIが1分で教える。</h3>
-<p class="service-desc">予算と重視ポイントを選ぶだけ。近くの実力店の中から、価格・量・質を見比べて、AIが本当にコスパのいい3店を理由つきで提示するランチ店選びサービスです。</p>
-<div class="service-meta">
-<span>AIによる店舗選定</span>
-<span>ランチのコスパ診断</span>
-<span>1分で結果表示</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="atrest/">
-<div class="service-icon" style="background: #1D9E751A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3" /><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" /><path d="M5 18v2" /><path d="M19 18v2" /></svg>
-</div>
-<h3 class="service-title">@Rest — Drop your bags. Take a breath.</h3>
-<p class="service-desc">荷物を預けたその場で、10〜15分だけ静かに休める場所。会員登録・受付なし、利用した時間分だけ支払う、渋谷・新宿の訪日旅行者向け休憩スペースサービスです。</p>
-<div class="service-meta">
-<span>訪日旅行者向け</span>
-<span>荷物預かり＋休憩</span>
-<span>会員登録不要</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="spotmanner/">
-<div class="service-icon" style="background: #E8A33D1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" /><path d="M9.3 10.2l1.8 1.8 3.6-3.6" /></svg>
-</div>
-<h3 class="service-title">スポットマナー — その場で伝われば、マナーは守られる。</h3>
-<p class="service-desc">外国人観光客のマナー違反は文化差ではなく情報不足かもしれません。違反が起きるその場所にピクトグラム＋多言語ガイドを届ける、施設・自治体向けの有料パイロット（月額¥50,000・3か月〜）募集中のサービスです。</p>
-<div class="service-meta">
-<span>ピクトグラム掲示</span>
-<span>多言語ガイド</span>
-<span>施設・自治体向け</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="pairdekakei/">
-<div class="service-icon" style="background: #2E9BC71A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2E9BC7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg>
-</div>
-<h3 class="service-title">ペアで家計 — ペアの支出を、ひとつの家計簿でまとめる。</h3>
-<p class="service-desc">別財布のまま、二人分の支出をアプリが自動で合算・集計。「結局今月いくら使った？」に、もう悩まない。負担比率まで見えるペア向け家計合算アプリです。</p>
-<div class="service-meta">
-<span>支出の自動合算</span>
-<span>負担比率の可視化</span>
-<span>カップル・夫婦向け</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
 <a href="subscclear/">
 <div class="service-icon" style="background: #2FA8751A;">
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2FA875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></svg>
@@ -698,36 +688,6 @@ P1st <span>Startup</span> Showcase
 <span>サブスク見直し診断</span>
 <span>解約ガイド付き</span>
 <span>成果報酬型</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="nokosucloud/">
-<div class="service-icon" style="background: #B15F421A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B15F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6-8-11a4 4 0 0 1 8-2 4 4 0 0 1 8 2c0 5-4 8-8 11Z" /></svg>
-</div>
-<h3 class="service-title">遺すクラウド — 書いて、なくさず、ちゃんと家族に届く、エンディングノート。</h3>
-<p class="service-desc">スマホで記入するエンディングノート。クラウドにずっと残り、招待した家族だけに、あなたの承認で共有できる。紙のノートのように、なくしたり伝え忘れたりしません。</p>
-<div class="service-meta">
-<span>エンディングノート</span>
-<span>クラウド保存</span>
-<span>家族への承認制共有</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="unloss/">
-<div class="service-icon" style="background: #C74B2A1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C74B2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11Z" /></svg>
-</div>
-<h3 class="service-title">UnLoss（アンロス） — 閉店前のお店に、まだ美味しいが待っている。</h3>
-<p class="service-desc">渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。お得に食べたい消費者と、ロスを減らしたい飲食店をつなぐサービスです。</p>
-<div class="service-meta">
-<span>フードロス削減</span>
-<span>渋谷・新宿エリア限定</span>
-<span>最大数十%OFF</span>
 </div>
 </a>
 </article>
@@ -763,51 +723,6 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="keiyakusummary/">
-<div class="service-icon" style="background: #9C7A3C1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9C7A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 8h10M7 12h7M7 16h4" /></svg>
-</div>
-<h3 class="service-title">契約サマリー — 発注先との「言った言わない」を、キックオフの一枚で防ぐ。</h3>
-<p class="service-desc">契約書をアップロードするだけで、発注先にそのまま見せられる1枚サマリーを自動生成。現場で認識を合わせ、役員が出ていく前にトラブルの芽を摘みます。</p>
-<div class="service-meta">
-<span>受託開発企業の役員向け</span>
-<span>AIによる契約要点抽出</span>
-<span>報酬条件は自動非表示</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="famstatus/">
-<div class="service-icon" style="background: #6B8F7B1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B8F7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3" /><path d="M9 8h6M9 12h4" /><path d="M9.5 16.5l1.7 1.7L14.5 15" /></svg>
-</div>
-<h3 class="service-title">FamStatus（ファムステータス） — 家族の"いつもと違う"に、みんなで気づけるように。</h3>
-<p class="service-desc">家族それぞれが毎日1分のチェックインを記録し、招待された家族全員がLINEで見守れる。離れて暮らす親も、忙しいきょうだいも、変化に気づき合える見守りサービスです。</p>
-<div class="service-meta">
-<span>毎日1分のチェックイン</span>
-<span>LINE連携</span>
-<span>家族全員で見守り</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="karadabiyori/">
-<div class="service-icon" style="background: #C975301A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C97530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="5" width="10" height="14" rx="3" /><rect x="9" y="2" width="6" height="4" rx="1" /><rect x="9" y="17" width="6" height="4" rx="1" /><circle cx="12" cy="12" r="2.4" /></svg>
-</div>
-<h3 class="service-title">からだ日和 — スマートウォッチのデータで、離れて暮らす親の"今日の調子"がわかる。</h3>
-<p class="service-desc">毎日の歩数・心拍・睡眠から、AIが体調を1つのスコアに変換。本人にはひとことのアドバイスで、家族にはLINEで届きます。Apple Watch、Fitbit、Ouraなど主要なスマートウォッチに対応しています。</p>
-<div class="service-meta">
-<span>ウェアラブル連携</span>
-<span>AIによる体調スコア化</span>
-<span>家族へLINE通知</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
 <a href="shizukesacheck/">
 <div class="service-icon" style="background: #2C85771A;">
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2C8577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="0.8" fill="#2C8577" /></svg>
@@ -818,21 +733,6 @@ P1st <span>Startup</span> Showcase
 <span>エリアスコアは無料</span>
 <span>公開データ・口コミ解析</span>
 <span>賃貸・土地の詳細レポート</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="mimamorihomecheck/">
-<div class="service-icon" style="background: #A87E2C1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#A87E2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5" /><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" /><path d="M10 20v-5h4v5" /></svg>
-</div>
-<h3 class="service-title">みまもりホームチェック — 実家の写真を送るだけ、転倒リスクが数分でわかる。</h3>
-<p class="service-desc">帰省できなくても、実家の危険は見つけられる。AIが段差・照明・床材をチェックして、今日からできる対策を教えます。診断は1回¥480。</p>
-<div class="service-meta">
-<span>写真を送るだけ</span>
-<span>AIによる転倒リスク診断</span>
-<span>1回¥480</span>
 </div>
 </a>
 </article>
@@ -853,46 +753,229 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="sotto/">
-<div class="service-icon" style="background: #4F94631A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4F9463" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6-8-11a4 4 0 0 1 8-2 4 4 0 0 1 8 2c0 5-4 8-8 11Z" /></svg>
+<a href="fukkiroad/">
+<div class="service-icon" style="background: #8DB6001A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#8DB600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 26 C10 26 10 8 16 8 C22 8 22 24 28 24" /><circle cx="28" cy="24" r="1.5" fill="#8DB600" /></svg>
 </div>
-<h3 class="service-title">Sotto — 毎日連絡できなくても、変わりないか、そっと気にかけておきます。</h3>
-<p class="service-desc">Sottoがお子さんと軽くやり取りし、いつもと違う変化があった時だけ、親御さんにお知らせします。心配し続けなくていい、そんな見守りです。ライト月額¥380、再発防止プラン月額¥1,480（2週間の無料お試しあり）。</p>
+<h3 class="service-title">ふっきロード — 肉離れ・捻挫の復帰を、週ごとの基準で伴走。</h3>
+<p class="service-desc">医師の指示をもとに、競技・レベル・復帰したい日に合わせた8週間のプランと、次に進む基準・受診し直すサインをスマホでお届けします。復帰プラン¥2,980・買い切り。</p>
 <div class="service-meta">
-<span>変化があった時だけ通知</span>
-<span>LINEで簡単登録</span>
-<span>月額¥380から</span>
+<span>8週間の段階的プラン</span>
+<span>週1回のチェックイン</span>
+<span>買い切り2,980円</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-travel">
+<div class="category-head">
+<h3>旅行・訪日<span class="category-count">4</span></h3>
+<p>旅行の移動・宿から、訪日客の過ごし方まで。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="hotel-sizuka/">
+<div class="service-icon" style="background: #6C7BF01A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6C7BF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+</div>
+<h3 class="service-title">ホテルしずか — その一晩、静かに眠れるか。予約する前に、わかる。</h3>
+<p class="service-desc">実際に泊まった人の声をAIが解析し、ホテルごとの静粛性をスコア化。「壁が薄い」は泊まってからでは遅いという課題を、予約前の一目でわかる静粛性スコアで解消します。</p>
+<div class="service-meta">
+<span>AIレビュー解析</span>
+<span>静粛性スコア</span>
+<span>宿泊予約前チェック</span>
 </div>
 </a>
 </article>
 
 <article class="service-card">
-<a href="glumo/">
-<div class="service-icon" style="background: #2C5C691A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2C5C69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h3l2-5 3 8 3-11 2 8h5" /></svg>
+<a href="seatping/">
+<div class="service-icon" style="background: #00D68F1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00A874" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
 </div>
-<h3 class="service-title">Glumo（グルモ） — 面倒のない血糖値管理、AIの力でサポート。</h3>
-<p class="service-desc">食事の写真を撮るだけで、AIが血糖値の変化を記録・見える化。毎日の自己管理を、続けやすくします。基本の記録は無料、AI分析・傾向レポートは月額¥980。</p>
+<h3 class="service-title">SeatPing — 会社横断・高速バス空席速報</h3>
+<p class="service-desc">発車オーライネットも、高速バスドットコムも教えてくれないキャンセル待ち。複数のバス会社をまとめて見張り、空きが出た瞬間に通知する多言語対応サービスです。</p>
 <div class="service-meta">
-<span>食事写真から糖質推定</span>
-<span>AIによる傾向分析</span>
-<span>AI分析 ¥980/月</span>
+<span>会社横断の空席監視</span>
+<span>キャンセル待ち通知</span>
+<span>多言語対応</span>
 </div>
 </a>
 </article>
 
 <article class="service-card">
-<a href="veterans/">
-<div class="service-icon" style="background: #2F6B4F1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20" /></svg>
+<a href="fareflow/">
+<div class="service-icon" style="background: #F264301A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F26430" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /><path d="M13 5v2" /><path d="M13 17v2" /><path d="M13 11v2" /></svg>
 </div>
-<h3 class="service-title">ベテランズ — 「高齢者だから」じゃない。経験を、次の仕事へ。</h3>
-<p class="service-desc">シルバー人材センターでは物足りない、大手求人には合わない。あなたのスキルと体力に合った仕事を、無料でご紹介します。登録・ご紹介はすべて無料です。</p>
+<h3 class="service-title">FareFlow — 券売機で迷わない、外国人旅行者向け操作ガイド</h3>
+<p class="service-desc">新宿駅で家族連れが券売機の前で10分以上立ち往生する様子を見て着想。QRを読み込むだけで、次にどのボタンを押せばいいかを自分の言語で案内する、訪日旅行者向けのガイドです。</p>
 <div class="service-meta">
-<span>経験・体力に合わせた紹介</span>
-<span>面談から採用まで無料サポート</span>
-<span>登録無料</span>
+<span>訪日旅行者向け</span>
+<span>券売機操作ガイド</span>
+<span>多言語対応</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="atrest/">
+<div class="service-icon" style="background: #1D9E751A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3" /><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" /><path d="M5 18v2" /><path d="M19 18v2" /></svg>
+</div>
+<h3 class="service-title">@Rest — Drop your bags. Take a breath.</h3>
+<p class="service-desc">荷物を預けたその場で、10〜15分だけ静かに休める場所。会員登録・受付なし、利用した時間分だけ支払う、渋谷・新宿の訪日旅行者向け休憩スペースサービスです。</p>
+<div class="service-meta">
+<span>訪日旅行者向け</span>
+<span>荷物預かり＋休憩</span>
+<span>会員登録不要</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-food-books">
+<div class="category-head">
+<h3>食事・読書<span class="category-count">5</span></h3>
+<p>ランチやフードロス、本の管理・出版に。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="cospalunch/">
+<div class="service-icon" style="background: #6FA84B1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6FA84B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg>
+</div>
+<h3 class="service-title">コスパランチ — 今日、一番コスパがいい店を、AIが1分で教える。</h3>
+<p class="service-desc">予算と重視ポイントを選ぶだけ。近くの実力店の中から、価格・量・質を見比べて、AIが本当にコスパのいい3店を理由つきで提示するランチ店選びサービスです。</p>
+<div class="service-meta">
+<span>AIによる店舗選定</span>
+<span>ランチのコスパ診断</span>
+<span>1分で結果表示</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="unloss/">
+<div class="service-icon" style="background: #C74B2A1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C74B2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11Z" /></svg>
+</div>
+<h3 class="service-title">UnLoss（アンロス） — 閉店前のお店に、まだ美味しいが待っている。</h3>
+<p class="service-desc">渋谷・新宿エリアの飲食店の「まだ食べられるのに、捨てられてしまう」商品を、お得な価格で。お得に食べたい消費者と、ロスを減らしたい飲食店をつなぐサービスです。</p>
+<div class="service-meta">
+<span>フードロス削減</span>
+<span>渋谷・新宿エリア限定</span>
+<span>最大数十%OFF</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="bookcomp/">
+<div class="service-icon" style="background: #3625191A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#362519" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /><path d="m9 9.5 2 2 4-4" /></svg>
+</div>
+<h3 class="service-title">BookComp — 好きな作家の「持ってたっけ？」を、なくす。</h3>
+<p class="service-desc">作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。月額¥300。</p>
+<div class="service-meta">
+<span>作家別の所持リスト</span>
+<span>既刊データ用意済み</span>
+<span>月額¥300</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="kanzume/">
+<div class="service-icon" style="background: #C71F351A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C71F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><line x1="7" y1="8" x2="7" y2="16" /><line x1="11" y1="8" x2="11" y2="16" /><line x1="14" y1="8" x2="14" y2="16" /><line x1="18" y1="8" x2="18" y2="16" /></svg>
+</div>
+<h3 class="service-title">巻ヅメ — その巻、もう持ってる？その場でわかる。</h3>
+<p class="service-desc">紙と電子、両方で読んでいると「何巻まで持ってたっけ」が分からなくなる。バーコードをスキャンするだけで、即座にわかります。月額¥300。</p>
+<div class="service-meta">
+<span>紙・電子を一元管理</span>
+<span>バーコードスキャン</span>
+<span>月額¥300</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="nyuko-pack/">
+<div class="service-icon" style="background: #1F6B451A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+</div>
+<h3 class="service-title">電子書籍入稿パック — 原稿を送るだけで、Kindleに出せる電子書籍ファイルに。</h3>
+<p class="service-desc">Word・テキストの原稿を、縦書き／横書きに対応したKindle用ファイル（EPUB）に整えて、KDP入稿チェックリスト付きでお返しします。1冊3,000円（税込・買い切り）。表紙は対象外です。</p>
+<div class="service-meta">
+<span>縦書き／横書き対応</span>
+<span>KDP入稿チェックリスト付き</span>
+<span>1冊3,000円</span>
+</div>
+</a>
+</article>
+
+</div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-freelance">
+<div class="category-head">
+<h3>フリーランス<span class="category-count">9</span></h3>
+<p>案件・契約・単価まわりのモヤモヤに。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="scopelog/">
+<div class="service-icon" style="background: #4C51BF1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4C51BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M9 10h6" /><path d="M12 13V7" /><path d="M9 17h6" /></svg>
+</div>
+<h3 class="service-title">スコープログ — その「ついでに」、資料にして見せませんか。</h3>
+<p class="service-desc">スクショを貼るだけで、変更依頼の記録が資料になる受託・制作事業者向けサービス。言いにくかった追加費用の話を、少しだけ言いやすくします。</p>
+<div class="service-meta">
+<span>変更依頼の記録</span>
+<span>受託・制作事業者向け</span>
+<span>AIで資料化</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="jutyushanotate/">
+<div class="service-icon" style="background: #E2A13B1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E2A13B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>
+</div>
+<h3 class="service-title">受注者の盾 — 写真1枚で、泣き寝入りを終わらせる。</h3>
+<p class="service-desc">発注元とのやり取りをLINEで送るだけ。AIが下請法上のリスクを判定し、そのまま使える対応文まで用意する、下請け事業者のための一次判定ツールです。</p>
+<div class="service-meta">
+<span>下請け事業者向け</span>
+<span>AIリスク判定</span>
+<span>対応文テンプレ</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="keiyakusummary/">
+<div class="service-icon" style="background: #9C7A3C1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9C7A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 8h10M7 12h7M7 16h4" /></svg>
+</div>
+<h3 class="service-title">契約サマリー — 発注先との「言った言わない」を、キックオフの一枚で防ぐ。</h3>
+<p class="service-desc">契約書をアップロードするだけで、発注先にそのまま見せられる1枚サマリーを自動生成。現場で認識を合わせ、役員が出ていく前にトラブルの芽を摘みます。</p>
+<div class="service-meta">
+<span>受託開発企業の役員向け</span>
+<span>AIによる契約要点抽出</span>
+<span>報酬条件は自動非表示</span>
 </div>
 </a>
 </article>
@@ -943,156 +1026,6 @@ P1st <span>Startup</span> Showcase
 </article>
 
 <article class="service-card">
-<a href="gaichustatus/">
-<div class="service-icon" style="background: #2A85B31A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2A85B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 16v2M12 11v7M17 6v12" /></svg>
-</div>
-<h3 class="service-title">外注ステータス — 外注依存度を、部門別・業務別に可視化する。</h3>
-<p class="service-desc">契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。診断レポートは1回¥100,000。</p>
-<div class="service-meta">
-<span>部門別・業務別スコア</span>
-<span>4つの観点で分析</span>
-<span>診断レポート ¥100,000/回</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="nextscope/">
-<div class="service-icon" style="background: #C4842A1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C4842A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19L12 12L19 5" stroke-dasharray="1 4" /><circle cx="5" cy="19" r="2.2" fill="#C4842A" stroke="none" /><circle cx="12" cy="12" r="2.2" fill="#C4842A" stroke="none" /><circle cx="19" cy="5" r="2.2" fill="#C4842A" stroke="none" /></svg>
-</div>
-<h3 class="service-title">NextScope — 内製化の優先順位とロードマップの叩き台を、AIが生成する。</h3>
-<p class="service-desc">「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。お見積もりは無料です。</p>
-<div class="service-meta">
-<span>4つの観点で優先順位付け</span>
-<span>短期・中期・長期の叩き台</span>
-<span>外注ステータスとセット可</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="bookcomp/">
-<div class="service-icon" style="background: #3625191A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#362519" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /><path d="m9 9.5 2 2 4-4" /></svg>
-</div>
-<h3 class="service-title">BookComp — 好きな作家の「持ってたっけ？」を、なくす。</h3>
-<p class="service-desc">作家を検索して、持っている・読んだ作品にチェックを入れるだけ。書店の店頭でも、その場ですぐ確認できます。月額¥300。</p>
-<div class="service-meta">
-<span>作家別の所持リスト</span>
-<span>既刊データ用意済み</span>
-<span>月額¥300</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="kanzume/">
-<div class="service-icon" style="background: #C71F351A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C71F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><line x1="7" y1="8" x2="7" y2="16" /><line x1="11" y1="8" x2="11" y2="16" /><line x1="14" y1="8" x2="14" y2="16" /><line x1="18" y1="8" x2="18" y2="16" /></svg>
-</div>
-<h3 class="service-title">巻ヅメ — その巻、もう持ってる？その場でわかる。</h3>
-<p class="service-desc">紙と電子、両方で読んでいると「何巻まで持ってたっけ」が分からなくなる。バーコードをスキャンするだけで、即座にわかります。月額¥300。</p>
-<div class="service-meta">
-<span>紙・電子を一元管理</span>
-<span>バーコードスキャン</span>
-<span>月額¥300</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="omoinokoe/">
-<div class="service-icon" style="background: #1F5C631A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#1F5C63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13v6M11 9v14M16 5v22M21 10v12M26 14v4" /></svg>
-</div>
-<h3 class="service-title">おもいのこえ — 親の昔話を、本人の声のまま手描きの映像と本に。</h3>
-<p class="service-desc">スマホで親の話を録音するか、残っているボイスメモを取り込むだけ。AIが話に合わせて手描き風の映像と読める文章をつくり、家族の棚に並べます。5話まで無料。</p>
-<div class="service-meta">
-<span>声は加工せず本人のまま</span>
-<span>AIが手描き風の映像に</span>
-<span>5話まで無料</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="fukkiroad/">
-<div class="service-icon" style="background: #8DB6001A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#8DB600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 26 C10 26 10 8 16 8 C22 8 22 24 28 24" /><circle cx="28" cy="24" r="1.5" fill="#8DB600" /></svg>
-</div>
-<h3 class="service-title">ふっきロード — 肉離れ・捻挫の復帰を、週ごとの基準で伴走。</h3>
-<p class="service-desc">医師の指示をもとに、競技・レベル・復帰したい日に合わせた8週間のプランと、次に進む基準・受診し直すサインをスマホでお届けします。復帰プラン¥2,980・買い切り。</p>
-<div class="service-meta">
-<span>8週間の段階的プラン</span>
-<span>週1回のチェックイン</span>
-<span>買い切り2,980円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="gakudo-remind/">
-<div class="service-icon" style="background: #1F4FD81A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#1F4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="24" height="21" rx="4"/><path d="M4 14h24M10 4v6M22 4v6"/><path d="M11 21l4 4 7-8" stroke="#1A1F2B"/></svg>
-</div>
-<h3 class="service-title">学童リマインド — 学童の申込・更新の締切を、期限の前にお知らせ。</h3>
-<p class="service-desc">自治体名と学年を入れるだけ。学童の更新、夏休み限定利用、長期休みの申込の締切と、就労証明書などの書類を準備し始める日を、メールで期限の前にお知らせします。月額348円。</p>
-<div class="service-meta">
-<span>自治体と学年を入れるだけ</span>
-<span>書類の準備日もお知らせ</span>
-<span>月額348円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="sonae-check/">
-<div class="service-icon" style="background: #5A48A01A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#5A48A0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8" stroke="#3FB59A"/></svg>
-</div>
-<h3 class="service-title">備えチェック — 認知症になる前に、お金と暮らしの備えを10分で一枚に。</h3>
-<p class="service-desc">質問に答えるだけで、将来の生活費・介護費用の目安、頼れる人と足りない準備、使える制度の一覧を「備えレポート」にまとめます。家族に渡せる1枚付き。1,980円（買切）。</p>
-<div class="service-meta">
-<span>10分の質問に答えるだけ</span>
-<span>家族に渡せる1枚付き</span>
-<span>買い切り1,980円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="tetsuzukicho/">
-<div class="service-icon" style="background: #2F6B631A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#2F6B63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="20" height="24" rx="3"/><path d="M11 12h10M11 18h6"/><path d="M19 22l2.2 2.2L25 20" stroke="#E4B363"/></svg>
-</div>
-<h3 class="service-title">てつづき帳 — 家族が亡くなったあとの手続きを、期限順に並べて、きょうだいで分担。</h3>
-<p class="service-desc">質問に答えると、役所・年金・銀行・携帯・サブスクなどの手続きを、期限が近い順のリストにします。窓口と持ち物、記入メモ、担当者と進み具合も、きょうだいで共有できます。4,980円（買切）。</p>
-<div class="service-meta">
-<span>期限順の手続きリスト</span>
-<span>きょうだいで分担・共有</span>
-<span>買い切り4,980円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="yoiku-renraku/">
-<div class="service-icon" style="background: #17788E1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#17788E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h22v14H15l-6 5v-5H5z"/><path d="M10 12h12M10 16h7" stroke="#F2C94C"/></svg>
-</div>
-<h3 class="service-title">養育連絡帳 — 元配偶者への連絡を、事実・依頼・日時だけの文面に整えます。</h3>
-<p class="service-desc">書いた下書きをAIが事実・依頼・日時だけの中立な文面に整え、コピーしてLINEやメールで送れます。やりとり・日程・費用は時系列で保存し、PDFで書き出せます。相手の登録は不要。月額980円。</p>
-<div class="service-meta">
-<span>相手の登録は不要</span>
-<span>やりとりを時系列で保存</span>
-<span>月額980円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
 <a href="stackdayori/">
 <div class="service-icon" style="background: #C8F5421A;">
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7A9A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg>
@@ -1103,21 +1036,6 @@ P1st <span>Startup</span> Showcase
 <span>案件・単価・更新への影響つき</span>
 <span>週1回 3〜5件</span>
 <span>月額480円</span>
-</div>
-</a>
-</article>
-
-<article class="service-card">
-<a href="nyuinnavi/">
-<div class="service-icon" style="background: #1F7A6B1A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4"/><path d="m8.5 14 2.5 2.5 4.5-5"/></svg>
-</div>
-<h3 class="service-title">入院当日ナビ — 初めての入院、当日の流れと署名前の確認項目を前日までに整理。</h3>
-<p class="service-desc">入院の種類と病院の規模を選ぶと、当日の流れ・必要書類・差額ベッド同意書などの署名前に確認したい項目をチェックリストにします。入院するご本人にも、付き添うご家族にも。買い切り1,480円（税込）。</p>
-<div class="service-meta">
-<span>当日の流れ・必要書類</span>
-<span>署名前の確認項目</span>
-<span>買い切り1,480円</span>
 </div>
 </a>
 </article>
@@ -1152,22 +1070,201 @@ P1st <span>Startup</span> Showcase
 </a>
 </article>
 
-<article class="service-card">
-<a href="nyuko-pack/">
-<div class="service-icon" style="background: #1F6B451A;">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
 </div>
-<h3 class="service-title">電子書籍入稿パック — 原稿を送るだけで、Kindleに出せる電子書籍ファイルに。</h3>
-<p class="service-desc">Word・テキストの原稿を、縦書き／横書きに対応したKindle用ファイル（EPUB）に整えて、KDP入稿チェックリスト付きでお返しします。1冊3,000円（税込・買い切り）。表紙は対象外です。</p>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
+<div class="category" id="cat-business">
+<div class="category-head">
+<h3>ビジネス<span class="category-count">12</span></h3>
+<p>事業者・組織の運営課題に。</p>
+</div>
+<div class="service-grid">
+
+<article class="service-card">
+<a href="projectnavi/">
+<div class="service-icon" style="background: #3FC4B81A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3FC4B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3" /><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /><circle cx="18" cy="5" r="3" /></svg>
+</div>
+<h3 class="service-title">プロジェクトナビ — 非エンジニアでも、燃えないプロジェクトへ。</h3>
+<p class="service-desc">非エンジニアPM・発注企業のための伴走ツール。要件定義のたたき台作成から、ベンダー提案のチェック、検収の要点整理までサポートします。</p>
 <div class="service-meta">
-<span>縦書き／横書き対応</span>
-<span>KDP入稿チェックリスト付き</span>
-<span>1冊3,000円</span>
+<span>要件定義サポート</span>
+<span>ベンダー提案チェック</span>
+<span>検収サポート</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="fitgate/">
+<div class="service-icon" style="background: #1F6F541A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F6F54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /><path d="M7 11h10" /><path d="M7 15h6" /><path d="M7 7h8" /></svg>
+</div>
+<h3 class="service-title">FitGate — リモート採用のミスマッチを、契約前になくす。</h3>
+<p class="service-desc">面談だけでは見抜けないテキストのやり取り——意図把握力・質問力・敬語対応を、契約前の15分でチェックできる高単価フリーランス採用向けの適性診断サービスです。</p>
+<div class="service-meta">
+<span>契約前診断</span>
+<span>フリーランス採用</span>
+<span>AIスコアリング</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="syokurekiquestion/">
+<div class="service-icon" style="background: #1F3A5C1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1F3A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6H8Z" /><path d="M14 3v6h6" /><path d="m9 15 2 2 4-4" /></svg>
+</div>
+<h3 class="service-title">職歴クエスチョン — 経歴書の「余白」を、面談前に洗い出す。</h3>
+<p class="service-desc">職務経歴書の「参画」「貢献」といったあいまいな記述から、面談で確認すべき質問リストを数秒で生成する、フリーランスエンジニア採用向けのサービスです。</p>
+<div class="service-meta">
+<span>職務経歴書の読み解き</span>
+<span>面談質問リスト生成</span>
+<span>フリーランス採用</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="voipoke/">
+<div class="service-icon" style="background: #C9A2271A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="22" /></svg>
+</div>
+<h3 class="service-title">ボイポケ — その不満、Googleレビューに書かれる前に。</h3>
+<p class="service-desc">来店中に感じた「言いにくい一言」を、匿名のまま店舗に届ける飲食店・小売店向けの非公開フィードバックツール。QRコードを置くだけで、悪評が公開される前に店内で気づいて対応できます。</p>
+<div class="service-meta">
+<span>非公開フィードバック</span>
+<span>QRコード導入</span>
+<span>飲食・小売店向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="mitsumorist/">
+<div class="service-icon" style="background: #B145481A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B14548" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" /><path d="M8 7h8" /><path d="M8 11h8" /><path d="M8 15h5" /></svg>
+</div>
+<h3 class="service-title">ミツモリスト — その見積もり、相場のどこにいますか？</h3>
+<p class="service-desc">見積書をアップロードするだけで、AIが工数・単価・記載漏れを診断するサービス。数百万〜数千万円の発注でも、技術的妥当性を確認できないまま承認してしまう課題を解決します。</p>
+<div class="service-meta">
+<span>見積もり妥当性AI診断</span>
+<span>相場比較</span>
+<span>発注前チェック</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="carerpulse/">
+<div class="service-icon" style="background: #3E75661A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3E7566" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M3.22 8.5h1.66l1.12 3.11 1.94-6.11 1.12 3h6.9" /></svg>
+</div>
+<h3 class="service-title">ケアラーパルス — 介護離職の予兆に、人事が気づける仕組み。</h3>
+<p class="service-desc">社員の匿名回答から、離職リスクを匿名集計で早期把握する人事向けツール。個人情報は一切収集せず、月額定額・審査不要で人事部門お一人の判断から導入できます。</p>
+<div class="service-meta">
+<span>介護離職の早期把握</span>
+<span>匿名集計ダッシュボード</span>
+<span>人事向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="gowithbag/">
+<div class="service-icon" style="background: #B8834A1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8834A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8H6Z" /><path d="M8 8V6a4 4 0 0 1 8 0v2" /><path d="M10 20v-8" /><path d="M14 20v-8" /></svg>
+</div>
+<h3 class="service-title">GoWithBag — 車内の荷物トラブル、事前申告でゼロに近づける。</h3>
+<p class="service-desc">既存のLINE運用インフラを活かし、座席予約システムに手を加えずに導入できる荷物事前申告ソリューション。私鉄有料特急の車内荷物トラブルを、乗車前の申告で減らす鉄道会社向けサービスです。</p>
+<div class="service-meta">
+<span>荷物事前申告</span>
+<span>LINEで運用</span>
+<span>鉄道会社向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="buscast/">
+<div class="service-icon" style="background: #E086001A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E08600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34" /><path d="M4 6h.01" /><path d="M2.29 9.62A10 10 0 1 0 21.31 8.35" /><path d="M16.24 7.76A6 6 0 1 0 8.23 16.67" /><path d="M12 18h.01" /><path d="M17.99 11.66A6 6 0 0 1 15.77 16.67" /><circle cx="12" cy="12" r="2" /></svg>
+</div>
+<h3 class="service-title">BusCast — バスターミナル運営者向け 繁忙日予報レポート</h3>
+<p class="service-desc">連休・帰省・インバウンド重複——混雑と遅延リスクは、事前に分かれば備えられます。自前の予測システムを持たないバスターミナル運営のための、繁忙日予報レポートサービスです。</p>
+<div class="service-meta">
+<span>繁忙日リスク予報</span>
+<span>レポート配信</span>
+<span>バスターミナル運営者向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="shigotoview/">
+<div class="service-icon" style="background: #189A5C1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#189A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4" /><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+</div>
+<h3 class="service-title">シゴトビュー — 組織の「見えない生産性ロス」を、まず無料で確認する</h3>
+<p class="service-desc">会議・通話は埋まっているのに、成果につながっているか誰も把握していない。無料セルフチェックで、組織の"空洞化"の兆候に気づける人的資本経営・組織診断サービスです。</p>
+<div class="service-meta">
+<span>組織の空洞化診断</span>
+<span>無料セルフチェック</span>
+<span>人的資本経営</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="spotmanner/">
+<div class="service-icon" style="background: #E8A33D1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" /><path d="M9.3 10.2l1.8 1.8 3.6-3.6" /></svg>
+</div>
+<h3 class="service-title">スポットマナー — その場で伝われば、マナーは守られる。</h3>
+<p class="service-desc">外国人観光客のマナー違反は文化差ではなく情報不足かもしれません。違反が起きるその場所にピクトグラム＋多言語ガイドを届ける、施設・自治体向けの有料パイロット（月額¥50,000・3か月〜）募集中のサービスです。</p>
+<div class="service-meta">
+<span>ピクトグラム掲示</span>
+<span>多言語ガイド</span>
+<span>施設・自治体向け</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="gaichustatus/">
+<div class="service-icon" style="background: #2A85B31A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2A85B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 16v2M12 11v7M17 6v12" /></svg>
+</div>
+<h3 class="service-title">外注ステータス — 外注依存度を、部門別・業務別に可視化する。</h3>
+<p class="service-desc">契約データ・稼働時間・業務内容が分散したままでは、内製化の優先順位もつけられません。まずは現状を、客観的なスコアで把握しませんか。診断レポートは1回¥100,000。</p>
+<div class="service-meta">
+<span>部門別・業務別スコア</span>
+<span>4つの観点で分析</span>
+<span>診断レポート ¥100,000/回</span>
+</div>
+</a>
+</article>
+
+<article class="service-card">
+<a href="nextscope/">
+<div class="service-icon" style="background: #C4842A1A;">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C4842A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19L12 12L19 5" stroke-dasharray="1 4" /><circle cx="5" cy="19" r="2.2" fill="#C4842A" stroke="none" /><circle cx="12" cy="12" r="2.2" fill="#C4842A" stroke="none" /><circle cx="19" cy="5" r="2.2" fill="#C4842A" stroke="none" /></svg>
+</div>
+<h3 class="service-title">NextScope — 内製化の優先順位とロードマップの叩き台を、AIが生成する。</h3>
+<p class="service-desc">「内製化すべき」は分かっていても、どこから着手すべきかの根拠がない。NextScopeは、検討のための論点整理をAIが自動生成します。お見積もりは無料です。</p>
+<div class="service-meta">
+<span>4つの観点で優先順位付け</span>
+<span>短期・中期・長期の叩き台</span>
+<span>外注ステータスとセット可</span>
 </div>
 </a>
 </article>
 
 </div>
+<p class="back-link"><a href="#categories">↑ カテゴリ一覧へ</a></p>
+</div>
+
 </section>
 
 <footer>
