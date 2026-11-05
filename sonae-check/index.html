@@ -135,11 +135,26 @@
   .choices input:focus-visible + span{outline:3px solid var(--mint)}
   .signup .btn{width:100%}
   .form-note{font-size:14px;color:var(--soft);text-align:center;margin-top:12px}
-  .thanks{display:none;text-align:center;padding:10px 0}
-  .thanks h3{font-size:24px;margin-bottom:10px}
-  .prepay{margin-top:24px;padding-top:22px;border-top:1.5px dashed var(--line);text-align:center}
+    .prepay{margin-top:24px;padding-top:22px;border-top:1.5px dashed var(--line);text-align:center}
   .prepay p{font-size:16px;color:var(--soft);margin-bottom:12px}
   .btn-ghost{display:inline-block;font-weight:900;font-size:18px;color:var(--ink);text-decoration:none;border:2px solid var(--ink);border-radius:12px;padding:14px 24px;background:var(--mint)}
+
+  .result h3{font-size:22px;margin-bottom:12px;line-height:1.5}
+  .result h4{font-size:18px;margin-bottom:8px;line-height:1.6;color:var(--violet-dark)}
+  .r-list{list-style:none;font-size:20px;margin-bottom:4px}
+  .r-list li{margin-bottom:4px}
+  .r-src{font-size:14px;color:var(--soft);margin-bottom:16px}
+  .r-long{background:var(--violet-tint);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:17px}
+  .r-long span{font-size:14px;color:var(--soft)}
+  .r-ratio{background:var(--mint-tint);border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:16px}
+  .r-todo{border:2px solid var(--line);border-radius:12px;padding:16px 18px}
+  .r-todo ol{list-style:none;font-size:16px}
+  .r-todo li{margin-bottom:6px}
+  .r-todo li.r-sub{margin-left:1.2em;font-size:15px;color:var(--soft)}
+  .r-bullets{list-style:none;font-size:16px;color:var(--soft);margin-bottom:14px;text-align:left;display:inline-block}
+  .r-bullets li{padding-left:1em;text-indent:-1em}
+  .r-bullets li::before{content:"・"}
+  .trust{max-width:660px;margin:22px auto 0;font-size:13px;color:var(--soft);text-align:center;line-height:1.8}
 
   .disclaimer{padding:0 0 40px}
   .disclaimer p{font-size:14px;color:var(--soft);max-width:780px;margin:0 auto}
@@ -160,6 +175,8 @@
     section{padding:56px 0}
     .head-cta{display:none}
     .price{font-size:40px}
+    .r-list{font-size:18px}
+    .result h3{font-size:20px}
   }
 </style>
 </head>
@@ -171,23 +188,23 @@
       <svg viewBox="0 0 32 32" fill="none" stroke="#5A48A0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8" stroke="#3FB59A"/></svg>
       備えチェック
     </a>
-    <a class="head-cta" href="#signup">先行登録</a>
+    <a class="head-cta" href="#signup">無料でチェック</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">先行登録受付中｜1,980円（買切）</span>
-      <h1>認知症になる前に、<br><span class="u">お金と暮らしの備え</span>を、<br>10分で一枚にまとめます。</h1>
-      <p class="lead">質問に答えるだけで、将来の生活費・介護費用の目安、頼れる人と足りない準備、使える制度の一覧が「備えレポート」になります。ご家族に渡せる1枚も付きます。診断や法律相談ではありません。</p>
-      <a class="btn" href="#signup">料金を確認して先行登録する</a>
-      <span class="btn-note">備えレポート 1,980円（買切・1回）。登録だけなら費用はかかりません。</span>
+      <span class="eyebrow">無料の1分チェック｜詳細レポートは1,980円</span>
+      <h1 id="hero-title">認知症になる前に、<span class="u">お金の備え</span>を、まず1分で見える化する。</h1>
+      <p class="lead">質問3つに答えると、あなたのケースの自己負担の目安と、まず決めておくべき3つがその場に出ます。詳細の備えレポート（1,980円）はメールでご案内します。診断や法律相談ではありません。</p>
+      <a class="btn" href="#signup">無料でチェックを始める（1分）</a>
+      <span class="btn-note">チェックは無料。詳細レポートのご案内以外にメールは使いません。</span>
     </div>
     <div>
       <div class="report" aria-hidden="true">
         <div class="top">備えレポート<small>回答にもとづいて作成（例）</small></div>
-        <div class="row"><b>1. 暮らしの費用の目安</b>住まい・食事・医療や介護の費用を、一般的な目安から概算します。月の目安：〇〇万円</div>
+        <div class="row"><b>1. 暮らしの費用の目安</b>住まい・食事・医療や介護の費用を、一般的な目安から概算します。<br>在宅 月5.3万円〜／施設 月13.8万円〜</div>
         <div class="row"><b>2. 頼れる人・足りない準備</b><span class="tag">お金を任せたい人：未定</span><span class="tag">連絡先の一覧：済</span></div>
         <div class="row"><b>3. 使える制度の一覧</b>任意後見制度／見守り契約／日常生活自立支援事業／家族信託 など</div>
         <div class="row"><b>4. 家族に渡せる1枚</b>ご本人の考えと準備の状況を、ご家族と共有できます。</div>
@@ -280,58 +297,84 @@
 <section class="signup" id="signup">
   <div class="wrap">
     <div class="card">
-      <h2>先行登録（登録は無料）</h2>
-      <p class="sub">リリース時に、いちばん最初にご案内をお送りします。</p>
+      <h2>まずは1分チェック（無料）</h2>
+      <p class="sub">3つの質問に答えると、その場で結果が表示されます。</p>
 
       <form id="signup-form" action="https://formspree.io/f/moejaodv" method="POST">
         <input type="hidden" name="service" value="備えチェック">
         <input type="hidden" name="price_shown" value="備えレポート1,980円（買切）">
         <input type="hidden" name="source" id="source" value="direct">
+        <input type="hidden" name="lp_variant" id="lp_variant" value="default">
 
         <div class="field">
-          <label for="email">メールアドレス</label>
-          <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
-        </div>
-
-        <div class="field">
-          <label>どなたの備えですか</label>
-          <div class="choices">
-            <label><input type="radio" name="for_whom" value="自分" required><span>自分の備え</span></label>
-            <label><input type="radio" name="for_whom" value="親"><span>親の備え</span></label>
-            <label><input type="radio" name="for_whom" value="その他"><span>その他</span></label>
+          <label id="q-living-l">Q1　今の住まいは？</label>
+          <div class="choices" role="radiogroup" aria-labelledby="q-living-l">
+            <label><input type="radio" name="q_living" value="ひとり暮らし（持ち家）" required><span>ひとり暮らし（持ち家）</span></label>
+            <label><input type="radio" name="q_living" value="ひとり暮らし（賃貸）"><span>ひとり暮らし（賃貸）</span></label>
+            <label><input type="radio" name="q_living" value="家族と同居"><span>家族と同居</span></label>
           </div>
         </div>
 
         <div class="field">
-          <label for="age">備える方の年代</label>
-          <select id="age" name="age" required>
-            <option value="" disabled selected>選んでください</option>
-            <option>50代以下</option>
-            <option>60代</option>
-            <option>70代</option>
-            <option>80代以上</option>
-          </select>
+          <label id="q-income-l">Q2　年金など、月々の収入は？</label>
+          <div class="choices" role="radiogroup" aria-labelledby="q-income-l">
+            <label><input type="radio" name="q_income" value="月10万円未満" required><span>月10万円未満</span></label>
+            <label><input type="radio" name="q_income" value="月10〜20万円"><span>月10〜20万円</span></label>
+            <label><input type="radio" name="q_income" value="月20万円以上"><span>月20万円以上</span></label>
+          </div>
         </div>
 
         <div class="field">
-          <label for="concern">いちばん気になること <span class="opt">（任意）</span></label>
-          <textarea id="concern" name="concern" placeholder="例：お金の管理を誰に頼めばいいか分からない"></textarea>
+          <label id="q-support-l">Q3　頼れる家族や人は？</label>
+          <div class="choices" role="radiogroup" aria-labelledby="q-support-l">
+            <label><input type="radio" name="q_support" value="近くにいる" required><span>近くにいる</span></label>
+            <label><input type="radio" name="q_support" value="遠方にいる"><span>遠方にいる</span></label>
+            <label><input type="radio" name="q_support" value="いない"><span>いない</span></label>
+          </div>
         </div>
 
-        <button type="submit" class="btn">先行登録する</button>
+        <div class="field">
+          <label for="email">メールアドレス（詳細版の案内に使います）</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+        </div>
+
+        <button type="submit" class="btn">チェック結果を見る</button>
         <p class="form-note">ご案内以外の目的でメールアドレスを使うことはありません。</p>
       </form>
 
-      <div class="thanks" id="thanks">
-        <h3>ご登録ありがとうございます</h3>
-        <p>リリースの準備ができしだい、メールでご案内します。</p>
+      <div class="result" id="result" hidden>
+        <h3>あなたの場合の介護の自己負担のざっくり目安</h3>
+        <ul class="r-list">
+          <li><b>在宅で介護する場合：</b>月 約5.3万円 から</li>
+          <li><b>施設に入る場合：</b>月 約13.8万円 から</li>
+        </ul>
+        <p class="r-src">（全国平均。生命保険文化センター2024年度調査より）</p>
+        <p class="r-long"><b>介護は長く続きます：</b>平均 約4年7か月<br><span>（在宅なら総額約340万円、施設なら約800万円という試算もあります）</span></p>
+        <p class="r-ratio" id="r-ratio"></p>
 
-        <!-- 先行予約（S3）：STRIPE_PAYMENT_LINK を置き換えると表示されます -->
+        <div class="r-todo">
+          <h4>あなたがまず決めておくべき3つのこと</h4>
+          <ol id="r-todo"></ol>
+        </div>
+
         <div class="prepay" id="prepay" hidden>
-          <p>早く使いたい方へ：1,980円で先行予約すると、リリース時に備えレポートをお届けします。リリースされない場合は、全額を返金します。</p>
+          <h4>この目安をもとにした、あなたの備えレポート（1,980円・買切）</h4>
+          <ul class="r-bullets">
+            <li>10分の質問で作る、あなたのケースの詳細版</li>
+            <li>家族に渡せる1枚付き</li>
+            <li>今なら先行予約：リリースされない場合は全額返金します</li>
+          </ul>
+          <!-- 先行予約（S3）：STRIPE_PAYMENT_LINK を置き換えると表示されます -->
           <a class="btn-ghost" id="prepay-link" href="STRIPE_PAYMENT_LINK">先行予約する（1,980円）</a>
         </div>
       </div>
+    </div>
+
+    <div class="trust">
+      <p>運営：株式会社プレイヤーズファースト（東京）</p>
+      <p>本チェックは医療行為・診断、法律・税務・投資の助言ではありません。</p>
+      <p>費用の目安は一般的な情報にもとづく概算です（出典：生命保険文化センター2024年度「生活保障に関する調査」）。</p>
+      <p>プライバシーポリシー｜利用規約｜特定商取引法に基づく表記</p>
     </div>
   </div>
 </section>
@@ -367,6 +410,17 @@
     } catch(e) {}
     document.getElementById("source").value = src;
 
+    // H1のA/B：?v=family または utm_campaign に family を含む場合は家族向け
+    var variant = "default";
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (q.get("v") === "family" || (q.get("utm_campaign") || "").indexOf("family") !== -1) variant = "family";
+    } catch(e) {}
+    document.getElementById("lp_variant").value = variant;
+    if (variant === "family") {
+      document.getElementById("hero-title").innerHTML = "「親の介護費用、いくらかかるか分からない」を、まず1分で<span class=\"u\">ざっくり知る</span>。";
+    }
+
     // 先行予約リンクに流入元を引き継ぐ（Stripeのclient_reference_id）
     var link = document.getElementById("prepay-link");
     var href = link.getAttribute("href");
@@ -377,7 +431,37 @@
     }
   })();
 
-  // 送信（ページ遷移なしで完了表示）
+  // 結果ブロックの組み立て
+  function showResult(form) {
+    var v = function(n){ return form.querySelector('input[name="' + n + '"]:checked').value; };
+    var income = v("q_income"), support = v("q_support"), living = v("q_living");
+
+    var ratio = {
+      "月20万円以上": "<b>2割の可能性があります</b>（ひとり暮らしで年金収入280万円以上＝月およそ23万円が目安。現在、この2割の基準を引き下げる制度改正が議論中です）",
+      "月10〜20万円": "<b>1割の見込みが濃厚です</b>",
+      "月10万円未満": "<b>1割</b>。収入が少ない場合は「負担限度額認定」で食費・居住費がさらに軽減される可能性があります"
+    }[income];
+    document.getElementById("r-ratio").innerHTML = "あなたの負担割合の見当：" + ratio;
+
+    var todo = ["① お金の管理を、誰にどこまで任せるか"];
+    if (support === "いない") todo.push("頼れる人がいない場合は、地域包括支援センターや日常生活自立支援事業（支援員による見守り）の活用を含めて考えておく");
+    todo.push(support === "遠方にいる"
+      ? "② 緊急連絡先と、まとめておく書類の場所（遠方の家族がすぐ動けるように）"
+      : "② 緊急連絡先と、まとめておく書類の場所");
+    todo.push(living === "家族と同居"
+      ? "③ 同居している家族なら、今のうちに希望を共有するだけで進みます"
+      : "③ 「在宅か施設か」の希望を、家族と言葉にしておく");
+    var ol = document.getElementById("r-todo");
+    ol.innerHTML = "";
+    todo.forEach(function(t){ var li = document.createElement("li"); li.textContent = t; if (!/^[①②③]/.test(t)) li.className = "r-sub"; ol.appendChild(li); });
+
+    form.style.display = "none";
+    var r = document.getElementById("result");
+    r.hidden = false;
+    r.scrollIntoView({ block: "start" });
+  }
+
+  // 送信（ページ遷移なしで結果表示）
   document.getElementById("signup-form").addEventListener("submit", function(e){
     e.preventDefault();
     var form = e.target;
@@ -385,11 +469,11 @@
     btn.disabled = true; btn.textContent = "送信中…";
     fetch(form.action, { method:"POST", body:new FormData(form), headers:{ "Accept":"application/json" } })
       .then(function(r){
-        if (r.ok) { form.style.display = "none"; document.getElementById("thanks").style.display = "block"; gtag('event', 'generate_lead', { 'service_name': 'sonae-check' }); }
+        if (r.ok) { showResult(form); gtag('event', 'generate_lead', { 'service_name': 'sonae-check' }); }
         else { throw new Error(); }
       })
       .catch(function(){
-        btn.disabled = false; btn.textContent = "先行登録する";
+        btn.disabled = false; btn.textContent = "チェック結果を見る";
         alert("送信できませんでした。時間をおいてもう一度お試しください。");
       });
   });
