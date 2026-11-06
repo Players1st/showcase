@@ -148,6 +148,17 @@
   .final-cta > p{margin-top:10px;color:var(--sub)}
   .signup-form{margin-top:26px;display:grid;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
   .signup-form.hide{display:none}
+  input[type=date]{width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);background:#fff;border:1px solid #C9C5DC;border-radius:8px;padding:12px 14px}
+  .plan-result{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .plan-result h3{font-size:20px;margin-bottom:4px}
+  .plan-end{font-size:14px;color:var(--sub);margin-bottom:14px}
+  .plan-result .tl-card{box-shadow:none}
+  .tl li.past .wk,.tl li.past .txt{opacity:.5}
+  .tl li.past .dot{border-color:var(--line)}
+  .plan-note{font-size:13px;color:var(--sub);margin-top:14px}
+  .tl .wk{min-width:42px}
+  .plan-result .tl li{grid-template-columns:78px 16px 1fr}
+  .plan-result .tl::before{left:97px}
   label.l,.legend{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
   .opt{font-weight:400;color:var(--sub);margin-left:8px;font-size:12px}
   input[type=email],select,textarea{width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);background:#fff;border:1px solid #C9C5DC;border-radius:8px;padding:12px 14px}
@@ -161,8 +172,6 @@
   input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
   .signup-form .btn-primary{width:100%}
   .form-note{font-size:13px;color:var(--sub);text-align:center;display:block}
-  .signup-success{display:none;margin-top:26px;padding:22px;border:1px solid var(--accent);border-radius:12px;background:var(--accent-soft)}
-  .signup-success.show{display:block}
 
   .disclaimer{background:#ECEEF7;border-top:1px solid var(--line);padding:34px 0;font-size:13.5px;color:var(--sub)}
   .disclaimer h3{font-size:14px;color:var(--ink);margin-bottom:6px}
@@ -194,13 +203,13 @@
 <section class="hero" style="border-top:0">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow">準委任・業務委託で稼働中のエンジニアへ</span>
-      <h1><span class="nw">契約終了の90日前から、</span><mark>次の案件探しの段取り</mark>を週ごとに届けます。</h1>
+      <span class="eyebrow">無料の1分チェック｜週ごとの段取りは月額980円</span>
+      <h1 id="hero-title"><span class="nw">契約終了日を入れるだけで、</span><mark>あなたの90日プラン</mark>がその場で出ます</h1>
       <p class="lead">契約終了日を登録すると、<strong>相場の確認、エージェントへの連絡、職務経歴書の更新、面談の準備</strong>を、週ごとにやることとしてメールでお知らせします。終了間際になって慌てて探し始める状態を減らすための通知です。</p>
       <div class="price-chip"><span class="tag">月額</span><span class="amt">¥980</span><span class="unit">（税込）</span></div>
       <div class="hero-cta">
-        <a class="btn-primary" href="#cta">月額980円で事前登録する →</a>
-        <span class="hero-note">登録時点では課金されません</span>
+        <a class="btn-primary" href="#cta">無料でプランを作る（1分）</a>
+        <span class="hero-note">チェックは無料。月額サービスのご案内以外にメールは使いません。</span>
       </div>
     </div>
 
@@ -412,18 +421,8 @@
       <p>月額980円（税込）。事前登録いただいた方に、リリースの準備ができしだいご案内をお送りします。</p>
       <form class="signup-form" id="signupForm">
         <div>
-          <label class="l" for="signupEmail">メールアドレス</label>
-          <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required autocomplete="email">
-        </div>
-        <div>
-          <span class="legend">いまの契約の終了まで</span>
-          <div class="choices">
-            <label><input type="radio" name="contract_end" value="30日以内" required><span>30日以内</span></label>
-            <label><input type="radio" name="contract_end" value="31〜60日"><span>31〜60日</span></label>
-            <label><input type="radio" name="contract_end" value="61〜90日"><span>61〜90日</span></label>
-            <label><input type="radio" name="contract_end" value="91日以上"><span>91日以上</span></label>
-            <label><input type="radio" name="contract_end" value="未定"><span>未定</span></label>
-          </div>
+          <label class="l" for="contractEndDate">契約終了日</label>
+          <input type="date" id="contractEndDate" name="contract_end_date" required>
         </div>
         <div>
           <span class="legend">契約の形<span class="opt">任意</span></span>
@@ -434,25 +433,22 @@
           </div>
         </div>
         <div>
-          <span class="legend">案件の経路<span class="opt">任意</span></span>
-          <div class="choices">
-            <label><input type="radio" name="agent_route" value="エージェント経由"><span>エージェント経由</span></label>
-            <label><input type="radio" name="agent_route" value="直接契約"><span>直接契約</span></label>
-            <label><input type="radio" name="agent_route" value="どちらもある"><span>どちらもある</span></label>
-          </div>
-        </div>
-        <div>
-          <label class="l" for="signupExpectation">期待していること<span class="opt">任意</span></label>
-          <textarea id="signupExpectation" name="expectation" placeholder="例：終了前に何から始めればよいか知りたい、職務経歴書を更新するタイミングを決めたい　など"></textarea>
+          <label class="l" for="signupEmail">メールアドレス</label>
+          <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required autocomplete="email">
         </div>
         <input type="hidden" name="service" value="次案件ナビ">
         <input type="hidden" name="price_shown" value="次案件ナビ 月額¥980（税込）">
         <input type="hidden" name="source" id="sourceField">
-        <button type="submit" class="btn-primary">月額980円（税込）で事前登録する →</button>
-        <span class="form-note">登録時点では課金されません。ご案内以外の目的でメールアドレスを使うことはありません。</span>
+        <input type="hidden" name="lp_variant" id="lpVariant" value="default">
+        <button type="submit" class="btn-primary">あなたの90日プランを見る</button>
+        <span class="form-note">チェックは無料です。月額サービスのご案内以外の目的でメールアドレスを使うことはありません。</span>
       </form>
-      <div class="signup-success" id="signupSuccess">
-        <b>ご登録ありがとうございます。</b><br>リリースの準備ができしだい、メールでご案内します。
+      <div class="plan-result" id="planResult" hidden>
+        <h3>あなたの90日プラン</h3>
+        <p class="plan-end" id="planEnd"></p>
+        <div class="tl-card"><div class="tl-body"><ul class="tl" id="planList"></ul></div></div>
+        <p class="plan-note" id="planNote"></p>
+        <p class="plan-note">この週ごとの段取りを、メールでお知らせするのが月額980円（税込）の次案件ナビです。リリースの準備ができしだい、ご案内をお送りします。案件の紹介や獲得、収入の保証はしません。</p>
       </div>
     </div>
   </div>
@@ -487,11 +483,64 @@
     return 'direct';
   }
 
+  // H1のA/B：?v=urgent または utm_campaign に urgent を含む場合
+  (function(){
+    const q = new URLSearchParams(window.location.search);
+    const urgent = q.get('v') === 'urgent' || (q.get('utm_campaign') || '').indexOf('urgent') !== -1;
+    document.getElementById('lpVariant').value = urgent ? 'urgent' : 'default';
+    if (urgent) document.getElementById('hero-title').innerHTML = '<mark>次の案件が決まらないまま</mark>、契約だけ終わる前に。';
+  })();
+
+  // 契約終了日までのマイルストーン（終了日から週数を逆算して、その週の月曜日を表示する）
+  const MILESTONES = [
+    { weeksBefore: 13, title: "案件探しの開始日を決める", desc: "通知の開始" },
+    { weeksBefore: 12, title: "いまの相場を確認する", desc: "直近の単価の目安を調べる" },
+    { weeksBefore: 10, title: "エージェントに終了予定を伝える", desc: "希望の条件も共有する" },
+    { weeksBefore: 8, title: "職務経歴書を更新する", desc: "直近の実績を書き足す" },
+    { weeksBefore: 4, title: "面談の準備をする", desc: "話すことを整理しておく" },
+    { weeksBefore: 0, title: "契約終了日", desc: "" }
+  ];
+
+  function mondayOf(d){
+    const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    x.setDate(x.getDate() - ((x.getDay() + 6) % 7));
+    return x;
+  }
+  function esc(t){ const e = document.createElement('div'); e.textContent = t; return e.innerHTML; }
+
+  function renderPlan(endStr){
+    const p = endStr.split('-').map(Number);
+    const end = new Date(p[0], p[1] - 1, p[2]);
+    const thisWeek = mondayOf(new Date()).getTime();
+    const items = MILESTONES.map(function(m){
+      const wk = mondayOf(new Date(end.getFullYear(), end.getMonth(), end.getDate() - m.weeksBefore * 7));
+      return { m: m, wk: wk, label: (wk.getMonth() + 1) + '/' + wk.getDate() + 'の週' };
+    });
+    // すでに過ぎた週は薄く表示し、今週（なければ次に来る週）に印をつける
+    const next = items.findIndex(function(it){ return it.wk.getTime() >= thisWeek; });
+    const list = document.getElementById('planList');
+    list.innerHTML = items.map(function(it, i){
+      const past = it.wk.getTime() < thisWeek;
+      const cls = (past ? 'past ' : '') + (i === next ? 'now ' : '') + (it.m.weeksBefore === 0 ? 'end' : '');
+      const badge = i === next ? '<span class="badge">' + (it.wk.getTime() === thisWeek ? '今週' : '次') + '</span>' : '';
+      const small = it.m.desc ? '<small>' + esc(it.m.desc) + '</small>' : '';
+      return '<li class="' + cls.trim() + '"><span class="wk">' + it.label + '</span><span class="dot"></span><span class="txt">' + esc(it.m.title) + badge + small + '</span></li>';
+    }).join('');
+    document.getElementById('planEnd').textContent = '契約終了日：' + p[0] + '年' + p[1] + '月' + p[2] + '日（各週は月曜日の日付です）';
+    const skipped = items.filter(function(it){ return it.wk.getTime() < thisWeek && it.m.weeksBefore > 0; }).length;
+    document.getElementById('planNote').textContent = skipped
+      ? '終了日まで13週を切っているため、すでに過ぎた週の項目は薄く表示しています。いまの週から、できるところを進めてください。'
+      : '';
+  }
+
+  document.getElementById('contractEndDate').min = (function(){
+    const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+  })();
+
   document.getElementById('signupForm').addEventListener('submit', function(e){
     e.preventDefault();
     const form = document.getElementById('signupForm');
     form.querySelector('#sourceField').value = getTrafficSource();
-    const success = document.getElementById('signupSuccess');
     const btn = form.querySelector('button');
     const originalText = btn.textContent;
     btn.disabled = true;
@@ -504,8 +553,11 @@
     })
       .then(function(res){
         if (!res.ok) throw new Error('submit failed');
+        renderPlan(form.querySelector('#contractEndDate').value);
         form.classList.add('hide');
-        success.classList.add('show');
+        const result = document.getElementById('planResult');
+        result.hidden = false;
+        result.scrollIntoView({ block: 'start' });
         gtag('event', 'generate_lead', { 'service_name': 'tsugianken-navi' });
       })
       .catch(function(){
