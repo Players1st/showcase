@@ -267,18 +267,15 @@
             <label><input type="radio" name="q_estate" value="3,000万円未満" required><span>3,000万円未満</span></label>
             <label><input type="radio" name="q_estate" value="5,000万円前後"><span>5,000万円前後</span></label>
             <label><input type="radio" name="q_estate" value="8,000万円前後"><span>8,000万円前後</span></label>
-            <label><input type="radio" name="q_estate" value="1億円以上"><span>1億円以上</span></label>
+            <label><input type="radio" name="q_estate" value="1億円前後"><span>1億円前後</span></label>
+            <label><input type="radio" name="q_estate" value="1.5億円前後"><span>1.5億円前後</span></label>
+            <label><input type="radio" name="q_estate" value="2億円以上"><span>2億円以上</span></label>
           </div>
         </div>
         <div class="field">
-          <label id="q-q_heirs-l">Q2　法定相続人の人数は？（配偶者＋子ども など）</label>
-          <div class="choices two" role="radiogroup" aria-labelledby="q-q_heirs-l">
-            <label><input type="radio" name="q_heirs" value="1人" required><span>1人</span></label>
-            <label><input type="radio" name="q_heirs" value="2人"><span>2人</span></label>
-            <label><input type="radio" name="q_heirs" value="3人"><span>3人</span></label>
-            <label><input type="radio" name="q_heirs" value="4人以上"><span>4人以上</span></label>
-          </div>
-          <p class="opt-note" style="text-align:left">例：配偶者のみ＝1人、配偶者と子ども1人＝2人、配偶者と子ども2人＝3人</p>
+          <label id="q-q_heirs-l" for="q_heirs">Q2　法定相続人の人数は？（配偶者＋子ども など）</label>
+          <select name="q_heirs" id="q_heirs" aria-labelledby="q-q_heirs-l" required><option value="" disabled selected>選んでください</option><option value="1人">1人</option><option value="2人">2人</option><option value="3人">3人</option><option value="4人">4人</option><option value="5人">5人</option><option value="6人">6人</option><option value="7人">7人</option><option value="8人">8人</option><option value="9人以上">9人以上</option></select>
+          <p class="opt-note" style="text-align:left">例：配偶者のみ＝1人、配偶者と子ども1人＝2人、配偶者と子ども2人＝3人（9人以上は9人で計算します）</p>
         </div>
         <div class="field">
           <label id="q-q_debt-l">Q3　借金や葬儀費用の目安は？（マイナス財産）</label>

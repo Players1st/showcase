@@ -2,10 +2,10 @@
 (function () {
   'use strict';
 
-  // 遺産総額の帯 → 計算に使う代表値（万円）。「1億円以上」は下限の1億円で計算
-  var ESTATE = { '3,000万円未満': 2500, '5,000万円前後': 5000, '8,000万円前後': 8000, '1億円以上': 10000 };
-  // 法定相続人の人数（4人以上は4人で計算）
-  var HEIRS = { '1人': 1, '2人': 2, '3人': 3, '4人以上': 4 };
+  // 遺産総額の帯 → 計算に使う代表値（万円）。「2億円以上」は下限の2億円で計算
+  var ESTATE = { '3,000万円未満': 2500, '5,000万円前後': 5000, '8,000万円前後': 8000,
+    '1億円前後': 10000, '1.5億円前後': 15000, '2億円以上': 20000 };
+  // 法定相続人の人数：「N人」の数字をそのまま使う（9人以上は9人で計算）
   // 借金・葬儀費用の帯 → 代表値（万円）
   var DEBT = { 'ほとんどない（0〜100万円）': 50, '数百万程度': 300, '500万円以上': 500 };
 
@@ -13,6 +13,7 @@
   var optin = document.getElementById('optin-form');
 
   function selected(name) {
+    if (name === 'q_heirs') return form.querySelector('select[name="q_heirs"]').value;
     return form.querySelector('input[name="' + name + '"]:checked').value;
   }
 
@@ -43,7 +44,7 @@
   }
 
   function render(a) {
-    var estate = ESTATE[a.estate], n = HEIRS[a.heirs], debt = DEBT[a.debt];
+    var estate = ESTATE[a.estate], n = parseInt(a.heirs, 10), debt = DEBT[a.debt];
     var deduction = 3000 + 600 * n;
     var taxable = estate - debt;
     var diff = taxable - deduction;
@@ -74,7 +75,9 @@
 
     document.getElementById('r-assume').textContent =
       '計算に使った値：遺産総額 ' + yen(estate) + '（' + a.estate + '）、法定相続人 ' + n + '人、借金・葬儀費用 ' + yen(debt) + '。' +
-      '不動産の評価額や生前贈与、保険金などによって実際は変わります。';
+      '不動産の評価額や生前贈与、保険金などによって実際は変わります。' +
+      (a.estate === '2億円以上' ? '「2億円以上」は2億円で計算しているため、実際はこれより高くなる可能性があります。' : '') +
+      (a.heirs === '9人以上' ? '「9人以上」は9人で計算しています。' : '');
 
     document.getElementById('h-estate').value = a.estate;
     document.getElementById('h-heirs').value = a.heirs;
