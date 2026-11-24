@@ -1,4 +1,4 @@
-// 年金、何歳から？：3問の回答から繰り下げ後の月額と損益分岐年齢を表示し、チェックリストの案内（Formspree）を受け付ける
+// 年金、何歳から？：2問の回答から繰り下げ・繰上げ後の月額と損益分岐年齢を表示し、チェックリストの案内（Formspree）を受け付ける
 (function () {
   'use strict';
 
@@ -6,7 +6,6 @@
   var PENSION = { '月8万円（年96万円）': 8, '月12万円（年144万円）': 12, '月16万円（年192万円）': 16, '月20万円以上（年240万円〜）': 20 };
   var DEFER = 0.007;  // 繰り下げ：1か月あたり +0.7%（最大84%）
   var EARLY = 0.004;  // 繰上げ：1か月あたり -0.4%（1962年4月2日以降生まれ）
-  var EARLY_AGE = 60;
   var AGES = [60, 65, 70, 75, 80, 85];
 
   var form = document.getElementById('check-form');
@@ -35,29 +34,37 @@
   function render(a) {
     var m = PENSION[a.pension];
     var start = parseInt(a.age, 10);
-    var months = (start - 65) * 12;
-    var r = months * DEFER;
+    var early = start < 65;                        // 60・62・64歳は繰上げ、66歳〜は繰り下げ
+    var months = Math.abs(start - 65) * 12;
+    var r = early ? -months * EARLY : months * DEFER;   // 繰上げは負
     var newM = m * (1 + r);
     var be = breakeven(start, r);
-    var early = a.compare.indexOf('60歳') === 0;
+    var pct = Math.round(Math.abs(r) * 1000) / 10;
 
-    document.getElementById('r-big').innerHTML =
-      start + '歳から受給すると、毎月が<br>約' + man1(newM) + '<small>（65歳受給より +' + man1(newM - m) + '）</small>';
-    document.getElementById('r-msg').textContent =
-      '65歳受給の累計額を「約' + ageText(be) + '」で追い抜き、それより長生きするほど受給総額がおトクになります。' +
-      '一方、' + ageText(be) + 'より前に受給が終わる場合は、65歳受給のほうが多くなります。';
+    if (early) {
+      document.getElementById('r-big').innerHTML =
+        start + '歳から受給すると、毎月が<br>約' + man1(newM) + 'に減ります<small>（65歳受給より −' + man1(m - newM) + '）</small>';
+      document.getElementById('r-msg').textContent =
+        '早く受け取れる分、月額は一生' + pct + '％少なくなります。65歳受給の累計額が約' + ageText(be) + 'で追いつくため、それより長生きする場合は65歳受給のほうが受給総額は多くなります。' +
+        '一方、' + ageText(be) + 'より前に受給が終わる場合は、繰上げのほうが多くなります。';
+    } else {
+      document.getElementById('r-big').innerHTML =
+        start + '歳から受給すると、毎月が<br>約' + man1(newM) + '<small>（65歳受給より +' + man1(newM - m) + '）</small>';
+      document.getElementById('r-msg').textContent =
+        '65歳受給の累計額を「約' + ageText(be) + '」で追い抜き、それより長生きするほど受給総額がおトクになります。' +
+        '一方、' + ageText(be) + 'より前に受給が終わる場合は、65歳受給のほうが多くなります。';
+    }
 
     document.getElementById('r-rows').innerHTML =
-      '<li><span>増額率（' + months + 'か月 × 0.7％）</span><b>+' + (Math.round(r * 1000) / 10) + '％</b></li>' +
-      '<li><span>増額後の月額／年額</span><b>' + man1(newM) + ' ／ ' + man(newM * 12) + '</b></li>' +
-      '<li><span>損益分岐年齢（65歳受給を追い抜く年齢）</span><b>約' + ageText(be) + '</b></li>';
+      '<li><span>' + (early ? '減額率（' + months + 'か月 × 0.4％）' : '増額率（' + months + 'か月 × 0.7％）') + '</span><b>' + (early ? '−' : '+') + pct + '％</b></li>' +
+      '<li><span>' + (early ? '減額後' : '増額後') + 'の月額／年額</span><b>' + man1(newM) + ' ／ ' + man(newM * 12) + '</b></li>' +
+      '<li><span>損益分岐年齢（65歳受給と累計が入れ替わる年齢）</span><b>約' + ageText(be) + '</b></li>';
 
-    var rm = m * (1 - EARLY * (65 - EARLY_AGE) * 12);
-    var heads = ['65歳受給', start + '歳受給'].concat(early ? ['60歳繰上げ'] : []);
+    var heads = ['65歳受給', start + (early ? '歳繰上げ' : '歳受給')];
     var html = '<table class="r-cmp"><thead><tr><th>累計（万円）</th>' + heads.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>';
     var lines = [];
     AGES.forEach(function (age) {
-      var vals = [cum(m, 65, age), cum(newM, start, age)].concat(early ? [cum(rm, EARLY_AGE, age)] : []);
+      var vals = [cum(m, 65, age), cum(newM, start, age)];
       var best = Math.max.apply(null, vals);
       html += '<tr><td>' + age + '歳まで</td>' + vals.map(function (v) {
         return '<td' + (v > 0 && v === best ? ' class="win"' : '') + '>' + (v > 0 ? Math.round(v).toLocaleString() : '—') + '</td>';
@@ -68,28 +75,24 @@
     document.getElementById('r-table').innerHTML = html;
 
     summaryText = [
-      '【診断条件】65歳時点の年金月額：' + a.pension + '／受給開始年齢：' + a.age + '／比較：' + a.compare,
-      '【試算結果】' + start + '歳から受給すると毎月 約' + man1(newM) + '（増額率 +' + (Math.round(r * 1000) / 10) + '％）。65歳受給の累計を約' + ageText(be) + 'で追い抜きます。',
+      '【診断条件】65歳時点の年金月額：' + a.pension + '／受給開始年齢：' + a.age,
+      '【試算結果】' + start + '歳から受給すると毎月 約' + man1(newM) + '（' + (early ? '減額率 −' : '増額率 +') + pct + '％）。65歳受給との損益分岐は約' + ageText(be) + 'です。',
       '【年齢別・累計受給額（税・社会保険料を引く前）】'
     ].concat(lines).join('\n');
 
     var assume = '計算に使った値：65歳時点の月額 ' + m + '万円、受給開始 ' + start + '歳。色のついた数字がその年齢時点でいちばん多い受給パターンです。';
     if (a.pension.indexOf('20万円以上') !== -1) assume += '「月20万円以上」は20万円で計算しているため、実際はこれより高くなります。';
-    if (early) {
-      var beE = breakeven(EARLY_AGE, -EARLY * (65 - EARLY_AGE) * 12);
-      assume += '60歳繰上げは月額が' + Math.round((1 - EARLY * 60) * 100) + '％（月 約' + man1(rm) + '）になり、65歳受給が追い抜くのは約' + ageText(beE) + 'です。繰上げは一生減額され、取り消せません。';
-    }
+    if (early) assume += '繰上げは一生減額され、取り消せません。障害年金・遺族年金など他の年金に影響する場合もあります。';
     document.getElementById('r-assume').textContent = assume;
 
     document.getElementById('h-pension').value = a.pension;
     document.getElementById('h-age').value = a.age;
-    document.getElementById('h-compare').value = a.compare;
     document.getElementById('h-result').value = start + '歳開始：月' + man1(newM) + '／損益分岐 約' + ageText(be);
   }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var a = { pension: selected('q_pension'), age: selected('q_age'), compare: selected('q_compare') };
+    var a = { pension: selected('q_pension'), age: selected('q_age') };
     render(a);
     form.style.display = 'none';
     var r = document.getElementById('result');

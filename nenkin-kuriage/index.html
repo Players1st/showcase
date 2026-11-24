@@ -14,20 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<title>年金、何歳から？｜年金の繰り下げ損益分岐を3つの質問で1分シミュレーション（無料）</title>
-<meta name="description" content="年金月額の目安・受給開始年齢・比較パターンの3つに答えるだけで、繰り下げ後の月額と、65歳受給を追い抜く損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
+<title>年金、何歳から？｜年金の繰り下げ・繰上げ損益分岐を2つの質問で1分シミュレーション（無料）</title>
+<meta name="description" content="年金月額の目安と受給開始年齢（60〜75歳）の2つに答えるだけで、繰り下げ・繰上げ後の月額と、65歳受給との損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://showcase.p1st.app/nenkin-kuriage/">
 <meta property="og:site_name" content="P1st Startup Showcase">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="年金、何歳から？｜年金の繰り下げ損益分岐を3つの質問で1分シミュレーション（無料）">
-<meta property="og:description" content="年金月額の目安・受給開始年齢・比較パターンの3つに答えるだけで、繰り下げ後の月額と、65歳受給を追い抜く損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
+<meta property="og:title" content="年金、何歳から？｜年金の繰り下げ・繰上げ損益分岐を2つの質問で1分シミュレーション（無料）">
+<meta property="og:description" content="年金月額の目安と受給開始年齢（60〜75歳）の2つに答えるだけで、繰り下げ・繰上げ後の月額と、65歳受給との損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
 <meta property="og:image" content="https://showcase.p1st.app/og/nenkin-kuriage.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="年金、何歳から？｜年金の繰り下げ損益分岐を3つの質問で1分シミュレーション（無料）">
-<meta name="twitter:description" content="年金月額の目安・受給開始年齢・比較パターンの3つに答えるだけで、繰り下げ後の月額と、65歳受給を追い抜く損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
+<meta name="twitter:title" content="年金、何歳から？｜年金の繰り下げ・繰上げ損益分岐を2つの質問で1分シミュレーション（無料）">
+<meta name="twitter:description" content="年金月額の目安と受給開始年齢（60〜75歳）の2つに答えるだけで、繰り下げ・繰上げ後の月額と、65歳受給との損益分岐年齢がその場でわかります。登録不要・無料。年金の請求・相談ではありません。">
 <meta name="twitter:image" content="https://showcase.p1st.app/og/nenkin-kuriage.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,6 +228,8 @@
   #survey-submit{width:100%;margin-top:6px}
   #survey-submit:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:0 4px 0 var(--violet-dark)}
   .survey-thanks{font-weight:700;color:var(--violet-dark);font-size:17px}
+  .choices.ages{grid-template-columns:1fr 1fr}
+  @media (max-width:820px){.choices.ages span{padding:13px 2px;font-size:15px}}
 </style>
 </head>
 <body>
@@ -247,15 +249,15 @@
     <div>
       <span class="eyebrow">無料の1分シミュレーション｜登録なしで結果が見られます</span>
       <h1>年金、何歳から<br><span class="u">受給するのが正解？</span><br>損益分岐が1分でわかる。</h1>
-      <p class="lead">年金月額の目安と受給開始年齢を選ぶと、繰り下げ後の月額と、65歳受給を追い抜く年齢（損益分岐）がその場に出ます。年金の請求・相談ではありません。</p>
+      <p class="lead">年金月額の目安と受給開始年齢を選ぶと、繰り下げ・繰上げ後の月額と、65歳受給との損益分岐年齢がその場に出ます。年金の請求・相談ではありません。</p>
       <a class="btn" href="#check">今すぐ無料で診断する</a>
       <span class="btn-note">診断は無料で、メールアドレスの入力も不要です。</span>
     </div>
     <div>
       <div class="report" aria-hidden="true">
         <div class="top">シミュレーション結果<small>回答にもとづいて表示（例）</small></div>
-        <div class="row"><b>1. 増額率</b>繰り下げ1か月ごとに +0.7%（最大 +84%）</div>
-        <div class="row"><b>2. 増額後の月額</b>月額 × （1 ＋ 増額率）</div>
+        <div class="row"><b>1. 増減率</b>繰り下げは1か月ごとに +0.7%（最大 +84%）、繰上げは −0.4%</div>
+        <div class="row"><b>2. 受給開始後の月額</b>月額 × （1 ± 増減率）</div>
         <div class="row"><b>3. 損益分岐年齢</b><span class="tag">70歳開始：約81歳11か月</span></div>
         <div class="row"><b>4. 累計受給額の比較</b>65歳受給と、年齢ごとに比べられます。</div>
       </div>
@@ -271,7 +273,7 @@
     <div class="scenes">
       <div class="scene"><p class="q">繰り下げると、いくら増えるのか</p><p>「最大84%増える」と聞いても、自分の年金だと月いくらになるのかが分からない。</p></div>
       <div class="scene"><p class="q">何歳まで生きれば得なのか</p><p>増えても、受け取り始めが遅くなる。結局どの年齢で元がとれるのか知りたい。</p></div>
-      <div class="scene"><p class="q">早くもらう手もあるのでは</p><p>60歳からの繰上げ受給とも比べて、自分に合うタイミングを考えたい。</p></div>
+      <div class="scene"><p class="q">早くもらう手もあるのでは</p><p>60・62・64歳からの繰上げ受給とも比べて、自分に合うタイミングを考えたい。</p></div>
     </div>
   </div>
 </section>
@@ -280,7 +282,7 @@
   <div class="wrap">
     <div class="card">
       <h2>1分診断（無料）</h2>
-      <p class="sub">3つの質問に答えると、その場で結果が表示されます。</p>
+      <p class="sub">2つの質問に答えると、その場で結果が表示されます。</p>
 
       <form id="check-form">
         <div class="field">
@@ -293,20 +295,16 @@
           </div>
         </div>
         <div class="field">
-          <label id="q-q_age-l">Q2　希望する受給開始年齢（繰り下げ年齢）は？</label>
-          <div class="choices three" role="radiogroup" aria-labelledby="q-q_age-l">
-            <label><input type="radio" name="q_age" value="66歳" required><span>66歳</span></label>
+          <label id="q-q_age-l">Q2　希望する受給開始年齢は？（60〜64歳は繰上げ、66歳〜は繰り下げ）</label>
+          <div class="choices ages" role="radiogroup" aria-labelledby="q-q_age-l">
+            <label><input type="radio" name="q_age" value="60歳" required><span>60歳</span></label>
+            <label><input type="radio" name="q_age" value="62歳"><span>62歳</span></label>
+            <label><input type="radio" name="q_age" value="64歳"><span>64歳</span></label>
+            <label><input type="radio" name="q_age" value="66歳"><span>66歳</span></label>
             <label><input type="radio" name="q_age" value="68歳"><span>68歳</span></label>
             <label><input type="radio" name="q_age" value="70歳"><span>70歳</span></label>
             <label><input type="radio" name="q_age" value="72歳"><span>72歳</span></label>
             <label><input type="radio" name="q_age" value="75歳（最大増額 +84%）"><span>75歳（最大増額 +84%）</span></label>
-          </div>
-        </div>
-        <div class="field">
-          <label id="q-q_compare-l">Q3　比較する受給パターンは？</label>
-          <div class="choices" role="radiogroup" aria-labelledby="q-q_compare-l">
-            <label><input type="radio" name="q_compare" value="65歳受給（標準）との比較のみ" required><span>65歳受給（標準）との比較のみ</span></label>
-            <label><input type="radio" name="q_compare" value="60歳繰上げ受給との比較も見る"><span>60歳繰上げ受給との比較も見る</span></label>
           </div>
         </div>
         <button type="submit" class="btn">診断結果を見る</button>
@@ -332,7 +330,6 @@
               <input type="hidden" name="source" id="source" value="direct">
               <input type="hidden" name="q_pension" id="h-pension">
               <input type="hidden" name="q_age" id="h-age">
-              <input type="hidden" name="q_compare" id="h-compare">
               <input type="hidden" name="result" id="h-result">
               <div class="field">
                 <label for="email">メールアドレス</label>
@@ -361,14 +358,14 @@
 
     <div class="trust">
       <p>本シミュレーションは概算の目安で、年金の請求・相談ではありません。</p>
-      <p>増額率は繰り下げ1か月あたり0.7％（日本年金機構）、繰上げは1か月あたり0.4％の減額（1962年4月2日以降生まれ）で計算しています。</p>
+      <p>増額率は繰り下げ1か月あたり0.7％、減額率は繰上げ1か月あたり0.4％（日本年金機構・1962年4月2日以降生まれ）で計算しています。</p>
     </div>
   </div>
 </section>
 
 <section class="disclaimer">
   <div class="wrap">
-    <p>本シミュレーションは日本年金機構の規定に基づく概算であり、実際の受給額は加入期間や報酬比例部分によって異なります。累計額は税・社会保険料を引く前の額で、物価や制度改正、加給年金・在職老齢年金・振替加算などの影響は考慮していません。年金請求や繰り下げの手続きにあたっては、お近くの年金事務所や街角の年金相談センターにご確認ください。</p>
+    <p>本シミュレーションは日本年金機構の規定に基づく概算であり、実際の受給額は加入期間や報酬比例部分によって異なります。累計額は税・社会保険料を引く前の額で、物価や制度改正、加給年金・在職老齢年金・振替加算などの影響は考慮していません。繰上げ受給をすると、障害年金・遺族年金など他の年金に影響する場合があります。繰上げ・繰り下げの減額率・増額率は1962年4月2日以降生まれの場合の値で計算しています。年金請求や繰り下げ・繰上げの手続きにあたっては、お近くの年金事務所や街角の年金相談センターにご確認ください。</p>
   </div>
 </section>
 
