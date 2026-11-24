@@ -7,10 +7,12 @@
   var DEFER = 0.007;  // 繰り下げ：1か月あたり +0.7%（最大84%）
   var EARLY = 0.004;  // 繰上げ：1か月あたり -0.4%（1962年4月2日以降生まれ）
   var EARLY_AGE = 60;
-  var AGES = [75, 80, 85, 90, 95];
+  var AGES = [60, 65, 70, 75, 80, 85];
 
   var form = document.getElementById('check-form');
   var optin = document.getElementById('optin-form');
+  var summaryText = '';   // メールで送る試算結果の要約（render で作る）
+  var userEmail = '';     // STEP 1 で入力されたメールアドレス（STEP 2 の紐づけ用）
 
   function selected(name) {
     return form.querySelector('input[name="' + name + '"]:checked').value;
@@ -51,16 +53,25 @@
       '<li><span>損益分岐年齢（65歳受給を追い抜く年齢）</span><b>約' + ageText(be) + '</b></li>';
 
     var rm = m * (1 - EARLY * (65 - EARLY_AGE) * 12);
-    var html = '<table class="r-cmp"><thead><tr><th>累計（万円）</th><th>65歳受給</th><th>' + start + '歳受給</th>' + (early ? '<th>60歳繰上げ</th>' : '') + '</tr></thead><tbody>';
+    var heads = ['65歳受給', start + '歳受給'].concat(early ? ['60歳繰上げ'] : []);
+    var html = '<table class="r-cmp"><thead><tr><th>累計（万円）</th>' + heads.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>';
+    var lines = [];
     AGES.forEach(function (age) {
-      if (age < start) return;
-      var c65 = cum(m, 65, age), cd = cum(newM, start, age), ce = early ? cum(rm, EARLY_AGE, age) : -1;
-      var best = Math.max(c65, cd, ce);
-      function td(v) { return '<td' + (v === best ? ' class="win"' : '') + '>' + Math.round(v).toLocaleString() + '</td>'; }
-      html += '<tr><td>' + age + '歳まで</td>' + td(c65) + td(cd) + (early ? td(ce) : '') + '</tr>';
+      var vals = [cum(m, 65, age), cum(newM, start, age)].concat(early ? [cum(rm, EARLY_AGE, age)] : []);
+      var best = Math.max.apply(null, vals);
+      html += '<tr><td>' + age + '歳まで</td>' + vals.map(function (v) {
+        return '<td' + (v > 0 && v === best ? ' class="win"' : '') + '>' + (v > 0 ? Math.round(v).toLocaleString() : '—') + '</td>';
+      }).join('') + '</tr>';
+      lines.push(age + '歳まで：' + vals.map(function (v, i) { return heads[i] + ' ' + (v > 0 ? Math.round(v).toLocaleString() + '万円' : '0円'); }).join('／'));
     });
     html += '</tbody></table>';
     document.getElementById('r-table').innerHTML = html;
+
+    summaryText = [
+      '【診断条件】65歳時点の年金月額：' + a.pension + '／受給開始年齢：' + a.age + '／比較：' + a.compare,
+      '【試算結果】' + start + '歳から受給すると毎月 約' + man1(newM) + '（増額率 +' + (Math.round(r * 1000) / 10) + '％）。65歳受給の累計を約' + ageText(be) + 'で追い抜きます。',
+      '【年齢別・累計受給額（税・社会保険料を引く前）】'
+    ].concat(lines).join('\n');
 
     var assume = '計算に使った値：65歳時点の月額 ' + m + '万円、受給開始 ' + start + '歳。色のついた数字がその年齢時点でいちばん多い受給パターンです。';
     if (a.pension.indexOf('20万円以上') !== -1) assume += '「月20万円以上」は20万円で計算しているため、実際はこれより高くなります。';
@@ -101,22 +112,79 @@
     document.getElementById('source').value = src;
   })();
 
-  // チェックリストの受け取り（メールアドレス）
+  // STEP 1：試算結果のメール受け取り → 成功したら STEP 2（有料版ニーズ調査）に切り替える
   optin.addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = optin.querySelector('button');
     var label = btn.textContent;
-    function done() { optin.style.display = 'none'; document.getElementById('thanks').hidden = false; }
+    var fd = new FormData(optin);
+    fd.set('summary', summaryText);
+    fd.set('type', 'result_mail');
     btn.disabled = true; btn.textContent = '送信中…';
-    fetch(optin.action, { method: 'POST', body: new FormData(optin), headers: { 'Accept': 'application/json' } })
+    fetch(optin.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
       .then(function (r) {
         if (!r.ok) throw new Error();
-        done();
+        userEmail = String(fd.get('email') || '');
+        document.getElementById('optin-step1').hidden = true;
+        document.getElementById('step2').hidden = false;
+        document.getElementById('step2').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { service_name: 'nenkin-kuriage' });
       })
       .catch(function () {
         btn.disabled = false; btn.textContent = label;
         alert('送信できませんでした。時間をおいてもう一度お試しください。');
       });
+  });
+
+  // STEP 2：4択を1クリックで回答 → GA4 と Formspree（メールアドレスと紐づけ）に送る
+  var PLANS = {
+    plan_1: '【手取り＆夫婦合算版】980円（単発）',
+    plan_2: '【老後資金・貯蓄寿命連動版】1,480円（単発）',
+    plan_3: '【働きながら受給・手続きロードマップ版】1,980円（単発）',
+    none: '今の無料シミュレーションだけで十分（有料版は不要）'
+  };
+  var survey = document.getElementById('survey');
+  var submitBtn = document.getElementById('survey-submit');
+  var boxes = Array.prototype.slice.call(survey.querySelectorAll('input[name="plan"]'));
+  function checked() { return boxes.filter(function (c) { return c.checked; }); }
+
+  // 排他制御：「不要」をチェック → プラン①〜③を外す／プラン①〜③をチェック → 「不要」を外す
+  survey.addEventListener('change', function (e) {
+    var c = e.target;
+    if (!c || c.name !== 'plan') return;
+    if (c.checked) {
+      boxes.forEach(function (o) {
+        if (o !== c && ((c.value === 'none') !== (o.value === 'none'))) o.checked = false;
+      });
+    }
+    submitBtn.disabled = checked().length === 0;
+  });
+
+  // 「この内容で回答する」：選ばれたすべてを GA4 と Formspree（メールアドレスと紐づけ）に送る
+  submitBtn.addEventListener('click', function () {
+    var sel = checked();
+    if (!sel.length || survey.getAttribute('data-done')) return;
+    survey.setAttribute('data-done', '1');
+    submitBtn.disabled = true;
+    var ids = sel.map(function (c) { return c.value; });
+    var labels = ids.map(function (id) { return PLANS[id]; });
+    if (typeof window.gtag === 'function') window.gtag('event', 'select_paid_solution', { solution_id: ids.join(', '), solution_label: labels.join(' / ') });
+    // lp-events.js は fetch の Formspree 送信を form_submit として数えるため、
+    // メール登録とは別物のこの送信は XHR で行い、form_submit が二重に数えられないようにする
+    var fd = new FormData();
+    fd.set('service', '年金、何歳から？');
+    fd.set('type', 'paid_solution_survey');
+    fd.set('email', userEmail);
+    fd.set('solution_id', ids.join(', '));
+    fd.set('solution', labels.join(' / '));
+    fd.set('source', document.getElementById('source').value);
+    try {
+      var x = new XMLHttpRequest();
+      x.open('POST', optin.action);
+      x.setRequestHeader('Accept', 'application/json');
+      x.send(fd);
+    } catch (err) {}
+    survey.hidden = true;
+    document.getElementById('survey-thanks').hidden = false;
   });
 })();
