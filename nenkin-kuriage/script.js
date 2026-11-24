@@ -144,20 +144,39 @@
     none: '今の無料シミュレーションだけで十分（有料版は不要）'
   };
   var survey = document.getElementById('survey');
-  survey.addEventListener('click', function (e) {
-    var b = e.target.closest('button[data-plan]');
-    if (!b || survey.getAttribute('data-done')) return;
+  var submitBtn = document.getElementById('survey-submit');
+  var boxes = Array.prototype.slice.call(survey.querySelectorAll('input[name="plan"]'));
+  function checked() { return boxes.filter(function (c) { return c.checked; }); }
+
+  // 排他制御：「不要」をチェック → プラン①〜③を外す／プラン①〜③をチェック → 「不要」を外す
+  survey.addEventListener('change', function (e) {
+    var c = e.target;
+    if (!c || c.name !== 'plan') return;
+    if (c.checked) {
+      boxes.forEach(function (o) {
+        if (o !== c && ((c.value === 'none') !== (o.value === 'none'))) o.checked = false;
+      });
+    }
+    submitBtn.disabled = checked().length === 0;
+  });
+
+  // 「この内容で回答する」：選ばれたすべてを GA4 と Formspree（メールアドレスと紐づけ）に送る
+  submitBtn.addEventListener('click', function () {
+    var sel = checked();
+    if (!sel.length || survey.getAttribute('data-done')) return;
     survey.setAttribute('data-done', '1');
-    var id = b.getAttribute('data-plan'), label = PLANS[id];
-    if (typeof window.gtag === 'function') window.gtag('event', 'select_paid_solution', { solution_id: id, solution_label: label });
+    submitBtn.disabled = true;
+    var ids = sel.map(function (c) { return c.value; });
+    var labels = ids.map(function (id) { return PLANS[id]; });
+    if (typeof window.gtag === 'function') window.gtag('event', 'select_paid_solution', { solution_id: ids.join(', '), solution_label: labels.join(' / ') });
     // lp-events.js は fetch の Formspree 送信を form_submit として数えるため、
     // メール登録とは別物のこの送信は XHR で行い、form_submit が二重に数えられないようにする
     var fd = new FormData();
     fd.set('service', '年金、何歳から？');
     fd.set('type', 'paid_solution_survey');
     fd.set('email', userEmail);
-    fd.set('solution_id', id);
-    fd.set('solution', label);
+    fd.set('solution_id', ids.join(', '));
+    fd.set('solution', labels.join(' / '));
     fd.set('source', document.getElementById('source').value);
     try {
       var x = new XMLHttpRequest();

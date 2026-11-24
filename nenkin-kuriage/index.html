@@ -218,10 +218,15 @@
   @media (max-width:820px){.choices.three{grid-template-columns:1fr 1fr}.r-cmp{font-size:13px}}
   .optin-sub{font-size:15px;color:var(--soft);margin-bottom:16px}
   .survey-q{font-size:16px;font-weight:700;margin-bottom:12px}
-  button.opt-plan{display:block;width:100%;text-align:left;font-family:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;max-width:none;box-shadow:none}
-  button.opt-plan:hover,button.opt-plan:focus-visible{border-color:var(--violet);background:var(--violet-tint);outline:none}
-  button.opt-plan b{display:block;font-size:16px}
-  button.opt-plan span{display:block;font-size:14px;color:var(--soft);margin-top:4px;line-height:1.6}
+  label.opt-plan{display:flex;gap:12px;align-items:flex-start;width:100%;font-size:16px;font-weight:400;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
+  label.opt-plan input{flex:none;width:22px;height:22px;margin-top:2px;accent-color:var(--violet)}
+  label.opt-plan:hover{border-color:var(--violet)}
+  label.opt-plan:has(input:checked){border-color:var(--violet);background:var(--violet-tint)}
+  label.opt-plan:has(input:focus-visible){outline:3px solid var(--mint)}
+  .opt-body b{display:block;font-size:16px}
+  .opt-body span{display:block;font-size:14px;color:var(--soft);margin-top:4px;line-height:1.6}
+  #survey-submit{width:100%;margin-top:6px}
+  #survey-submit:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:0 4px 0 var(--violet-dark)}
   .survey-thanks{font-weight:700;color:var(--violet-dark);font-size:17px}
 </style>
 </head>
@@ -341,11 +346,12 @@
           <div id="step2" hidden>
             <h4>送信を受け付けました！ご入力いただいたメールアドレス宛に試算結果をお送りします。</h4>
             <div id="survey">
-              <p class="survey-q">【10秒アンケート】現在、より詳しい「精密シミュレーション有料版」を開発中です。もしリリースされたら、どの機能を使ってみたいですか？（1つ選択してください）</p>
-              <button type="button" class="opt-plan" data-plan="plan_1"><b>【手取り＆夫婦合算版】980円（単発）</b><span>税金・社会保険料を引いた「本当の手取り額」と、配偶者の加給年金・振替加算を含めた世帯合算の損益分岐を算出</span></button>
-              <button type="button" class="opt-plan" data-plan="plan_2"><b>【老後資金・貯蓄寿命連動版】1,480円（単発）</b><span>70歳まで繰り下げた場合、「65〜69歳の空白の5年間」で現在の貯蓄がいくら減り、何歳まで持つかを連動試算</span></button>
-              <button type="button" class="opt-plan" data-plan="plan_3"><b>【働きながら受給・手続きロードマップ版】1,980円（単発）</b><span>60歳以降も働く場合の在職老齢年金の減額試算＋あなたの生年月日専用の「いつ・どこへ・何を出せばいいか」手続き一覧表</span></button>
-              <button type="button" class="opt-plan" data-plan="none"><b>今の無料シミュレーションだけで十分（有料版は不要）</b></button>
+              <p class="survey-q">【10秒アンケート】現在、より詳しい「精密シミュレーション有料版」を開発中です。もしリリースされたら、どの機能を使ってみたいですか？（複数選択できます）</p>
+              <label class="opt-plan"><input type="checkbox" name="plan" value="plan_1"><span class="opt-body"><b>【手取り＆夫婦合算版】980円（単発）</b><span>税金・社会保険料を引いた「本当の手取り額」と、配偶者の加給年金・振替加算を含めた世帯合算の損益分岐を算出</span></span></label>
+              <label class="opt-plan"><input type="checkbox" name="plan" value="plan_2"><span class="opt-body"><b>【老後資金・貯蓄寿命連動版】1,480円（単発）</b><span>70歳まで繰り下げた場合、「65〜69歳の空白の5年間」で現在の貯蓄がいくら減り、何歳まで持つかを連動試算</span></span></label>
+              <label class="opt-plan"><input type="checkbox" name="plan" value="plan_3"><span class="opt-body"><b>【働きながら受給・手続きロードマップ版】1,980円（単発）</b><span>60歳以降も働く場合の在職老齢年金の減額試算＋あなたの生年月日専用の「いつ・どこへ・何を出せばいいか」手続き一覧表</span></span></label>
+              <label class="opt-plan"><input type="checkbox" name="plan" value="none"><span class="opt-body"><b>今の無料シミュレーションだけで十分（有料版は不要）</b></span></label>
+              <button type="button" class="btn" id="survey-submit" disabled>この内容で回答する</button>
             </div>
             <p id="survey-thanks" class="survey-thanks" hidden>ご回答ありがとうございました！選ばれたプランがリリースされた際は優先的にご案内いたします。</p>
           </div>
